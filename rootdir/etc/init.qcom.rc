@@ -784,6 +784,12 @@ service ril-daemon2 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
+service rild2-wrapper /system/bin/sh /init.qcom.ril.sh
+    class late_start
+    user root
+    group root
+    oneshot
+
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
     user root
