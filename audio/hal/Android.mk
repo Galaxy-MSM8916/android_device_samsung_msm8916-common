@@ -105,7 +105,7 @@ ifneq ($(strip $(AUDIO_FEATURE_ENABLED_COMPRESS_VOIP)),false)
 endif
 ifeq ($(strip $(AUDIO_FEATURE_SAMSUNG_DUAL_SIM)),true)
     LOCAL_CFLAGS += -DSAMSUNG_DUAL_SIM
-    LOCAL_SRC_FILES += voice_extn/sec_voice_extn.c
+    LOCAL_SRC_FILES += voice_extn/msim_voice_extn.c
 endif
 endif
 
