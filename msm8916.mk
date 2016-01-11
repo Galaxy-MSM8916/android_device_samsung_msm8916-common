@@ -413,8 +413,7 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libshim_secril \
     libxml2 \
-    macloader \
-    rmnetcli
+    macloader
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
