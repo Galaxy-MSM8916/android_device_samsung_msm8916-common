@@ -942,6 +942,7 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     oneshot
 
 on property:sys.boot_completed=1
+    setprop sys.io.scheduler "bfq"
     start qcom-post-boot
     setprop sys.io.scheduler "bfq"
 
