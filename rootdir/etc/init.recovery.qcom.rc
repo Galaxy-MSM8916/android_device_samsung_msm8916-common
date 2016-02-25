@@ -4,3 +4,7 @@ on boot
     write /sys/class/touch_key/enabled true
     write /sys/class/touch_screen/control manual
     write /sys/class/touch_screen/enabled true
+
+ on fs
+    wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
