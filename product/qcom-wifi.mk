@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
 	hostapd \
+	wificond \
 	iwconfig \
 	hostapd_cli \
 	libQWiFiSoftApCfg \
