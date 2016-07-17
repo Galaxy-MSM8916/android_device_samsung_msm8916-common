@@ -242,7 +242,8 @@ PRODUCT_PACKAGES += \
     com.android.location.provider \
     com.android.location.provider.xml \
     gps.msm8916 \
-    libshim_gps
+    libshim_gps \
+    liblocadapterbase_shim
 
 # GPS Properties
 PRODUCT_PROPERTY_OVERRIDES += \
