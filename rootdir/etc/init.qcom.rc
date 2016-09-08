@@ -65,6 +65,11 @@ on early-boot
     setprop qcom.audio.init complete
     exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
 
+    # Remove symlinks to avoid issues with migrate after nandroid restores
+    # Will be recreated at end of boot
+    rm /data/data/com.android.providers.telephony/databases/telephony.db
+    rm /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
+
 on boot
     start rmt_storage
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -372,6 +377,12 @@ on boot
     chown system radio /sys/class/power_supply/ps/status
     chmod 0664 /sys/class/power_supply/ps/status
     chown system radio /sys/class/power_supply/battery/batt_temp_table
+
+    # Symlink telephony.db and preferred-apn.xml
+    mkdir /data/data/com.android.providers.telephony/databases 0700 radio radio
+    mkdir /data/data/com.android.providers.telephony/shared_prefs 0700 radio radio
+    symlink /data/user_de/0/com.android.providers.telephony/databases/telephony.db /data/data/com.android.providers.telephony/databases/telephony.db
+    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs/preferred-apn.xml /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
 
 on property:ro.config.ksm=true
     write /sys/kernel/mm/ksm/pages_to_scan 100
