@@ -21,6 +21,10 @@ PRODUCT_PACKAGES += \
 	com.android.media.remotedisplay \
 	com.android.media.remotedisplay.xml
 
+# WiFi HAL
+PRODUCT_PACKAGES += \
+	android.hardware.wifi@1.0-service
+
 # Wifi
 PRODUCT_PACKAGES += \
 	hostapd \
