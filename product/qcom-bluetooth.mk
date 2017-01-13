@@ -6,4 +6,5 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
 	javax.btobex \
-	libbt-vendor
+	libbt-vendor \
+	android.hardware.bluetooth@1.0-impl
