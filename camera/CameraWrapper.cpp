@@ -157,6 +157,7 @@ static char *camera_fixup_setparams(struct camera_device *device, const char *se
 #endif
 
     params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "640x360,640x480,528x432,352x288,320x240,176x144");
+    params.set(android::CameraParameters::KEY_PREVIEW_FPS_RANGE, "7500,30000");
 
     android::String8 strParams = params.flatten();
 
