@@ -26,3 +26,10 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
 	camera2.portability.force_api=1
+
+# CMHW
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS :=	$(LOCAL_PATH)/cmhw
+BOARD_HARDWARE_CLASS +=	\
+	hardware/cyanogen/cmhw \
+	hardware/samsung/cmhw
