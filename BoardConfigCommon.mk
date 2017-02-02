@@ -19,6 +19,20 @@ LOCAL_PATH := device/samsung/msm8916-common
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# Platform
+TARGET_ARCH := arm
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_BOARD_PLATFORM_GPU       := qcom-adreno306
+
+# Architecture
+TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_CORTEX_A53 := true
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+
 # Camera
 TARGET_USE_VENDOR_CAMERA_EXT := true
 TARGET_PROVIDES_CAMERA_HAL := true
