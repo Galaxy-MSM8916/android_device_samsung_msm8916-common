@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit from common
+$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
+
 LOCAL_PATH := device/samsung/msm8916-common
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)

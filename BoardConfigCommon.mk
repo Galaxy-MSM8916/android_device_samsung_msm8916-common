@@ -15,6 +15,9 @@
 #
 FORCE_32_BIT := true
 
+# Inherit from common
+-include device/samsung/qcom-common/BoardConfigCommon.mk
+
 LOCAL_PATH := device/samsung/msm8916-common
 
 # Include path
