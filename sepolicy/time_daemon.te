@@ -1,0 +1,5 @@
+#============= time_daemon ==============
+allow time_daemon platform_app:dir { read search };
+allow time_daemon platform_app:file { open read };
+allow time_daemon time_data_file:dir { remove_name };
+allow time_daemon time_data_file:file { getattr append unlink };

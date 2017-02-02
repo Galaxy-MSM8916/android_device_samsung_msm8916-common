@@ -1,0 +1,8 @@
+#============= mm-qcamerad ==============
+allow mm-qcamerad sysfs_camera:dir rw_dir_perms;
+allow mm-qcamerad sysfs:file rw_file_perms;
+allow mm-qcamerad sysfs_camera:file rw_file_perms;
+allow mm-qcamerad system_data_file:dir w_dir_perms;
+allow mm-qcamerad system_data_file:sock_file { create unlink };
+allow mm-qcamerad system_file:file execmod; # for libmmcamera_faceproc
+type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket3";
