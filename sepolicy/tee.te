@@ -1,0 +1,2 @@
+allow tee efs_file:dir { read getattr open };
+allow tee efs_file:file { read write getattr open };

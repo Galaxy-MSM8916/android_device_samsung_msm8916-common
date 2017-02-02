@@ -1,0 +1,2 @@
+#============= qmuxd ==============
+allow qmuxd devpts:chr_file { read write };

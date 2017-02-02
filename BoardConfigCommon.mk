@@ -34,6 +34,14 @@ BOARD_HARDWARE_CLASS +=	\
 	hardware/cyanogen/cmhw \
 	hardware/samsung/cmhw
 
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+-include vendor/cm/sepolicy/sepolicy.mk
+-include vendor/cm/sepolicy/qcom/sepolicy.mk
+
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/msm8916-common/sepolicy
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm8916-common/recovery/recovery_keys.c

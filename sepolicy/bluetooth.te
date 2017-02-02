@@ -1,0 +1,1 @@
+allow bluetooth bluetooth_efs_file:file read;
