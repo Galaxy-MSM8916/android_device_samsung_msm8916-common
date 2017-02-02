@@ -34,6 +34,25 @@ BOARD_HARDWARE_CLASS +=	\
 	hardware/cyanogen/cmhw \
 	hardware/samsung/cmhw
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm8916-common/recovery/recovery_keys.c
+BOARD_HAS_LARGE_FILESYSTEM			:= true
+TARGET_RECOVERY_DENSITY 			:= hdpi
+BOARD_HAS_NO_MISC_PARTITION 		:= true
+BOARD_HAS_NO_SELECT_BUTTON 			:= true
+BOARD_RECOVERY_SWIPE 				:= true
+BOARD_USE_CUSTOM_RECOVERY_FONT 	    := \"roboto_23x41.h\"
+BOARD_USES_MMCUTILS 				:= true
+BOARD_SUPPRESS_EMMC_WIPE := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := false
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+RECOVERY_SDCARD_ON_DATA := true
+
+
 # Wifi
 WLAN_CHIPSET := pronto
 BOARD_HAS_QCOM_WLAN := true
