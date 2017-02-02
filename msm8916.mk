@@ -29,6 +29,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
 
+# GPS
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/gps/flp.conf:system/etc/flp.conf \
+	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/configs/gps/izat.conf:system/etc/izat.conf \
+	$(LOCAL_PATH)/configs/gps/sap.conf:system/etc/sap.conf
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.gps.qc_nlp_in_use=1
+
 # Ramdisk
 PRODUCT_PACKAGES += \
 	fstab.qcom \
@@ -51,6 +61,10 @@ PRODUCT_PACKAGES += \
 	init.qcom.sh \
 	ueventd.qcom.rc
 
+# Power configuration
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+
 # Wifi configuration files
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/wifi/cred.conf:system/etc/wifi/cred.conf \
@@ -62,7 +76,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
 	$(LOCAL_PATH)/configs/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
 	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
+	$(LOCAL_PATH)/configs/wifi/sec_config:system/etc/sec_config \
+	$(LOCAL_PATH)/configs/wifi/dsi_config.xml:system/etc/data/dsi_config.xml \
+	$(LOCAL_PATH)/configs/wifi/netmgr_config.xml:system/etc/data/netmgr_config.xml \
+	$(LOCAL_PATH)/configs/wifi/qmi_config.xml:system/etc/data/qmi_config.xml
 
 # Wifi
 PRODUCT_PACKAGES += \

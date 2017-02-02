@@ -34,6 +34,11 @@ BOARD_HARDWARE_CLASS +=	\
 	hardware/cyanogen/cmhw \
 	hardware/samsung/cmhw
 
+# GPS
+#BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm8916
+#TARGET_NO_RPC := true
+
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 -include vendor/cm/sepolicy/sepolicy.mk
