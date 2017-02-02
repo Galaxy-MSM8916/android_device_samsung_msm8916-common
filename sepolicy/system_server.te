@@ -1,0 +1,7 @@
+#============= system_server ==============
+allow system_server efs_file:dir search;
+allow system_server touchpanel_sysfs:file rw_file_perms;
+allow system_server touchpanel_sysfs:dir { search };
+allow system_server sensors_efs_file:file { open read };
+allow system_server sysfs_vibeamp:dir search;
+allow system_server sysfs_vibeamp:file { getattr open read write };

@@ -1,0 +1,4 @@
+allow system_app sysfs_input:file { read write };
+allow system_app sysfs_input:dir search;
+allow system_app sysfs_input:file rw_file_perms;
+allow system_app sysfs_input:lnk_file read;

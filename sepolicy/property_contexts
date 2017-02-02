@@ -1,0 +1,5 @@
+persist.soc_camera.flicker		u:object_r:camera_prop:s0
+service.camera.hdmi_preview		u:object_r:camera_prop:s0
+
+# Bluetooth
+qualcomm.bt.                    u:object_r:bluetooth_prop:s0

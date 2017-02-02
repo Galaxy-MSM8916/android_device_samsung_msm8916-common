@@ -1,0 +1,15 @@
+#============= qti_init_shell ==============
+allow qti_init_shell bluetooth_loader_exec:file { open read };
+allow qti_init_shell bluetooth_data_file:file { getattr };
+allow qti_init_shell btnvtool_exec:file { open read getattr execute execute_no_trans };
+
+allow qti_init_shell qmuxd_socket:dir { add_name write };
+allow qti_init_shell qmuxd_socket:sock_file { create setattr };
+allow qti_init_shell hci_attach_dev:chr_file { ioctl open read write };
+allow qti_init_shell cgroup:dir { create };
+allow qti_init_shell ctl_default_prop:property_service { set };
+
+allow qti_init_shell qmuxd_socket:sock_file { write };
+allow qti_init_shell qmuxd:unix_stream_socket { connectto };
+allow qti_init_shell bluetooth_efs_file:file { open read getattr };
+allow qti_init_shell bluetooth_efs_file:dir { search };
