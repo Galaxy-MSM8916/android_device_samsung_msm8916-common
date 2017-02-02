@@ -27,6 +27,30 @@ PRODUCT_PACKAGES += \
 	com.dsi.ant.antradio_library \
 	libantradio
 
+# Audio
+PRODUCT_PACKAGES += \
+	audio.a2dp.default \
+	audio.primary.msm8916 \
+	audio.primary.default \
+	audio_policy.msm8916 \
+	audio.r_submix.default \
+	audio.tms.default \
+	audio.usb.default \
+	audiod \
+	libaudio-resampler \
+	libaudioroute \
+	libaudioutils \
+	libaudiopolicymanager \
+	libqcompostprocbundle \
+	libqcomvisualizer \
+	libqcomvoiceprocessing \
+	libqcmediaplayer \
+	libtinycompress \
+	tinymix \
+	tinyplay \
+	tinycap \
+	tinypcminfo
+
 # Camera
 PRODUCT_PACKAGES += \
 	libmm-qcamera \
@@ -45,6 +69,109 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.gps.qc_nlp_in_use=1
+
+# BoringSSL Hacks
+PRODUCT_PACKAGES += \
+	libboringssl-compat
+
+# Libtime
+PRODUCT_PACKAGES += \
+	libtime_genoff
+
+# Boot jars
+PRODUCT_BOOT_JARS += \
+	tcmiface
+
+# Connectivity Engine support
+PRODUCT_PACKAGES += \
+	libcnefeatureconfig
+
+# Location, WiDi
+PRODUCT_PACKAGES += \
+	com.android.location.provider \
+	com.android.location.provider.xml \
+	com.android.media.remotedisplay \
+	com.android.media.remotedisplay.xml
+
+# Display
+PRODUCT_PACKAGES += \
+	copybit.msm8916 \
+	gralloc.msm8916 \
+	hwcomposer.msm8916 \
+	libtinyxml \
+	libtinyxml2 \
+	memtrack.msm8916
+
+# Ebtables
+PRODUCT_PACKAGES += \
+	ebtables \
+	ethertypes \
+	libebtc
+
+# libxml2
+PRODUCT_PACKAGES += \
+	libxml2
+
+# Keystore
+PRODUCT_PACKAGES += \
+	keystore.msm8916
+
+# libhealthd.qcom
+PRODUCT_PACKAGES += \
+	libhealthd.qcom \
+	libhealthd
+
+# Power HAL
+PRODUCT_PACKAGES += \
+	power.qcom
+
+# Lights
+PRODUCT_PACKAGES += \
+	lights.msm8916
+
+# Default Property Overrides
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	persist.sys.usb.config=mtp \
+	persist.radio.apm_sim_not_pwdn=1 \
+	persist.cne.feature=0 \
+	ro.debuggable=1 \
+	persist.service.adb.enable=1
+
+# Sensors
+PRODUCT_PACKAGES += \
+	sensors.default
+
+# Macloader
+PRODUCT_PACKAGES += \
+	macloader
+
+# Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+	dalvik.vm.heapgrowthlimit=128m \
+	ro.security.icd.flagmode=single \
+	ro.vendor.extension_library=libqti-perfd-client.so \
+	persist.loc.nlp_name=com.qualcomm.location
+
+# Media configurations
+PRODUCT_COPY_FILES += \
+	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+
+# Permissions
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -67,6 +194,40 @@ PRODUCT_PACKAGES += \
 	init.qcom.fm.sh \
 	init.qcom.sh \
 	ueventd.qcom.rc
+
+# Misc
+PRODUCT_PACKAGES += \
+	curl \
+	libbson \
+	libcurl \
+	javax.btobex \
+	tcpdump \
+	libkeyutils \
+	libjpega \
+	libexifa \
+	libstlport \
+	datatop \
+	sockev \
+	librmnetctl
+
+# OMX
+PRODUCT_PACKAGES += \
+	libextmedia_jni \
+	libdashplayer \
+	libdivxdrmdecrypt \
+	libmm-omxcore \
+	libOmxAacEnc \
+	libOmxAmrEnc \
+	libOmxCore \
+	libOmxEvrcEnc \
+	libOmxQcelp13Enc \
+	libOmxSwVencMpeg4 \
+	libOmxVdec \
+	libOmxVdecHevc \
+	libOmxVenc \
+	libOmxVidEnc \
+	libOmxVdpp \
+	libstagefrighthw
 
 # Power configuration
 PRODUCT_COPY_FILES += \

@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+FORCE_32_BIT := true
 
 LOCAL_PATH := device/samsung/msm8916-common
 
@@ -35,6 +36,69 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
+# Audio
+AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
+AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
+BOARD_USES_ALSA_AUDIO := true
+USE_LEGACY_AUDIO_POLICY := 0
+USE_CUSTOM_AUDIO_POLICY := 1
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_USES_QCOM_MM_AUDIO := true
+
+# Charger
+BOARD_CHARGER_ENABLE_SUSPEND    := true
+BOARD_CHARGER_SHOW_PERCENTAGE   := true
+
+# Cpusets
+ENABLE_CPUSETS := true
+
+# Enable QCOM FM feature
+AUDIO_FEATURE_ENABLED_FM := true
+BOARD_HAVE_QCOM_FM := true
+
+# Protobuf
+PROTOBUF_SUPPORTED := false
+
+# Crypto
+TARGET_HW_DISK_ENCRYPTION := true
+
+# Display
+MAX_EGL_CACHE_KEY_SIZE := 12*1024
+MAX_EGL_CACHE_SIZE := 2048*1024
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+OVERRIDE_RS_DRIVER := libRSDriver.so
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+MAX_VIRTUAL_DISPLAY_DIMENSION := 2048
+TARGET_CONTINUOUS_SPLASH_ENABLED := true
+TARGET_HAVE_NEW_GRALLOC := true
+
+# Encryption
+TARGET_SWV8_DISK_ENCRYPTION := true
+
+# FM
+AUDIO_FEATURE_ENABLED_FM := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
+# Healthd
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.qcom
+
+# Init
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+
+# Keymaster
+TARGET_HW_KEYMASTER_V03 := true
+
+# Time services
+BOARD_USES_QC_TIME_SERVICES := true
+
+# Vold
+BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
+BOARD_VOLD_MAX_PARTITIONS := 67
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+
+# malloc implementation
+MALLOC_IMPL := dlmalloc
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -74,6 +138,22 @@ BOARD_HARDWARE_CLASS +=	\
 #BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := msm8916
 #TARGET_NO_RPC := true
 
+# Power
+#TARGET_POWERHAL_VARIANT := samsung
+TARGET_POWERHAL_VARIANT := qcom
+CM_POWERHAL_EXTENSION := qcom
+WITH_QC_PERF := true
+
+# Media
+TARGET_QCOM_MEDIA_VARIANT           := caf
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
+# Qualcomm support
+TARGET_USES_QCOM_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
+HAVE_SYNAPTICS_I2C_RMI4_FW_UPGRADE   := true
+USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
+TARGET_USES_NEW_ION_API := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
