@@ -18,3 +18,11 @@ LOCAL_PATH := device/samsung/msm8916-common
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+
+# Camera
+TARGET_USE_VENDOR_CAMERA_EXT := true
+TARGET_PROVIDES_CAMERA_HAL := true
+USE_DEVICE_SPECIFIC_CAMERA := true
+
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	camera2.portability.force_api=1

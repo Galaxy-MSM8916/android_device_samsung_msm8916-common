@@ -19,3 +19,12 @@ LOCAL_PATH := device/samsung/msm8916-common
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# Camera
+PRODUCT_PACKAGES += \
+	libmm-qcamera \
+	camera.msm8916 \
+	Snap
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	camera2.portability.force_api=1
