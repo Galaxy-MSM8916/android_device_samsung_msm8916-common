@@ -20,6 +20,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# ANT+
+PRODUCT_PACKAGES += \
+	AntHalService \
+	antradio_app \
+	com.dsi.ant.antradio_library \
+	libantradio
+
 # Camera
 PRODUCT_PACKAGES += \
 	libmm-qcamera \

@@ -33,6 +33,9 @@ TARGET_CPU_CORTEX_A53 := true
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
 # Camera
 TARGET_USE_VENDOR_CAMERA_EXT := true
 TARGET_PROVIDES_CAMERA_HAL := true
