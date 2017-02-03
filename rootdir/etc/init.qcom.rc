@@ -26,6 +26,7 @@
 #
 
 import init.qcom.usb.rc
+import init.target.rc
 #import init.carrier.rc
 
 on enable-low-power
@@ -95,9 +96,6 @@ on early-init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
-
-on init
-    export LD_SHIM_LIBS /system/lib/libril.so|libril_shim.so:/system/lib/libcrypto.so|libboringssl-compat.so
 	
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -458,10 +456,6 @@ on boot
     chown system radio /sys/class/power_supply/ps/status
     chmod 0664 /sys/class/power_supply/ps/status
     chown system radio /sys/class/power_supply/battery/batt_temp_table
-
- # KSM tuning
-on property:ro.config.ksm=false
-    write /sys/kernel/mm/ksm/run 0
 
 on property:ro.config.ksm=true
     write /sys/kernel/mm/ksm/pages_to_scan 100
