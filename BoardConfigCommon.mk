@@ -166,8 +166,6 @@ TARGET_USES_NEW_ION_API := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
--include vendor/cm/sepolicy/sepolicy.mk
--include vendor/cm/sepolicy/qcom/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     device/samsung/msm8916-common/sepolicy
