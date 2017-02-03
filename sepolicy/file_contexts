@@ -1,7 +1,5 @@
 # Bluetooth
-/system/etc/init\.qcom\.bt\.sh                  u:object_r:bluetooth_loader_exec:s0
 /persist/.bt_nv.bin                             u:object_r:bluetooth_data_file:s0
-/dev/smd3                                       u:object_r:hci_attach_dev:s0
 /efs/bluetooth(/.*)?			        u:object_r:bluetooth_efs_file:s0
 
 /efs/wifi(/.*)?			u:object_r:wifi_efs_file:s0
@@ -32,6 +30,10 @@
 
 # EFS
 /dev/block/bootdevice/by-name/efs               u:object_r:modem_efs_partition_device:s0
+
+
+# RFS
+/sys/kernel/debug/rmt_storage(/.*)?		u:object_r:rfs_debugfs_file:s0
 
 # Macloader
 /system/bin/macloader                                   u:object_r:macloader_exec:s0

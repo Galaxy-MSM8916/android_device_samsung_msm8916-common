@@ -1,11 +1,13 @@
 #============= rild ==============
 allow rild app_efs_file:dir { search };
-allow rild app_efs_file:file { open getattr read };
+allow rild app_efs_file:file { r_file_perms };
+allow rild audioserver:file { rw_file_perms };
 allow rild imei_efs_file:dir { search };
-allow rild imei_efs_file:file { open getattr read };
+allow rild imei_efs_file:file { r_file_perms };
 allow rild mnt_user_file:dir { search };
 allow rild mnt_user_file:lnk_file { read };
 allow rild proc_net:file rw_file_perms;
+allow rild radio_data_file:lnk_file { r_file_perms };
 allow rild self:capability { dac_override dac_read_search };
 allow rild storage_file:dir { search };
 allow rild storage_file:lnk_file { read };

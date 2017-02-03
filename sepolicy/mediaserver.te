@@ -1,12 +1,11 @@
 #============= mediaserver ==============
+allow mediaserver audio_device:chr_file rw_file_perms;
 allow mediaserver camera_prop:property_service set;
 allow mediaserver camera_socket:dir { search open };
 allow mediaserver cameraproxy_service:service_manager find;
-allow mediaserver mediaserver_tmpfs:file { read write };
 allow mediaserver snd_data_file:dir { add_name open search write };
 allow mediaserver snd_data_file:file {  getattr open read write create_file_perms };
 allow mediaserver sysfs_camera:dir search;
 allow mediaserver sysfs_camera:file { getattr open read };
 allow mediaserver sysfs_wake_lock:file { open read write };
-allow mediaserver system_file:file { execmod };
 allow mediaserver system_data_file:sock_file write;

@@ -1,5 +1,6 @@
 #============= init ==============
 allow init debugfs:dir mounton;
+allow init debugfs_tracing:file { rw_file_perms };
 allow init diag_exec:file { read open getattr execute };
 allow init efs_file:dir { mounton };
 allow init init:socket { read write create ioctl };

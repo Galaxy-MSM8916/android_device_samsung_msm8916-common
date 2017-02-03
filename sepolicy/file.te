@@ -1,6 +1,7 @@
 #============= file ==============
 type app_efs_file, file_type;
 type imei_efs_file, file_type;
+type rfs_debugfs_file, file_type;
 type sensors_efs_file, file_type;
 type snd_data_file, file_type, data_file_type;
 type sysfs_camera, fs_type, sysfs_type;
