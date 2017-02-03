@@ -31,4 +31,4 @@
 /system/bin/macloader                                   u:object_r:macloader_exec:s0
 
 # Thermal Engine
-/system/vender/bin/thermal-engine                        u:object_r:thermal-engine_exec:s0
+/system/vendor/bin/thermal-engine                        u:object_r:thermal-engine_exec:s0
