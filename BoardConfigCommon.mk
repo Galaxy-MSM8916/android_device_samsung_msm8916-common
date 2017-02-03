@@ -101,7 +101,7 @@ BOARD_VOLD_MAX_PARTITIONS := 67
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # malloc implementation
-MALLOC_IMPL := dlmalloc
+MALLOC_SVELTE := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
