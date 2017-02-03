@@ -177,6 +177,28 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+	fstab.qcom \
+	init.carrier.rc \
+	init.class_main.sh \
+	init.ksm.sh \
+	init.mdm.sh \
+	init.qcom.audio.sh \
+	init.qcom.bt.sh \
+	init.qcom.uicc.sh \
+	init.qcom.wifi.sh \
+	init.qcom.post_boot.sh \
+	init.qcom.class_core.sh \
+	init.qcom.early_boot.sh \
+	init.qcom.syspart_fixup.sh \
+	init.qcom.usb.rc \
+	init.qcom.usb.sh \
+	init.qcom.rc \
+	init.qcom.fm.sh \
+	init.qcom.sh \
+	ueventd.qcom.rc
+
 # Misc
 PRODUCT_PACKAGES += \
 	curl \
