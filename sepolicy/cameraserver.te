@@ -1,0 +1,2 @@
+#=========== cameraserver ==========
+allow cameraserver camera_socket:sock_file { write };
