@@ -23,7 +23,7 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Malloc implementation
-MALLOC_IMPL := dlmalloc
+MALLOC_SVELTE := true
 
 # Protobuf
 PROTOBUF_SUPPORTED := true
