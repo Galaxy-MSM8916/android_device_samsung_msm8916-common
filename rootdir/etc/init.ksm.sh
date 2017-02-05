@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 ksm_enabled=`getprop ro.config.ksm`
-timeout=60
+timeout=45
 
 LOG_TAG="config_ksm"
 LOG_NAME="${0}:"
