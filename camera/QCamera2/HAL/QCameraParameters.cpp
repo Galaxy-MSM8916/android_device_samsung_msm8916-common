@@ -3766,7 +3766,7 @@ int32_t QCameraParameters::setNumOfSnapshot()
                         ALOGE("%s: No memory for prop", __func__);
                         return NO_MEMORY;
                     }
-                    strlcpy(prop, str_val, strlen(str_val) + 1);
+                    strlcpy(prop, str_val, strlen(prop));
                     char *saveptr = NULL;
                     char *token = strtok_r(prop, ",", &saveptr);
                     while (token != NULL) {
@@ -6668,7 +6668,7 @@ int32_t QCameraParameters::parseGains(const char *gainStr, double &r_gain,
         ALOGE("%s: No memory for gains", __func__);
         return NO_MEMORY;
     }
-    strlcpy(gains, gainStr, strlen(gainStr) + 1);
+    strlcpy(gains, gainStr, strlen(gains));
     char *token = strtok_r(gains, ",", &saveptr);
     if (NULL == token) {
         ALOGE("%s:%d: strtok_r fails to find delimit", __func__,__LINE__);
@@ -8674,7 +8674,7 @@ uint8_t QCameraParameters::getBurstCountForAdvancedCapture()
               ALOGE("%s: No memory for prop", __func__);
               return NO_MEMORY;
           }
-          strlcpy(prop, str_val, strlen(str_val) + 1);
+          strlcpy(prop, str_val, strlen(prop));
           char *saveptr = NULL;
           char *token = strtok_r(prop, ",", &saveptr);
           while (token != NULL) {
@@ -10058,11 +10058,9 @@ int32_t QCameraParameters::commitParamChanges()
  *
  * RETURN     : none
  *==========================================================================*/
-QCameraReprocScaleParam::QCameraReprocScaleParam(QCameraParameters *parent)
-  : mParent(parent),
-    mScaleEnabled(false),
+QCameraReprocScaleParam::QCameraReprocScaleParam(QCameraParameters* /*parent*/)
+  : mScaleEnabled(false),
     mIsUnderScaling(false),
-    mScaleDirection(0),
     mNeedScaleCnt(0),
     mSensorSizeTblCnt(0),
     mSensorSizeTbl(NULL),
