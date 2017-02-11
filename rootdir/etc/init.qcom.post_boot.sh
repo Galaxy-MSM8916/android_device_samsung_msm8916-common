@@ -1372,7 +1372,7 @@ case "$target" in
             setprop ro.min_freq_4 533333
 	;;
 	    "206" | "247" | "248" | "249" | "250" | "233" | "240" | "242")
-            setprop ro.min_freq_0 800000
+            setprop ro.min_freq_0 200000
         ;;
         esac
         #start perfd after setprop
