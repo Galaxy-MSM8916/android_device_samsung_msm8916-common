@@ -34,7 +34,7 @@
 /dev/kgsl-2d0             0666   root       root
 /dev/kgsl-2d1             0666   root       root
 /dev/ion                  0664   system     system
-/dev/rtc0                 0600   system     system
+/dev/rtc0                 0660   system     system
 /dev/smd0                 0660   system     system
 /dev/smd4                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
@@ -48,6 +48,8 @@
 /dev/ipa                  0660   net_admin  net_admin
 /dev/wwan_ioctl           0660   net_admin  net_admin
 /dev/ipaNatTable          0660   net_admin  net_admin
+/dev/rmnet_ctrl           0660   usb        usb
+/dev/dpl_ctrl             0660   usb        usb
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
@@ -166,6 +168,7 @@
 /dev/ttyGS0               0660   system     system
 /dev/i2c-5                0660   media       media
 /dev/voice_svc            0660   system     audio
+/dev/avtimer              0660   system     audio
 
 # DVB devices
 /dev/dvb/adapter0/demux*  0440   media       media
@@ -214,6 +217,7 @@
 /dev/wcnss_ctrl           0660   system     system
 #nfc permissions
 /dev/nfc-nci              0660    nfc         nfc
+/dev/nq-nci               0660    nfc         nfc
 /dev/assd                 0660    nfc         nfc
 
 # UIO devices
@@ -230,6 +234,11 @@
 # Ramdump devices
 /dev/ramdump*             0640   system     system
 
+#Improve Touch
+/dev/hbtp_input           0660   system     system
+/dev/hbtp_vm              0660   system     system
+/dev/jdi-bu21150          0660   system     system
+
 #cpufreq_governor
 /sys/devices/system/cpu/cpu*	cpufreq/interactive/above_hispeed_delay    0660  system system
 /sys/devices/system/cpu/cpu*	cpufreq/interactive/go_hispeed_load        0660  system system
@@ -244,4 +253,4 @@
 /sys/devices/system/cpu/cpu*	cpufreq/interactive/use_sched_load         0660  system system
 
 # Add device block for FRP
-/dev/block/bootdevice/by-name/config    0660   system     system
+/dev/block/platform/soc.0/7824900.sdhci/by-name/config    0660   system     system
