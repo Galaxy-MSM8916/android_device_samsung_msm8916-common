@@ -5,4 +5,3 @@ allow mediaserver system_data_file:sock_file write;
 allow mediaserver camera_prop:property_service set;
 allow mediaserver snd_data_file:dir { add_name open search write };
 allow mediaserver snd_data_file:file {  getattr open read write create_file_perms };
-allow mediaserver system_file:file execmod; # for libmmjpeg
