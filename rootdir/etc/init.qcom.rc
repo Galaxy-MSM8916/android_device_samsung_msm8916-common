@@ -29,6 +29,9 @@ import init.qcom.usb.rc
 import init.target.rc
 #import init.carrier.rc
 
+on init
+    export LD_SHIM_LIBS "system/vendor/lib/libwvm.so|libwvm_shim.so"
+
 on enable-low-power
 
     # Adaptive LMK
