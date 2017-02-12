@@ -55,6 +55,10 @@ PRODUCT_PACKAGES += \
 	tinycap \
 	tinypcminfo
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+	libbt-vendor
+
 # Camera
 PRODUCT_PACKAGES += \
 	libmm-qcamera \
@@ -71,7 +75,6 @@ PRODUCT_PACKAGES += \
 # Widevine
 PRODUCT_PACKAGES += \
 	libwvm_shim
-
 
 # GPS
 PRODUCT_COPY_FILES += \
