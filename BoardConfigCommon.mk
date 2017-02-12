@@ -123,7 +123,9 @@ TARGET_KERNEL_SELINUX_LOG_CONFIG := selinux_log_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8916
 
 # ART
-WITH_DEXPREOPT := true
+ifneq ($(TARGET_BUILD_VARIANT),eng)
+	WITH_DEXPREOPT := true
+endif
 WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
 
 # Camera
