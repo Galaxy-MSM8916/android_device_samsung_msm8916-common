@@ -227,7 +227,6 @@ PRODUCT_PACKAGES += \
 	fstab.qcom \
 	init.carrier.rc \
 	init.class_main.sh \
-	init.ksm.sh \
 	init.mdm.sh \
 	init.qcom.audio.sh \
 	init.qcom.bt.sh \
