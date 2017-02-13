@@ -144,6 +144,7 @@ PRODUCT_PACKAGES += \
 # Default Property Overrides
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp \
+	qcom.bluetooth.soc=smd \
 	persist.radio.apm_sim_not_pwdn=1 \
 	persist.cne.feature=0 \
 	ro.debuggable=1 \
