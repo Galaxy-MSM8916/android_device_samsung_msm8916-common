@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libmm-qcamera \
 	camera.msm8916 \
-	Snap
+	Camera2
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
