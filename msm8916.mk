@@ -56,6 +56,9 @@ PRODUCT_PACKAGES += \
 	tinycap \
 	tinypcminfo
 
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/media/audio_platform_info.xml:system/etc/audio_platform_info.xml
+
 # Bluetooth
 PRODUCT_PACKAGES += \
 	libbt-vendor
