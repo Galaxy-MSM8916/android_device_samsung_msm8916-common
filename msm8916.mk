@@ -22,7 +22,8 @@ LOCAL_PATH := device/samsung/msm8916-common
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Import msm8916_32 audio configs
-include hardware/qcom/audio-caf/msm8916/configs/msm8916_32/msm8916_32.mk
+#include hardware/qcom/audio-caf/msm8916/configs/msm8916_32/msm8916_32.mk
+include $(LOCAL_PATH)/audio_msm8916_32.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
