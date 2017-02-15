@@ -45,9 +45,6 @@ TARGET_USES_QCOM_MM_AUDIO := true
 #AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
 ##AUDIO_FEATURE_FLAGS
 
-#Audio Specific device overlays
-DEVICE_PACKAGE_OVERLAYS += hardware/qcom/audio-caf/msm8916/configs/common/overlay
-
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Audio configuration file
