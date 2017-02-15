@@ -39,6 +39,5 @@ PRODUCT_PACKAGES += \
 	libcurl \
 	tcpdump \
 	libkeyutils \
-	datatop \
 	sockev \
 	librmnetctl
