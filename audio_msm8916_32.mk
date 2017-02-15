@@ -36,50 +36,44 @@ MM_AUDIO_ENABLED_FTM := true
 MM_AUDIO_ENABLED_SAFX := true
 TARGET_USES_QCOM_MM_AUDIO := true
 ##AUDIO_FEATURE_ENABLED_LISTEN := true
-#
-###not supported feature
-##AUDIO_FEATURE_ENABLED_CUSTOMSTEREO := true
-##AUDIO_FEATURE_ENABLED_HDMI_SPK := true
-##AUDIO_FEATURE_ENABLED_HDMI_EDID := true
-##AUDIO_FEATURE_ENABLED_LISTEN := true
-#AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
-##AUDIO_FEATURE_FLAGS
 
 USE_XML_AUDIO_POLICY_CONF := 1
+
+CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
 
 # Audio configuration file
 ifeq ($(TARGET_USES_AOSP), true)
 PRODUCT_COPY_FILES += \
-    hardware/qcom/audio-caf/msm8916/configs/common/media/audio_policy.conf:system/etc/audio_policy.conf
+    $(CONFIG_PATH)/common/media/audio_policy.conf:system/etc/audio_policy.conf
 else
 PRODUCT_COPY_FILES += \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf
+    $(CONFIG_PATH)/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf
 endif
 # Audio configuration file
 PRODUCT_COPY_FILES += \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_sbc.xml:system/etc/mixer_paths_sbc.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_wcd9306.xml:system/etc/mixer_paths_wcd9306.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_skuk.xml:system/etc/mixer_paths_skuk.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_skul.xml:system/etc/mixer_paths_skul.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths.xml:system/etc/mixer_paths.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/sound_trigger_mixer_paths_wcd9306.xml:system/etc/sound_trigger_mixer_paths_wcd9306.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-    hardware/qcom/audio-caf/msm8916/configs/msm8916_32/mixer_paths_wcd9330.xml:system/etc/mixer_paths_wcd9330.xml
+    $(CONFIG_PATH)/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf \
+    $(CONFIG_PATH)/msm8916_32/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_sbc.xml:system/etc/mixer_paths_sbc.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_wcd9306.xml:system/etc/mixer_paths_wcd9306.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_skuk.xml:system/etc/mixer_paths_skuk.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_skul.xml:system/etc/mixer_paths_skul.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(CONFIG_PATH)/msm8916_32/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    $(CONFIG_PATH)/msm8916_32/sound_trigger_mixer_paths_wcd9306.xml:system/etc/sound_trigger_mixer_paths_wcd9306.xml \
+    $(CONFIG_PATH)/msm8916_32/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    $(CONFIG_PATH)/msm8916_32/mixer_paths_wcd9330.xml:system/etc/mixer_paths_wcd9330.xml
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 ifeq ($(TARGET_USES_AOSP), true)
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)hardware/qcom/audio-caf/msm8916/configs/common/audio_policy_configuration.xml:/system/etc/audio_policy_configuration.xml
+    $(TOPDIR)$(CONFIG_PATH)/common/audio_policy_configuration.xml:/system/etc/audio_policy_configuration.xml
 else
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)hardware/qcom/audio-caf/msm8916/configs/msm8916_32/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
+    $(TOPDIR)$(CONFIG_PATH)/msm8916_32/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
 endif
 PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
