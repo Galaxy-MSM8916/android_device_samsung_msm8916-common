@@ -606,9 +606,9 @@ case "$target" in
                 echo 30000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
                 echo 998400 > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
                 echo 0 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
-                echo "1 800000:85 998400:90 1094400:80" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
+                echo "1 200000:40 400000:50 533333:70 800000:82 998400:90 1094400:95 1209600:99" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
                 echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-                echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
+                echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis
 
                 # Bring up all cores online
 		echo 1 > /sys/devices/system/cpu/cpu1/online
