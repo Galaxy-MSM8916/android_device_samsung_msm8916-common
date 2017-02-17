@@ -40,4 +40,5 @@ PRODUCT_PACKAGES += \
 	tcpdump \
 	libkeyutils \
 	sockev \
-	librmnetctl
+	librmnetctl \
+	rmnetcli
