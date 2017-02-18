@@ -99,6 +99,10 @@ on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
+    # For SEC NFC
+    chmod 0660 /dev/sec-nfc
+    chown nfc nfc /dev/sec-nfc
+
     # for BT MAC address
     mkdir /efs/bluetooth 0775 radio system
     # if already exist
@@ -488,6 +492,12 @@ on post-fs-data
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
+
+    # For SEC NFC
+    chmod 0770 /data/nfc
+    chown nfc nfc /data/nfc
+    chmod 0770 /data/nfc/param
+    chown nfc nfc /data/nfc/param
 
     # Create the directories used by DPM subsystem
     mkdir /data/dpm 0771 system system
