@@ -66,7 +66,7 @@ PRODUCT_COPY_FILES += \
     $(CONFIG_PATH)/msm8916_32/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
     $(CONFIG_PATH)/msm8916_32/mixer_paths_wcd9330.xml:system/etc/mixer_paths_wcd9330.xml
 
-ifneq ($(USE_STOCK_MIXER_PATHS), 1)
+ifeq ($(USE_QCOM_MIXER_PATHS), 1)
 PRODUCT_COPY_FILES += \
     $(CONFIG_PATH)/msm8916_32/mixer_paths.xml:system/etc/mixer_paths.xml
 endif
