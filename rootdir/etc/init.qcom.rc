@@ -826,7 +826,7 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd	
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
     class late_start
     disabled
     oneshot
@@ -948,23 +948,6 @@ on property:persist.radio.multisim.config=dsds
     stop ril-daemon
     start ril-daemon
     start ril-daemon1
-
-service ril-daemon /system/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket rild-debug stream 660 radio system
-    socket rild-cas stream 660 casdrm mmb
-    user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log qcom_diag system drmrpc vpn system shell 
-
-# RIL for multi rild
-service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
-    class main
-    socket rild2 stream 660 root radio
-    socket rild-debug2 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio log qcom_diag system drmrpc sdcard_r sdcard_rw shell
 
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
