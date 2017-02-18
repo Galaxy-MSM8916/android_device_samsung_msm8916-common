@@ -79,10 +79,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
 	InputDisabler
 
-# Widevine
-PRODUCT_PACKAGES += \
-	libwvm_shim
-
 # GPS
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/gps/flp.conf:system/etc/flp.conf \
