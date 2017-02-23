@@ -31,9 +31,9 @@ import init.carrier.rc
 
 on enable-low-power
     # Update foreground and background cpusets
-    write /dev/cpuset/foreground/cpus 0-3
-    write /dev/cpuset/foreground/boost/cpus 0-3
-    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/foreground/cpus 2-3
+    write /dev/cpuset/foreground/boost/cpus 2-3
+    write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-1
 
 on early-init
