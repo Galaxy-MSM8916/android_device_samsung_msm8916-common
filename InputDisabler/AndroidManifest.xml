@@ -1,0 +1,28 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.davis.inputdisabler"
+    coreApp="true"
+    android:sharedUserId="android.uid.system">
+
+    <!-- Need permission to listen when boot is completed (and start the service at that point) -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- During phone calls, proximity sensor blanks the screen, we need to disable the inputs -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application android:allowBackup="true"
+        android:label="@string/app_name">
+
+        <!-- Receives action to start the update service -->
+        <receiver android:name=".BootCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Updater service -->
+        <service
+            android:enabled="true"
+            android:name=".InputDisablerService" />
+    </application>
+
+</manifest>
