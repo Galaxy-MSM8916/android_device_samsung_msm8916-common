@@ -63,10 +63,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
 
-# Touch issue workaround
-PRODUCT_PACKAGES += \
-	InputDisabler
-
 # GPS
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/gps/flp.conf:system/etc/flp.conf \
