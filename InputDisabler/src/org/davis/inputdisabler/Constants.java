@@ -29,6 +29,8 @@ public final class Constants {
 	public static final String TS_PATH_5 =
 		"/sys/devices/soc.0/i2c.78/i2c-11/11-0020/input/input1/enabled";
 	public static final String TS_PATH_6 =
+	"/sys/devices/soc.0/78b9000.i2c/i2c-5/5-0020/input/input1/enabled";
+	public static final String TS_PATH_7 =
 		"/sys/class/input/input3/enabled";
 
 	/* Declare some File objects */
@@ -37,6 +39,7 @@ public final class Constants {
 	public static File ts_3 = new File(TS_PATH_3);
 	public static File ts_4 = new File(TS_PATH_4);
 	public static File ts_5 = new File(TS_PATH_5);
+	public static File ts_6 = new File(TS_PATH_6);
 
 	/* Define a getter for the touch screen path */
 	public static String getTsPath() {
@@ -57,8 +60,11 @@ public final class Constants {
 		else if (ts_5.exists()) {
 			return TS_PATH_5;
 		}
+		else if (ts_5.exists()) {
+			return TS_PATH_6;
+		}
 		/* in case none of the others are extant, try the generic path as backup */
-    	return TS_PATH_6;
+		return TS_PATH_7;
     }
 
 }
