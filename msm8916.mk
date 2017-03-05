@@ -165,8 +165,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.heapgrowthlimit=128m \
 	ro.security.icd.flagmode=single \
+	media.stagefright.legacyencoder=true \
+	media.stagefright.less-secure=true \
 	ro.vendor.extension_library=libqti-perfd-client.so \
 	persist.loc.nlp_name=com.qualcomm.location
+
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	camera2.portability.force_api=1
 
 # Media configurations
 PRODUCT_COPY_FILES += \
