@@ -1,0 +1,45 @@
+/boot          emmc      /dev/block/bootdevice/by-name/boot
+/recovery      emmc      /dev/block/bootdevice/by-name/recovery
+/data          ext4      /dev/block/bootdevice/by-name/userdata      length=-16384
+/cache         ext4      /dev/block/bootdevice/by-name/cache
+/system        ext4      /dev/block/bootdevice/by-name/system
+/efs1          emmc      /dev/block/bootdevice/by-name/efs           flags=backup=1;display=EFS
+/efs2          emmc      /dev/block/bootdevice/by-name/modemst1      flags=backup=1;subpartitionof=/efs1
+/efs3          emmc      /dev/block/bootdevice/by-name/modemst2      flags=backup=1;subpartitionof=/efs1
+/external_sd   vfat      /dev/block/mmcblk1p1 /dev/block/mmcblk1              flags=display="Micro SDcard";storage;wipeingui;removable
+/modem         emmc      /dev/block/bootdevice/by-name/apnhlos		  display="apnhlos"
+/mdm         emmc      /dev/block/bootdevice/by-name/modem		  display="modem"
+/usb-otg         vfat       /dev/block/sda1         /dev/block/sda       flags=display="USB-OTG";storage;wipeingui;removable
+
+#apnhlos  emmc   /dev/block/mmcblk0p1
+#modem   emmc   /dev/block/mmcblk0p2
+#sbl1   emmc   /dev/block/mmcblk0p3
+#ddr   emmc   /dev/block/mmcblk0p4
+#aboot   emmc   /dev/block/mmcblk0p5
+#rpm   emmc   /dev/block/mmcblk0p6
+#qsee   emmc   /dev/block/mmcblk0p7
+#qhee   emmc   /dev/block/mmcblk0p8
+#fsg   emmc   /dev/block/mmcblk0p9
+#sec   emmc   /dev/block/mmcblk0p10
+#pad   emmc   /dev/block/mmcblk0p11
+
+#/efs   ext4   /dev/block/mmcblk0p13
+#param   emmc   /dev/block/mmcblk0p12
+#modemst1  emmc   /dev/block/mmcblk0p14
+#modemst2  emmc   /dev/block/mmcblk0p15
+#/boot   emmc   /dev/block/mmcblk0p16
+#/recovery  emmc   /dev/block/mmcblk0p17
+#fota   emmc   /dev/block/mmcblk0p18
+#backup  emmc   /dev/block/mmcblk0p19
+#fsc   emmc   /dev/block/mmcblk0p20
+#ssd   emmc   /dev/block/mmcblk0p21
+#persist  ext4   /dev/block/mmcblk0p22
+#persdata  ext4   /dev/block/mmcblk0p23
+#/system  ext4   /dev/block/mmcblk0p24
+#/cache  ext4   /dev/block/mmcblk0p25
+#hidden  emmc   /dev/block/mmcblk0p26
+#/userdata   ext4   /dev/block/mmcblk0p27
+
+#/external_sd  auto      /dev/block/mmcblk1p1     /dev/block/mmcblk1         flags=display="MicroSD card";storage;wipeingui;removable
+#/sd-ext   auto      /dev/block/mmcblk1p2  flags=display="Second partition";storage;wipeingui;removable
+#/usb-otg      auto      /dev/block/sda1   /dev/block/sda                    flags=display="USB OTG";storage;wipeingui;removable

@@ -201,23 +201,40 @@ TARGET_USES_NEW_ION_API := true
 BOARD_SEPOLICY_DIRS += \
     device/samsung/msm8916-common/sepolicy
 
-# Recovery
-TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm8916-common/recovery/recovery_keys.c
-BOARD_HAS_LARGE_FILESYSTEM			:= true
-TARGET_RECOVERY_DENSITY 			:= hdpi
-BOARD_HAS_NO_MISC_PARTITION 		:= true
-BOARD_HAS_NO_SELECT_BUTTON 			:= true
-BOARD_RECOVERY_SWIPE 				:= true
+# TWRP
+RECOVERY_VARIANT := twrp
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT 	    := \"roboto_23x41.h\"
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm8916-common/recovery/recovery_keys.c
+BOARD_HAS_NO_MISC_PARTITION 		:= true
+BOARD_RECOVERY_SWIPE 				:= true
 BOARD_USES_MMCUTILS 				:= true
 BOARD_SUPPRESS_EMMC_WIPE := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 RECOVERY_SDCARD_ON_DATA := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 255
+TW_HAS_DOWNLOAD_MODE := true
+TW_HAS_MTP := true
+TW_INCLUDE_CRYPTO := true
+TW_INPUT_BLACKLIST := "accelerometer\x0ahbtp_vm"
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+TW_MTP_DEVICE := /dev/mtp_usb
+TW_NEW_ION_HEAP := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_NO_SCREEN_TIMEOUT := true
+TW_NO_USB_STORAGE := true
+TW_TARGET_USES_QCOM_BSP := true
+TW_THEME := portrait_hdpi
+TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/twrp.fstab
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+TARGET_RECOVERY_DENSITY 			:= hdpi
+TARGET_RECOVERY_QCOM_RTC_FIX := true
 
 
 # Wifi
