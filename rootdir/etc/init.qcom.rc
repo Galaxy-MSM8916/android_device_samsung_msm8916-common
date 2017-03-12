@@ -36,6 +36,10 @@ on enable-low-power
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-1
 
+on init
+    # Shims
+    export LD_SHIM_LIBS /system/lib/libril.so|libril_shim.so:/system/lib/libcrypto.so|libboringssl-compat.so
+
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     mkdir /firmware 0771 system system
