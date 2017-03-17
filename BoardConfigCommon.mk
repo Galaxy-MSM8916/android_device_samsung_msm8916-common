@@ -42,6 +42,9 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
+# NFC
+BOARD_NFC_HAL_SUFFIX := msm8916
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 USE_LEGACY_AUDIO_POLICY := 0
