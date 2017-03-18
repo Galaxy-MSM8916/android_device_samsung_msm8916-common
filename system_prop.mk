@@ -1,3 +1,7 @@
+# Assistant
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.opa.eligible_device=true
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 	qcom.bluetooth.soc=smd
