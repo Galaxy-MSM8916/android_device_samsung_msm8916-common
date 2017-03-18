@@ -64,9 +64,6 @@ BOARD_CHARGER_SHOW_PERCENTAGE   := true
 # BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 # CHARGING_ENABLED_PATH           := /sys/class/power_supply/battery/batt_lp_charging
 
-# Cpusets
-ENABLE_CPUSETS := true
-
 # Enable QCOM FM feature
 AUDIO_FEATURE_ENABLED_FM := true
 BOARD_HAVE_QCOM_FM := true
