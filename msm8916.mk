@@ -25,6 +25,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 #include hardware/qcom/audio-caf/msm8916/configs/msm8916_32/msm8916_32.mk
 include $(LOCAL_PATH)/audio_msm8916_32.mk
 
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -72,9 +75,6 @@ PRODUCT_PACKAGES += \
 	libmm-qcamera \
 	camera.msm8916
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=1
-
 # Touch issue workaround
 PRODUCT_PACKAGES += \
 	InputDisabler
@@ -85,9 +85,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
 	$(LOCAL_PATH)/configs/gps/izat.conf:system/etc/izat.conf \
 	$(LOCAL_PATH)/configs/gps/sap.conf:system/etc/sap.conf
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.gps.qc_nlp_in_use=1
 
 # BoringSSL Hacks
 PRODUCT_PACKAGES += \
@@ -144,15 +141,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	lights.msm8916
 
-# Default Property Overrides
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=mtp \
-	qcom.bluetooth.soc=smd \
-	persist.radio.apm_sim_not_pwdn=1 \
-	persist.cne.feature=0 \
-	ro.debuggable=1 \
-	persist.service.adb.enable=1
-
 # Sensors
 PRODUCT_PACKAGES += \
 	sensors.default
@@ -160,18 +148,6 @@ PRODUCT_PACKAGES += \
 # Macloader
 PRODUCT_PACKAGES += \
 	macloader
-
-# Properties
-PRODUCT_PROPERTY_OVERRIDES += \
-	dalvik.vm.heapgrowthlimit=128m \
-	ro.security.icd.flagmode=single \
-	media.stagefright.legacyencoder=true \
-	media.stagefright.less-secure=true \
-	ro.vendor.extension_library=libqti-perfd-client.so \
-	persist.loc.nlp_name=com.qualcomm.location
-
-ADDITIONAL_DEFAULT_PROPERTIES += \
-	camera2.portability.force_api=1
 
 # Media configurations
 PRODUCT_COPY_FILES += \
