@@ -91,6 +91,10 @@ TARGET_HAVE_NEW_GRALLOC := true
 # Encryption
 TARGET_SWV8_DISK_ENCRYPTION := true
 
+# FM
+AUDIO_FEATURE_ENABLED_FM := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
 # Healthd
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.qcom
 
