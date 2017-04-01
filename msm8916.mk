@@ -66,6 +66,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/media/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
+# Bootloader-recovery
+PRODUCT_PACKAGES += \
+	libbootloader_message
+
 # Bluetooth
 PRODUCT_PACKAGES += \
 	libbt-vendor
