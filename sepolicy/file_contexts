@@ -4,6 +4,7 @@
 
 /efs/wifi(/.*)?			u:object_r:wifi_efs_file:s0
 /dev/sec-nfc		  	u:object_r:nfc_device:s0
+/dev/pn547		  	u:object_r:nfc_device:s0
 /dev/i2c-1  			u:object_r:audio_device:s0
 
 # Camera
