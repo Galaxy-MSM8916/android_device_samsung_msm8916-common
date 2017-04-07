@@ -124,7 +124,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libsec-ril.so \
 	rild.libargs=-d/dev/smd0 \
 	ro.multisim.set_audio_params=true \
-	ro.telephony.samsung.realcall=true \
 	ro.telephony.ril_class=SamsungQcomRIL
 
 # SAMP SPCM
