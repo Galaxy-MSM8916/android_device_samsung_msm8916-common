@@ -59,6 +59,13 @@ BOARD_PROVIDES_BOOTLOADER_MESSAGE := true
 # Relocations
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
+# Custom RIL class
+BOARD_RIL_CLASS    := ../../../$(LOCAL_PATH)/ril
+PROTOBUF_SUPPORTED := true
+TARGET_RIL_VARIANT := caf
+# prevent sec-ril from building
+BOARD_PROVIDES_LIBRIL := false
+
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND    := true
 BOARD_CHARGER_SHOW_PERCENTAGE   := true
