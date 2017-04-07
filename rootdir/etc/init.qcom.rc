@@ -467,6 +467,9 @@ on post-fs-data
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
 
+    # radio
+    mkdir /data/log 0660 radio radio
+
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
