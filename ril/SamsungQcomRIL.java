@@ -19,6 +19,7 @@ package com.android.internal.telephony;
 import static com.android.internal.telephony.RILConstants.*;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.telephony.Rlog;
 import android.os.AsyncResult;
 import android.os.Message;
@@ -26,6 +27,7 @@ import android.os.Parcel;
 import android.os.SystemProperties;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SignalStrength;
+
 import com.android.internal.telephony.cdma.CdmaInformationRecords;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
 import com.android.internal.telephony.cdma.SignalToneUtil;
@@ -46,15 +48,21 @@ public class SamsungQcomRIL extends RIL {
 
     private boolean mIsGsm = false;
 
+    AudioManager mAudioManager;
+
     public SamsungQcomRIL(Context context, int networkMode, int cdmaSubscription) {
-        super(context, networkMode, cdmaSubscription, null);
-        mQANElements = 6;
+        this(context, networkMode, cdmaSubscription, null);
     }
 
     public SamsungQcomRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
         mQANElements = 6;
+
+        Rlog.d(RILJ_LOG_TAG, "Setting mAudioManager..");
+        mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: on");
+        mAudioManager.setParameters("realcall=on");
     }
 
     @Override
