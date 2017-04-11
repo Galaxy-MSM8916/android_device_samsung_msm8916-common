@@ -234,11 +234,17 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
 	$(LOCAL_PATH)/configs/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
 	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
-	$(LOCAL_PATH)/configs/wifi/sec_config:system/etc/sec_config \
-	$(LOCAL_PATH)/configs/wifi/dsi_config.xml:system/etc/data/dsi_config.xml \
-	$(LOCAL_PATH)/configs/wifi/netmgr_config.xml:system/etc/data/netmgr_config.xml \
-	$(LOCAL_PATH)/configs/wifi/qmi_config.xml:system/etc/data/qmi_config.xml
+	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+
+# Security configuration file
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+
+# Data configuration files
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/data/dsi_config.xml:system/etc/data/dsi_config.xml \
+	$(LOCAL_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
+	$(LOCAL_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
 
 # Wifi
 PRODUCT_PACKAGES += \
