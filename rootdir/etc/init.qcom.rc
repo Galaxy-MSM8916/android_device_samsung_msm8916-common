@@ -970,6 +970,17 @@ on property:persist.radio.multisim.config=dsds
     start ril-daemon
     start ril-daemon1
 
+on property:persist.radio.multisim.config=dsda
+    stop ril-daemon
+    start ril-daemon
+    start ril-daemon1
+
+
+on property:ro.multisim.simslotcount=2
+    stop ril-daemon
+    start ril-daemon
+    start ril-daemon1
+
 service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
