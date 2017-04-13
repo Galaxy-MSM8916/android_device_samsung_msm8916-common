@@ -30,5 +30,9 @@
 # EFS
 /dev/block/bootdevice/by-name/efs               u:object_r:modem_efs_partition_device:s0
 
+
+# RFS
+/sys/kernel/debug/rmt_storage(/.*)?		u:object_r:rfs_debugfs_file:s0
+
 # Macloader
 /system/bin/macloader                                   u:object_r:macloader_exec:s0
