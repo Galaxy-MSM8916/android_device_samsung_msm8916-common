@@ -1,2 +1,4 @@
 #============= rfs_access ==============
 allow rfs_access devpts:chr_file { read write getattr };
+allow rfs_access rfs_debugfs_file:file { read write getattr };
+allow rfs_access rfs_access:capability { net_raw };

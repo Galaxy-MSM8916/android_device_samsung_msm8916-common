@@ -1,6 +1,7 @@
 #Defines the files (configs, dumps, etc) used by display processes
 type touchpanel_sysfs, fs_type, sysfs_type;
 type app_efs_file, file_type;
+type rfs_debugfs_file, file_type;
 type imei_efs_file, file_type;
 type wifi_efs_file, file_type;
 type sensors_efs_file, file_type;

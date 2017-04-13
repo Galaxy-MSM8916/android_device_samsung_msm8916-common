@@ -1,0 +1,2 @@
+#============= inputdisabler_service ==============
+allow inputdisabler_service sysfs_input:file { rw_file_perms };
