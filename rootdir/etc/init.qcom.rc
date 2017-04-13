@@ -628,6 +628,9 @@ on post-fs-data
     chown radio radio /data/misc/radio/db_check_done
     chmod 0660 /data/misc/radio/db_check_done
 
+    # link  the telephony database
+    start link_ril_db
+
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class main
@@ -863,6 +866,11 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 
 #service cnss-daemon /system/bin/cnss-daemon -n -l
 #    class late_start
+
+service link_ril_db /system/bin/sh /init.link_ril_db.sh
+    class main
+    user root
+    oneshot
 
 service wlandutservice /system/bin/wlandutservice
     class main
