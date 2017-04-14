@@ -103,9 +103,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.radio.add_power_save=1 \
 	persist.radio.apm_sim_not_pwdn=1 \
-	persist.radio.snapshot_enabled=1 \
-	persist.radio.snapshot_timer=22 \
-	persist.radio.lte_vrte_ltd=1 \
 	persist.radio.sib16_support=1
 
 # RIL
