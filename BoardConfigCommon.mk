@@ -227,18 +227,3 @@ TARGET_USES_WCNSS_CTRL := true
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-WIFI_DRIVER_MODULE_PATH  := "/system/lib/modules/wlan.ko"
-WIFI_DRIVER_MODULE_NAME := "wlan"
-
-#make, move, symlink and strip the wlan kernel module.
-KERN_EABI := "arm-linux-androidkernel-"
-KERNEL_EXTERNAL_MODULES:
-	+$(MAKE) -C device/samsung/msm8916-common/wlan/prima/ WLAN_ROOT=$(ANDROID_BUILD_TOP)/device/samsung/msm8916-common/wlan/prima/ \
-		KERNEL_SOURCE=$(KERNEL_OUT) ARCH="arm" \
-		CROSS_COMPILE=$(KERN_EABI)
-	mkdir $(KERNEL_MODULES_OUT)/$(WLAN_CHIPSET)/ -p
-	ln -sf /system/lib/modules/$(WLAN_CHIPSET)/$(WLAN_CHIPSET)_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
-	mv device/samsung/msm8916-common/wlan/prima/wlan.ko $(KERNEL_MODULES_OUT)/$(WLAN_CHIPSET)/$(WLAN_CHIPSET)_wlan.ko
-	$(KERN_EABI)strip --strip-debug $(KERNEL_MODULES_OUT)/$(WLAN_CHIPSET)/$(WLAN_CHIPSET)_wlan.ko
-	+$(MAKE) -C device/samsung/msm8916-common/wlan/prima/ clean
-TARGET_KERNEL_MODULES := KERNEL_EXTERNAL_MODULES
