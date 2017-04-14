@@ -132,6 +132,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	sys.config.spcm_db_launcher=true \
 	sys.config.spcm_preload_enable=true
 
+# Sdcardfs
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sys.sdcardfs=true
+
 # Time services
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.timed.enable=true
