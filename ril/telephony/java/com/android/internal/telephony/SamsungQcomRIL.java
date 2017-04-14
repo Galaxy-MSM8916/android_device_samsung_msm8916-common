@@ -63,13 +63,28 @@ public class SamsungQcomRIL extends RIL {
 
         Rlog.d(RILJ_LOG_TAG, "Setting mAudioManager..");
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: on");
-        mAudioManager.setParameters("realcall=on");
+    }
+
+    /*
+     * Samsung-specific modification to enable call audio routing.
+     */
+    private void setRealCall(boolean value) {
+        if (value) {
+            Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: on");
+            mAudioManager.setParameters("realcall=on");
+        }
+        else {
+            Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: off");
+            mAudioManager.setParameters("realcall=off");
+        }
     }
 
     @Override
     public void
     dial(String address, int clirMode, UUSInfo uusInfo, Message result) {
+
+        setRealCall(true);
+
         if (PhoneNumberUtils.isEmergencyNumber(address)) {
             dialEmergencyCall(address, clirMode, result);
             return;
@@ -112,6 +127,37 @@ public class SamsungQcomRIL extends RIL {
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
         send(rr);
+    }
+
+
+    @Override
+    public void
+    hangupConnection (int gsmIndex, Message result) {
+           super.hangupConnection(gsmIndex, result);
+           setRealCall(false);
+    }
+
+
+    @Override
+    public void
+    hangupForegroundResumeBackground (Message result) {
+            super.hangupForegroundResumeBackground(result);
+            setRealCall(true);
+    }
+
+
+    @Override
+    public void
+    switchWaitingOrHoldingAndActive (Message result) {
+            super.switchWaitingOrHoldingAndActive(result);
+            setRealCall(true);
+    }
+
+    @Override
+    public void
+    rejectCall (Message result) {
+            super.rejectCall(result);
+            setRealCall(false);
     }
 
     @Override
@@ -350,6 +396,7 @@ public class SamsungQcomRIL extends RIL {
     @Override
     public void
     acceptCall (Message result) {
+        setRealCall(true);
         RILRequest rr
                 = RILRequest.obtain(RIL_REQUEST_ANSWER, result);
 
