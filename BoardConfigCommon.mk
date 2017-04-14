@@ -23,6 +23,9 @@ LOCAL_PATH := device/samsung/msm8916-common
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# System prop
+TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+
 # Platform
 TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
