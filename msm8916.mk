@@ -190,6 +190,11 @@ PRODUCT_PACKAGES += \
 	init.qcom.sh \
 	ueventd.qcom.rc
 
+# FS
+PRODUCT_PACKAGES += \
+	fsck.f2fs \
+	mkfs.f2fs
+
 # Misc
 PRODUCT_PACKAGES += \
 	curl \
