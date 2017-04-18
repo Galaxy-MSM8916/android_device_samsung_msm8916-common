@@ -213,6 +213,9 @@ bin/irsc_util
 lib/libgdmcprov.so
 lib/libMcClient.so
 
+# STLport
+vendor/lib/libstlport.so
+
 # Thermal
 vendor/bin/thermal-engine:bin/thermal-engine
 vendor/lib/libthermalclient.so
