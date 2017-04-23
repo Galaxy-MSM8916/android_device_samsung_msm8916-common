@@ -1,0 +1,2 @@
+#============= fsck ==============
+allow fsck modem_efs_partition_device:blk_file { rw_file_perms ioctl };

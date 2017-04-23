@@ -15,3 +15,6 @@ allow qti_init_shell bluetooth_efs_file:file { open read getattr };
 allow qti_init_shell bluetooth_efs_file:dir { search };
 
 allow qti_init_shell efs_file:dir { search };
+
+allow qti_init_shell radio_data_file:lnk_file { rw_file_perms setattr };
+allow qti_init_shell sysfs_rqstats:dir { r_dir_perms };

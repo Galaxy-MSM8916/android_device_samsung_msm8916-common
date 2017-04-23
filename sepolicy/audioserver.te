@@ -1,0 +1,2 @@
+#==================== audioserver ==========================
+allow audioserver rild:unix_stream_socket connectto;
