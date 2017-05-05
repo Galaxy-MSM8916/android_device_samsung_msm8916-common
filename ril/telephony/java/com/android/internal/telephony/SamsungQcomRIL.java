@@ -65,6 +65,20 @@ public class SamsungQcomRIL extends RIL {
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
+    /* Toggles the loud speaker state.
+     * This is a hack to get in-call sound working.
+     */
+    private void toggleSpeaker() {
+        if (mAudioManager.isSpeakerphoneOn()) {
+            Rlog.d(RILJ_LOG_TAG, "Speaker is on. Setting to: off");
+            mAudioManager.setSpeakerphoneOn(false);
+        }
+        else {
+            Rlog.d(RILJ_LOG_TAG, "Speaker is off. Setting to: on");
+            mAudioManager.setSpeakerphoneOn(true);
+        }
+    }
+
     /*
      * Samsung-specific modification to enable call audio routing.
      */
@@ -72,6 +86,9 @@ public class SamsungQcomRIL extends RIL {
         if (value) {
             Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: on");
             mAudioManager.setParameters("realcall=on");
+	    /* toggle speaker twice */
+            toggleSpeaker();
+            toggleSpeaker();
         }
         else {
             Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: off");
