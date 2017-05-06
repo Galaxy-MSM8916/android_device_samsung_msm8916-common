@@ -5,4 +5,5 @@ allow mediaserver snd_data_file:file {  getattr open read write create_file_perm
 allow mediaserver sysfs_camera:dir search;
 allow mediaserver sysfs_camera:file { getattr open read };
 allow mediaserver sysfs_wake_lock:file { open read write };
+allow mediaserver system_file:file { execmod };
 allow mediaserver system_data_file:sock_file write;
