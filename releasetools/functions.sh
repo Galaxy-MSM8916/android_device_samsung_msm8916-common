@@ -57,23 +57,31 @@ ui_print() {
 # will both mount the system partition on /system
 #
 mount_fs() {
-  FS_DIR=$(echo $1 | sed s'/\///'g)
-#  FS_TYPE=$(mount | grep "on ${FS_DIR}" | cut -d ' ' -f 5)
+  if [ -n ${1} ]; then
+    FS_DIR=$(echo $1 | sed s'/\///'g)
+    FS_TYPE=$(mount | grep "on /${FS_DIR}" | cut -d ' ' -f 5)
 
-#  if [ -z ${FS_TYPE} ]; then
-    ui_print "Mounting /${FS_DIR}..."
-    mount /${FS_DIR}
-#  fi
+    if [ -z ${FS_TYPE} ]; then
+        ui_print "Mounting /${FS_DIR}..."
+        mount /${FS_DIR}
+    fi
+  fi
 }
 
-# Unounts the dir passed as argument 1, for example:
+# Unmounts the dir passed as argument 1, for example:
 #
 # "umount_fs /system" or "umount_fs system"
 #
 # will both unmount the system partition on /system
 #
 umount_fs() {
-  FS_DIR=$(echo $1 | sed s'/\///'g)
-  ui_print "Unmounting /${FS_DIR}..."
-  umount /${FS_DIR}
+  if [ -n ${1} ]; then
+    FS_DIR=$(echo $1 | sed s'/\///'g)
+    FS_TYPE=$(mount | grep "on /${FS_DIR}" | cut -d ' ' -f 5)
+
+    if ! [ -z ${FS_TYPE} ]; then
+        ui_print "Unmounting /${FS_DIR}..."
+        umount /${FS_DIR}
+    fi
+  fi
 }
