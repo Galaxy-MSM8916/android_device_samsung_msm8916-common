@@ -108,6 +108,7 @@ const char CameraParameters::PIXEL_FORMAT_YUV420SP_ADRENO[] = "yuv420sp-adreno";
 const char CameraParameters::PIXEL_FORMAT_RAW[] = "raw"; \
 const char CameraParameters::PIXEL_FORMAT_YV12[] = "yuv420p"; \
 const char CameraParameters::PIXEL_FORMAT_NV12[] = "nv12"; \
+const char CameraParameters::PIXEL_FORMAT_YUV420SP_NV21[] = "nv21"; \
 const char CameraParameters::EFFECT_CARTOONIZE[] = "cartoonize"; \
 const char CameraParameters::EFFECT_POINT_RED_YELLOW[] = "point-red-yellow"; \
 const char CameraParameters::EFFECT_POINT_GREEN[] = "point-green"; \
@@ -219,6 +220,7 @@ void CameraParameters::setPreviewFpsRange(int minFPS, int maxFPS) { };
     static const char PIXEL_FORMAT_RAW[]; \
     static const char PIXEL_FORMAT_YV12[]; \
     static const char PIXEL_FORMAT_NV12[]; \
+    static const char PIXEL_FORMAT_YUV420SP_NV21[]; \
     static const char EFFECT_CARTOONIZE[]; \
     static const char EFFECT_POINT_RED_YELLOW[]; \
     static const char EFFECT_POINT_GREEN[]; \
