@@ -28,3 +28,6 @@ if [ -e /system/build.prop ]; then
 		exit 1
 	fi
 fi
+
+#  umount system partition
+umount_fs system
