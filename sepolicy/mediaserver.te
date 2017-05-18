@@ -1,5 +1,6 @@
 #============= mediaserver ==============
 allow mediaserver camera_prop:property_service set;
+allow mediaserver cameraproxy_service:service_manager find;
 allow mediaserver mediaserver_tmpfs:file { read write };
 allow mediaserver snd_data_file:dir { add_name open search write };
 allow mediaserver snd_data_file:file {  getattr open read write create_file_perms };
