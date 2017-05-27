@@ -34,6 +34,11 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/releasetools/installbegin/check_sdk_version.sh:install/bin/installbegin/check_sdk_version.sh \
 	$(LOCAL_PATH)/releasetools/postvalidate/resize_system.sh:install/bin/postvalidate/resize_system.sh
 
+# Audio configurations
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+	$(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf
+
 # ANT+
 PRODUCT_PACKAGES += \
 	AntHalService \
