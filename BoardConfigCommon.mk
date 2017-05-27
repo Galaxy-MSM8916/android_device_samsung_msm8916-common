@@ -107,7 +107,7 @@ AUDIO_FEATURE_ENABLED_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Healthd
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.qcom
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.cm
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
