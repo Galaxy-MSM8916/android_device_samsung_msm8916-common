@@ -85,6 +85,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libbt-vendor
 
+#IMS/VoLTE calling support
+PRODUCT_PACKAGES += \
+	com.android.ims \
+	com.android.ims.internal \
+	ims-common \
+	voip-common
+
+# Boot jars
+PRODUCT_BOOT_JARS += \
+	commonimsinterface \
+	ims-common \
+	imsmanager \
+	voip-common
+
 # Camera
 PRODUCT_PACKAGES += \
 	libmm-qcamera \
