@@ -29,7 +29,7 @@ include $(LOCAL_PATH)/audio_msm8916_32.mk
 -include $(LOCAL_PATH)/system_prop.mk
 
 # Include proprietary blobs
-$(call inherit-product-if-exists, vendor/qcom/binaries/msm8916/blobs.mk)
+$(call inherit-product, vendor/samsung/msm8916-common/msm8916-common-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
