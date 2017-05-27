@@ -24,6 +24,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
+# Include proprietary blobs
+$(call inherit-product, vendor/samsung/msm8916-common/msm8916-common-vendor.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
