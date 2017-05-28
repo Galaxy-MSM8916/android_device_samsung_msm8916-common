@@ -56,7 +56,6 @@ vendor/lib/libdrmtime.so
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib/libtzplayready.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libprmediadrmdecrypt.so
 vendor/lib/mediadrm/libprmediadrmplugin.so
 
