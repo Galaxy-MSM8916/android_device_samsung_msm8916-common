@@ -160,6 +160,7 @@ PRODUCT_BOOT_JARS += \
 	commonimsinterface \
 	ims-common \
 	imsmanager \
+	qcom.fmradio \
 	voip-common
 
 # Camera
@@ -204,6 +205,13 @@ PRODUCT_PACKAGES += \
 	ebtables \
 	ethertypes \
 	libebtc
+# FM
+PRODUCT_PACKAGES += \
+	FM2_Custom \
+	FMRecord \
+	libfmjni \
+	libqcomfm_jni \
+	qcom.fmradio
 
 # libxml2
 PRODUCT_PACKAGES += \
