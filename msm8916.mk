@@ -55,7 +55,7 @@ PRODUCT_COPY_FILES += \
 
 # Media configurations
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/media/media_codecs.xml:ssytem/etc/media/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media/media_codecs.xml \
 	$(LOCAL_PATH)/configs/media/media_codecs_performance.xml:system/etc/media/media_codecs_performance.xml \
 	$(LOCAL_PATH)/configs/media/media_codecs_sec_primary.xml:system/etc/media/media_codecs_sec_primary.xml \
 	$(LOCAL_PATH)/configs/media/media_codecs_sec_secondary.xml:system/etc/media/media_codecs_sec_secondary.xml \
