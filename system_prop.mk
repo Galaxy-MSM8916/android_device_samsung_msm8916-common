@@ -54,6 +54,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
+	hw.fm.mode=normal \
 	ro.fm.transmitter=false
 
 # Graphics
