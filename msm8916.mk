@@ -238,6 +238,7 @@ PRODUCT_PACKAGES += \
 	libextmedia_jni \
 	libdashplayer \
 	libdivxdrmdecrypt \
+	libdrmclearkeyplugin \
 	libstagefrighthw
 
 # Sensors
