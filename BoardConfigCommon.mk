@@ -72,8 +72,6 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8916
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND    := true
 BOARD_CHARGER_SHOW_PERCENTAGE   := true
-# BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
-# CHARGING_ENABLED_PATH           := /sys/class/power_supply/battery/batt_lp_charging
 
 # Cpusets
 ENABLE_CPUSETS := true
@@ -142,7 +140,15 @@ BOARD_FLASH_BLOCK_SIZE              := 131072
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += \
+	console=null \
+	androidboot.hardware=qcom \
+	user_debug=23 \
+	msm_rtb.filter=0x3F \
+	ehci-hcd.park=3 \
+	androidboot.bootdevice=7824900.sdhci \
+	androidboot.selinux=permissive
+
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_DTBTOOL_ARGS := -2
