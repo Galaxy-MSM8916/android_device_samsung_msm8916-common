@@ -283,7 +283,9 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 
-# Widevine - from wf-crackling-7.1-TOS093F-a29b96e3d6
-vendor/lib/libWVStreamControlAPI_L3.so|cf04577485a3e67845a9c94b754a61f1
-vendor/lib/libwvdrm_L3.so|b5bc6ebf539ee9a3357bf4154c866849
-vendor/lib/mediadrm/libwvdrmengine.so|bac2dee71a5fb67df674ffa13fe7a9c5
+# Widevine
+lib/drm/libdrmwvmplugin.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvm.so
+vendor/lib/mediadrm/libwvdrmengine.so
