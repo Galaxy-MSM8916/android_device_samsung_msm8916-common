@@ -40,6 +40,11 @@ lib/libqomx_core.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 
+# Connectivity Engine - wf-crackling-7.1-TOS093F-a29b96e3d6
+etc/permissions/cneapiclient.xml|7293393dee2ad057699836528a1dc4e9
+framework/cneapiclient.jar|5708e3d4beeb51720e428d5e497ce6c7
+vendor/lib/libcneapiclient.so|0b79fa7c17c94f20531c980e99171c60
+
 # DRM
 bin/qcom-system-daemon
 bin/qseecomd
@@ -60,6 +65,9 @@ vendor/lib/libtzplayready.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libprmediadrmdecrypt.so
 vendor/lib/mediadrm/libprmediadrmplugin.so
+
+# DSI - wf-crackling-7.1-TOS093F-a29b96e3d6
+vendor/lib/libdsi_netctrl.so|07ab90c9340fae3fe77419079c2b1843
 
 # FM
 bin/fmconfig
@@ -134,13 +142,14 @@ bin/ims_rtp_daemon
 etc/init.qti.ims.sh
 etc/permissions/imscm.xml
 etc/permissions/imsmanager_library.xml
+etc/permissions/rcsopenapi_library.xml
 -framework/commonimsinterface.jar
 -framework/imsmanager-internal.jar
 -framework/imsmanager.jar
+-framework/rcsopenapi.jar
 lib/libapve-client.so
 lib/libcpve-client.so
 lib/libims_engine.so
-lib/librtp_jni.so
 -priv-app/ImsLogger+/ImsLogger+.apk
 vendor/lib/lib-dplmedia.so
 vendor/lib/lib-imsdpl.so
