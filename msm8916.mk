@@ -233,6 +233,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	lights.msm8916
 
+# Media
+PRODUCT_PACKAGES += \
+	libextmedia_jni \
+	libdashplayer \
+	libdivxdrmdecrypt \
+	libstagefrighthw
+
 # Sensors
 PRODUCT_PACKAGES += \
 	sensors.default
@@ -291,9 +298,6 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
-	libextmedia_jni \
-	libdashplayer \
-	libdivxdrmdecrypt \
 	libmm-omxcore \
 	libOmxAacEnc \
 	libOmxAmrEnc \
@@ -305,8 +309,7 @@ PRODUCT_PACKAGES += \
 	libOmxVdecHevc \
 	libOmxVenc \
 	libOmxVidEnc \
-	libOmxVdpp \
-	libstagefrighthw
+	libOmxVdpp
 
 # Wifi
 PRODUCT_PACKAGES += \
