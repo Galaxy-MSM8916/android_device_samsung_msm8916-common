@@ -17,22 +17,53 @@
 # Inherit from common
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
 
-LOCAL_PATH := device/samsung/msm8916-common
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Import msm8916_32 audio configs
 #include hardware/qcom/audio-caf/msm8916/configs/msm8916_32/msm8916_32.mk
 include $(LOCAL_PATH)/audio_msm8916_32.mk
 
-# System properties
--include $(LOCAL_PATH)/system_prop.mk
-
 # Include proprietary blobs
 $(call inherit-product, vendor/samsung/msm8916-common/msm8916-common-vendor.mk)
 
+LOCAL_PATH := device/samsung/msm8916-common
+
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# Data configuration files
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/data/dsi_config.xml:system/etc/data/dsi_config.xml \
+	$(LOCAL_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
+	$(LOCAL_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
+
+# GPS
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/gps/flp.conf:system/etc/flp.conf \
+	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
+	$(LOCAL_PATH)/configs/gps/izat.conf:system/etc/izat.conf \
+	$(LOCAL_PATH)/configs/gps/sap.conf:system/etc/sap.conf
+
+# Keylayout
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+	$(LOCAL_PATH)/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
+	$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+
+# Media configurations
+PRODUCT_COPY_FILES += \
+	configs/media/media_codecs.xml:ssytem/etc/media/media_codecs.xml \
+	configs/media/media_codecs_performance.xml:system/etc/media/media_codecs_performance.xml \
+	configs/media/media_codecs_sec_primary.xml:system/etc/media/media_codecs_sec_primary.xml \
+	configs/media/media_codecs_sec_secondary.xml:system/etc/media/media_codecs_sec_secondary.xml \
+	configs/media/media_profiles.xml:system/etc/media/media_profiles.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
 
 # OTA scripts
 PRODUCT_COPY_FILES += \
@@ -40,6 +71,42 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/releasetools/functions.sh:install/bin/functions.sh \
 	$(LOCAL_PATH)/releasetools/installbegin/check_sdk_version.sh:install/bin/installbegin/check_sdk_version.sh \
 	$(LOCAL_PATH)/releasetools/postvalidate/resize_system.sh:install/bin/postvalidate/resize_system.sh
+
+# Permissions
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+
+# Power configuration
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+
+# Security configuration file
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+
+# Wifi configuration files
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/wifi/cred.conf:system/etc/wifi/cred.conf \
+	$(LOCAL_PATH)/configs/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
+	$(LOCAL_PATH)/configs/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+	$(LOCAL_PATH)/configs/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny \
+	$(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+	$(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+	$(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+	$(LOCAL_PATH)/configs/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -104,13 +171,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	InputDisabler
 
-# GPS
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/gps/flp.conf:system/etc/flp.conf \
-	$(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-	$(LOCAL_PATH)/configs/gps/izat.conf:system/etc/izat.conf \
-	$(LOCAL_PATH)/configs/gps/sap.conf:system/etc/sap.conf
-
 # BoringSSL Hacks
 PRODUCT_PACKAGES += \
 	libboringssl-compat
@@ -172,39 +232,6 @@ PRODUCT_PACKAGES += \
 # Macloader
 PRODUCT_PACKAGES += \
 	macloader
-
-# Keylayout
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-	$(LOCAL_PATH)/keylayout/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl \
-	$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
-
-# Media configurations
-PRODUCT_COPY_FILES += \
-	configs/media/media_codecs.xml:ssytem/etc/media/media_codecs.xml \
-	configs/media/media_codecs_performance.xml:system/etc/media/media_codecs_performance.xml \
-	configs/media/media_codecs_sec_primary.xml:system/etc/media/media_codecs_sec_primary.xml \
-	configs/media/media_codecs_sec_secondary.xml:system/etc/media/media_codecs_sec_secondary.xml \
-	configs/media/media_profiles.xml:system/etc/media/media_profiles.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
-
-# Permissions
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -272,33 +299,6 @@ PRODUCT_PACKAGES += \
 	libOmxVidEnc \
 	libOmxVdpp \
 	libstagefrighthw
-
-# Power configuration
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
-
-# Wifi configuration files
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/wifi/cred.conf:system/etc/wifi/cred.conf \
-	$(LOCAL_PATH)/configs/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
-	$(LOCAL_PATH)/configs/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-	$(LOCAL_PATH)/configs/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny \
-	$(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-	$(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-	$(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-	$(LOCAL_PATH)/configs/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-	$(LOCAL_PATH)/configs/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-
-# Security configuration file
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
-
-# Data configuration files
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/data/dsi_config.xml:system/etc/data/dsi_config.xml \
-	$(LOCAL_PATH)/configs/data/netmgr_config.xml:system/etc/data/netmgr_config.xml \
-	$(LOCAL_PATH)/configs/data/qmi_config.xml:system/etc/data/qmi_config.xml
 
 # Wifi
 PRODUCT_PACKAGES += \
