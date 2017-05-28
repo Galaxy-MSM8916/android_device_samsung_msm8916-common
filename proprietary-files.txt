@@ -273,7 +273,7 @@ vendor/lib/libthermalioctl.so
 -app/TimeService/TimeService.apk
 bin/time_daemon
 vendor/lib/libTimeService.so
-vendor/lib/libtime_genoff.so
+-vendor/lib/libtime_genoff.so
 
 # Widevine - from wf-crackling-7.1-TOS093F-a29b96e3d6
 vendor/lib/libWVStreamControlAPI_L3.so|cf04577485a3e67845a9c94b754a61f1
