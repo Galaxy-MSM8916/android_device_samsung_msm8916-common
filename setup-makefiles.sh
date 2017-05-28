@@ -83,6 +83,7 @@ COMMON=1 setup_vendor "$BOARD_COMMON" "$VENDOR" "$CM_ROOT" "true" "$CLEANUP"
 COMMON=1 write_header "$ANDROIDMK"
 
 cat << EOF >> "$ANDROIDMK"
+ifeq (\$(BOARD_VENDOR),samsung)
 ifeq (\$(TARGET_BOARD_PLATFORM),msm8916)
 
 EOF
@@ -94,4 +95,8 @@ COMMON=1 write_header "$PRODUCTMK"
 write_makefiles "$MY_DIR"/proprietary-files.txt
 
 # We are done!
-write_footers
+# write_footers
+cat << EOF >> "$ANDROIDMK"
+endif
+endif
+EOF
