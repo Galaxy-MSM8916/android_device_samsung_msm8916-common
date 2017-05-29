@@ -283,9 +283,9 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 
-# Widevine
-lib/drm/libdrmwvmplugin.so
-vendor/lib/libWVStreamControlAPI_L1.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
-vendor/lib/mediadrm/libwvdrmengine.so
+# Widevine - bullhead
+vendor/lib/drm/libdrmwvmplugin.so|6cfb61cd247076409a3a4e3f6ddecf24
+vendor/lib/libwvdrm_L1.so|a19e8a30943ed66d51f58504673e72c4
+vendor/lib/libwvm.so|dcd816349037aa40f0e5ff9d141c70cc
+vendor/lib/libWVStreamControlAPI_L1.so|74e4a4ba035ed5da9b81cc2cc3929151
+vendor/lib/mediadrm/libwvdrmengine.so|76d0add4f3f259030ef4ffb14dc92a2e
