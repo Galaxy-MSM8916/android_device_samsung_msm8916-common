@@ -171,6 +171,11 @@ ___________________________________________________
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
         </MediaCodec>
+        <MediaCodec name="OMX.SEC.naac.enc" type="audio/mp4a-latm">
+            <Limit name="channel-count" max="6" />
+            <Limit name="sample-rate" ranges="11025,12000,16000,22050,24000,32000,44100,48000" />
+            <Limit name="bitrate" range="8000-960000" />
+        </MediaCodec>
     </Encoders>
     <Decoders>
 
@@ -349,6 +354,35 @@ ___________________________________________________
             <Quirk name="decoder-ignores-streamcorrupt-error" />
             <Limit name="size" min="64x64" max="2048x2048" />
             <Feature name="adaptive-playback" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.amr.dec">
+            <Type name="audio/amr-wb" />
+            <Type name="audio/3gpp"  />
+            <Quirk name="needs-flush-before-disable" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.mp3.dec">
+            <Type name="audio/mpeg"/>
+            <Type name="audio/mpeg-L1"/>
+            <Type name="audio/mpeg-L2"/>
+            <Quirk name="needs-flush-before-disable" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.aac.dec" type="audio/mp4a-latm" >
+            <Quirk name="needs-flush-before-disable" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.flac.dec" type="audio/flac" >
+            <Quirk name="needs-flush-before-disable" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.wma.dec" type="audio/x-ms-wma" >
+            <Quirk name="needs-flush-before-disable" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
+        </MediaCodec>
+        <MediaCodec name="OMX.SEC.adpcm.dec" type="audio/x-ima" >
+            <Quirk name="needs-flush-before-disable" />
+            <Quirk name="decoder-ignores-streamcorrupt-error" />
         </MediaCodec>
     </Decoders>
     <Include href="media_codecs_google_video_le.xml" />
