@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2014, The CyanogenMod Project. All rights reserved.
+ * Copyright (c) 2014-2016, The CyanogenMod Project. All rights reserved.
+ * Copyright (c) 2017, The LineageOS Project. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,17 +34,18 @@ import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfo
 import com.android.internal.telephony.cdma.SignalToneUtil;
 import com.android.internal.telephony.uicc.IccCardApplicationStatus;
 import com.android.internal.telephony.uicc.IccCardStatus;
+import com.android.internal.telephony.uicc.IccUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Qualcomm RIL Customisation for Samsung MSM8916 (GSM/CDMA) LTE devices
+ * RIL customization for MSM8916 devices
  *
  * {@hide}
  */
 public class SamsungQcomRIL extends RIL {
 
-    private static final int RIL_REQUEST_DIAL_EMERGENCY = 10001;
+    private static final int RIL_REQUEST_DIAL_EMERGENCY_CALL = 10001;
     private static final int RIL_UNSOL_ON_SS_LL = 11055;
 
     private boolean mIsGsm = false;
@@ -127,6 +129,24 @@ public class SamsungQcomRIL extends RIL {
         send(rr);
     }
 
+    private void
+    dialEmergencyCall(String address, int clirMode, Message result) {
+        RILRequest rr;
+
+        rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY_CALL, result);
+        rr.mParcel.writeString(address);
+        rr.mParcel.writeInt(clirMode);
+        rr.mParcel.writeInt(0);        // CallDetails.call_type
+        rr.mParcel.writeInt(3);        // CallDetails.call_domain
+        rr.mParcel.writeString("");    // CallDetails.getCsvFromExtra
+        rr.mParcel.writeInt(0);        // Unknown
+
+        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
+        send(rr);
+    }
+
+
     @Override
     public void
     hangupConnection (int gsmIndex, Message result) {
@@ -141,6 +161,7 @@ public class SamsungQcomRIL extends RIL {
             super.hangupForegroundResumeBackground(result);
             setRealCall(true);
     }
+
 
     @Override
     public void
@@ -321,14 +342,26 @@ public class SamsungQcomRIL extends RIL {
             response[i] = p.readInt();
         }
         //gsm
-        response[0] &= 0xff; //gsmSignalStrength
+        response[0] &= 0xff;
         //cdma
-        response[2] %= 256; //cdmaDbm
-        response[4] %= 256; //evdoDbm
-        response[7] &= 0xff; //lteSignalStrength
+        response[2] %= 256;
+        response[4] %= 256;
+        // lte
+        response[7] &= 0xff;
 
-        return new SignalStrength(response[0], response[1], response[2], response[3], response[4], response[5], response[6], response[7], response[8], response[9], response[10], response[11], true);
-
+	return new SignalStrength(response[0],
+				  response[1],
+				  response[2],
+				  response[3],
+				  response[4],
+				  response[5],
+				  response[6],
+				  response[7],
+				  response[8],
+				  response[9],
+				  response[10],
+				  response[11],
+				  true);
     }
 
     @Override
@@ -353,6 +386,7 @@ public class SamsungQcomRIL extends RIL {
     @Override
     public void setPhoneType(int phoneType) {
         super.setPhoneType(phoneType);
+        mIsGsm = (phoneType != RILConstants.CDMA_PHONE);
     }
 
     @Override
@@ -385,23 +419,6 @@ public class SamsungQcomRIL extends RIL {
 
         rr.mParcel.writeInt(1);
         rr.mParcel.writeInt(0);
-
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-
-        send(rr);
-    }
-
-    private void
-    dialEmergencyCall(String address, int clirMode, Message result) {
-        RILRequest rr;
-
-        rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY, result);
-        rr.mParcel.writeString(address);
-        rr.mParcel.writeInt(clirMode);
-        rr.mParcel.writeInt(0);        // CallDetails.call_type
-        rr.mParcel.writeInt(3);        // CallDetails.call_domain
-        rr.mParcel.writeString("");    // CallDetails.getCsvFromExtra
-        rr.mParcel.writeInt(0);        // Unknown
 
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
@@ -479,15 +496,5 @@ public class SamsungQcomRIL extends RIL {
             response[3] = "2";
         }
         return response;
-    }
-    
-    private void setWbAmr(int state) {
-        if (state == 1) {
-            Rlog.d(RILJ_LOG_TAG, "setWbAmr(): setting audio parameter - wb_amr=on");
-            mAudioManager.setParameters("wb_amr=on");
-        }else if (state == 0) {
-            Rlog.d(RILJ_LOG_TAG, "setWbAmr(): setting audio parameter - wb_amr=off");
-            mAudioManager.setParameters("wb_amr=off");
-        }
     }
 }
