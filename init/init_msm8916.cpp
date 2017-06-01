@@ -29,8 +29,8 @@
 
 #include <init_msm8916.h>
 
-#define VERSION_RELEASE "6.0.1"
-#define BUILD_ID	"MOB31T"
+#define VERSION_RELEASE "7.1.2"
+#define BUILD_ID	"N2G47O"
 
 __attribute__ ((weak))
 void init_target_properties()
