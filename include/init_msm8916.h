@@ -42,6 +42,7 @@
 #define CDMA_DEVICE 0
 #define GSM_DEVICE  1
 #define LTE_DEVICE  2
+#define WIFI_DEVICE 3
 
 #define VERSION_RELEASE "6.0.1"
 #define BUILD_ID	"MOB31T"
@@ -79,6 +80,12 @@ void lte_properties()
 	property_set("ro.telephony.default_network", "10");
 }
 
+void wifi_properties()
+{
+	property_set("ro.carrier", "wifi-only");
+	property_set("ro.radio.noril", "1");
+}
+
 void set_target_properties(char *bootloader, char *device, char *model,
 		int network_type, char *operator_alpha, char *operator_numeric)
 {
@@ -112,8 +119,11 @@ void set_target_properties(char *bootloader, char *device, char *model,
 	else if (network_type == GSM_DEVICE) {
 		gsm_properties();
 	}
-	else {
+	else if (network_type == LTE_DEVICE) {
 		lte_properties();
+	}
+	else if (network_type == WIFI_DEVICE) {
+		wifi_properties();
 	}
 }	
 
