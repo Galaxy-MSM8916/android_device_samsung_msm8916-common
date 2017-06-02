@@ -83,19 +83,23 @@ void set_target_properties(char *bootloader, char *device, char *model,
 		int network_type, char *operator_alpha, char *operator_numeric)
 {
 	char description[PROP_VALUE_MAX];
+	char display_id[PROP_VALUE_MAX];
 	char fingerprint[PROP_VALUE_MAX];
 
 	/* initialise the buffers */
 	memset(description, 0, PROP_VALUE_MAX);
+	memset(display_id, 0, PROP_VALUE_MAX);
 	memset(fingerprint, 0, PROP_VALUE_MAX);
 
 	snprintf(description, PROP_VALUE_MAX, "%s-user %s %s %s release-keys",
 			device, VERSION_RELEASE, BUILD_ID, bootloader);
+	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", BUILD_ID);
 	snprintf(fingerprint, PROP_VALUE_MAX, "samsung/%s/%s:%s/%s/%s:user/release-keys",
 			device, device, VERSION_RELEASE, BUILD_ID, bootloader);
 
 	/* set the build properties */
 	property_set("ro.build.description", description);
+	property_set("ro.build.display.id", display_id);
 	property_set("ro.build.fingerprint", fingerprint);
 	property_set("ro.build.product", device);
 	property_set("ro.product.device", device);
