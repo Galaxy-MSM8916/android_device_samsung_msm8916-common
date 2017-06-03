@@ -4,7 +4,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio encoders
 PRODUCT_PROPERTY_OVERRIDES += \
-	qcom.hw.aac.encoder=true
+	qcom.hw.aac.encoder=false
 
 # Audio offload
 PRODUCT_PROPERTY_OVERRIDES += \
