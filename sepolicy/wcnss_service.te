@@ -1,6 +1,7 @@
 #============= wcnss_service ==============
 allow wcnss_service efs_file:dir search;
 allow wcnss_service persist_file:dir search;
+allow wcnss_service persist_file:file { rw_file_perms setattr };
 allow wcnss_service system_data_file:dir { read write };
 allow wcnss_service system_data_file:file { open };
 allow wcnss_service wifi_data_file:file { open setattr read write };
