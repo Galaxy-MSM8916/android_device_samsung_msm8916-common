@@ -194,7 +194,7 @@ USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
 TARGET_USES_NEW_ION_API := true
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+-include device/qcom/sepolicy/sepolicy.mk
 -include vendor/cm/sepolicy/sepolicy.mk
 -include vendor/cm/sepolicy/qcom/sepolicy.mk
 
