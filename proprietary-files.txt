@@ -205,10 +205,7 @@ vendor/lib/libSubSystemShutdown.so
 vendor/lib/libxml.so
 
 # RIL
-bin/rild
 lib/libaudio-ril.so
-lib/libril.so
-lib/librilutils.so
 lib/libsecril-client.so
 vendor/lib/libril-qcril-hook-oem.so
 
