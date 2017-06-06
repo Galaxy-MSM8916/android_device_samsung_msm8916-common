@@ -32,11 +32,7 @@ TW_NO_USB_STORAGE := true
 TW_TARGET_USES_QCOM_BSP := true
 TW_THEME := portrait_hdpi
 
-ifeq ($(RECOVERY_VARIANT),twrp)
-	TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/twrp.fstab
-else
-	TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
-endif
+TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
 
 ifeq ($(RECOVERY_VARIANT),twrp)
 	BOARD_GLOBAL_CFLAGS += -DTW_USE_MINUI_CUSTOM_FONTS
