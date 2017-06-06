@@ -91,7 +91,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.mdpcomp.logs=0 \
 	dev.pm.dyn_samplingrate=1 \
-	persist.debug.wfd.enable=1 \
 	persist.hwc.enable_vds=1 \
 	persist.hwc.mdpcomp.enable=true \
 	persist.sys.storage_preload=1 \
@@ -143,3 +142,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Video encoding
 PRODUCT_PROPERTY_OVERRIDES += \
 	vidc.enc.narrow.searchrange=1
+
+# WiDi
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.debug.wfd.enable=1 \
+	persist.sys.wfd.virtual=0
