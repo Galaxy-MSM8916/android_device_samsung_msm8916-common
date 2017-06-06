@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifneq ($(RECOVERY_VARIANT),twrp)
 ifeq ($(BOARD_PROVIDES_BOOTLOADER_MESSAGE),true)
 
 LOCAL_PATH := $(call my-dir)
@@ -30,4 +31,5 @@ endif
 
 include $(BUILD_STATIC_LIBRARY)
 
+endif
 endif
