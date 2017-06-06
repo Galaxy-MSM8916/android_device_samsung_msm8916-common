@@ -1,0 +1,2 @@
+# Release Tools
+TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)/releasetools
