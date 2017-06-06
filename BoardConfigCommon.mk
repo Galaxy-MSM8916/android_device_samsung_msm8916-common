@@ -231,11 +231,15 @@ TW_NO_SCREEN_TIMEOUT := true
 TW_NO_USB_STORAGE := true
 TW_TARGET_USES_QCOM_BSP := true
 TW_THEME := portrait_hdpi
-TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/twrp.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 TARGET_RECOVERY_DENSITY 			:= hdpi
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 
+ifeq ($(RECOVERY_VARIANT),twrp)
+	TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/twrp.fstab
+else
+	TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
+endif
 
 # Wifi
 WLAN_CHIPSET := pronto
