@@ -18,6 +18,8 @@ NEW_TELEPHONY_DB_DIR=/data/data/com.android.providers.telephony/databases/
 
 PATH_LEN=$(echo ${OLD_TELEPHONY_DB_DIR} | wc -c)
 
+RESTART_RIL=0
+
 logi "Starting Link RIL Databases"
 
 logi "Creating directory..."
@@ -27,6 +29,7 @@ for db in `find ${OLD_TELEPHONY_DB_DIR} -type f | cut -c ${PATH_LEN}-`; do
     if ! [ -e ${NEW_TELEPHONY_DB_DIR}/${db} ]; then
 	    logi "Linking ${NEW_TELEPHONY_DB_DIR}${db}..."
 	    ln -s ${OLD_TELEPHONY_DB_DIR}${db} ${NEW_TELEPHONY_DB_DIR}
+            RESTART_RIL=1
     fi
 done
 
@@ -35,3 +38,8 @@ chmod 0751 ${NEW_TELEPHONY_DB_DIR}/..
 chmod 0771 ${NEW_TELEPHONY_DB_DIR}
 chown radio:radio ${NEW_TELEPHONY_DB_DIR} -R
 
+if [ "$RESTART_RIL" -eq 1 ]; then
+    logi "Restarting RIL..."
+    restart ril-daemon
+    restart ril-daemon1
+fi
