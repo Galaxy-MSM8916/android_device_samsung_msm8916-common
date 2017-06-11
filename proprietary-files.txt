@@ -39,6 +39,9 @@ lib/libqomx_core.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 
+# Camera - wf-crackling-7.1-TOS093F-a29b96e3d6
+vendor/lib/libmmcamera_faceproc.so|8e6a95d0dd0d282f96cc905c11c1a738
+
 # DRM
 bin/qcom-system-daemon
 bin/qseecomd
