@@ -21,6 +21,7 @@ set -e
 INITIAL_COPYRIGHT_YEAR=2017
 
 BOARD_COMMON=msm8916-common
+DEVICES_ALL="gprimelte gprimeltespr gprimeltexx gtelwifiue gtesqltespr"
 VENDOR=samsung
 
 # Load extractutils and do some sanity checks
@@ -80,25 +81,10 @@ DEVICE_COMMON=$BOARD_COMMON
 COMMON=1 setup_vendor "$BOARD_COMMON" "$VENDOR" "$CM_ROOT" "true" "$CLEANUP"
 
 # Copyright headers and guards
-COMMON=1 write_header "$ANDROIDMK"
-
-cat << EOF >> "$ANDROIDMK"
-LOCAL_PATH := \$(call my-dir)
-
-ifeq (\$(BOARD_VENDOR),samsung)
-ifeq (\$(TARGET_BOARD_PLATFORM),msm8916)
-
-EOF
-
-COMMON=1 write_header "$BOARDMK"
-COMMON=1 write_header "$PRODUCTMK"
+COMMON=1 write_headers "$DEVICES_ALL"
 
 # The standard common blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
 
 # We are done!
-# write_footers
-cat << EOF >> "$ANDROIDMK"
-endif
-endif
-EOF
+write_footers
