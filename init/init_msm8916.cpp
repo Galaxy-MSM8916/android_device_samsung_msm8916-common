@@ -27,6 +27,9 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
 #include <init_msm8916.h>
 
 #define VERSION_RELEASE "7.1.2"
@@ -35,6 +38,17 @@
 __attribute__ ((weak))
 void init_target_properties()
 {
+}
+
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
 void cdma_properties(char *operator_alpha,
