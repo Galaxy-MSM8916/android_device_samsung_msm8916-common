@@ -106,12 +106,13 @@ void set_target_properties(char *bootloader, char *device, char *model,
 			device, device, VERSION_RELEASE, BUILD_ID, bootloader);
 
 	/* set the build properties */
-	property_set("ro.build.description", description);
-	property_set("ro.build.display.id", display_id);
-	property_set("ro.build.fingerprint", fingerprint);
-	property_set("ro.build.product", device);
-	property_set("ro.product.device", device);
-	property_set("ro.product.model", model);
+	property_override("ro.bootimage.build.fingerprint", fingerprint);
+	property_override("ro.build.description", description);
+	property_override("ro.build.display.id", display_id);
+	property_override("ro.build.fingerprint", fingerprint);
+	property_override("ro.build.product", device);
+	property_override("ro.product.device", device);
+	property_override("ro.product.model", model);
 
 	/* set the network properties */
 	if (network_type == CDMA_DEVICE) {
