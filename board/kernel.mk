@@ -1,6 +1,3 @@
-# Cpusets
-ENABLE_CPUSETS := true
-
 # Kernel
 BOARD_KERNEL_CMDLINE += \
 	console=null \

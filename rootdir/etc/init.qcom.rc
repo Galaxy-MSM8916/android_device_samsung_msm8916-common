@@ -29,13 +29,6 @@ import init.qcom.usb.rc
 import init.target.rc
 import init.carrier.rc
 
-on enable-low-power
-    # Update foreground and background cpusets
-    write /dev/cpuset/foreground/cpus 0-3
-    write /dev/cpuset/foreground/boost/cpus 0-3
-    write /dev/cpuset/background/cpus 0-1
-    write /dev/cpuset/system-background/cpus 0-1
-
 on init
     # Shims
     export LD_SHIM_LIBS /system/lib/libril.so|libril_shim.so:/system/lib/libcrypto.so|libboringssl-compat.so
@@ -644,7 +637,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
-	writepid /dev/cpuset/system-background/tasks
 
 service qseecomd /system/bin/qseecomd
    class core
@@ -655,7 +647,6 @@ service perfd /system/bin/perfd
    class main
    user root
    disabled
-   writepid /dev/cpuset/system-background/tasks
 
 service thermal-engine /system/bin/thermal-engine
    class main
