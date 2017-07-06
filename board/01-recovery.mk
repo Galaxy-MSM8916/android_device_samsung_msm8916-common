@@ -27,7 +27,6 @@ TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_MTP_DEVICE := /dev/mtp_usb
 TW_NEW_ION_HEAP := true
 TW_NO_REBOOT_BOOTLOADER := true
-TW_NO_SCREEN_TIMEOUT := true
 TW_NO_USB_STORAGE := true
 TW_TARGET_USES_QCOM_BSP := true
 TW_THEME := portrait_hdpi
