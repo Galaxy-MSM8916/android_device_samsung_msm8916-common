@@ -102,7 +102,7 @@ void set_target_properties(const char *bootloader, const char *name, const char 
 }
 
 
-void set_target_properties(const char *ro_build_id, const char *bootloader, const char *name,
+void set_target_properties(const char *ro_build_id, const char *bootloader_str, const char *name,
 		const char *device, const char *model, int network_type, const char *operator_alpha,
 		const char *operator_numeric, const char *ver_release)
 {
@@ -110,8 +110,12 @@ void set_target_properties(const char *ro_build_id, const char *bootloader, cons
 	char display_id[PROP_VALUE_MAX];
 	char fingerprint[PROP_VALUE_MAX];
 
+	char *bootloader = (char *)bootloader_str;
 	char *build_id = (char *)ro_build_id;
 	char *version_release = (char *)ver_release;
+
+	if (bootloader_str == NULL)
+		bootloader = (char *)property_get("ro.bootloader").c_str();
 
 	if (build_id == NULL)
 		build_id = (char *)property_get("ro.build.id").c_str();
