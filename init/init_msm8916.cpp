@@ -51,8 +51,7 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void cdma_properties(char *operator_alpha,
-		char *operator_numeric)
+void cdma_properties(const char *operator_alpha, const char *operator_numeric)
 {
 	/* Dynamic CDMA Properties */
 	property_set("ro.cdma.home.operator.alpha", operator_alpha);
@@ -87,8 +86,9 @@ void wifi_properties()
 	property_set("ro.radio.noril", "1");
 }
 
-void set_target_properties(char *bootloader, char *device, char *model,
-		int network_type, char *operator_alpha, char *operator_numeric)
+
+void set_target_properties(const char *bootloader, const char *device, const char *model,
+		int network_type, const char *operator_alpha, const char *operator_numeric)
 {
 	char description[PROP_VALUE_MAX];
 	char display_id[PROP_VALUE_MAX];
