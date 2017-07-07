@@ -90,6 +90,15 @@ void wifi_properties()
 void set_target_properties(const char *bootloader, const char *device, const char *model,
 		int network_type, const char *operator_alpha, const char *operator_numeric)
 {
+	/* call set_target_properties with device specified twice for compatibility */
+	set_target_properties(bootloader, device, device, model,
+			network_type, operator_alpha, operator_numeric);
+}
+
+void set_target_properties(const char *bootloader, const char *name, const char *device,
+		const char *model, int network_type, const char *operator_alpha,
+		const char *operator_numeric)
+{
 	char description[PROP_VALUE_MAX];
 	char display_id[PROP_VALUE_MAX];
 	char fingerprint[PROP_VALUE_MAX];
@@ -100,10 +109,10 @@ void set_target_properties(const char *bootloader, const char *device, const cha
 	memset(fingerprint, 0, PROP_VALUE_MAX);
 
 	snprintf(description, PROP_VALUE_MAX, "%s-user %s %s %s release-keys",
-			device, VERSION_RELEASE, BUILD_ID, bootloader);
+			name, VERSION_RELEASE, BUILD_ID, bootloader);
 	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", BUILD_ID);
 	snprintf(fingerprint, PROP_VALUE_MAX, "samsung/%s/%s:%s/%s/%s:user/release-keys",
-			device, device, VERSION_RELEASE, BUILD_ID, bootloader);
+			name, device, VERSION_RELEASE, BUILD_ID, bootloader);
 
 	/* set the build properties */
 	property_override("ro.bootimage.build.fingerprint", fingerprint);
