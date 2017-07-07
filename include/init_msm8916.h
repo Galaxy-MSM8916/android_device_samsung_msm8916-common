@@ -46,7 +46,8 @@
 
 void init_target_properties();
 
-void set_target_properties(char *bootloader, char *device, char *model,
-		int network_type, char *operator_alpha, char *operator_numeric);
+
+void set_target_properties(const char *bootloader, const char *device, const char *model,
+		int network_type, const char *operator_alpha, const char *operator_numeric);
 
 #endif /* __INIT_MSM8916__H__ */
