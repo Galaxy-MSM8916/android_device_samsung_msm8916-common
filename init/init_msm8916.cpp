@@ -32,9 +32,6 @@
 
 #include <init_msm8916.h>
 
-#define VERSION_RELEASE "6.0.1"
-#define BUILD_ID	"MOB31T"
-
 __attribute__ ((weak))
 void init_target_properties()
 {
@@ -91,17 +88,36 @@ void set_target_properties(const char *bootloader, const char *device, const cha
 		int network_type, const char *operator_alpha, const char *operator_numeric)
 {
 	/* call set_target_properties with device specified twice for compatibility */
-	set_target_properties(bootloader, device, device, model,
-			network_type, operator_alpha, operator_numeric);
+	set_target_properties(NULL, bootloader, device, device, model,
+			network_type, operator_alpha, operator_numeric, NULL);
 }
 
 void set_target_properties(const char *bootloader, const char *name, const char *device,
 		const char *model, int network_type, const char *operator_alpha,
 		const char *operator_numeric)
 {
-	char description[PROP_VALUE_MAX];
+	/* call set_target_properties with device specified twice for compatibility */
+	set_target_properties(NULL, bootloader, name, device, model,
+			network_type, operator_alpha, operator_numeric, NULL);
+}
+
+
+void set_target_properties(const char *ro_build_id, const char *bootloader, const char *name,
+		const char *device, const char *model, int network_type, const char *operator_alpha,
+		const char *operator_numeric, const char *ver_release)
+{
+ 	char description[PROP_VALUE_MAX];
 	char display_id[PROP_VALUE_MAX];
 	char fingerprint[PROP_VALUE_MAX];
+
+	char *build_id = (char *)ro_build_id;
+	char *version_release = (char *)ver_release;
+
+	if (build_id == NULL)
+		build_id = (char *)property_get("ro.build.id").c_str();
+
+	if (version_release == NULL)
+		version_release = (char *)property_get("ro.build.version.release").c_str();
 
 	/* initialise the buffers */
 	memset(description, 0, PROP_VALUE_MAX);
@@ -109,10 +125,10 @@ void set_target_properties(const char *bootloader, const char *name, const char 
 	memset(fingerprint, 0, PROP_VALUE_MAX);
 
 	snprintf(description, PROP_VALUE_MAX, "%s-user %s %s %s release-keys",
-			name, VERSION_RELEASE, BUILD_ID, bootloader);
-	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", BUILD_ID);
+			name, version_release, build_id, bootloader);
+	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", build_id);
 	snprintf(fingerprint, PROP_VALUE_MAX, "samsung/%s/%s:%s/%s/%s:user/release-keys",
-			name, device, VERSION_RELEASE, BUILD_ID, bootloader);
+			name, device, version_release, build_id, bootloader);
 
 	/* set the build properties */
 	property_override("ro.bootimage.build.fingerprint", fingerprint);
