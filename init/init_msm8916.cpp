@@ -106,6 +106,7 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 		const char *device, const char *model, int network_type, const char *operator_alpha,
 		const char *operator_numeric, const char *ver_release)
 {
+ 	char description[PROP_VALUE_MAX];
 	char display_id[PROP_VALUE_MAX];
 	char fingerprint[PROP_VALUE_MAX];
 
