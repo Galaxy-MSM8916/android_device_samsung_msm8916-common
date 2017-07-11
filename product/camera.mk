@@ -4,5 +4,5 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-	libmm-qcamera \
-	camera.msm8916
+	camera.msm8916 \
+	libmm-qcamera
