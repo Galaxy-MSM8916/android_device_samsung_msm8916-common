@@ -42,7 +42,7 @@
 #include <binder/Parcel.h>
 #include <binder/IServiceManager.h>
 #include <utils/RefBase.h>
-#include <QServiceUtils.h>
+#include "QServiceUtils.h"
 
 #include "QCamera2HWI.h"
 #include "QCameraMem.h"
