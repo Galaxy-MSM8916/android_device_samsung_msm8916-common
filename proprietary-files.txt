@@ -77,35 +77,35 @@ vendor/lib/libizat_core.so|393277601ff816ab2fabe41fea68fca3
 vendor/lib/liblbs_core.so|be81bdae864452bc38544db8184303c6
 
 # Graphics
-vendor/lib/egl/eglsubAndroid.so
-vendor/lib/egl/eglSubDriverAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libESXEGL_adreno.so
-vendor/lib/egl/libESXGLESv1_CM_adreno.so
-vendor/lib/egl/libESXGLESv2_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/egl/libQTapGLES.so
-vendor/lib/egl/libRBEGL_adreno.so
-vendor/lib/egl/libRBGLESv1_CM_adreno.so
-vendor/lib/egl/libRBGLESv2_adreno.so
-vendor/lib/libadreno_utils.so
+vendor/lib/egl/eglsubAndroid.so|21442267a5e128873442ad9d38475e07
+vendor/lib/egl/eglSubDriverAndroid.so|1e34bc15a3bbcc3eb69a9f1fd525cb0b
+vendor/lib/egl/libEGL_adreno.so|cce3189ca361b239d53db58060893eab
+vendor/lib/egl/libESXEGL_adreno.so|ece400a0d1f05d3e5f0fe3f704e6898d
+vendor/lib/egl/libESXGLESv1_CM_adreno.so|6cd4b8adf65f35ae86e33b531da6068d
+vendor/lib/egl/libESXGLESv2_adreno.so|9a89a84193b17680c1c4a66591d76a43
+vendor/lib/egl/libGLESv1_CM_adreno.so|0b3093145eafb04523844940a4a36af9
+vendor/lib/egl/libGLESv2_adreno.so|bd12ff8d2017689040b80206bfac0b9a
+vendor/lib/egl/libq3dtools_adreno.so|493cb66c4ff6723af6577e83803957b3
+vendor/lib/egl/libQTapGLES.so|374f04a7a7c65d7676e781f0552cd1ca
+vendor/lib/egl/libRBEGL_adreno.so|f2fc963450474859aa7c7ccf6fac92b6
+vendor/lib/egl/libRBGLESv1_CM_adreno.so|5719e42981a1acc1df1a8878312bdca5
+vendor/lib/egl/libRBGLESv2_adreno.so|4d831f9d61222398f09eb15d4f4e7395
+vendor/lib/libadreno_utils.so|b74a626858dd1b3411e8199694bd5da8
 vendor/lib/libbccQTI.so
-vendor/lib/libC2D2.so
-vendor/lib/libc2d30-a3xx.so
-vendor/lib/libc2d30-a4xx.so
-vendor/lib/libCB.so
-vendor/lib/libgsl.so
-vendor/lib/libllvm-glnext.so
-vendor/lib/libllvm-qcom.so
-vendor/lib/libOpenCL.so
-vendor/lib/libQSEEComAPI.so
-vendor/lib/librs_adreno_sha1.so
+vendor/lib/libC2D2.so|9ce02ff41421ec64d26b571c479fe6ca
+vendor/lib/libc2d30-a3xx.so|91c8e82b10afda25a727ffc94dad5bc5
+vendor/lib/libc2d30-a4xx.so|5fb624bd78b3ac8bacd2a9f1226db103
+vendor/lib/libCB.so|40daed628f19ef2f625ca7fca559d0b7
+vendor/lib/libgsl.so|06a985c79c24b850ec4a03e89bd4e208
+vendor/lib/libllvm-glnext.so|df95f2de1e3468b8caf8ecb6839a6477
+vendor/lib/libllvm-qcom.so|8c40927b9b56047447c42d0a23081ef1
+vendor/lib/libOpenCL.so|c68ff0a56dc1c98be520b08e7eb6fee1
+vendor/lib/librs_adreno.so|40dbf893c0fd2ad8583d9937e9c92d3f
+vendor/lib/librs_adreno_sha1.so|4f695154805ab290651af850fad24d81
+vendor/lib/libRSDriver_adreno.so|bd572f3fc34e9dd747753f14a73fb133
 vendor/lib/libsc-a2xx.so
-vendor/lib/libsc-a3xx.so
-vendor/lib/libscale.so
-vendor/lib/libsd_sdk_display.so
+vendor/lib/libsc-a3xx.so|42193ceddf52b1c6e5914d8c20c9f4ab
+vendor/lib/libscale.so|811e35d84497eeafd66952fba530c8b8
 
 # Graphics Firmware
 etc/firmware/a225p5_pm4.fw
@@ -154,6 +154,7 @@ vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libqomx_jpegdec.so
+vendor/lib/libsd_sdk_display.so
 vendor/media/LMspeed_508.emd
 vendor/media/PFFprec_600.emd
 
