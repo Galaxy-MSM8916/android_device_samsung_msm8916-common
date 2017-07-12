@@ -203,6 +203,7 @@
 /sys/devices/virtual/input/input*                   pollrate_ms    0660    input    system
 #input settings for input disabler
 /sys/devices/soc.0/78b9000.i2c/i2c-5/5-0020/input/input*	enabled		   0660	   input	system
+/sys/devices/soc.0/78b9000.i2c/i2c-5/5-0048/input/input*	enabled		   0660	   input	system
 /sys/devices/soc.0/78b9000.i2c/i2c-5/5-0050/input/input*	enabled		   0660	   input	system
 /sys/devices/soc.0/i2c.78/i2c-11/11-0020/input/input*		enabled		   0660	   input	system
 /sys/devices/soc.0/i2c.72/i2c-12/12-0048/input/input*		enabled		   0660	   input	system
