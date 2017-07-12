@@ -66,18 +66,14 @@ vendor/lib/mediadrm/libprmediadrmplugin.so
 bin/fmconfig
 bin/fm_qsoc_patches
 
-# GPS
-bin/loc_launcher
-lib/hw/gps.default.so
-lib/libgps.utils.so
-lib/libloc_api_v02.so
-lib/libloc_core.so
-lib/libloc_eng.so
-vendor/lib/hw/flp.default.so
-vendor/lib/libflp.so
-vendor/lib/libgeofence.so
-vendor/lib/libizat_core.so
-vendor/lib/liblbs_core.so
+# GPS - From Crackling
+-lib/libloc_api_v02.so|03860b5a4e72edd96c9acce3886b6d23
+-lib/libloc_ds_api.so|31c3c73f4e449eded83f32eabc561c29
+vendor/lib/hw/flp.default.so|48b1901aac6ce882c415dcbbffc36432
+vendor/lib/libflp.so|8ecc18a88b768e65ade0c2f900aa3699
+vendor/lib/libgeofence.so|862cfcd014939ba68c2418488c00a724
+vendor/lib/libizat_core.so|393277601ff816ab2fabe41fea68fca3
+vendor/lib/liblbs_core.so|be81bdae864452bc38544db8184303c6
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
