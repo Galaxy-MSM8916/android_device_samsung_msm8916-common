@@ -33,6 +33,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
