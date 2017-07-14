@@ -30,6 +30,8 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
+#define SIMSLOT_FILE "/proc/simslot_count"
+
 #include <init_msm8916.h>
 
 __attribute__ ((weak))
@@ -48,6 +50,28 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+/* Read the file at filename and returns the integer
+ * value in the file.
+ *
+ * @prereq: Assumes that integer is non-negative.
+ *
+ * @return: integer value read if succesful, -1 otherwise. */
+int read_integer(const char* filename)
+{
+	int retval;
+	FILE * file;
+
+	/* open the file */
+	if (!(file = fopen(filename, "r"))) {
+		return -1;
+	}
+	/* read the value from the file */
+	fscanf(file, "%d", &retval);
+	fclose(file);
+
+	return retval;
+}
+
 void cdma_properties(const char *operator_alpha, const char *operator_numeric)
 {
 	/* Dynamic CDMA Properties */
@@ -61,6 +85,14 @@ void cdma_properties(const char *operator_alpha, const char *operator_numeric)
 	property_set("ro.telephony.get_imsi_from_sim", "true");
 	property_set("ro.telephony.ril.config", "newDriverCallU,newDialCode");
 	property_set("telephony.lteOnCdmaDevice", "1");
+}
+
+void dsds_properties()
+{
+	property_set("ro.multisim.simslotcount", "2");
+	property_set("ro.telephony.ril.config", "simactivation");
+	property_set("persist.radio.multisim.config", "dsds");
+	property_set("rild.libpath2", "/system/lib/libsec-ril-dsds.so");
 }
 
 void gsm_properties()
@@ -155,6 +187,17 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 	}
 	else if (network_type == WIFI_DEVICE) {
 		wifi_properties();
+	}
+
+	/* check for multi-sim devices */
+
+	/* check if the simslot count file exists */
+	if (access(SIMSLOT_FILE, F_OK) == 0) {
+		int sim_count= read_integer(SIMSLOT_FILE);
+
+		/* set the dual sim props */
+		if (sim_count == 2)
+			dsds_properties();
 	}
 }	
 
