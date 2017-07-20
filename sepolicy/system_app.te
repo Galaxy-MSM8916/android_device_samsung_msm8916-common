@@ -1,1 +1,0 @@
-allow system_app sysfs_input:file { rw_file_perms };
