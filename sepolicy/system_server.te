@@ -1,6 +1,8 @@
 #============= system_server ==============
 allow system_server app_efs_file:dir { search };
 allow system_server efs_file:dir search;
+allow system_server persist_file:file rw_file_perms;
+allow system_server persist_file:dir rw_dir_perms;
 allow system_server sensors_efs_file:file { open read };
 allow system_server sysfs_vibeamp:dir search;
 allow system_server sysfs_vibeamp:file { getattr open read write };
