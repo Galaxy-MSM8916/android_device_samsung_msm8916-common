@@ -108,13 +108,8 @@ vendor/lib/libsc-a3xx.so|42193ceddf52b1c6e5914d8c20c9f4ab
 vendor/lib/libscale.so|811e35d84497eeafd66952fba530c8b8
 
 # Graphics Firmware
-etc/firmware/a225p5_pm4.fw
-etc/firmware/a225_pfp.fw
-etc/firmware/a225_pm4.fw
 etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
-etc/firmware/a330_pfp.fw
-etc/firmware/a330_pm4.fw
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 etc/firmware/ice40.bin
