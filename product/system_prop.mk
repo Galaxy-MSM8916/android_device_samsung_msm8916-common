@@ -61,7 +61,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.composition.type=c2d \
 	debug.egl.hw=1 \
 	debug.sf.hw=1 \
-	ro.opengles.version=196608
+	ro.opengles.version=196608 \
+	debug.hwui.use_buffer_age=false
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
