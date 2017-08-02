@@ -132,6 +132,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.bluetooth.soc=pronto \
     vendor.qcom.bluetooth.soc=pronto
 
+# Boot
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.vendor.shutdown.waittime=500 \
+    ro.build.shutdown_timeout=0
+
+
 # BoringSSL Hacks
 PRODUCT_PACKAGES += \
     libboringssl-compat
