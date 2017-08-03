@@ -21,7 +21,7 @@ set -e
 INITIAL_COPYRIGHT_YEAR=2017
 
 BOARD_COMMON=msm8916-common
-DEVICES_ALL="gprimelte gprimeltespr gprimeltexx gtelwifiue gtesqltespr j53gxx j5lte j5ltechn j5nlte"
+DEVICES_ALL="gprimelte gprimeltespr gprimeltexx gtelwifiue gtesqltespr j53gxx j5lte j5ltechn j5nlte j7ltespr j7ltechn"
 VENDOR=samsung
 
 # Load extractutils and do some sanity checks
