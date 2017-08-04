@@ -27,8 +27,8 @@ mkdir -p ${NEW_TELEPHONY_DB_DIR}
 
 for db in `find ${OLD_TELEPHONY_DB_DIR} -type f | cut -c ${PATH_LEN}-`; do
     if ! [ -e ${NEW_TELEPHONY_DB_DIR}/${db} ]; then
-	    logi "Linking ${NEW_TELEPHONY_DB_DIR}${db}..."
-	    ln -s ${OLD_TELEPHONY_DB_DIR}${db} ${NEW_TELEPHONY_DB_DIR}
+            logi "Linking ${NEW_TELEPHONY_DB_DIR}${db}..."
+            ln -s ${OLD_TELEPHONY_DB_DIR}${db} ${NEW_TELEPHONY_DB_DIR}
             RESTART_RIL=1
     fi
 done
