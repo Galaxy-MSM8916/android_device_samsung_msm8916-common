@@ -814,9 +814,12 @@ on property:sys.boot_completed=1
     start qcom-post-boot
 
 # Enable Touch Devices
-    write /sys/class/touch_disabler/control manual
-    write /sys/class/touch_disabler/enabled true
-    write /sys/class/touch_disabler/control auto
+    write /sys/class/touch_key/control manual
+    write /sys/class/touch_key/enabled true
+    write /sys/class/touch_key/control auto
+    write /sys/class/touch_screen/control manual
+    write /sys/class/touch_screen/enabled true
+    write /sys/class/touch_screen/control auto
 
 service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     class late_start
