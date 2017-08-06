@@ -102,7 +102,6 @@ static int check_vendor_module()
 }
 
 #define KEY_VIDEO_HFR_VALUES "video-hfr-values"
-
 static char *camera_fixup_getparams(int id, const char *settings)
 {
     android::CameraParameters params;
@@ -122,12 +121,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
      * this can be turned off, fixup the params to tell the Camera
      * that it really is okay to turn it off.
      */
-    const char *hfrValues = params.get(KEY_VIDEO_HFR_VALUES);
-    if (hfrValues && *hfrValues && ! strstr(hfrValues, "off")) {
-        char tmp[strlen(hfrValues) + 4 + 1];
-        sprintf(tmp, "%s,off", hfrValues);
-        params.set(KEY_VIDEO_HFR_VALUES, tmp);
-    }
+    params.set(KEY_VIDEO_HFR_VALUES, "off");
 
     params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "640x360,640x480,352x288,320x240,176x144");
 
