@@ -231,53 +231,6 @@ on boot
     chown radio system /sys/class/power_supply/battery/siop_level
     chown radio system /sys/class/power_supply/battery/test_charge_current
 
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_slack
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_slack
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/target_loads
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/target_loads
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/boost
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boost
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/input_boost
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/input_boost
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
-
-    # Assume SMP uses shared cpufreq policy for all CPUs
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-
-    chown system system /sys/class/timed_output/vibrator/enable
-    chown system system /sys/class/leds/keyboard-backlight/brightness
-    chown system system /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/leds/button-backlight/brightness
-    chown system system /sys/class/leds/jogball-backlight/brightness
-    chown system system /sys/class/leds/red/brightness
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/blue/brightness
-    chown system system /sys/class/leds/red/device/grpfreq
-    chown system system /sys/class/leds/red/device/grppwm
-    chown system system /sys/class/leds/red/device/blink
-    chown system system /sys/module/sco/parameters/disable_esco
-    chown system system /sys/kernel/ipv4/tcp_wmem_min
-    chown system system /sys/kernel/ipv4/tcp_wmem_def
-    chown system system /sys/kernel/ipv4/tcp_wmem_max
-    chown system system /sys/kernel/ipv4/tcp_rmem_min
-    chown system system /sys/kernel/ipv4/tcp_rmem_def
-    chown system system /sys/kernel/ipv4/tcp_rmem_max
-    chown root radio /proc/cmdline
 
 # Vibrator
     chmod 0644 /sys/class/timed_output/vibrator/pwm_value
@@ -488,8 +441,6 @@ on post-fs-data
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi system
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0775 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
@@ -601,14 +552,6 @@ on post-fs-data
     #Create FM dir for patchdownloader
     mkdir /data/misc/fm 0770 system system
     chmod 0770 /data/misc/fm
-
-    # RIDL data
-    mkdir /data/misc/SelfHost/ 0710 system shell
-    mkdir /data/misc/SelfHost/QCLogs/ 2750 system shell
-    mkdir /data/misc/SelfHost/QCLogs/temp/ 0700 system shell
-    mkdir /data/misc/SelfHost/storage/ 0700 system shell
-    mkdir /data/misc/SelfHost/Running/ 2750 system shell
-    mkdir /data/misc/SelfHost/socket/ 2770 system system
 
     # qti-logkit data
     mkdir /data/misc/qti-logkit/ 0771 system system
@@ -863,33 +806,6 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
-#service ptt_socket_app /system/bin/ptt_socket_app -d
-#    class main
-#    user root
-#    group root
-#    disabled
-#    oneshot
-
-#service ptt_ffbm /system/bin/ptt_socket_app -f -d
-#    user root
-#    group root
-#    disabled
-#    oneshot
-
-#service ftm_ffbm /system/bin/ftmdaemon
-#    user root
-#    group root
-#    disabled
-#    oneshot
-
-#service cnss_diag /system/bin/cnss_diag --q
-#    class main
-#    user root
-#    group root
-#    oneshot
-
-#service cnss-daemon /system/bin/cnss-daemon -n -l
-#    class late_start
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     class late_start
@@ -1056,27 +972,3 @@ on class_start:late_start
 
 on property:init.svc.recovery=running
     trigger enable-low-power
-
-service RIDL /system/vendor/bin/RIDLClient.exe
-    class late_start
-    oneshot
-    user system
-    group system inet log sdcard_r sdcard_rw qcom_diag
-    # removed for security team - misc bluetooth radio gps wifi diag media_rw
-    # limited to 12 groups.  Unused: audio usb net_bt_admin net_bt_stac net_raw net_admin
-
-# service for USERDEBUG
-service LKCore-dbg /system/vendor/bin/LKCore
-    class late_start
-    oneshot
-    disabled
-    user root
-    group root system log qcom_diag net_raw
-
-# service for USER
-service LKCore-rel /system/vendor/bin/LKCore
-    class late_start
-    oneshot
-    disabled
-    user system
-    group system log qcom_diag
