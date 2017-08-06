@@ -1,0 +1,27 @@
+# Camera
+/data/cam_socket[0-9]                                u:object_r:camera_socket:s0
+
+# EFS
+/efs/imei(/.*)?                                      u:object_r:imei_efs_file:s0
+
+# Macloader
+/system/bin/macloader                                u:object_r:macloader_exec:s0
+
+# NFC
+/dev/pn547                                           u:object_r:nfc_device:s0
+/dev/sec-nfc                                         u:object_r:nfc_device:s0
+
+# Partitions
+/dev/block/mmcblk0p13                                u:object_r:modem_efs_partition_device:s0
+
+# RFS
+/sys/kernel/debug/rmt_storage(/.*)?                  u:object_r:rmt_storage_debugfs_file:s0
+
+# RIL
+/dev/socket/rild-cas                                 u:object_r:rild_cas_socket:s0
+
+# Vibrator
+/sys/devices/virtual/timed_output/vibrator(/.*)?     u:object_r:vibrator_sysfs_file:s0
+
+# Wifi
+/efs/wifi(/.*)?                                      u:object_r:wifi_efs_file:s0
