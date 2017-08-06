@@ -79,14 +79,6 @@ const char CameraParameters::ISO_800[] = "ISO800"; \
 const char CameraParameters::ISO_1600[] = "ISO1600"; \
 const char CameraParameters::ISO_3200[] = "ISO3200"; \
 const char CameraParameters::ISO_6400[] = "ISO6400"; \
-const char CameraParameters::KEY_SUPPORTED_HFR_SIZES[] = "hfr-size-values"; \
-const char CameraParameters::KEY_SUPPORTED_MEM_COLOR_ENHANCE_MODES[] = "mce-values"; \
-const char CameraParameters::VIDEO_HFR_OFF[] = "off"; \
-const char CameraParameters::VIDEO_HFR_2X[] = "60"; \
-const char CameraParameters::VIDEO_HFR_3X[] = "90"; \
-const char CameraParameters::VIDEO_HFR_4X[] = "120"; \
-const char CameraParameters::KEY_VIDEO_HIGH_FRAME_RATE[] = "video-hfr"; \
-const char CameraParameters::KEY_SUPPORTED_VIDEO_HIGH_FRAME_RATE_MODES[] = "video-hfr-values"; \
 const char CameraParameters::KEY_HISTOGRAM[] = "histogram"; \
 const char CameraParameters::KEY_SUPPORTED_HISTOGRAM_MODES[] = "histogram-values"; \
 const char CameraParameters::HISTOGRAM_ENABLE[] = "enable"; \
@@ -191,14 +183,7 @@ void CameraParameters::setPreviewFpsRange(int minFPS, int maxFPS) { };
     static const char ISO_1600[]; \
     static const char ISO_3200[]; \
     static const char ISO_6400[]; \
-    static const char KEY_SUPPORTED_HFR_SIZES[]; \
     static const char KEY_SUPPORTED_MEM_COLOR_ENHANCE_MODES[]; \
-    static const char VIDEO_HFR_OFF[]; \
-    static const char VIDEO_HFR_2X[]; \
-    static const char VIDEO_HFR_3X[]; \
-    static const char VIDEO_HFR_4X[]; \
-    static const char KEY_VIDEO_HIGH_FRAME_RATE[]; \
-    static const char KEY_SUPPORTED_VIDEO_HIGH_FRAME_RATE_MODES[]; \
     static const char KEY_HISTOGRAM[]; \
     static const char KEY_SUPPORTED_HISTOGRAM_MODES[]; \
     static const char HISTOGRAM_ENABLE[]; \
