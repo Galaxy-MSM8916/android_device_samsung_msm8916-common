@@ -1,0 +1,6 @@
+type app_efs_file, file_type;
+type imei_efs_file, file_type;
+type rild_cas_socket, file_type;
+type rmt_storage_debugfs_file, fs_type, debugfs_type;
+type vibrator_sysfs_file, fs_type, sysfs_type;
+type wifi_efs_file, file_type;
