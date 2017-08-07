@@ -866,7 +866,7 @@ service ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     socket rild-cas stream 660 casdrm mmb
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log qcom_diag system drmrpc vpn system shell
+    group radio cache inet misc audio sdcard_r sdcard_rw log qcom_diag system drmrpc vpn system shell wakelock
 
 # RIL for multi rild
 service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
