@@ -875,7 +875,7 @@ service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
     socket rild-debug2 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio log qcom_diag system drmrpc sdcard_r sdcard_rw shell
+    group radio cache inet misc audio log qcom_diag system drmrpc sdcard_r sdcard_rw shell wakelock
 
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
