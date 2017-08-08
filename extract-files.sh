@@ -62,6 +62,12 @@ fi
 # default to not sanitizing the vendor folder before extraction
 clean_vendor=false
 
+# check if only a single argument was passed, and set that as the
+# extraction path
+if [ "x$1" != "x" ] && [ "x$2" == "x" ]; then
+	SRC=$1
+fi
+
 while [ "$1" != "" ]; do
     case $1 in
         -b | --setup-all )      SETUP_DEVICE_DIR=1
