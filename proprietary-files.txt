@@ -182,7 +182,6 @@ bin/ptt_socket_app
 bin/port-bridge
 bin/qmuxd
 bin/radish
-bin/rfs_access
 bin/rmt_storage
 bin/wlandutservice
 etc/plmn_delta.bin
