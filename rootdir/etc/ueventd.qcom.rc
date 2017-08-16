@@ -213,7 +213,6 @@
 /dev/nfc-nci              0660    nfc         nfc
 /dev/nq-nci               0660    nfc         nfc
 /dev/assd                 0660    nfc         nfc
-/dev/pn547                0660    nfc         nfc
 
 # UIO devices
 /dev/uio0                 0660   system     system
