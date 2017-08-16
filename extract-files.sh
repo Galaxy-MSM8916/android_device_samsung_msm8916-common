@@ -59,8 +59,8 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
-# default to not sanitizing the vendor folder before extraction
-clean_vendor=false
+# Default to sanitizing the vendor folder before extraction
+CLEAN_VENDOR=true
 
 # check if only a single argument was passed, and set that as the
 # extraction path
@@ -79,9 +79,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -s | --section )        shift
                                 SECTION=$1
-                                clean_vendor=false
+                                CLEAN_VENDOR=false
                                 ;;
-        -c | --clean-vendor )   clean_vendor=true
+        -n | --no-cleanup )     CLEAN_VENDOR=false
                                 ;;
         -h | --help )           print_help
                                 ;;
@@ -95,19 +95,19 @@ fi
 
 if  [ "$SETUP_BOARD_COMMON_DIR" -eq 1 ]; then
     # Initialize the helper for common
-    setup_vendor "$BOARD_COMMON" "$VENDOR" "$CM_ROOT" true $clean_vendor
+    setup_vendor "$BOARD_COMMON" "$VENDOR" "$CM_ROOT" true "$CLEAN_VENDOR"
     extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 fi
 
 if [ "$SETUP_DEVICE_COMMON_DIR" -eq 1 ] && [ -s $DEVICE_COMMON_DIR/proprietary-files.txt ]; then
     # Reinitialize the helper for device-common
-    setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true $clean_vendor
+    setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true "$CLEAN_VENDOR"
     extract $DEVICE_COMMON_DIR/proprietary-files.txt "$SRC" "$SECTION"
 fi
 
 if [ "$SETUP_DEVICE_DIR" -eq 1 ] && [ -s $DEVICE_DIR/proprietary-files.txt ]; then
     # Reinitialize the helper for device
-    setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" false $clean_vendor
+    setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" false "$CLEAN_VENDOR"
     extract $DEVICE_DIR/proprietary-files.txt "$SRC" "$SECTION"
 fi
 
