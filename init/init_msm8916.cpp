@@ -27,9 +27,6 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
-#include <sys/_system_properties.h>
-
 #define SIMSLOT_FILE "/proc/simslot_count"
 
 #include <init_msm8916.h>
@@ -37,17 +34,6 @@
 __attribute__ ((weak))
 void init_target_properties()
 {
-}
-
-void property_override(char const prop[], char const value[])
-{
-    prop_info *pi;
-
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
-        __system_property_update(pi, value, strlen(value));
-    else
-        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
 /* Read the file at filename and returns the integer
@@ -148,13 +134,13 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 			name, device, version_release, build_id, bootloader);
 
 	/* set the build properties */
-	property_override("ro.bootimage.build.fingerprint", fingerprint);
-	property_override("ro.build.description", description);
-	property_override("ro.build.display.id", display_id);
-	property_override("ro.build.fingerprint", fingerprint);
-	property_override("ro.build.product", device);
-	property_override("ro.product.device", device);
-	property_override("ro.product.model", model);
+	property_set("ro.bootimage.build.fingerprint", fingerprint);
+	property_set("ro.build.description", description);
+	property_set("ro.build.display.id", display_id);
+	property_set("ro.build.fingerprint", fingerprint);
+	property_set("ro.build.product", device);
+	property_set("ro.product.device", device);
+	property_set("ro.product.model", model);
 
 	/* set the network properties */
 	if (network_type == CDMA_DEVICE) {
