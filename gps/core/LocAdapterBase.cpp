@@ -72,7 +72,6 @@ void LocAdapterBase::
                    LocPosTechMask loc_technology_mask) {
     if (mLocAdapterProxyBase == NULL ||
         !mLocAdapterProxyBase->reportPosition(location,
-                                              locationExtended,
                                               status,
                                               loc_technology_mask)) {
         DEFAULT_IMPL()
@@ -80,7 +79,7 @@ void LocAdapterBase::
 }
 
 void LocAdapterBase::
-    reportSv(GnssSvStatus &svStatus,
+    reportSv(GpsSvStatus &svStatus,
              GpsLocationExtended &locationExtended,
              void* svExt)
 DEFAULT_IMPL()
@@ -137,6 +136,6 @@ bool LocAdapterBase::
 DEFAULT_IMPL(false)
 
 void LocAdapterBase::
-    reportGnssMeasurementData(GnssData &gnssMeasurementData)
+    reportGpsMeasurementData(GpsData &gpsMeasurementData)
 DEFAULT_IMPL()
 } // namespace loc_core
