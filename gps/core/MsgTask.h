@@ -1,4 +1,4 @@
-/* Copyright (c) 2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -9,7 +9,7 @@
  *       copyright notice, this list of conditions and the following
  *       disclaimer in the documentation and/or other materials provided
  *       with the distribution.
- *     * Neither the name of The Linux Foundation nor the names of its
+ *     * Neither the name of The Linux Foundation, nor the names of its
  *       contributors may be used to endorse or promote products derived
  *       from this software without specific prior written permission.
  *
@@ -24,12 +24,44 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
  */
+#ifndef __MSG_TASK__
+#define __MSG_TASK__
 
-#ifndef _PLATFORM_LIB_INCLUDES_H_
-#define _PLATFORM_LIB_INCLUDES_H_
+#include <stdbool.h>
+#include <ctype.h>
+#include <string.h>
+#include <pthread.h>
 
-#include "platform_lib_time.h"
-#include "platform_lib_macros.h"
+namespace loc_core {
 
-#endif
+struct LocMsg {
+    inline LocMsg() {}
+    inline virtual ~LocMsg() {}
+    virtual void proc() const = 0;
+    inline virtual void log() const {}
+};
+
+class MsgTask {
+public:
+    typedef void* (*tStart)(void*);
+    typedef pthread_t (*tCreate)(const char* name, tStart start, void* arg);
+    typedef int (*tAssociate)();
+    MsgTask(tCreate tCreator, const char* threadName);
+    MsgTask(tAssociate tAssociator, const char* threadName);
+    ~MsgTask();
+    void sendMsg(const LocMsg* msg) const;
+    void associate(tAssociate tAssociator) const;
+
+private:
+    const void* mQ;
+    tAssociate mAssociator;
+    MsgTask(const void* q, tAssociate associator);
+    static void* loopMain(void* copy);
+    void createPThread(const char* name);
+};
+
+} // namespace loc_core
+
+#endif //__MSG_TASK__
