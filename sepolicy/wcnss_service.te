@@ -1,2 +1,0 @@
-allow wcnss_service wifi_efs_file:dir search;
-allow wcnss_service wifi_efs_file:file r_file_perms;
