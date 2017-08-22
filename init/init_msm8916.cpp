@@ -27,27 +27,16 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
-#include <sys/_system_properties.h>
-
 #define SIMSLOT_FILE "/proc/simslot_count"
 
 #include <init_msm8916.h>
 
+#define VERSION_RELEASE "6.0.1"
+#define BUILD_ID	"MOB31T"
+
 __attribute__ ((weak))
 void init_target_properties()
 {
-}
-
-void property_override(char const prop[], char const value[])
-{
-    prop_info *pi;
-
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
-        __system_property_update(pi, value, strlen(value));
-    else
-        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
 /* Read the file at filename and returns the integer
@@ -115,45 +104,12 @@ void wifi_properties()
 	property_set("ro.radio.noril", "1");
 }
 
-
-void set_target_properties(const char *bootloader, const char *device, const char *model,
-		int network_type, const char *operator_alpha, const char *operator_numeric)
+void set_target_properties(char *bootloader, char *device, char *model,
+		int network_type, char *operator_alpha, char *operator_numeric)
 {
-	/* call set_target_properties with device specified twice for compatibility */
-	set_target_properties(NULL, bootloader, device, device, model,
-			network_type, operator_alpha, operator_numeric, NULL);
-}
-
-void set_target_properties(const char *bootloader, const char *name, const char *device,
-		const char *model, int network_type, const char *operator_alpha,
-		const char *operator_numeric)
-{
-	/* call set_target_properties with device specified twice for compatibility */
-	set_target_properties(NULL, bootloader, name, device, model,
-			network_type, operator_alpha, operator_numeric, NULL);
-}
-
-
-void set_target_properties(const char *ro_build_id, const char *bootloader_str, const char *name,
-		const char *device, const char *model, int network_type, const char *operator_alpha,
-		const char *operator_numeric, const char *ver_release)
-{
- 	char description[PROP_VALUE_MAX];
+	char description[PROP_VALUE_MAX];
 	char display_id[PROP_VALUE_MAX];
 	char fingerprint[PROP_VALUE_MAX];
-
-	char *bootloader = (char *)bootloader_str;
-	char *build_id = (char *)ro_build_id;
-	char *version_release = (char *)ver_release;
-
-	if (bootloader_str == NULL)
-		bootloader = (char *)property_get("ro.bootloader").c_str();
-
-	if (build_id == NULL)
-		build_id = (char *)property_get("ro.build.id").c_str();
-
-	if (version_release == NULL)
-		version_release = (char *)property_get("ro.build.version.release").c_str();
 
 	/* initialise the buffers */
 	memset(description, 0, PROP_VALUE_MAX);
@@ -161,19 +117,18 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 	memset(fingerprint, 0, PROP_VALUE_MAX);
 
 	snprintf(description, PROP_VALUE_MAX, "%s-user %s %s %s release-keys",
-			name, version_release, build_id, bootloader);
-	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", build_id);
+			device, VERSION_RELEASE, BUILD_ID, bootloader);
+	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", BUILD_ID);
 	snprintf(fingerprint, PROP_VALUE_MAX, "samsung/%s/%s:%s/%s/%s:user/release-keys",
-			name, device, version_release, build_id, bootloader);
+			device, device, VERSION_RELEASE, BUILD_ID, bootloader);
 
 	/* set the build properties */
-	property_override("ro.bootimage.build.fingerprint", fingerprint);
-	property_override("ro.build.description", description);
-	property_override("ro.build.display.id", display_id);
-	property_override("ro.build.fingerprint", fingerprint);
-	property_override("ro.build.product", device);
-	property_override("ro.product.device", device);
-	property_override("ro.product.model", model);
+	property_set("ro.build.description", description);
+	property_set("ro.build.display.id", display_id);
+	property_set("ro.build.fingerprint", fingerprint);
+	property_set("ro.build.product", device);
+	property_set("ro.product.device", device);
+	property_set("ro.product.model", model);
 
 	/* set the network properties */
 	if (network_type == CDMA_DEVICE) {
