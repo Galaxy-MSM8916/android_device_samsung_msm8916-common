@@ -24,8 +24,6 @@ PRODUCT_PACKAGES += \
 	wificond \
 	iwconfig \
 	hostapd_cli \
-	libQWiFiSoftApCfg \
-	libqsap_sdk \
 	libwpa_client \
 	libwcnss_qmi \
 	wcnss_service \
