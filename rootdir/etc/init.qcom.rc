@@ -850,22 +850,22 @@ on property:ro.multisim.simslotcount=2
     start ril-daemon
     start ril-daemon1
 
-service ril-daemon /system/bin/rild
+service ril-daemon /vendor/bin/hw/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
     socket rild-cas stream 660 casdrm mmb
-    user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log diag system drmrpc vpn system shell wakelock
+    user radio
+    group radio cache inet misc audio sdcard_r sdcard_rw log system drmrpc vpn system shell readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 # RIL for multi rild
-service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
+service ril-daemon1 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
-    socket rild2 stream 660 root radio
-    socket rild-debug2 stream 660 radio system
-    user root
+    user radio
     disabled
-    group radio cache inet misc audio log diag system drmrpc sdcard_r sdcard_rw shell wakelock
+    group radio cache inet misc audio log system drmrpc sdcard_r sdcard_rw shell readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
