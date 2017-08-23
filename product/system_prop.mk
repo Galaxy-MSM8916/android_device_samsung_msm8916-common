@@ -85,7 +85,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	media.swhevccodectype=0 \
 	mm.enable.qcom_parser=3183219 \
 	mm.enable.smoothstreaming=true \
-	mmp.enable.3g2=true
+	mmp.enable.3g2=true \
+	persist.media.treble_omx=false
 
 # Misc.
 PRODUCT_PROPERTY_OVERRIDES += \
