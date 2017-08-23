@@ -567,9 +567,9 @@ on post-fs-data
     # qti-logkit data
     mkdir /data/misc/qti-logkit/ 0771 system system
     mkdir /data/misc/qti-logkit/shared-privileged/ 2770 system system
-    mkdir /data/misc/qti-logkit/shared-public/ 2770 system diag
+    mkdir /data/misc/qti-logkit/shared-public/ 2770 system qcom_diag
     mkdir /data/misc/qti-logkit/socket-privileged/ 2770 system system
-    mkdir /data/misc/qti-logkit/socket-public/ 2750 system diag
+    mkdir /data/misc/qti-logkit/socket-public/ 2750 system qcom_diag
     mkdir /data/misc/qti-logkit/logdata/ 2750 system shell
 
     # Mark the copy complete flag to not completed
@@ -618,7 +618,7 @@ service time_daemon /system/bin/time_daemon
 service qcomsysd /system/bin/qcom-system-daemon
     class main
     user root
-    group root diag
+    group root qcom_diag
 
 service ssr_setup /system/bin/ssr_setup
     oneshot
@@ -708,7 +708,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user root
-    group bluetooth diag
+    group bluetooth qcom_diag
     disabled
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
@@ -733,7 +733,7 @@ on property:bluetooth.hciattach=false
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc diag
+    group radio audio bluetooth gps nfc qcom_diag
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -785,7 +785,6 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-
 service wlandutservice /system/bin/wlandutservice
     class main
     user system
@@ -796,7 +795,7 @@ service wlandutservice /system/bin/wlandutservice
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet net_raw diag net_admin wifi
+    group gps inet net_raw qcom_diag net_admin wifi
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
@@ -817,8 +816,8 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     oneshot
 
 on property:sys.boot_completed=1
-    start qcom-post-boot
     setprop sys.io.scheduler "bfq"
+    start qcom-post-boot
 
 # Enable Touch Devices
     write /sys/class/touch_key/control manual
@@ -850,22 +849,22 @@ on property:ro.multisim.simslotcount=2
     start ril-daemon
     start ril-daemon1
 
-service ril-daemon /system/bin/rild
+service ril-daemon /vendor/bin/hw/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
     socket rild-cas stream 660 casdrm mmb
-    user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log diag system drmrpc vpn system shell wakelock
+    user radio
+    group radio cache inet misc audio sdcard_r sdcard_rw log qcom_diag system drmrpc vpn system shell readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 # RIL for multi rild
-service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
+service ril-daemon1 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
-    socket rild2 stream 660 root radio
-    socket rild-debug2 stream 660 radio system
-    user root
+    user radio
     disabled
-    group radio cache inet misc audio log diag system drmrpc sdcard_r sdcard_rw shell wakelock
+    group radio cache inet misc audio log qcom_diag system drmrpc sdcard_r sdcard_rw shell readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
