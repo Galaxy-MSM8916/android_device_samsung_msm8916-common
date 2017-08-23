@@ -665,8 +665,16 @@ on property:persist.debug.trace=1
     write /sys/bus/coresight/devices/coresight-etm3/enable 1
     write /sys/module/coresight_event/parameters/event_abort_enable 1
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
+
+service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
+    class core
+    user root
+    oneshot
 
 service qcom-c_main-sh /system/bin/sh /init.class_main.sh
     class main
@@ -756,7 +764,7 @@ on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
 # WPA
-service p2p_supplicant /system/bin/wpa_supplicant \
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -771,20 +779,6 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
-
-service wpa_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
 
 service wlandutservice /system/bin/wlandutservice
     class main
@@ -850,22 +844,24 @@ on property:ro.multisim.simslotcount=2
     start ril-daemon
     start ril-daemon1
 
-service ril-daemon /system/bin/rild
+service ril-daemon /vendor/bin/hw/rild
     class main
-    socket rild stream 660 root radio
+    socket rild stream 660 radio radio
     socket rild-debug stream 660 radio system
     socket rild-cas stream 660 casdrm mmb
-    user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log diag system drmrpc vpn system shell wakelock
+    user radio
+    group radio cache inet misc audio sdcard_r sdcard_rw log readproc diag system drmrpc vpn system shell wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 # RIL for multi rild
-service ril-daemon1 /system/bin/rild -l /system/lib/libsec-ril-dsds.so -c 2
+service ril-daemon1 /vendor/bin/hw/rild -c 2
     class main
-    socket rild2 stream 660 root radio
+    socket rild2 stream 660 radio radio
     socket rild-debug2 stream 660 radio system
-    user root
+    user radio
     disabled
-    group radio cache inet misc audio log diag system drmrpc sdcard_r sdcard_rw shell wakelock
+    group radio cache inet misc audio log readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
