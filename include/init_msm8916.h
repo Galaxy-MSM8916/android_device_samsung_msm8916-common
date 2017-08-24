@@ -36,10 +36,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include "vendor_init.h"
+#include <android-base/properties.h>
 #include "property_service.h"
+#include "vendor_init.h"
 #include "log.h"
-#include "util.h"
 
 #define CDMA_DEVICE 0
 #define GSM_DEVICE  1
