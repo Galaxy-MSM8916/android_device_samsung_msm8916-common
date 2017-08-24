@@ -27,12 +27,16 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <android-base/properties.h>
+
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
 #define SIMSLOT_FILE "/proc/simslot_count"
 
 #include <init_msm8916.h>
+
+using android::base::GetProperty;
 
 __attribute__ ((weak))
 void init_target_properties()
@@ -128,13 +132,13 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 	char *version_release = (char *)ver_release;
 
 	if (bootloader_str == NULL)
-		bootloader = (char *)property_get("ro.bootloader").c_str();
+		bootloader = (char *)GetProperty("ro.bootloader","").c_str();
 
 	if (build_id == NULL)
-		build_id = (char *)property_get("ro.build.id").c_str();
+		build_id = (char *)GetProperty("ro.build.id","").c_str();
 
 	if (version_release == NULL)
-		version_release = (char *)property_get("ro.build.version.release").c_str();
+		version_release = (char *)GetProperty("ro.build.version.release","").c_str();
 
 	/* initialise the buffers */
 	memset(description, 0, PROP_VALUE_MAX);
