@@ -33,4 +33,5 @@ PRODUCT_PACKAGES += \
 	libwcnss_qmi \
 	wcnss_service \
 	wpa_supplicant \
+	libwpa_client \
 	android.hardware.wifi@1.0-service
