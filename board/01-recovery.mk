@@ -28,7 +28,7 @@ TW_MTP_DEVICE := /dev/mtp_usb
 TW_NEW_ION_HEAP := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_NO_USB_STORAGE := true
-TW_TARGET_USES_QCOM_BSP := true
+TW_TARGET_USES_QCOM_BSP := false
 TW_THEME := portrait_hdpi
 
 TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
