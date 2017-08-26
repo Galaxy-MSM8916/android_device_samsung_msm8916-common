@@ -889,7 +889,7 @@ service wcnss-service /system/bin/wcnss_service
 service charger /charger
     class charger
     group log
-    seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
 
 on class_start:late_start
     trigger enable-low-power
