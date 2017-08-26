@@ -107,6 +107,17 @@ on boot
     chmod 0660 /dev/pn547
     chown nfc nfc /dev/pn547
 
+    # Touch Disabler permissions
+    chown system system /sys/class/touch_key
+    chown system system /sys/class/touch_key/control
+    chown system system /sys/class/touch_key/enabled
+    chown system system /sys/class/touch_key/status
+
+    chown system system /sys/class/touch_screen
+    chown system system /sys/class/touch_screen/control
+    chown system system /sys/class/touch_screen/enabled
+    chown system system /sys/class/touch_screen/status
+
     # for BT MAC address
     mkdir /efs/bluetooth 0775 radio system
     # if already exist
