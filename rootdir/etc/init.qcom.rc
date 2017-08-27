@@ -530,9 +530,6 @@ on post-fs-data
     mkdir /data/fota 0771
     chown system system /data/fota
 
-    #Create directory for hostapd
-    mkdir /data/hostapd 0770 system wifi
-
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
@@ -816,13 +813,6 @@ on property:sys.boot_completed=1
     write /sys/class/touch_screen/control manual
     write /sys/class/touch_screen/enabled true
     write /sys/class/touch_screen/control auto
-
-service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
-    class late_start
-    user root
-    group root
-    oneshot
-    disabled
 
 on property:persist.radio.multisim.config=dsds
     stop ril-daemon
