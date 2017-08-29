@@ -18,5 +18,6 @@ PRODUCT_PACKAGES += \
 	init.qcom.rc \
 	init.qcom.fm.sh \
 	init.qcom.sh \
+	init.recovery.qcom.rc \
 	twrp.fstab \
 	ueventd.qcom.rc
