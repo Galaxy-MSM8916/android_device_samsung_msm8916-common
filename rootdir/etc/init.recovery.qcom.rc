@@ -1,0 +1,6 @@
+on boot
+# Enable Touch Devices
+    write /sys/class/touch_key/control manual
+    write /sys/class/touch_key/enabled true
+    write /sys/class/touch_screen/control manual
+    write /sys/class/touch_screen/enabled true
