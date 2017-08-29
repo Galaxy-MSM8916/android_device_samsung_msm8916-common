@@ -3,6 +3,7 @@ PRODUCT_PACKAGES += \
 	fstab.qcom \
 	init.carrier.rc \
 	init.class_main.sh \
+	init.qcom.mem.sh \
 	init.mdm.sh \
 	init.qcom.audio.sh \
 	init.qcom.bt.sh \

@@ -920,7 +920,12 @@ service charger /charger
     seclabel u:r:healthd:s0
 
 on class_start:late_start
+    start qcom-mem
     trigger enable-low-power
 
 on property:init.svc.recovery=running
     trigger enable-low-power
+
+service qcom-mem /system/bin/sh /system/etc/init.qcom.mem.sh
+    disabled
+    oneshot
