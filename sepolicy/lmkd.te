@@ -1,3 +1,0 @@
-#============= lkmd ==============
-allow lmkd devpts:chr_file { read write getattr };
-allow lmkd init:unix_stream_socket { read write listen };

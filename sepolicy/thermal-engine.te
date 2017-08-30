@@ -1,4 +1,0 @@
-#============= thermal-engine ==============
-
-allow thermal-engine self:capability chown;
-type_transition thermal-engine socket_device:sock_file thermal_socket;

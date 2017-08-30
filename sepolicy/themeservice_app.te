@@ -1,3 +1,0 @@
-#============= themeservice_app ==============
-
-allow themeservice_app network_management_service:service_manager { find };

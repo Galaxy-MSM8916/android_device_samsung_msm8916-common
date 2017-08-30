@@ -1,3 +1,0 @@
-#============= platform_app ==============
-allow platform_app battery_service:service_manager find;
-allow platform_app healthd_service:service_manager find;

@@ -1,2 +1,0 @@
-#============= rfs_access ==============
-allow rfs_access devpts:chr_file { read write getattr };
