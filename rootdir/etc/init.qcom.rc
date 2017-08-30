@@ -891,12 +891,6 @@ on property:sys.usb_uicc.enabled=1
 on property:sys.usb_uicc.enabled=0
     start usb_uicc_enable
 
-service hcidump /system/bin/sh /system/etc/hcidump.sh
-    user bluetooth
-    group bluetooth system net_bt_admin net_admin
-    disabled
-    oneshot
-
 service ssr_diag /system/bin/ssr_diag
     class late_start
     user system
@@ -918,6 +912,13 @@ service charger /charger
     class charger
     group log
     seclabel u:r:healthd:s0
+
+on class_start:late_start
+    trigger enable-low-power
+
+on property:init.svc.recovery=running
+    trigger enable-low-power
+ seclabel u:r:healthd:s0
 
 on class_start:late_start
     trigger enable-low-power

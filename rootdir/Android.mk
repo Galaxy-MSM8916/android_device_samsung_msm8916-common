@@ -151,16 +151,6 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT)/etc/
 include $(BUILD_PREBUILT)
 
 ######################
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := hcidump.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/hcidump.sh
-LOCAL_MODULE_PATH  := $(TARGET_OUT)/etc/
-include $(BUILD_PREBUILT)
-
-######################
 ### init.qcom.bt.sh
 include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.bt.sh
@@ -193,6 +183,13 @@ include $(BUILD_PREBUILT)
 ######################
 ### twrp.fstab
 include $(CLEAR_VARS)
+LOCAL_MODULE       := twrp.fstab
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := ../recovery/$(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_RECOVERY_ROOT_OUT)/etc
+include $(BUILD_PREBUILT)
+nclude $(CLEAR_VARS)
 LOCAL_MODULE       := twrp.fstab
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
