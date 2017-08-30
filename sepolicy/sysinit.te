@@ -1,9 +1,0 @@
-#============= sysinit ==============
-
-allow sysinit dalvikcache_data_file:dir read;
-allow sysinit fm_prop:property_service { set };
-allow sysinit nfc_data_file:dir { getattr setattr };
-allow sysinit nfc_device:chr_file { getattr setattr };
-allow sysinit sysinit:capability { chown fowner fsetid };
-allow sysinit sysinit:capability { sys_module };
-allow sysinit system_data_file:dir write;

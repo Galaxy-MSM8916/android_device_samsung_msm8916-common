@@ -1,3 +1,0 @@
-#====================audiod==========================
-allow audiod snd_data_file:dir { add_name open search write };
-allow audiod snd_data_file:file {  getattr open read write create_file_perms };
