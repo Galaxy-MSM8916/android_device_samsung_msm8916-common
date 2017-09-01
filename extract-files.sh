@@ -35,7 +35,7 @@ VENDOR=samsung
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-CM_ROOT="$MY_DIR"/../../..
+LINEAGE_ROOT="$MY_DIR"/../../..
 DEVICE_DIR="$MY_DIR"/../$DEVICE
 DEVICE_COMMON_DIR="$MY_DIR"/../$DEVICE_COMMON
 
@@ -52,7 +52,7 @@ if [ -z "$SETUP_DEVICE_COMMON_DIR" ]; then
     SETUP_DEVICE_COMMON_DIR=0
 fi
 
-HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -95,19 +95,19 @@ fi
 
 if  [ "$SETUP_BOARD_COMMON_DIR" -eq 1 ]; then
     # Initialize the helper for common
-    setup_vendor "$BOARD_COMMON" "$VENDOR" "$CM_ROOT" true $clean_vendor
+    setup_vendor "$BOARD_COMMON" "$VENDOR" "$LINEAGE_ROOT" true $clean_vendor
     extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 fi
 
 if [ "$SETUP_DEVICE_COMMON_DIR" -eq 1 ] && [ -s $DEVICE_COMMON_DIR/proprietary-files.txt ]; then
     # Reinitialize the helper for device-common
-    setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true $clean_vendor
+    setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true $clean_vendor
     extract $DEVICE_COMMON_DIR/proprietary-files.txt "$SRC" "$SECTION"
 fi
 
 if [ "$SETUP_DEVICE_DIR" -eq 1 ] && [ -s $DEVICE_DIR/proprietary-files.txt ]; then
     # Reinitialize the helper for device
-    setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" false $clean_vendor
+    setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false $clean_vendor
     extract $DEVICE_DIR/proprietary-files.txt "$SRC" "$SECTION"
 fi
 
