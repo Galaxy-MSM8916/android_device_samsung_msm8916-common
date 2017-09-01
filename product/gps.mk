@@ -7,7 +7,8 @@ PRODUCT_COPY_FILES += \
 
 # GPS HAL
 PRODUCT_PACKAGES += \
-	gps.msm8916
+	gps.msm8916 \
+	libshims_get_process_name
 
 # Permissions
 PRODUCT_COPY_FILES += \
