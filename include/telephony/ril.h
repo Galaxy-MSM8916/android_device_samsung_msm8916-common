@@ -560,6 +560,9 @@ typedef struct {
     int errorCode;    /* See 3GPP 27.005, 3.2.5 for GSM/UMTS,
                          3GPP2 N.S0005 (IS-41C) Table 171 for CDMA,
                          -1 if unknown or not applicable*/
+#ifdef RIL_FIX_SMS_NOT_SENT_ERR
+    int vendor_data;  /* unknown value returned by T805 modem */
+#endif /* RIL_FIX_SMS_NOT_SENT_ERR */
 } RIL_SMS_Response;
 
 /** Used by RIL_REQUEST_WRITE_SMS_TO_SIM */
