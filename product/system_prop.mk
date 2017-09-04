@@ -31,6 +31,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=0
 
 PRODUCT_PROPERTY_OVERRIDES += \
+	camera.disable_treble=true \
 	camera2.portability.force_api=0
 
 # Connectivity Engine
