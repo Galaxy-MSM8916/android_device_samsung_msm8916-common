@@ -115,25 +115,6 @@ void wifi_properties()
 	property_set("ro.radio.noril", "1");
 }
 
-
-void set_target_properties(const char *bootloader, const char *device, const char *model,
-		int network_type, const char *operator_alpha, const char *operator_numeric)
-{
-	/* call set_target_properties with device specified twice for compatibility */
-	set_target_properties(NULL, bootloader, device, device, model,
-			network_type, operator_alpha, operator_numeric, NULL);
-}
-
-void set_target_properties(const char *bootloader, const char *name, const char *device,
-		const char *model, int network_type, const char *operator_alpha,
-		const char *operator_numeric)
-{
-	/* call set_target_properties with device specified twice for compatibility */
-	set_target_properties(NULL, bootloader, name, device, model,
-			network_type, operator_alpha, operator_numeric, NULL);
-}
-
-
 void set_target_properties(const char *ro_build_id, const char *bootloader_str, const char *name,
 		const char *device, const char *model, int network_type, const char *operator_alpha,
 		const char *operator_numeric, const char *ver_release)
