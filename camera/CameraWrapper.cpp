@@ -32,7 +32,6 @@
 #include <hardware/camera.h>
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
-#include <camera/CameraParametersExtra.h>
 
 static const char PIXEL_FORMAT_YUV420SP_NV21E[] = "yuv420sp-nv21e";
 
