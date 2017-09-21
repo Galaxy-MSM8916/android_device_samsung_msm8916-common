@@ -26,3 +26,7 @@ TARGET_SYSTEM_PROP := $(PLATFORM_PATH)/system.prop
 
 # Include board config fragments
 include $(PLATFORM_PATH)/board/*.mk
+
+#TWRP
+TW_INCLUDE_NTFS_3G := true
+
