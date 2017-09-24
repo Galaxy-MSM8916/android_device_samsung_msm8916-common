@@ -430,6 +430,14 @@ typedef struct {
     char            als;        /* ALS line indicator if available
                                    (0 = line 1) */
     char            isVoice;    /* nonzero if this is is a voice call */
+#ifdef NEEDS_VIDEO_CALL_FIELD
+    char            isVideo;
+#endif
+#ifdef SAMSUNG_NEXT_GEN_MODEM
+    int             callType;
+    int             callDomain;
+    char            csv;
+#endif
     char            isVoicePrivacy;     /* nonzero if CDMA voice privacy mode is active */
     char *          number;     /* Remote party number */
     int             numberPresentation; /* 0=Allowed, 1=Restricted, 2=Not Specified/Unknown 3=Payphone */
@@ -612,6 +620,11 @@ typedef struct {
              * clir == 1 on "CLIR invocation" (restrict CLI presentation)
              * clir == 2 on "CLIR suppression" (allow CLI presentation)
              */
+#ifdef SAMSUNG_NEXT_GEN_MODEM
+    int             callType;
+    int             callDomain;
+    char            csv;
+#endif
     RIL_UUS_Info *  uusInfo;    /* NULL or Pointer to User-User Signaling Information */
 } RIL_Dial;
 
