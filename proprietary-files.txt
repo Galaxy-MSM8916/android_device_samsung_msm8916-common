@@ -1,70 +1,70 @@
 # Samsung Package Version J500HXXU2BQC4_J500HOXE2BQC2_CAU (unless otherwise specified and/or tagged)
 
 # ADSP
-bin/adsprpcd
-vendor/lib/libadsprpc.so
+bin/adsprpcd|bed83f475400e8cae7a72982c5ae52b2
+vendor/lib/libadsprpc.so|8ab8fc2103783b0f5d83fb1e839fe5ec
 
 # Audio
-vendor/lib/libacdb-fts.so
-vendor/lib/libacdbloader.so
-vendor/lib/libacdbmapper.so
-vendor/lib/libacdbrtac.so
-vendor/lib/libadiertac.so
-vendor/lib/libaudcal.so
-vendor/lib/libaudioalsa.so
-vendor/lib/liblistensoundmodel2.so
--vendor/lib/libqct_resampler.so
-vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcreverb.so
-vendor/lib/soundfx/libqcvirt.so
+vendor/lib/libacdb-fts.so|0d66b84a49600fa2ec403ddf9fb90f03
+vendor/lib/libacdbloader.so|1a20a512310e53357772261544b0b917
+vendor/lib/libacdbmapper.so|c3dab58b6f0acbd4349d60648503a1ca
+vendor/lib/libacdbrtac.so|16367b2a05563befa36b57cc5a31f18a
+vendor/lib/libadiertac.so|243a2b006af0d1a5a082b871d042ddb1
+vendor/lib/libaudcal.so|9abfb999f4f87b26639bdefd42c25791
+vendor/lib/libaudioalsa.so|50efeb7c0a852ccc0531f4528ab16ed2
+vendor/lib/liblistensoundmodel2.so|126be52cd497e03692cb9b44b9628ee1
+-vendor/lib/libqct_resampler.so|8cda7ed8f6776a84cb7501a2b8d8e0c0
+vendor/lib/soundfx/libqcbassboost.so|786d541927540528be5ba26754044b87
+vendor/lib/soundfx/libqcreverb.so|d786718449d16791f0bf2da3eadba46d
+vendor/lib/soundfx/libqcvirt.so|d72f97eedbfd84c995d0abc9bea4aeeb
 
 # Bluetooth
-bin/btnvtool
-bin/hci_qcomm_init
-vendor/lib/libbtnv.so
+bin/btnvtool|2c7c2db1e0207b4df0092cebcb3f3e2b
+bin/hci_qcomm_init|208c146c10393460af5c5e153b13d08b
+vendor/lib/libbtnv.so|2659c64ce32a5c90aff8caa877f066cd
 
 # Camera
-bin/mm-qcamera-daemon
+bin/mm-qcamera-daemon|db9c86e0132f9fa0973a4fdb505359b8
 cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
-lib/libexifa.so
-lib/libjpega.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
-lib/libqomx_core.so
-vendor/lib/libjpegdhw.so
-vendor/lib/libjpegehw.so
+lib/libexifa.so|724b3eecd7489128170bc1fef4337d00
+lib/libjpega.so|1611142b376f27c4b780c0a6de238d49
+lib/libmmcamera_interface.so|e22534155ef5753eafd726ce7a6a1089
+lib/libmmjpeg_interface.so|5db7baabcc753d77ba37f3339fe5869e
+lib/libqomx_core.so|37a4d76a76ffa6d4e290788a322ac143
+vendor/lib/libjpegdhw.so|8f719ffb4a0d41c118f2a57e7e82c4dd
+vendor/lib/libjpegehw.so|4960e789fab9c65df72e5f9a4085491b
 
 # Camera - wf-crackling-7.1-TOS093F-a29b96e3d6
 vendor/lib/libmmcamera_faceproc.so|8e6a95d0dd0d282f96cc905c11c1a738
 
 # DRM
 bin/qcom-system-daemon
-bin/qseecomd
+bin/qseecomd|8c5811cd1c2547acf5ced0a5bd826df4
 lib/libdrmdecrypt.so
-lib/libhdcp2.so
-vendor/lib/libmmQSM.so
-vendor/lib/libmmrtpdecoder.so
-vendor/lib/libQSEEComAPI.so
-vendor/lib/librpmb.so
-vendor/lib/libssd.so
-vendor/lib/liboemcrypto.so
+lib/libhdcp2.so|9a7f9028b141447a695dd92d5741745c
+vendor/lib/libmmQSM.so|517afc8963c399df7db22aada2ed802b
+vendor/lib/libmmrtpdecoder.so|b12e1a30b19722a5f0e7a2ebf88995cb
+vendor/lib/libQSEEComAPI.so|2eae38d8cd0aa043b0216eab6349cea6
+vendor/lib/librpmb.so|fcb41a785d30353abff5c3d3807d59fb
+vendor/lib/libssd.so|d233e632ad604cb942a5f41b61cf29f2
+vendor/lib/liboemcrypto.so|70e02b3c5a055c2276a1926e7a226b49
 vendor/lib/drm/libdrmprplugin.so
-vendor/lib/libdrmfs.so
-vendor/lib/libdrmtime.so
-vendor/lib/libprdrmdecrypt.so
-vendor/lib/libtzdrmgenprov.so
-vendor/lib/libtzplayready.so
+vendor/lib/libdrmfs.so|723d70c7e021a9f83f38d9ae938dff42
+vendor/lib/libdrmtime.so|0e384f202129bdb135e77623ffd48b8c
+vendor/lib/libprdrmdecrypt.so|425d92ddf88598cc82c4b7afa05a632d
+vendor/lib/libtzdrmgenprov.so|389f6e5f3d814d9b9e38b2d81ea80be8
+vendor/lib/libtzplayready.so|2be6432ca02d16ee6a6bc669d3ce895e
 vendor/lib/mediadrm/libprmediadrmdecrypt.so
 vendor/lib/mediadrm/libprmediadrmplugin.so
 
 # FM
-bin/fmconfig
-bin/fm_qsoc_patches
+bin/fmconfig|0ed52cad1caa308d0536a45f23a17532
+bin/fm_qsoc_patches|2fe7d92bf7621ac013348e0561237019
 
 # GPS - From Crackling
 bin/loc_launcher
@@ -91,7 +91,7 @@ vendor/lib/egl/libRBEGL_adreno.so|f2fc963450474859aa7c7ccf6fac92b6
 vendor/lib/egl/libRBGLESv1_CM_adreno.so|5719e42981a1acc1df1a8878312bdca5
 vendor/lib/egl/libRBGLESv2_adreno.so|4d831f9d61222398f09eb15d4f4e7395
 vendor/lib/libadreno_utils.so|b74a626858dd1b3411e8199694bd5da8
-vendor/lib/libbccQTI.so
+vendor/lib/libbccQTI.so|438ef3828317f645d47ec88277b8e6aa
 vendor/lib/libC2D2.so|9ce02ff41421ec64d26b571c479fe6ca
 vendor/lib/libc2d30-a3xx.so|91c8e82b10afda25a727ffc94dad5bc5
 vendor/lib/libc2d30-a4xx.so|5fb624bd78b3ac8bacd2a9f1226db103
@@ -111,62 +111,62 @@ vendor/lib/libscale.so|811e35d84497eeafd66952fba530c8b8
 etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
 etc/firmware/a420_pfp.fw
-etc/firmware/a420_pm4.fw
+etc/firmware/a420_pm4.fw|4dac702e4f5c341e84347b57254a4ce8
 etc/firmware/ice40.bin
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
 
 # Media
-etc/somxreg.conf
-lib/libOmxVdecHevc.so
-lib/libplayready_v2.5.so
-lib/libsomx263dsw.so
-lib/libsomx264dsw.so
-lib/libsomxaacd.so
-lib/libsomxaace.so
-lib/libsomxadpcmd.so
-lib/libsomxamrd.so
-lib/libsomxcmn.so
-lib/libsomxcore.so
-lib/libsomxflacd.so
-lib/libsomxhevcdsw.so
-lib/libsomxmp3d.so
-lib/libsomxmp4vdsw.so
-lib/libsomxnaace.so
-lib/libsomxvp8d.so
+etc/somxreg.conf|186be24adedf6b87fee26fd1897392a8
+lib/libOmxVdecHevc.so|d7ca9090d51279b485081e0daeee0276
+lib/libplayready_v2.5.so|514dc7fd0b53c152124d787153059c14
+lib/libsomx263dsw.so|208ce7f94ad3f4876d27357a75176d24
+lib/libsomx264dsw.so|5ed41e14b94f1ba31d2c65e72623c1f4
+lib/libsomxaacd.so|dcaa14d71e2dba3e892920d86617eb3e
+lib/libsomxaace.so|a0de904a50958e2016ddc6135d35a2ef
+lib/libsomxadpcmd.so|c97179f482a63b62dc08cb1accb54883
+lib/libsomxamrd.so|992732a00e4ce38dd36a51f343f81ad2
+lib/libsomxcmn.so|ac953364376bc31770edc036528fa4cd
+lib/libsomxcore.so|c76abe821a5690e5ddddc09639c66476
+lib/libsomxflacd.so|71349ec67e70b816703dd86cf88b3769
+lib/libsomxhevcdsw.so|19a296badb3902e6f3af8ccd5b1b60d6
+lib/libsomxmp3d.so|369a28c826375e9f1158f07866baed59
+lib/libsomxmp4vdsw.so|df39ca00d743ab99e3c1188f87b881b6
+lib/libsomxnaace.so|a5bf8d6a3a2d81936e495a0022a2f812
+lib/libsomxvp8d.so|9e0da5c0f88576ae3b401c32bfddc59d
 vendor/lib/libhwdaphal.so
-vendor/lib/libExtendedExtractor.so
-vendor/lib/libFlacSwDec.so
--vendor/lib/libHevcSwDecoder.so
-vendor/lib/libI420colorconvert.so
+vendor/lib/libExtendedExtractor.so|7e0c87ec8ddb305418d0b0548a7ce071
+vendor/lib/libFlacSwDec.so|35b2bee8165fffa901077e2c64944cef
+-vendor/lib/libHevcSwDecoder.so|d6a6412633a7f89f800f195a02c9abf9
+vendor/lib/libI420colorconvert.so|6f0a8193ee87992f0c7616b7c892321e
 vendor/lib/libmm-abl-oem.so
-vendor/lib/libmm-color-convertor.so
-vendor/lib/libmm-disp-apis.so
-vendor/lib/libmm-hdcpmgr.so
-vendor/lib/libmmparser.so
-vendor/lib/libmm-qdcm.so
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libqomx_jpegdec.so
-vendor/lib/libsd_sdk_display.so
+vendor/lib/libmm-color-convertor.so|77a5c2f1e6c36d9487fe70c6d5d8a356
+vendor/lib/libmm-disp-apis.so|6895758cc167e9eca2619a1eda75aaba
+vendor/lib/libmm-hdcpmgr.so|445875f2c16ac3fd27f63495195e58a3
+vendor/lib/libmmparser.so|1a507814aee657ebd29ac9be3440c174
+vendor/lib/libmm-qdcm.so|11cebbfefc3e638359db6e7435f5653f
+vendor/lib/libOmxAacDec.so|28afdc40ed045b7e211baf4b5c195c74
+vendor/lib/libOmxEvrcDec.so|818a48ed53ca760a27c3baee47e4e4b1
+vendor/lib/libOmxQcelp13Dec.so|ac449543b2f15b734d47e7bbc0445f75
+vendor/lib/libqomx_jpegdec.so|6bf2c8fa7003c89a320b9b71bed4b19e
+vendor/lib/libsd_sdk_display.so|b15d24ed004416f49333f3315db4beda
 vendor/media/LMspeed_508.emd
 vendor/media/PFFprec_600.emd
 
 # Miscellaneous
-bin/ssr_diag
-bin/ssr_setup
+bin/ssr_diag|a8f210a92cda4a17f25a967c3f9e3d60
+bin/ssr_setup|bae15242f359a5a0cc7b112249c8b7b1
 bin/wdsdaemon
-bin/subsystem_ramdump
-lib/libedmnativehelper.so
-vendor/lib/libfastcvopt.so
-vendor/lib/libscve_mv.so
-vendor/lib/libscve.so
+bin/subsystem_ramdump|0cc4ba0724f9366dade9060ddf9f0a5a
+lib/libedmnativehelper.so|11b2b6097750bee128dffeea7e0b7700
+vendor/lib/libfastcvopt.so|31faa0912cdbb919c5503b819313ed92
+vendor/lib/libscve_mv.so|2213dd1c9d03694a348e14f254a04c20
+vendor/lib/libscve.so|9a36189aaaea076b3c078cc5f5510e7c
 
 # Perf
-vendor/bin/perfd:bin/perfd
-vendor/lib/libqti-at.so
-vendor/lib/libqti-perfd-client.so
+vendor/bin/perfd:bin/perfd|d3b5a1bfee825f5389f7ee80e88c906b
+vendor/lib/libqti-at.so|ea16c1147750509efb88738e55376bfa
+vendor/lib/libqti-perfd-client.so|34d6e5e237c168788d0827cf6128414c
 
 # Post-processing
 vendor/lib/libmm-als.so
@@ -174,55 +174,54 @@ vendor/lib/libmm-abl.so
 vendor/lib/libdisp-aba.so
 
 # Radio
-bin/diag_mdlog
-bin/diag_uart_log
-bin/netmgrd
+bin/diag_mdlog|a6b01f0e5ac2a51f305cf481d9322034
+bin/diag_uart_log|58a3170ffb14f35b44c696beb8729560
+bin/netmgrd|c019be7a6f1f541ec44f7470ee685c99
 bin/ftm_ptt
-bin/ptt_socket_app
-bin/port-bridge
+bin/ptt_socket_app|335c4125eff9d235a473f88bd7d7cbf9
+bin/port-bridge|1556d380b4ef15d34c119250505c5974
 bin/qmuxd
-bin/radish
-bin/rmt_storage
-bin/wlandutservice
-etc/plmn_delta.bin
-etc/plmn_se13.bin
+bin/radish|e6bdfac573aaf56c780027f145262f2e
+bin/rmt_storage|c57680ee0b0caa470309b5013134a4e0
+bin/wlandutservice|2158bcdfb910ea14a4dc8d49d0095877
+etc/plmn_delta.bin|a7f14f144ae27afdda8f4f98472b23ad
+etc/plmn_se13.bin|163a70656da2d77a2c3291145437e8cc
 etc/srm.bin
-lib/libatparser.so
+lib/libatparser.so|b0831514b819a98ee15a4cf2ce49270b
 lib/libcordon.so
-lib/libfactoryutil.so
-lib/libomission_avoidance.so
-vendor/lib/libconfigdb.so
-vendor/lib/libmdmdetect.so
-vendor/lib/libnetmgr.so
-vendor/lib/libperipheral_client.so
-vendor/lib/libsubsystem_control.so
-vendor/lib/libSubSystemShutdown.so
-vendor/lib/libxml.so
+lib/libfactoryutil.so|ca792c7b469d87af236441cc9f435783
+lib/libomission_avoidance.so|a2f8c2d396b393627685131b06b21133
+vendor/lib/libconfigdb.so|9f10d84c51498a5424943b6ca5720dc7
+vendor/lib/libmdmdetect.so|c2f8bd258a81d33e96fa691e5a182d6c
+vendor/lib/libnetmgr.so|3dd35b888e0fe38faaa7bbe1ecb50d1f
+vendor/lib/libperipheral_client.so|ac26efab93d5e9eb1ba5119f7c2b9db8
+vendor/lib/libsubsystem_control.so|fe9d2379c48ee7a84ce468ed2b583ff3
+vendor/lib/libSubSystemShutdown.so|57de5f8210ff50258e48f07ddce04e2e
+vendor/lib/libxml.so|2f889bd92301c022acb7a856e63f3d1f
 
 # RIL
 lib/libaudio-ril.so
-lib/libsecril-client.so
-vendor/lib/libril-qcril-hook-oem.so
+lib/libsecril-client.so|479c1cb7ae0bcd3850468f8bdb0d9d03
+vendor/lib/libril-qcril-hook-oem.so|5c1122b9ef55e9d786edb80e71265f9a
 
 # Samsung libs
-lib/libsecnativefeature.so
+lib/libsecnativefeature.so|26d8a5a0baac74080aabf8233885e801
 lib/libseckeyprov.so
 
 # Security
-bin/irsc_util
-lib/libgdmcprov.so
-lib/libMcClient.so
+bin/irsc_util|15310f39c35a114d268bcb94e226062b
+lib/libgdmcprov.so|a17418b6d32cfe57cb07ca7a93180834
 
 # Thermal
-vendor/bin/thermal-engine:bin/thermal-engine
-vendor/lib/libthermalclient.so
-vendor/lib/libthermalioctl.so
+vendor/bin/thermal-engine:bin/thermal-engine|e25605abb553eddc0dbacdac9815acce
+vendor/lib/libthermalclient.so|bd157cc506e7873c440ee196fc7ec675
+vendor/lib/libthermalioctl.so|adcdbc716498ec8dca2de81f21736151
 
 # Time services
--app/TimeService/TimeService.apk
-bin/time_daemon
-vendor/lib/libTimeService.so
--vendor/lib/libtime_genoff.so
+-app/TimeService/TimeService.apk|69ec09aef7fc957b8e770ad2dc4b89ed
+bin/time_daemon|732aa7e10531b5265be8693ace0c4cfb
+vendor/lib/libTimeService.so|8827a1a0e9affaffd377fa77fb3f1fc8
+-vendor/lib/libtime_genoff.so|224f5e44d9198a7d6709b83f5afcade8
 
 # Widevine - bullhead
 vendor/lib/drm/libdrmwvmplugin.so|6cfb61cd247076409a3a4e3f6ddecf24
