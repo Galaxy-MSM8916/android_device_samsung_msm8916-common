@@ -1,4 +1,4 @@
-# Samsung Package Version J500HXXU2BQC4_J500HOXE2BQC2_CAU (unless otherwise specified and/or tagged)
+# Samsung Package Version J510FNXXU2BQJ8_J510FNOXY2BQJ8 (unless otherwise specified and/or tagged)
 
 # ADSP
 bin/adsprpcd
@@ -211,7 +211,6 @@ lib/libseckeyprov.so
 # Security
 bin/irsc_util
 lib/libgdmcprov.so
-lib/libMcClient.so
 
 # Thermal
 vendor/bin/thermal-engine:bin/thermal-engine
