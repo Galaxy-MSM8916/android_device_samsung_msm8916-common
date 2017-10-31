@@ -1,0 +1,2 @@
+allow qti_init_shell radio_data_file:lnk_file { getattr read unlink create setattr };
+allow qti_init_shell device:dir { getattr read unlink create setattr };
