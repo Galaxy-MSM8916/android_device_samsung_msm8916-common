@@ -8,6 +8,9 @@ LOCAL_C_INCLUDES := \
 LOCAL_SRC_FILES := \
     CameraWrapper.cpp
 
+LOCAL_HEADER_LIBRARIES += \
+    libnativebase_headers
+
 LOCAL_STATIC_LIBRARIES := libbase libarect
 LOCAL_SHARED_LIBRARIES := \
     libhardware liblog libcamera_client libutils libdl \
