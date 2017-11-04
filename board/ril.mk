@@ -1,3 +1,4 @@
 # Custom RIL class
 BOARD_RIL_CLASS    := ../../../$(PLATFORM_PATH)/ril
-BOARD_PROVIDES_LIBRIL := true
+TARGET_RIL_VARIANT := caf
+BOARD_PROVIDES_LIBRIL := false
