@@ -32,6 +32,9 @@ TW_TARGET_USES_QCOM_BSP := false
 TW_THEME := portrait_hdpi
 TW_INCLUDE_NTFS_3G := true
 
+# Oreo
+TW_NO_LEGACY_PROPS := true
+
 TARGET_RECOVERY_FSTAB := device/samsung/msm8916-common/recovery/recovery.fstab
 
 ifeq ($(RECOVERY_VARIANT),twrp)
