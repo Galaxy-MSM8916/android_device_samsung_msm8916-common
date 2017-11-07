@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PLATFORM_PATH := device/samsung/msm8916-common
-
 # Includes
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
