@@ -38,6 +38,11 @@ import com.android.internal.telephony.uicc.IccUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import android.hardware.radio.V1_0.IRadio;
+import android.hardware.radio.V1_0.Dial;
+import android.hardware.radio.V1_0.UusInfo;
+import android.os.RemoteException;
+
 /**
  * RIL customization for MSM8916 devices
  *
@@ -59,9 +64,9 @@ public class SamsungQcomRIL extends RIL {
     public SamsungQcomRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
-        mQANElements = 6;
+        //mQANElements = 6;
 
-        Rlog.d(RILJ_LOG_TAG, "Setting mAudioManager..");
+        Rlog.e(RILJ_LOG_TAG, "Setting mAudioManager..");
         mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
@@ -88,11 +93,11 @@ public class SamsungQcomRIL extends RIL {
      */
     private void toggleSpeaker() {
         if (mAudioManager.isSpeakerphoneOn()) {
-            Rlog.d(RILJ_LOG_TAG, "Speaker is on. Setting to: off");
+            Rlog.e(RILJ_LOG_TAG, "Speaker is on. Setting to: off");
             mAudioManager.setSpeakerphoneOn(false);
         }
         else {
-            Rlog.d(RILJ_LOG_TAG, "Speaker is off. Setting to: on");
+            Rlog.e(RILJ_LOG_TAG, "Speaker is off. Setting to: on");
             mAudioManager.setSpeakerphoneOn(true);
         }
     }
@@ -102,14 +107,14 @@ public class SamsungQcomRIL extends RIL {
      */
     private void setRealCall(boolean value) {
         if (value) {
-            Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: on");
+            Rlog.e(RILJ_LOG_TAG, "Setting realcall param to: on");
             mAudioManager.setParameters("realcall=on");
 	    /* toggle speaker twice */
             toggleSpeaker();
             toggleSpeaker();
         }
         else {
-            Rlog.d(RILJ_LOG_TAG, "Setting realcall param to: off");
+            Rlog.e(RILJ_LOG_TAG, "Setting realcall param to: off");
             mAudioManager.setParameters("realcall=off");
         }
     }
@@ -117,7 +122,7 @@ public class SamsungQcomRIL extends RIL {
     @Override
     public void
     dial(String address, int clirMode, UUSInfo uusInfo, Message result) {
-
+	IRadio radioProxy = getRadioProxy(result);
         setRealCall(true);
 
         if (PhoneNumberUtils.isEmergencyNumber(address)) {
@@ -125,43 +130,37 @@ public class SamsungQcomRIL extends RIL {
             return;
         }
 
-        RILRequest rr = RILRequest.obtain(RIL_REQUEST_DIAL, result);
+        if (radioProxy != null) {
+            RILRequest rr = obtainRequest(RIL_REQUEST_DIAL, result,
+                    mRILDefaultWorkSource);
 
-        rr.mParcel.writeString(address);
-        rr.mParcel.writeInt(clirMode);
-        rr.mParcel.writeInt(0);     // CallDetails.call_type
-        rr.mParcel.writeInt(1);     // CallDetails.call_domain
-        rr.mParcel.writeString(""); // CallDetails.getCsvFromExtras
+            Dial dialInfo = new Dial();
+            dialInfo.address = convertNullToEmptyString(address);
+            dialInfo.clir = clirMode;
+            if (uusInfo != null) {
+                UusInfo info = new UusInfo();
+                info.uusType = uusInfo.getType();
+                info.uusDcs = uusInfo.getDcs();
+                info.uusData = new String(uusInfo.getUserData());
+                dialInfo.uusInfo.add(info);
+            }
 
-        if (uusInfo == null) {
-            rr.mParcel.writeInt(0); // UUS information is absent
-        } else {
-            rr.mParcel.writeInt(1); // UUS information is present
-            rr.mParcel.writeInt(uusInfo.getType());
-            rr.mParcel.writeInt(uusInfo.getDcs());
-            rr.mParcel.writeByteArray(uusInfo.getUserData());
+            if (RILJ_LOGD) {
+                // Do not log function arg for privacy
+                riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+            }
+
+            try {
+                radioProxy.dial(rr.mSerial, dialInfo);
+            } catch (RemoteException | RuntimeException e) {
+                handleRadioProxyExceptionForRR(rr, "dial", e);
+            }
         }
-
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-
-        send(rr);
     }
 
     private void
     dialEmergencyCall(String address, int clirMode, Message result) {
-        RILRequest rr;
-
-        rr = RILRequest.obtain(RIL_REQUEST_DIAL_EMERGENCY_CALL, result);
-        rr.mParcel.writeString(address);
-        rr.mParcel.writeInt(clirMode);
-        rr.mParcel.writeInt(0);        // CallDetails.call_type
-        rr.mParcel.writeInt(3);        // CallDetails.call_domain
-        rr.mParcel.writeString("");    // CallDetails.getCsvFromExtra
-        rr.mParcel.writeInt(0);        // Unknown
-
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
-
-        send(rr);
+        if (RILJ_LOGD) riljLog("dialEmergencyCall not supported");
     }
 
 
@@ -195,9 +194,9 @@ public class SamsungQcomRIL extends RIL {
             setRealCall(false);
     }
 
-    @Override
+  /*  @Override
     protected Object
-    responseIccCardStatus(Parcel p) {
+    responseIccCardStatus(Parcel p) {//getIccCardStatus
         IccCardApplicationStatus appStatus;
 
         IccCardStatus cardStatus = new IccCardStatus();
@@ -266,9 +265,24 @@ public class SamsungQcomRIL extends RIL {
             cardStatus.mApplications[cardStatus.mImsSubscriptionAppIndex] = appStatus3;
         }
         return cardStatus;
-    }
-
+    }*/
     @Override
+    public void getCurrentCalls(Message result) {
+        IRadio radioProxy = getRadioProxy(result);
+        if (radioProxy != null) {
+            RILRequest rr = obtainRequest(RIL_REQUEST_GET_CURRENT_CALLS, result,
+                    mRILDefaultWorkSource);
+
+                riljLog(rr.serialString() + ">DAN> " + requestToString(rr.mRequest));
+
+            try {
+                radioProxy.getCurrentCalls(rr.mSerial);
+            } catch (RemoteException | RuntimeException e) {
+                handleRadioProxyExceptionForRR(rr, "getCurrentCalls", e);
+            }
+        }
+    }
+   /* @Override
     protected Object
     responseCallList(Parcel p) {
         int num;
@@ -347,10 +361,10 @@ public class SamsungQcomRIL extends RIL {
         }
 
         return response;
-    }
+    }*/
 
-    @Override
-    protected Object responseSignalStrength(Parcel p) {
+  /*  @Override
+    protected Object responseSignalStrength(Parcel p) {getSignalStrength
         int numInts = 12;
         int response[];
 
@@ -380,7 +394,7 @@ public class SamsungQcomRIL extends RIL {
 				  response[10],
 				  response[11],
 				  true);
-    }
+    }*/
 
     @Override
     protected void notifyRegistrantsCdmaInfoRec(CdmaInformationRecords infoRec) {
@@ -407,8 +421,8 @@ public class SamsungQcomRIL extends RIL {
         mIsGsm = (phoneType != RILConstants.CDMA_PHONE);
     }
 
-    @Override
-    protected void
+    /*@Override
+    protected void sendAck
     processUnsolicited (Parcel p, int type) {
         Object ret;
         int dataPosition = p.dataPosition();
@@ -429,24 +443,32 @@ public class SamsungQcomRIL extends RIL {
         }
         p.setDataPosition(dataPosition);
         super.processUnsolicited(p, type);
-    }
+    }*/
 
     @Override
     public void
     acceptCall (Message result) {
         setRealCall(true);
-        RILRequest rr
-                = RILRequest.obtain(RIL_REQUEST_ANSWER, result);
 
-        rr.mParcel.writeInt(1);
-        rr.mParcel.writeInt(0);
+	IRadio radioProxy = getRadioProxy(result);
+        if (radioProxy != null) {
+            RILRequest rr = obtainRequest(RIL_REQUEST_ANSWER, result,
+                    mRILDefaultWorkSource);
 
-        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+            if (RILJ_LOGD) {
+                riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+            }
 
-        send(rr);
+            try {
+                radioProxy.acceptCall(rr.mSerial);//1
+                mMetrics.writeRilAnswer(mPhoneId, rr.mSerial);//0
+            } catch (RemoteException | RuntimeException e) {
+                handleRadioProxyExceptionForRR(rr, "acceptCall", e);
+           }
+        }
     }
 
-    @Override
+  /*  @Override
     protected RILRequest
     processSolicited (Parcel p, int type) {
         int serial, error;
@@ -455,13 +477,11 @@ public class SamsungQcomRIL extends RIL {
         serial = p.readInt();
         error = p.readInt();
         RILRequest rr = null;
-        /* Pre-process the reply before popping it */
         synchronized (mRequestList) {
             RILRequest tr = mRequestList.get(serial);
             if (tr != null && tr.mSerial == serial) {
                 if (error == 0 || p.dataAvail() > 0) {
                     try {switch (tr.mRequest) {
-                            /* Get those we're interested in */
                         case RIL_REQUEST_DATA_REGISTRATION_STATE:
                             rr = tr;
                             break;
@@ -477,7 +497,6 @@ public class SamsungQcomRIL extends RIL {
             }
         }
         if (rr == null) {
-            /* Nothing we care about, go up */
             p.setDataPosition(dataPosition);
             // Forward responses that we are not overriding to the super class
             return super.processSolicited(p, type);
@@ -507,17 +526,13 @@ public class SamsungQcomRIL extends RIL {
     private Object
     responseDataRegistrationState(Parcel p) {
         String response[] = (String[])responseStrings(p);
-        /* DANGER WILL ROBINSON
-         * In some cases from Vodaphone we are receiving a RAT of 102
-         * while in tunnels of the metro. Lets Assume that if we
-         * receive 102 we actually want a RAT of 2 for EDGE service */
         if (response.length > 4 &&
             response[0].equals("1") &&
             response[3].equals("102")) {
             response[3] = "2";
         }
         return response;
-    }
+    }*/
 
     protected Object
     responseFailCause(Parcel p) {
