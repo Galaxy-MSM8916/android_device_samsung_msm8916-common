@@ -95,6 +95,8 @@ void dsds_properties()
 	property_set("ro.telephony.ril.config", "simactivation");
 	property_set("persist.radio.multisim.config", "dsds");
 	property_set("rild.libpath2", "/system/lib/libsec-ril-dsds.so");
+        property_set("ro.ril.telephony.mqanelements", "6");
+
 }
 
 void gsm_properties()
