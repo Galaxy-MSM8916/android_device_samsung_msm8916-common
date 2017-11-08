@@ -157,6 +157,8 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 	property_override("ro.build.product", device);
 	property_override("ro.product.device", device);
 	property_override("ro.product.model", model);
+        property_set("ro.ril.telephony.mqanelements", "6");
+	property_set("ro.ril.telephony.nstrings", "7");
 
 	/* set the network properties */
 	if (network_type == CDMA_DEVICE) {
