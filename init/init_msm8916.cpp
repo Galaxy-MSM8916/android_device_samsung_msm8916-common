@@ -27,6 +27,8 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <android-base/properties.h>
+
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
@@ -95,6 +97,8 @@ void dsds_properties()
 	property_set("ro.telephony.ril.config", "simactivation");
 	property_set("persist.radio.multisim.config", "dsds");
 	property_set("rild.libpath2", "/system/lib/libsec-ril-dsds.so");
+        property_set("ro.ril.telephony.mqanelements", "6");
+
 }
 
 void gsm_properties()
