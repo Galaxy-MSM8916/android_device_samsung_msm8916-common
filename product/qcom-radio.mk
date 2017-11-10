@@ -42,4 +42,4 @@ PRODUCT_PACKAGES += \
 	sockev \
 	librmnetctl \
 	rmnetcli \
-        libsecril_shim
+        libshim_secril
