@@ -8,6 +8,7 @@ PRODUCT_COPY_FILES += \
 # GPS HAL
 PRODUCT_PACKAGES += \
 	gps.msm8916 \
+	libgps_shim \
 	android.hardware.gnss@1.0-impl
 
 # Permissions
