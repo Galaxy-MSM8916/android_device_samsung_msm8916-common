@@ -103,6 +103,10 @@ on boot
     chmod 0660 /dev/sec-nfc
     chown nfc nfc /dev/sec-nfc
 
+    # Wifi firmware reload path
+    chmod 0660 /sys/module/wlan/parameters/fwpath
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
     # For PN547 NFC
     chmod 0660 /dev/pn547
     chown nfc nfc /dev/pn547
@@ -664,10 +668,6 @@ on property:persist.debug.trace=1
     write /sys/bus/coresight/devices/coresight-etm2/enable 1
     write /sys/bus/coresight/devices/coresight-etm3/enable 1
     write /sys/module/coresight_event/parameters/event_abort_enable 1
-
-    # Wifi firmware reload path
-    chmod 0660 /sys/module/wlan/parameters/fwpath
-    chown wifi wifi /sys/module/wlan/parameters/fwpath
 
     # Mark wifi driver as unloaded - "ok" indicates loaded
     setprop wlan.driver.status not_ok
