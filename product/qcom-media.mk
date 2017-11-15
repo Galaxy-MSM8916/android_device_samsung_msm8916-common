@@ -1,12 +1,10 @@
 # Media configurations
 ifeq ($(filter j7ltespr j7ltechn,$(TARGET_DEVICE)),)
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml
 else
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/media/media_codecs_8929.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_performance_8929.xml:system/etc/media_codecs_performance.xml
+	$(LOCAL_PATH)/configs/media/media_codecs_8929.xml:system/etc/media_codecs.xml
 endif
 
 PRODUCT_COPY_FILES += \
