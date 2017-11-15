@@ -21,8 +21,6 @@ NEW_TELEPHONY_PREFS_DIR=/data/data/com.android.providers.telephony/shared_prefs/
 PATH_LEN=$(echo ${OLD_TELEPHONY_DB_DIR} | wc -c)
 PATH_LEN_PREFS=$(echo ${OLD_TELEPHONY_PREFS_DIR} | wc -c)
 
-RESTART_RIL=0
-
 logi "Starting Link RIL Databases"
 
 logi "Deleting directory..."
@@ -44,7 +42,6 @@ for prefs in `find ${OLD_TELEPHONY_PREFS_DIR} -type f | cut -c ${PATH_LEN_PREFS}
     if ! [ -e ${NEW_TELEPHONY_PREFS_DIR}/${prefs} ]; then
 	    logi "Linking ${NEW_TELEPHONY_PREFS_DIR}${prefs}..."
 	    ln -s ${OLD_TELEPHONY_PREFS_DIR}${prefs} ${NEW_TELEPHONY_PREFS_DIR}
-	    RESTART_RIL=1
     fi
 done
 
@@ -55,9 +52,3 @@ chmod 0751 ${NEW_TELEPHONY_PREFS_DIR}/..
 chmod 0771 ${NEW_TELEPHONY_PREFS_DIR}
 chown radio:radio ${NEW_TELEPHONY_DB_DIR} -R
 chown radio:radio ${NEW_TELEPHONY_PREFS_DIR} -R
-
-if [ "$RESTART_RIL" -eq 1 ]; then
-    logi "Restarting RIL..."
-    restart ril-daemon
-    restart ril-daemon1
-fi
