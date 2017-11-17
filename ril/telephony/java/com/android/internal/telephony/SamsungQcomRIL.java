@@ -105,6 +105,13 @@ public class SamsungQcomRIL extends RIL {
 
     @Override
     public void
+    acceptCall(Message result) {
+        super.acceptCall(result);
+        setRealCall(true);
+    }
+
+    @Override
+    public void
     hangupConnection (int gsmIndex, Message result) {
            super.hangupConnection(gsmIndex, result);
            setRealCall(false);
