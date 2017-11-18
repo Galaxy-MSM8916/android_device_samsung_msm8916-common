@@ -3,7 +3,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 BOARD_USES_GENERIC_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
 USE_XML_AUDIO_POLICY_CONF := 1
-
+AUDIO_FEATURE_SAMSUNG_DUAL_SIM := true
 
 
 CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
@@ -12,6 +12,10 @@ CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
 PRODUCT_COPY_FILES += \
     $(CONFIG_PATH)/msm8916_32/audio_policy.conf:system/etc/audio_policy.conf \
     $(CONFIG_PATH)/msm8916_32/audio_effects.conf:system/vendor/etc/audio_effects.conf
+
+# Platform info config
+PRODUCT_COPY_FILES += \
+    $(PLATFORM_PATH)/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
 
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
