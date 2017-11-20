@@ -17,10 +17,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
-# Platform info config
-PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
-
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 PRODUCT_COPY_FILES += \
