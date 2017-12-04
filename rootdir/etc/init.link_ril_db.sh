@@ -46,9 +46,9 @@ for prefs in `find ${OLD_TELEPHONY_PREFS_DIR} -type f | cut -c ${PATH_LEN_PREFS}
 done
 
 logi "Setting permissions..."
-chmod 0751 ${NEW_TELEPHONY_DB_DIR}/..
-chmod 0771 ${NEW_TELEPHONY_DB_DIR}
-chmod 0751 ${NEW_TELEPHONY_PREFS_DIR}/..
-chmod 0771 ${NEW_TELEPHONY_PREFS_DIR}
-chown radio:radio ${NEW_TELEPHONY_DB_DIR} -R
-chown radio:radio ${NEW_TELEPHONY_PREFS_DIR} -R
+chmod 0777 ${NEW_TELEPHONY_DB_DIR}/.
+chmod 0770 ${NEW_TELEPHONY_DB_DIR}
+chmod 0777 ${NEW_TELEPHONY_PREFS_DIR}/.
+chmod 0770 ${NEW_TELEPHONY_PREFS_DIR}
+chown root:root ${NEW_TELEPHONY_DB_DIR} -R
+chown root:root ${NEW_TELEPHONY_PREFS_DIR} -R
