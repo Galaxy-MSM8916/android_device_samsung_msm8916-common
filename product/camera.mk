@@ -4,7 +4,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-	android.hardware.camera.provider@2.4-impl \
-	camera.device@3.2-impl \
+	android.hardware.camera.provider@2.4-impl-legacy \
+        camera.device@1.0-impl-legacy \
 	libmm-qcamera \
 	camera.msm8916
