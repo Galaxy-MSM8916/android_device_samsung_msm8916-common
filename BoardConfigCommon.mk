@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/samsung/msm8916-common
+COMMON_PATH := device/samsung/msm8916-common
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
@@ -56,13 +56,13 @@ USE_XML_AUDIO_POLICY_CONF := 1
 # Mixer paths
 ifneq ($(USE_CUSTOM_MIXER_PATHS), true)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+    $(COMMON_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 endif
 
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+    $(COMMON_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(AUDIO_CONFIG_PATH)/msm8916_32/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
@@ -103,7 +103,7 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 #BOARD_USES_CYANOGEN_HARDWARE := true
 JAVA_SOURCE_OVERLAYS += \
 	org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java \
-	org.lineageos.hardware|$(LOCAL_PATH)/lineagehw|**/*.java
+	org.lineageos.hardware|$(COMMON_PATH)/lineagehw|**/*.java
 
 # Display
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
@@ -132,7 +132,7 @@ else
 endif
 
 # Filesystems
-TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE   := ext4
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_SYSTEMIMAGE_PARTITION_TYPE    := ext4
@@ -150,7 +150,7 @@ AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 TARGET_NO_RPC := true
 
 # HIDL
-DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
+DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_CMDLINE += \
@@ -227,7 +227,7 @@ USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
 TARGET_USES_NEW_ION_API := true
 
 # Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm8916-common/recovery/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := $(COMMON_PATH)/recovery/recovery_keys.c
 BOARD_HAS_NO_MISC_PARTITION	:= true
 BOARD_HAS_NO_SELECT_BUTTON	:= true
 BOARD_RECOVERY_SWIPE 		:= true
@@ -238,7 +238,7 @@ BOARD_USES_MMCUTILS	:= true
 RECOVERY_GRAPHICS_USE_LINELENGTH	:= true
 RECOVERY_SDCARD_ON_DATA	:= true
 TARGET_RECOVERY_DENSITY	:= hdpi
-TARGET_RECOVERY_FSTAB	:= device/samsung/msm8916-common/recovery/recovery.fstab
+TARGET_RECOVERY_FSTAB	:= $(COMMON_PATH)/recovery/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT	:= "RGB_565"
 TARGET_RECOVERY_QCOM_RTC_FIX	:= true
 
@@ -267,11 +267,11 @@ endif
 #endif
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
+# include device/qcom/sepolicy-legacy/sepolicy.mk
 
 SELINUX_IGNORE_NEVERALLOWS := true
 BOARD_SEPOLICY_DIRS += \
-    $(BOARD_CONFIG_PATH)/sepolicy_tmp
+    $(COMMON_PATH)/sepolicy_tmp
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
