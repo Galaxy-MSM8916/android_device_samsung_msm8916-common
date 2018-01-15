@@ -77,44 +77,44 @@ int read_integer(const char* filename)
 void cdma_properties(const char *operator_alpha, const char *operator_numeric)
 {
 	/* Dynamic CDMA Properties */
-	property_set("ro.cdma.home.operator.alpha", operator_alpha);
-	property_set("ro.cdma.home.operator.numeric", operator_numeric);
-	property_set("ro.telephony.default_network", "10");
+	android::init::property_set("ro.cdma.home.operator.alpha", operator_alpha);
+	android::init::property_set("ro.cdma.home.operator.numeric", operator_numeric);
+	android::init::property_set("ro.telephony.default_network", "10");
 
 	/* Static CDMA Properties */
-	property_set("ril.subscription.types", "NV,RUIM");
-	property_set("ro.telephony.default_cdma_sub", "0");
-	property_set("ro.telephony.get_imsi_from_sim", "true");
-	property_set("ro.telephony.ril.config", "newDriverCallU,newDialCode");
-	property_set("telephony.lteOnCdmaDevice", "1");
+	android::init::property_set("ril.subscription.types", "NV,RUIM");
+	android::init::property_set("ro.telephony.default_cdma_sub", "0");
+	android::init::property_set("ro.telephony.get_imsi_from_sim", "true");
+	android::init::property_set("ro.telephony.ril.config", "newDriverCallU,newDialCode");
+	android::init::property_set("telephony.lteOnCdmaDevice", "1");
 }
 
 void dsds_properties()
 {
-	property_set("ro.multisim.simslotcount", "2");
-	property_set("ro.telephony.ril.config", "simactivation");
-	property_set("persist.radio.multisim.config", "dsds");
-	property_set("rild.libpath2", "/system/lib/libsec-ril-dsds.so");
+	android::init::property_set("ro.multisim.simslotcount", "2");
+	android::init::property_set("ro.telephony.ril.config", "simactivation");
+	android::init::property_set("persist.radio.multisim.config", "dsds");
+	android::init::property_set("rild.libpath2", "/system/lib/libsec-ril-dsds.so");
 }
 
 void gsm_properties()
 {
-	property_set("telephony.lteOnCdmaDevice", "0");
-	property_set("ro.telephony.default_network", "9");
+	android::init::property_set("telephony.lteOnCdmaDevice", "0");
+	android::init::property_set("ro.telephony.default_network", "9");
 }
 
 void lte_properties()
 {
-	property_set("persist.radio.lte_vrte_ltd", "1");
-	property_set("telephony.lteOnCdmaDevice", "0");
-	property_set("telephony.lteOnGsmDevice", "1");
-	property_set("ro.telephony.default_network", "10");
+	android::init::property_set("persist.radio.lte_vrte_ltd", "1");
+	android::init::property_set("telephony.lteOnCdmaDevice", "0");
+	android::init::property_set("telephony.lteOnGsmDevice", "1");
+	android::init::property_set("ro.telephony.default_network", "10");
 }
 
 void wifi_properties()
 {
-	property_set("ro.carrier", "wifi-only");
-	property_set("ro.radio.noril", "1");
+	android::init::property_set("ro.carrier", "wifi-only");
+	android::init::property_set("ro.radio.noril", "1");
 }
 
 void set_target_properties(const char *ro_build_id, const char *bootloader_str, const char *name,
@@ -157,8 +157,8 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 	property_override("ro.build.product", device);
 	property_override("ro.product.device", device);
 	property_override("ro.product.model", model);
-        property_set("ro.ril.telephony.mqanelements", "6");
-	property_set("ro.ril.telephony.nstrings", "7");
+	android::init::property_set("ro.ril.telephony.mqanelements", "6");
+	android::init::property_set("ro.ril.telephony.nstrings", "7");
 
 	/* set the network properties */
 	if (network_type == CDMA_DEVICE) {
