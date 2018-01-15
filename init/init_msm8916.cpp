@@ -35,6 +35,7 @@
 #include <init_msm8916.h>
 
 using android::base::GetProperty;
+using android::init;
 
 __attribute__ ((weak))
 void init_target_properties()
