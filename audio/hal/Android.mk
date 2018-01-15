@@ -1,4 +1,4 @@
-ifeq ($(strip $(BOARD_USES_ALSA_AUDIO)),true)
+ifeq ($(strip $(BOARD_USES_CUSTOM_AUDIO)),true)
 
 LOCAL_PATH := $(call my-dir)
 
