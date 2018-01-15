@@ -34,10 +34,7 @@
 #define AUDIO_PARAMETER_VALUE_CP1 "cp1"
 #define AUDIO_PARAMETER_VALUE_CP2 "cp2"
 
-#ifdef HTC_DUAL_SIM
-#define RADIO_PREFER_NETWORK_SLOT0 "persist.radio.prefer.network"
-#define RADIO_PREFER_NETWORK_SLOT1 "persist.radio.prefer.nw.sub"
-#elif SAMSUNG_DUAL_SIM
+#ifdef SAMSUNG_DUAL_SIM
 #define AUDIO_PROPERTY_SEC_VSID1 "gsm.current.vsid"
 #define AUDIO_PROPERTY_SEC_VSID2 "gsm.current.vsid2"
 #endif
@@ -82,24 +79,12 @@ int msim_voice_extn_set_parameters(struct audio_device *adev __unused,
                                   struct str_parms *parms)
 {
     int ret;
-    int voice_slot = 0;
     char value[32] = {0};
 
     ret = str_parms_get_str(parms, AUDIO_PARAMETER_KEY_PHONETYPE, value,
                             sizeof(value));
     if (ret >= 0) {
-#ifdef HTC_DUAL_SIM
-        voice_slot = property_get_int32(RADIO_PREFER_NETWORK_SLOT0) != 1 ? 0 : 1;
-        if (property_get_int32(RADIO_PREFER_NETWORK_SLOT0) ==
-                property_get_int32(RADIO_PREFER_NETWORK_SLOT1)) {
-            voice_slot = 0;
-        }
-        if (strcmp(value, AUDIO_PARAMETER_VALUE_CP2)) {
-            msim_phone_type = voice_slot == 0 ? 1 : 0;
-        } else {
-            msim_phone_type = voice_slot == 0 ? 0 : 1;
-        }
-#elif SAMSUNG_DUAL_SIM
+#ifdef SAMSUNG_DUAL_SIM
         msim_phone_type = property_get_int32(
                 strcmp(value, AUDIO_PARAMETER_VALUE_CP2) ?
                 AUDIO_PROPERTY_SEC_VSID1 : AUDIO_PROPERTY_SEC_VSID2) + 1;
