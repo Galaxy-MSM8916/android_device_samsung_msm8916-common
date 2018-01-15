@@ -85,7 +85,7 @@ int msim_voice_extn_set_parameters(struct audio_device *adev __unused,
                             sizeof(value));
     if (ret >= 0) {
 #ifdef SAMSUNG_DUAL_SIM
-        msim_phone_type = property_get_int32(
+        msim_phone_type = property_get_int32(AUDIO_PARAMETER_VALUE_CP2,
                 strcmp(value, AUDIO_PARAMETER_VALUE_CP2) ?
                 AUDIO_PROPERTY_SEC_VSID1 : AUDIO_PROPERTY_SEC_VSID2) + 1;
 #endif
