@@ -21,6 +21,7 @@
 #include <errno.h>
 #include <cutils/log.h>
 #include <cutils/str_parms.h>
+#include <cutils/properties.h>
 
 #include "audio_hw.h"
 #include "voice.h"
