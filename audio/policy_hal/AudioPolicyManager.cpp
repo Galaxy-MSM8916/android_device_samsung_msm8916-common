@@ -1884,7 +1884,7 @@ status_t AudioPolicyManagerCustom::getInputForAttr(const audio_attributes_t *att
                                                uid,
                                                &config,
                                                flags,
-                                               selectedDeviceId,
+                                               &selectedDeviceId,
                                                inputType,
                                                &portId);
 }
