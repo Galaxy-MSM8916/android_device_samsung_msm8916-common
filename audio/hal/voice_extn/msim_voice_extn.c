@@ -42,9 +42,6 @@
 
 #define VOICE2_SESS_IDX (VOICE_SESS_IDX + 1)
 
-extern int start_call(struct audio_device *adev, audio_usecase_t usecase_id);
-extern int stop_call(struct audio_device *adev, audio_usecase_t usecase_id);
-
 static int msim_phone_type = 1;
 
 int msim_voice_extn_start_call(struct audio_device *adev)
@@ -52,7 +49,7 @@ int msim_voice_extn_start_call(struct audio_device *adev)
     audio_usecase_t usecase_id;
 
     usecase_id = msim_phone_type == 1 ? USECASE_VOICE_CALL : USECASE_VOICE2_CALL;
-    return start_call(adev, usecase_id);
+    return voice_start_usecase(adev, usecase_id);
 }
 
 int msim_voice_extn_stop_call(struct audio_device *adev)
@@ -60,7 +57,7 @@ int msim_voice_extn_stop_call(struct audio_device *adev)
     audio_usecase_t usecase_id;
 
     usecase_id = msim_phone_type == 1 ? USECASE_VOICE_CALL : USECASE_VOICE2_CALL;
-    return stop_call(adev, usecase_id);
+    return voice_stop_usecase(adev, usecase_id);
 }
 
 int msim_voice_extn_get_session_from_use_case(struct audio_device *adev,
