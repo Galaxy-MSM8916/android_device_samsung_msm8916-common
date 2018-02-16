@@ -8,3 +8,7 @@ PRODUCT_PACKAGES += \
         camera.device@1.0-impl-legacy \
 	libmm-qcamera \
 	camera.msm8916
+
+# Stagefright-shims
+PRODUCT_PACKAGES += \
+	libstagefright_shim
