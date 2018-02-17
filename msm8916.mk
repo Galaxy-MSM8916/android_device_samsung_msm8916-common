@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Inherit from common
-$(call inherit-product-if-exists, device/samsung/qcom-common/qcom-common.mk)
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Include proprietary blobs
