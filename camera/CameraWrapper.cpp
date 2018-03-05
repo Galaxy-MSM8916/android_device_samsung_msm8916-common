@@ -32,10 +32,15 @@
 #include <hardware/camera.h>
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
-#include <camera/CameraParameters_EXT.h>
 
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
+
+static camera_notify_callback gUserNotifyCb = NULL;
+static camera_data_callback gUserDataCb = NULL;
+static camera_data_timestamp_callback gUserDataCbTimestamp = NULL;
+static camera_request_memory gUserGetMemory = NULL;
+static void *gUserCameraDevice = NULL;
 
 static char **fixed_set_params = NULL;
 
@@ -123,8 +128,6 @@ static char *camera_fixup_getparams(int id, const char *settings)
      */
     params.set(KEY_VIDEO_HFR_VALUES, "off");
 
-    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "640x360,640x480,352x288,320x240,176x144");
-
     /* Enforce video-snapshot-supported to true */
     params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
 
@@ -150,7 +153,6 @@ static char *camera_fixup_setparams(struct camera_device *device, const char *se
     params.dump();
 #endif
 
-    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "640x360,640x480,528x432,352x288,320x240,176x144");
     params.set(android::CameraParameters::KEY_PREVIEW_FPS_RANGE, "7500,30000");
 
     android::String8 strParams = params.flatten();
@@ -184,6 +186,25 @@ static int camera_set_preview_window(struct camera_device *device,
     return VENDOR_CALL(device, set_preview_window, window);
 }
 
+void camera_notify_cb(int32_t msg_type, int32_t ext1, int32_t ext2, void *user) {
+    gUserNotifyCb(msg_type, ext1, ext2, gUserCameraDevice);
+}
+
+void camera_data_cb(int32_t msg_type, const camera_memory_t *data, unsigned int index,
+        camera_frame_metadata_t *metadata, void *user) {
+    gUserDataCb(msg_type, data, index, metadata, gUserCameraDevice);
+}
+
+void camera_data_cb_timestamp(nsecs_t timestamp, int32_t msg_type,
+        const camera_memory_t *data, unsigned index, void *user) {
+    gUserDataCbTimestamp(timestamp, msg_type, data, index, gUserCameraDevice);
+}
+
+camera_memory_t* camera_get_memory(int fd, size_t buf_size,
+        uint_t num_bufs, void *user) {
+    return gUserGetMemory(fd, buf_size, num_bufs, gUserCameraDevice);
+}
+
 static void camera_set_callbacks(struct camera_device *device,
         camera_notify_callback notify_cb,
         camera_data_callback data_cb,
@@ -197,8 +218,14 @@ static void camera_set_callbacks(struct camera_device *device,
     if (!device)
         return;
 
-    VENDOR_CALL(device, set_callbacks, notify_cb, data_cb, data_cb_timestamp,
-            get_memory, user);
+    gUserNotifyCb = notify_cb;
+    gUserDataCb = data_cb;
+    gUserDataCbTimestamp = data_cb_timestamp;
+    gUserGetMemory = get_memory;
+    gUserCameraDevice = user;	
+	
+    VENDOR_CALL(device, set_callbacks, camera_notify_cb, camera_data_cb,
+            camera_data_cb_timestamp, camera_get_memory, user);
 }
 
 static void camera_enable_msg_type(struct camera_device *device,
