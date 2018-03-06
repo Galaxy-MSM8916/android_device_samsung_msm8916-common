@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 
-# Source the functions 
+# Source the functions
 . /tmp/install/bin/functions.sh
 
 # only run if an argument was passed
