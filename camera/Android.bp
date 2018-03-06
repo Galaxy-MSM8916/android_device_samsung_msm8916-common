@@ -1,5 +1,0 @@
-cc_library_static {
-    name: "libcamera_parameters_ext",
-    include_dirs: ["device/samsung/msm8916-common/include", "frameworks/av/include"],
-    srcs: ["CameraParameters.cpp", "CameraParameters_EXT.cpp"],
-}
