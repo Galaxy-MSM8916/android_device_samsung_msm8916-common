@@ -27,11 +27,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	qcom.bluetooth.soc=smd
 
 # Camera
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=0
-
 PRODUCT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=0
+	camera.disable_treble=true
 
 # Connectivity Engine
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -131,10 +128,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	sys.config.spcm_db_enable=true \
 	sys.config.spcm_db_launcher=true \
 	sys.config.spcm_preload_enable=true
-
-# Sdcardfs
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sys.sdcardfs=true
 
 # Time services
 PRODUCT_PROPERTY_OVERRIDES += \
