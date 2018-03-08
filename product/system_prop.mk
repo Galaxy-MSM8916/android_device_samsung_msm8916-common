@@ -27,11 +27,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	qcom.bluetooth.soc=smd
 
 # Camera
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=0
-
 PRODUCT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=0
+	camera.disable_treble=true
 
 # Connectivity Engine
 PRODUCT_PROPERTY_OVERRIDES += \
