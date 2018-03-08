@@ -24,5 +24,8 @@ $(call inherit-product-if-exists, vendor/samsung/msm8916-common/msm8916-common-v
 
 LOCAL_PATH := device/samsung/msm8916-common
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
 # Include package config fragments
 include $(LOCAL_PATH)/product/*.mk

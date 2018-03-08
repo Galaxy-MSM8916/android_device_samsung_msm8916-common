@@ -4,7 +4,6 @@ PRODUCT_PACKAGES += \
 	init.carrier.rc \
 	init.class_main.sh \
 	init.link_ril_db.sh \
-	init.qcom.bt.sh \
 	init.qcom.uicc.sh \
 	init.qcom.post_boot.sh \
 	init.qcom.early_boot.sh \
