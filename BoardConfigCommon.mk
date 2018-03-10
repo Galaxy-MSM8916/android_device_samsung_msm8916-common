@@ -18,9 +18,6 @@ PLATFORM_PATH := device/samsung/msm8916-common
 # Includes
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
-# System prop
-TARGET_SYSTEM_PROP := $(PLATFORM_PATH)/system.prop
-
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
