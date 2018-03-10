@@ -1,2 +1,0 @@
-# RIL
-rild.libargs=-d /dev/smd0
