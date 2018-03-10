@@ -123,8 +123,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ril.subscription.types=NV,RUIM \
 	DEVICE_PROVISIONED=1 \
 	rild.libpath=/system/lib/libsec-ril.so \
-	ro.multisim.set_audio_params=true \
-        ro.telephony.ril_class=SamsungQcomRIL
+	ro.multisim.set_audio_params=true
 
 # SAMP SPCM
 PRODUCT_PROPERTY_OVERRIDES += \
