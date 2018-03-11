@@ -99,8 +99,8 @@ extern "C" {
 #define MAX_DEBUG_SOCKET_NAME_LENGTH 12
 #define MAX_QEMU_PIPE_NAME_LENGTH  11
 #define MAX_UUID_LENGTH 64
-#define RIL_OEM_REQUEST_BASE 10000
 
+struct ril_event;
 typedef void * RIL_Token;
 
 typedef enum {
@@ -423,10 +423,7 @@ typedef struct {
 
 typedef struct {
     RIL_CallState   state;
-    char            index;      /* Connection Index for use with, eg, AT+CHLD */
-    char            call_id;    /* Samsung call_id */
-    char            foo1;       /* Samsung */
-    char            foo2;       /* Samsung */
+    int             index;      /* Connection Index for use with, eg, AT+CHLD */
     int             toa;        /* type of address, eg 145 = intl */
     char            isMpty;     /* nonzero if is mpty call */
     char            isMT;       /* nonzero if call is mobile terminated */
@@ -436,11 +433,8 @@ typedef struct {
     char            isVoicePrivacy;     /* nonzero if CDMA voice privacy mode is active */
     char *          number;     /* Remote party number */
     int             numberPresentation; /* 0=Allowed, 1=Restricted, 2=Not Specified/Unknown 3=Payphone */
-    char            call_type;  /* Samsung*/
-    char            call_domain;/* Samsung*/
-    int             namePresentation; /* 0=Allowed, 1=Restricted, 2=Not Specified/Unknown 3=Payphone */
-    char *          csv;        /* Samsung */
     char *          name;       /* Remote party name */
+    int             namePresentation; /* 0=Allowed, 1=Restricted, 2=Not Specified/Unknown 3=Payphone */
     RIL_UUS_Info *  uusInfo;    /* NULL or Pointer to User-User Signaling Information */
 } RIL_Call;
 
@@ -558,6 +552,8 @@ typedef struct {
                                    sent an invalid value */
 } RIL_Data_Call_Response_v11;
 
+#define RIL_Data_Call_Response_Type RIL_Data_Call_Response_v9
+
 typedef enum {
     RADIO_TECH_3GPP = 1, /* 3GPP Technologies - GSM, WCDMA */
     RADIO_TECH_3GPP2 = 2 /* 3GPP2 Technologies - CDMA */
@@ -618,11 +614,6 @@ typedef struct {
              * clir == 1 on "CLIR invocation" (restrict CLI presentation)
              * clir == 2 on "CLIR suppression" (allow CLI presentation)
              */
-#ifdef SAMSUNG_NEXT_GEN_MODEM
-    int             callType;
-    int             callDomain;
-    char            csv;
-#endif
     RIL_UUS_Info *  uusInfo;    /* NULL or Pointer to User-User Signaling Information */
 } RIL_Dial;
 
@@ -5577,16 +5568,14 @@ typedef struct {
   *  INVALID_ARGUMENTS
   */
 #define RIL_REQUEST_SET_SIM_CARD_POWER 140
+/***********************************************************************/
 
-/**********************************************************
- * SAMSUNG REQUESTS
- **********************************************************/
+#define RIL_OEM_REQUEST_BASE 10000
 
 /*
  * You normally find these constants if you decompile RILConstants.class in
  * framework2.odex.
  */
-
 #define RIL_REQUEST_DIAL_EMERGENCY_CALL 10001
 #define RIL_REQUEST_CALL_DEFLECTION 10002
 #define RIL_REQUEST_MODIFY_CALL_INITIATE 10003
@@ -5616,6 +5605,51 @@ typedef struct {
 #define RIL_REQUEST_SET_INCOMING_COMMUNICATION_BARRING 10028
 #define RIL_REQUEST_QUERY_CNAP 10029
 #define RIL_REQUEST_SET_TRANSFER_CALL 10030
+
+/***********************************************************************/
+
+/**********************************************************
+ * SAMSUNG RESPONSE
+ **********************************************************/
+
+#define SAMSUNG_UNSOL_RESPONSE_BASE 11000
+
+#define RIL_UNSOL_RESPONSE_NEW_CB_MSG 11000
+#define RIL_UNSOL_RELEASE_COMPLETE_MESSAGE 11001
+#define RIL_UNSOL_STK_SEND_SMS_RESULT 11002
+#define RIL_UNSOL_STK_CALL_CONTROL_RESULT 11003
+#define RIL_UNSOL_DEVICE_READY_NOTI 11008
+#define RIL_UNSOL_GPS_NOTI 11009
+#define RIL_UNSOL_AM 11010
+#define RIL_UNSOL_DUN_PIN_CONTROL_SIGNAL 11011
+#define RIL_UNSOL_DATA_SUSPEND_RESUME 11012
+#define RIL_UNSOL_SAP 11013
+#define RIL_UNSOL_UART 11020
+#define RIL_UNSOL_WB_AMR_STATE 11017
+#define RIL_UNSOL_SIM_PB_READY 11021
+#define RIL_UNSOL_VE 11024
+#define RIL_UNSOL_FACTORY_AM 11026
+#define RIL_UNSOL_IMS_REGISTRATION_STATE_CHANGED 11027
+#define RIL_UNSOL_MODIFY_CALL 11028
+#define RIL_UNSOL_CS_FALLBACK 11030
+#define RIL_UNSOL_VOICE_SYSTEM_ID 11032
+#define RIL_UNSOL_IMS_RETRYOVER 11034
+#define RIL_UNSOL_PB_INIT_COMPLETE 11035
+#define RIL_UNSOL_HYSTERESIS_DCN 11037
+#define RIL_UNSOL_CP_POSITION 11038
+#define RIL_UNSOL_HOME_NETWORK_NOTI 11043
+#define RIL_UNSOL_STK_CALL_STATUS 11054
+#define RIL_UNSOL_MODEM_CAP 11056
+#define RIL_UNSOL_SIM_SWAP_STATE_CHANGED 11057
+#define RIL_UNSOL_DUN 11060
+#define RIL_UNSOL_IMS_PREFERENCE_CHANGED 11061
+#define RIL_UNSOL_SIM_APPLICATION_REFRESH 11062
+#define RIL_UNSOL_UICC_APPLICATION_STATUS 11063
+#define RIL_UNSOL_VOICE_RADIO_BEARER_HO_STATUS 11064
+
+/* SNDMGR */
+#define RIL_UNSOL_SNDMGR_WB_AMR_REPORT 20017
+#define RIL_UNSOL_SNDMGR_CLOCK_CTRL 20022
 
 /***********************************************************************/
 
@@ -6271,46 +6305,8 @@ typedef struct {
   */
 #define RIL_UNSOL_MODEM_RESTART 1047
 
-/**********************************************************
- * SAMSUNG RESPONSE
- **********************************************************/
-
-#define SAMSUNG_UNSOL_RESPONSE_BASE 11000
-
-#define RIL_UNSOL_RESPONSE_NEW_CB_MSG 11000
-#define RIL_UNSOL_RELEASE_COMPLETE_MESSAGE 11001
-#define RIL_UNSOL_STK_SEND_SMS_RESULT 11002
-#define RIL_UNSOL_STK_CALL_CONTROL_RESULT 11003
-#define RIL_UNSOL_DEVICE_READY_NOTI 11008
-#define RIL_UNSOL_GPS_NOTI 11009
-#define RIL_UNSOL_AM 11010
-#define RIL_UNSOL_SAP 11013
-#define RIL_UNSOL_UART 11020
-#define RIL_UNSOL_SIM_PB_READY 11021
-#define RIL_UNSOL_VE 11024
-#define RIL_UNSOL_FACTORY_AM 11026
-#define RIL_UNSOL_IMS_REGISTRATION_STATE_CHANGED 11027
-#define RIL_UNSOL_MODIFY_CALL 11028
-#define RIL_UNSOL_CS_FALLBACK 11030
-#define RIL_UNSOL_VOICE_SYSTEM_ID 11032
-#define RIL_UNSOL_IMS_RETRYOVER 11034
-#define RIL_UNSOL_PB_INIT_COMPLETE 11035
-#define RIL_UNSOL_HYSTERESIS_DCN 11037
-#define RIL_UNSOL_CP_POSITION 11038
-#define RIL_UNSOL_HOME_NETWORK_NOTI 11043
-#define RIL_UNSOL_STK_CALL_STATUS 11054
-#define RIL_UNSOL_MODEM_CAP 11056
-#define RIL_UNSOL_SIM_SWAP_STATE_CHANGED 11057
-#define RIL_UNSOL_DUN 11060
-#define RIL_UNSOL_IMS_PREFERENCE_CHANGED 11061
-#define RIL_UNSOL_SIM_APPLICATION_REFRESH 11062
-#define RIL_UNSOL_UICC_APPLICATION_STATUS 11063
-#define RIL_UNSOL_VOICE_RADIO_BEARER_HO_STATUS 11064
-
-/* SNDMGR */
-#define RIL_UNSOL_SNDMGR_WB_AMR_REPORT 20017
-
 /***********************************************************************/
+
 
 #if defined(ANDROID_MULTI_SIM)
 /**
@@ -6633,3 +6629,4 @@ void RIL_requestTimedCallback (RIL_TimedCallback callback,
 #endif
 
 #endif /*ANDROID_RIL_H*/
+
