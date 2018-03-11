@@ -15,7 +15,7 @@ PRODUCT_COPY_FILES += \
 
 # Mixer paths
 PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+    $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
