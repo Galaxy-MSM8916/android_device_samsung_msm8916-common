@@ -120,9 +120,22 @@ static char *camera_fixup_getparams(int id, const char *settings)
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
+  
+    // fix params here
+    params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
+    params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-2");
+    params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "2");
 
-    params.set("face-detection-values", "off,on");
-    params.set("denoise-values", "denoise-off,denoise-on");
+    /* If the vendor has HFR values but doesn't also expose that
+     * this can be turned off, fixup the params to tell the Camera
+     * that it really is okay to turn it off.
+     */
+    params.set(KEY_VIDEO_HFR_VALUES, "off");
+
+    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "640x360,640x480,352x288,320x240,176x144");
+
+    /* Enforce video-snapshot-supported to true */
+    params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "true");
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -145,7 +158,8 @@ static char *camera_fixup_setparams(int id, const char *settings)
     params.dump();
 #endif
 
-    params.set("zsl", "on");
+    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "640x360,640x480,528x432,352x288,320x240,176x144");
+    params.set(android::CameraParameters::KEY_PREVIEW_FPS_RANGE, "7500,30000");
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
