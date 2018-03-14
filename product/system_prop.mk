@@ -132,6 +132,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.timed.enable=true
 
+# Updater
+PRODUCT_PROPERTY_OVERRIDES += \
+	lineage.updater.uri=https://ota15.msm8916.com/api
+
 # Video encoding
 PRODUCT_PROPERTY_OVERRIDES += \
 	vidc.enc.narrow.searchrange=1
