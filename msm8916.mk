@@ -22,6 +22,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Include proprietary blobs
 $(call inherit-product-if-exists, vendor/samsung/msm8916-common/msm8916-common-vendor.mk)
 
+# Inherit common Android Go configurations
+$(call inherit-product, build/target/product/go_defaults.mk)
+#$(call inherit-product, vendor/gapps-go/gapps-go.mk)
+
 LOCAL_PATH := device/samsung/msm8916-common
 
 # Overlays
