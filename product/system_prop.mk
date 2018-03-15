@@ -25,6 +25,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.hfp.client=1 \
 	qcom.bluetooth.soc=smd
+ 
+#split  a2dp
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.vendor.bt.enable.splita2dp=false
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
