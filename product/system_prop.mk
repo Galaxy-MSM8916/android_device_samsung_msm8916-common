@@ -138,7 +138,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Updater
 PRODUCT_PROPERTY_OVERRIDES += \
-	lineage.updater.uri=https://ota15.msm8916.com/api/v1/{device}/{type}/{incr}
+	lineage.updater.uri=https://ota15-go.msm8916.com/api/v1/{device}/{type}/{incr}
 
 # Vendor security patch level
 	ro.vendor.build.security_patch=2017-09-01
