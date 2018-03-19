@@ -1,8 +1,5 @@
 # TWRP
-#ifneq ($(wildcard bootable/recovery-twrp),)
-#	RECOVERY_VARIANT := twrp
-#endif
-
+RECOVERY_VARIANT := twrp
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT 	    := \"roboto_23x41.h\"
@@ -20,6 +17,7 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_HAS_DOWNLOAD_MODE := true
+TW_USE_TOOLBOX := true
 TW_HAS_MTP := true
 TW_INCLUDE_CRYPTO := true
 TW_INPUT_BLACKLIST := "accelerometer\x0ahbtp_vm"
