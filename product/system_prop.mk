@@ -142,7 +142,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Updater
 PRODUCT_PROPERTY_OVERRIDES += \
-	lineage.updater.uri=https://ota15.msm8916.com/api
+	lineage.updater.uri=https://ota15-go.msm8916.com/api
 
 # Video encoding
 PRODUCT_PROPERTY_OVERRIDES += \
