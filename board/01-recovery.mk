@@ -1,7 +1,7 @@
 # TWRP
-#ifneq ($(wildcard bootable/recovery-twrp),)
-#	RECOVERY_VARIANT := twrp
-#endif
+ifneq ($(wildcard bootable/recovery-twrp),)
+	RECOVERY_VARIANT := twrp
+endif
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_SUPPRESS_SECURE_ERASE := true
