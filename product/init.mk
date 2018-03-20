@@ -2,7 +2,7 @@
 PRODUCT_PACKAGES += \
 	fstab.qcom \
 	init.carrier.rc \
-	init.class_main.sh \
+	init.qcom.ril.sh \
 	init.qcom.uicc.sh \
 	init.qcom.post_boot.sh \
 	init.qcom.early_boot.sh \
