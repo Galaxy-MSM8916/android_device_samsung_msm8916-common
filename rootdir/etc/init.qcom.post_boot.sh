@@ -91,13 +91,6 @@ else
         echo 53059 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
     fi
 
-    # Zram disk - 512MB size
-    zram_enable=`getprop ro.config.zram`
-    if [ "$zram_enable" == "true" ]; then
-        echo 536870912 > /sys/block/zram0/disksize
-        mkswap /dev/block/zram0
-        swapon /dev/block/zram0 -p 32758
-    fi
 fi
 }
 
