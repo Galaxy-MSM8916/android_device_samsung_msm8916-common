@@ -21,6 +21,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	voice.record.conc.disabled=true \
 	voice.voip.conc.disabled=true
 
+# ZRAM
+PRODUCT_PROPERTY_OVERRIDES
+        ro.config.zram=true
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.hfp.client=1 \
