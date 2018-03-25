@@ -3,6 +3,7 @@
 /data          ext4      /dev/block/bootdevice/by-name/userdata      length=-16384
 /cache         ext4      /dev/block/bootdevice/by-name/cache
 /system        ext4      /dev/block/bootdevice/by-name/system
+/misc          emmc      /dev/block/bootdevice/by-name/fota
 /efs1          emmc      /dev/block/bootdevice/by-name/efs           flags=backup=1;display=EFS
 /efs2          emmc      /dev/block/bootdevice/by-name/modemst1      flags=backup=1;subpartitionof=/efs1
 /efs3          emmc      /dev/block/bootdevice/by-name/modemst2      flags=backup=1;subpartitionof=/efs1
