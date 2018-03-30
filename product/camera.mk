@@ -7,6 +7,7 @@ PRODUCT_COPY_FILES += \
 
 # Stagefright-shims
 PRODUCT_PACKAGES += \
+	libcamera_shim \
 	libstagefright_shim
 
 # Camera
