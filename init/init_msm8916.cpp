@@ -52,6 +52,12 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
 /* Read the file at filename and returns the integer
  * value in the file.
  *
@@ -150,13 +156,11 @@ void set_target_properties(const char *ro_build_id, const char *bootloader_str, 
 			name, device, version_release, build_id, bootloader);
 
 	/* set the build properties */
-	property_override("ro.bootimage.build.fingerprint", fingerprint);
 	property_override("ro.build.description", description);
 	property_override("ro.build.display.id", display_id);
-	property_override("ro.build.fingerprint", fingerprint);
-	property_override("ro.build.product", device);
-	property_override("ro.product.device", device);
-	property_override("ro.product.model", model);
+	property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", fingerprint);
+	property_override_dual("ro.product.device", "ro.vendor.product.model", device);
+	property_override_dual("ro.product.model", "ro.vendor.product.device", model);
 	android::init::property_set("ro.ril.telephony.mqanelements", "6");
 
 
