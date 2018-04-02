@@ -11,8 +11,10 @@ PRODUCT_COPY_FILES += \
     $(CONFIG_PATH)/msm8916_32/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/vendor/etc/audio_effects.conf
 
 # Mixer paths
+ifneq ($(USE_QCOM_MIXER_PATHS), false)
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+endif
 
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
