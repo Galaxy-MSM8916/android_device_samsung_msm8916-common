@@ -36,7 +36,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-        debug.camcorder.disablemeta=true \
+ 	camera2.portability.force_api=1 \
+ 	debug.camcorder.disablemeta=true \
 	camera.disable_treble=true
 
 # Connectivity Engine
