@@ -47,12 +47,10 @@ vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
 
 # DRM
 bin/qcom-system-daemon
-bin/qseecomd
 lib/libdrmdecrypt.so
 lib/libhdcp2.so
 vendor/lib/libmmQSM.so
 vendor/lib/libmmrtpdecoder.so
-vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/liboemcrypto.so
