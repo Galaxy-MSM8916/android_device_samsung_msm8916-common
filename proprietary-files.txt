@@ -124,7 +124,6 @@ etc/firmware/leia_pm4_470.fw
 
 # Media
 etc/somxreg.conf
-lib/libOmxVdecHevc.so
 lib/libplayready_v2.5.so
 lib/libsomx263dsw.so
 lib/libsomx264dsw.so
@@ -135,7 +134,6 @@ lib/libsomxamrd.so
 lib/libsomxcmn.so
 lib/libsomxcore.so
 lib/libsomxflacd.so
-lib/libsomxhevcdsw.so
 lib/libsomxmp3d.so
 lib/libsomxmp4vdsw.so
 lib/libsomxnaace.so
@@ -143,10 +141,7 @@ lib/libsomxvp8d.so
 vendor/lib/libhwdaphal.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libFlacSwDec.so
--vendor/lib/libHevcSwDecoder.so
-vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-abl-oem.so
-vendor/lib/libmm-color-convertor.so
 vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmmparser.so
