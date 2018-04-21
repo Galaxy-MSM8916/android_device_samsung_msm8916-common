@@ -39,7 +39,6 @@ PRODUCT_PACKAGES += \
 	libcurl \
 	tcpdump \
 	libkeyutils \
-	sockev \
 	librmnetctl \
 	rmnetcli \
         libshim_secril
