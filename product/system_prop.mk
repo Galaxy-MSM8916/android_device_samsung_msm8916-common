@@ -80,6 +80,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.media.treble_omx=false \
+	media.stagefright.legacyencoder=true \
+	media.stagefright.less-secure=true \
 	media.aac_51_output_enabled=true \
 	media.stagefright.enable-aac=true \
 	media.stagefright.enable-fma2dp=true \
