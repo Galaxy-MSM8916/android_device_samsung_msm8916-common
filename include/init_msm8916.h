@@ -43,16 +43,14 @@
 #include "log.h"
 #include "util.h"
 
-#define CDMA_DEVICE 0
-#define GSM_DEVICE  1
-#define LTE_DEVICE  2
-#define WIFI_DEVICE 3
-
 void init_target_properties();
 
+void set_dsds_properties();
+void set_gsm_properties();
+void set_lte_properties();
+void set_wifi_properties();
 
-void set_target_properties(const char *ro_build_id, const char *bootloader, const char *name,
-		const char *device, const char *model, int network_type, const char *operator_alpha,
-		const char *operator_numeric, const char *ver_release);
+void set_cdma_properties(const char *operator_alpha, const char *operator_numeric, const char * network);
+void set_target_properties(const char *device, const char *model);
 
 #endif /* __INIT_MSM8916__H__ */
