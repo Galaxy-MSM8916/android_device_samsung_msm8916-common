@@ -9,7 +9,7 @@
   },
   {
     "repository": "android_device_qcom_common",
-    "target_path": "device/qcom-common"
+    "target_path": "device/qcom/common"
   },
   {
     "repository": "android_device_samsung_qcom-common",
