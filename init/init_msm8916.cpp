@@ -80,12 +80,12 @@ int read_integer(const char* filename)
 	return retval;
 }
 
-void cdma_properties(const char *operator_alpha, const char *operator_numeric)
+void set_cdma_properties(const char *operator_alpha, const char *operator_numeric, const char * network)
 {
 	/* Dynamic CDMA Properties */
 	android::init::property_set("ro.cdma.home.operator.alpha", operator_alpha);
 	android::init::property_set("ro.cdma.home.operator.numeric", operator_numeric);
-	android::init::property_set("ro.telephony.default_network", "10");
+	android::init::property_set("ro.telephony.default_network", network);
 
 	/* Static CDMA Properties */
 	android::init::property_set("ril.subscription.types", "NV,RUIM");
@@ -95,7 +95,7 @@ void cdma_properties(const char *operator_alpha, const char *operator_numeric)
 	android::init::property_set("telephony.lteOnCdmaDevice", "1");
 }
 
-void dsds_properties()
+void set_dsds_properties()
 {
 	android::init::property_set("ro.multisim.simslotcount", "2");
 	android::init::property_set("ro.telephony.ril.config", "simactivation,sim2gsmonly");
@@ -103,13 +103,13 @@ void dsds_properties()
 	android::init::property_set("rild.libpath2", "/system/lib/libsec-ril-dsds.so");
 }
 
-void gsm_properties()
+void set_gsm_properties()
 {
 	android::init::property_set("telephony.lteOnCdmaDevice", "0");
 	android::init::property_set("ro.telephony.default_network", "9");
 }
 
-void lte_properties()
+void set_lte_properties()
 {
 	android::init::property_set("persist.radio.lte_vrte_ltd", "1");
 	android::init::property_set("telephony.lteOnCdmaDevice", "0");
@@ -117,76 +117,27 @@ void lte_properties()
 	android::init::property_set("ro.telephony.default_network", "10");
 }
 
-void wifi_properties()
+void set_wifi_properties()
 {
 	android::init::property_set("ro.carrier", "wifi-only");
 	android::init::property_set("ro.radio.noril", "1");
 }
 
-void set_target_properties(const char *ro_build_id, const char *bootloader_str, const char *name,
-		const char *device, const char *model, int network_type, const char *operator_alpha,
-		const char *operator_numeric, const char *ver_release)
+void set_target_properties(const char *device, const char *model)
 {
-	char description[PROP_VALUE_MAX];
-	char display_id[PROP_VALUE_MAX];
-	char fingerprint[PROP_VALUE_MAX];
-
-	char *bootloader = (char *)bootloader_str;
-	char *build_id = (char *)ro_build_id;
-	char *version_release = (char *)ver_release;
-
-	if (bootloader_str == NULL)
-		bootloader = (char *)GetProperty("ro.bootloader","").c_str();
-
-	if (build_id == NULL)
-		build_id = (char *)GetProperty("ro.build.id","").c_str();
-
-	if (version_release == NULL)
-		version_release = (char *)GetProperty("ro.build.version.release","").c_str();
-
-	/* initialise the buffers */
-	memset(description, 0, PROP_VALUE_MAX);
-	memset(display_id, 0, PROP_VALUE_MAX);
-	memset(fingerprint, 0, PROP_VALUE_MAX);
-
-	snprintf(description, PROP_VALUE_MAX, "%s-user %s %s %s release-keys",
-			name, version_release, build_id, bootloader);
-	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", build_id);
-	snprintf(fingerprint, PROP_VALUE_MAX, "samsung/%s/%s:%s/%s/%s:user/release-keys",
-			name, device, version_release, build_id, bootloader);
-
-	/* set the build properties */
-	property_override("ro.build.description", description);
-	property_override("ro.build.display.id", display_id);
-	property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", fingerprint);
 	property_override_dual("ro.product.device", "ro.vendor.product.model", device);
 	property_override_dual("ro.product.model", "ro.vendor.product.device", model);
 	android::init::property_set("ro.ril.telephony.mqanelements", "6");
-
-
-	/* set the network properties */
-	if (network_type == CDMA_DEVICE) {
-		cdma_properties(operator_alpha, operator_numeric);
-	}
-	else if (network_type == GSM_DEVICE) {
-		gsm_properties();
-	}
-	else if (network_type == LTE_DEVICE) {
-		lte_properties();
-	}
-	else if (network_type == WIFI_DEVICE) {
-		wifi_properties();
-	}
 
 	/* check for multi-sim devices */
 
 	/* check if the simslot count file exists */
 	if (access(SIMSLOT_FILE, F_OK) == 0) {
-		int sim_count= read_integer(SIMSLOT_FILE);
+		int sim_count = read_integer(SIMSLOT_FILE);
 
 		/* set the dual sim props */
 		if (sim_count == 2)
-			dsds_properties();
+			set_dsds_properties();
 	}
 }
 
