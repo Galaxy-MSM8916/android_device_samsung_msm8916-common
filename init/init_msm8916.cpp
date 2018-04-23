@@ -80,13 +80,8 @@ int read_integer(const char* filename)
 	return retval;
 }
 
-void cdma_properties(const char *operator_alpha, const char *operator_numeric)
+void cdma_properties()
 {
-	/* Dynamic CDMA Properties */
-	android::init::property_set("ro.cdma.home.operator.alpha", operator_alpha);
-	android::init::property_set("ro.cdma.home.operator.numeric", operator_numeric);
-	android::init::property_set("ro.telephony.default_network", "10");
-
 	/* Static CDMA Properties */
 	android::init::property_set("ril.subscription.types", "NV,RUIM");
 	android::init::property_set("ro.telephony.default_cdma_sub", "0");
@@ -123,60 +118,22 @@ void wifi_properties()
 	android::init::property_set("ro.radio.noril", "1");
 }
 
-void set_target_properties(const char *ro_build_id, const char *bootloader_str, const char *name,
-		const char *device, const char *model, int network_type, const char *operator_alpha,
-		const char *operator_numeric, const char *ver_release)
+void set_target_properties(const char *device, const char *model, int device_type)
 {
-	char description[PROP_VALUE_MAX];
-	char display_id[PROP_VALUE_MAX];
-	char fingerprint[PROP_VALUE_MAX];
-
-	char *bootloader = (char *)bootloader_str;
-	char *build_id = (char *)ro_build_id;
-	char *version_release = (char *)ver_release;
-
-	if (bootloader_str == NULL)
-		bootloader = (char *)GetProperty("ro.bootloader","").c_str();
-
-	if (build_id == NULL)
-		build_id = (char *)GetProperty("ro.build.id","").c_str();
-
-	if (version_release == NULL)
-		version_release = (char *)GetProperty("ro.build.version.release","").c_str();
-
-	/* initialise the buffers */
-	memset(description, 0, PROP_VALUE_MAX);
-	memset(display_id, 0, PROP_VALUE_MAX);
-	memset(fingerprint, 0, PROP_VALUE_MAX);
-
-	snprintf(description, PROP_VALUE_MAX, "%s-user %s %s %s release-keys",
-			name, version_release, build_id, bootloader);
-	snprintf(display_id, PROP_VALUE_MAX, "%s release-keys", build_id);
-	snprintf(fingerprint, PROP_VALUE_MAX, "samsung/%s/%s:%s/%s/%s:user/release-keys",
-			name, device, version_release, build_id, bootloader);
-
-	/* set the build properties */
-	property_override("ro.build.description", description);
-	property_override("ro.build.display.id", display_id);
-	property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", fingerprint);
 	property_override_dual("ro.product.device", "ro.vendor.product.model", device);
 	property_override_dual("ro.product.model", "ro.vendor.product.device", model);
 	android::init::property_set("ro.ril.telephony.mqanelements", "6");
 
 
 	/* set the network properties */
-	if (network_type == CDMA_DEVICE) {
-		cdma_properties(operator_alpha, operator_numeric);
-	}
-	else if (network_type == GSM_DEVICE) {
+	if (device_type == CDMA_DEVICE)
+		cdma_properties();
+	else if (device_type == GSM_DEVICE)
 		gsm_properties();
-	}
-	else if (network_type == LTE_DEVICE) {
+	else if (device_type == LTE_DEVICE)
 		lte_properties();
-	}
-	else if (network_type == WIFI_DEVICE) {
+	else
 		wifi_properties();
-	}
 
 	/* check for multi-sim devices */
 
