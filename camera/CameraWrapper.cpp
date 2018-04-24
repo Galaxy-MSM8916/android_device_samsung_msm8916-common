@@ -40,6 +40,9 @@
 
 using namespace android;
 
+static const char PIXEL_FORMAT_YUV420SP_NV21[] = "nv21";
+static const char PIXEL_FORMAT_YUV420SP_NV21E[] = "yuv420sp-nv21e";
+
 static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
