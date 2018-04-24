@@ -38,6 +38,8 @@
 #define BACK_CAMERA     0
 #define FRONT_CAMERA    1
 
+static const char PIXEL_FORMAT_YUV420SP_NV21E[] = "yuv420sp-nv21e";
+
 using namespace android;
 
 static Mutex gCameraWrapperLock;

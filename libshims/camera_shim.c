@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-const char _ZN7android16CameraParameters26PIXEL_FORMAT_YUV420SP_NV21E[] = "nv21";
+const char _ZN7android16CameraParameters26PIXEL_FORMAT_YUV420SP_NV21E[] = "yuv420sp-nv21e";
