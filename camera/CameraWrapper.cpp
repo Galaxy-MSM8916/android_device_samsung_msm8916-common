@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2018 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,15 +25,14 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
-//#include <cutils/properties.h>
-//#include <cutils/native_handle.h>
 #include <utils/threads.h>
 #include <utils/String8.h>
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
-//#include <media/hardware/HardwareAPI.h> // For VideoNativeHandleMetadata
+
+static const char PIXEL_FORMAT_YUV420SP_NV21E[] = "yuv420sp-nv21e";
 
 #define BACK_CAMERA     0
 #define FRONT_CAMERA    1
