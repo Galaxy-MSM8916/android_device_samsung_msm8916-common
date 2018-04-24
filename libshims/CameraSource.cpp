@@ -25,8 +25,6 @@
 
 namespace android {
 
-static const char PIXEL_FORMAT_YUV420SP_NV21[] = "nv21";
-
 static int32_t getColorFormat(const char* colorFormat) {
     if (!colorFormat) {
         ALOGE("Invalid color format");
