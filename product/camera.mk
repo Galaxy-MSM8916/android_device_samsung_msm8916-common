@@ -2,13 +2,9 @@
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
-
 # Stagefright-shims
 PRODUCT_PACKAGES += \
-	libcamera_shim \
-	libstagefright_shim
+	libcamera_shim
 
 # Camera
 PRODUCT_PACKAGES += \
