@@ -34,6 +34,8 @@
 #include <camera/CameraParameters.h>
 #include <camera/CameraParametersExtra.h>
 
+static const char PIXEL_FORMAT_YUV420SP_NV21E[] = "yuv420sp-nv21e";
+
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
