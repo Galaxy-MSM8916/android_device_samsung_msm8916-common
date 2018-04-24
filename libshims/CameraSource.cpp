@@ -26,6 +26,7 @@
 namespace android {
 
 static const char PIXEL_FORMAT_YUV420SP_NV21[] = "nv21";
+static const char PIXEL_FORMAT_YUV420SP_NV21E[] = "nv21";
 
 static int32_t getColorFormat(const char* colorFormat) {
     if (!colorFormat) {
@@ -33,41 +34,9 @@ static int32_t getColorFormat(const char* colorFormat) {
         return -1;
     }
 
-    if (!strcmp(colorFormat, CameraParameters::PIXEL_FORMAT_YUV420P)) {
-       return OMX_COLOR_FormatYUV420Planar;
-    }
-
-    if (!strcmp(colorFormat, CameraParameters::PIXEL_FORMAT_YUV422SP)) {
-       return OMX_COLOR_FormatYUV422SemiPlanar;
-    }
-
-    if (!strcmp(colorFormat, CameraParameters::PIXEL_FORMAT_YUV420SP)) {
-        return OMX_COLOR_FormatYUV420SemiPlanar;
-    }
-
     if (!strcmp(colorFormat, PIXEL_FORMAT_YUV420SP_NV21)) {
         static const int OMX_SEC_COLOR_FormatNV21Linear = 0x7F000011;
         return OMX_SEC_COLOR_FormatNV21Linear;
-    }
-
-    if (!strcmp(colorFormat, CameraParameters::PIXEL_FORMAT_YUV422I)) {
-        return OMX_COLOR_FormatYCbYCr;
-    }
-
-    if (!strcmp(colorFormat, CameraParameters::PIXEL_FORMAT_RGB565)) {
-       return OMX_COLOR_Format16bitRGB565;
-    }
-
-    if (!strcmp(colorFormat, "OMX_TI_COLOR_FormatYUV420PackedSemiPlanar")) {
-       return OMX_TI_COLOR_FormatYUV420PackedSemiPlanar;
-    }
-
-    if (!strcmp(colorFormat, CameraParameters::PIXEL_FORMAT_ANDROID_OPAQUE)) {
-        return OMX_COLOR_FormatAndroidOpaque;
-    }
-
-    if (!strcmp(colorFormat, "YVU420SemiPlanar")) {
-        return OMX_QCOM_COLOR_FormatYVU420SemiPlanar;
     }
 
     ALOGE("Uknown color format (%s), please add it to "
