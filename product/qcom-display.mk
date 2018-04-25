@@ -16,3 +16,7 @@ PRODUCT_PACKAGES += \
 # RenderScript HAL
 PRODUCT_PACKAGES += \
 	android.hardware.renderscript@1.0-impl
+
+# LiveDisplay native
+PRODUCT_PACKAGES += \
+	vendor.lineage.livedisplay@1.0-service-sdm
