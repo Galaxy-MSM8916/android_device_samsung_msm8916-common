@@ -8,18 +8,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio offload
 PRODUCT_PROPERTY_OVERRIDES += \
-	audio.offload.buffer.size.kb=32 \
-	audio.offload.gapless.enabled=true \
+	vendor.audio.offload.buffer.size.kb=64 \
+	vendor.audio.offload.gapless.enabled=true \
 	audio.offload.min.duration.secs=30 \
-	av.offload.enable=true \
-	tunnel.audio.encode=false
+	vendor.audio.offload.track.enable=true \
+	vendor.audio.tunnel.encode=false
 
 # Audio voice recording
 PRODUCT_PROPERTY_OVERRIDES += \
-	use.voice.path.for.pcm.voip=true \
-	voice.playback.conc.disabled=true \
-	voice.record.conc.disabled=true \
-	voice.voip.conc.disabled=true
+	vendor.voice.path.for.pcm.voip=true \
+	vendor.voice.playback.conc.disabled=true \
+	vendor.voice.record.conc.disabled=true \
+	vendor.voice.voip.conc.disabled=true
 
 # ZRAM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -53,11 +53,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fluence
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.audio.fluence.speaker=true \
-	persist.audio.fluence.voicecall=true \
-	persist.audio.fluence.voicerec=false \
-	ro.qc.sdk.audio.fluencetype=none \
-	ro.qc.sdk.audio.ssr=false
+	ro.vendor.audio.sdk.fluencetype=true \
+	persist.vendor.audio.fluence.voicecall=true \
+	persist.vendor.audio.fluence.voicerec=false \
+	ro.vendor.audio.sdk.fluencetype=none \
+	ro.vendor.audio.sdk.ssr=false
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
