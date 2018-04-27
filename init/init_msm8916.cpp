@@ -98,7 +98,7 @@ void set_cdma_properties(const char *operator_alpha, const char *operator_numeri
 void set_dsds_properties()
 {
 	android::init::property_set("ro.multisim.simslotcount", "2");
-	android::init::property_set("ro.telephony.ril.config", "simactivation,sim2gsmonly");
+	android::init::property_set("ro.telephony.ril.config", "simactivation");
 	android::init::property_set("persist.radio.multisim.config", "dsds");
 	android::init::property_set("rild.libpath2", "/system/lib/libsec-ril-dsds.so");
 }
