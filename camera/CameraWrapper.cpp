@@ -32,6 +32,8 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
+#include "CameraWrapper.h"
+
 static const char PIXEL_FORMAT_YUV420SP_NV21E[] = "yuv420sp-nv21e";
 
 #define BACK_CAMERA     0
@@ -76,7 +78,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
     .set_callbacks = NULL, /* remove compilation warnings */
     .get_vendor_tag_ops = NULL, /* remove compilation warnings */
     .open_legacy = NULL, /* remove compilation warnings */
-    .set_torch_mode = NULL, /* remove compilation warnings */
+    .set_torch_mode = camera_set_torch_mode,
     .init = NULL, /* remove compilation warnings */
     .reserved = {0}, /* remove compilation warnings */
 };
@@ -655,4 +657,12 @@ static int camera_get_camera_info(int camera_id, struct camera_info *info)
     if (check_vendor_module())
         return 0;
     return gVendorModule->get_camera_info(camera_id, info);
+}
+
+static int camera_set_torch_mode(const char* camera_id, bool enabled)
+{
+    ALOGV("%s", __FUNCTION__);
+    if (check_vendor_module())
+        return 0;
+    return gVendorModule->set_torch_mode(camera_id, enabled);
 }
