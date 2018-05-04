@@ -21,5 +21,6 @@
 
     <!-- Should the pinner service pin the Camera application? -->
     <bool name="config_pinnerCameraApp">true</bool>
+    <bool name="config_setColorTransformAccelerated">false</bool>
 
 </resources>
