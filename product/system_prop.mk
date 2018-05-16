@@ -2,24 +2,19 @@
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opa.eligible_device=true
 
-# Audio encoders
-PRODUCT_PROPERTY_OVERRIDES += \
-	qcom.hw.aac.encoder=false
-
 # Audio offload
 PRODUCT_PROPERTY_OVERRIDES += \
+	af.fast_track_multiplier=1 \
 	vendor.audio.offload.buffer.size.kb=64 \
 	vendor.audio.offload.gapless.enabled=true \
 	audio.offload.min.duration.secs=30 \
 	vendor.audio.offload.track.enable=true \
+	vendor.audio_hal.period_size=192 \
 	vendor.audio.tunnel.encode=false
 
 # Audio voice recording
 PRODUCT_PROPERTY_OVERRIDES += \
-	vendor.voice.path.for.pcm.voip=true \
-	vendor.voice.playback.conc.disabled=true \
-	vendor.voice.record.conc.disabled=true \
-	vendor.voice.voip.conc.disabled=true
+	vendor.voice.path.for.pcm.voip=true
 
 # ZRAM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -30,14 +25,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.hfp.client=1 \
 	qcom.bluetooth.soc=smd
 
-#split  a2dp
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.bt.enable.splita2dp=false
-
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
- 	camera2.portability.force_api=1 \
- 	debug.camcorder.disablemeta=true \
+	camera2.portability.force_api=1 \
+	debug.camcorder.disablemeta=true \
 	camera.disable_treble=true
 
 # Connectivity Engine
@@ -80,9 +71,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.media.treble_omx=false \
-	media.stagefright.legacyencoder=true \
-	media.stagefright.less-secure=true \
-	media.aac_51_output_enabled=true \
 	media.stagefright.enable-aac=true \
 	media.stagefright.enable-fma2dp=true \
 	media.stagefright.enable-http=true \
@@ -98,6 +86,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Misc.
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.mdpcomp.logs=0 \
+	debug.sf.enable_hwc_vds=1 \
 	dev.pm.dyn_samplingrate=1 \
 	persist.hwc.enable_vds=1 \
 	persist.hwc.mdpcomp.enable=true \
@@ -152,5 +141,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # WiDi
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.debug.wfd.enable=1 \
-	persist.sys.wfd.virtual=0
+	persist.debug.wfd.enable=1
