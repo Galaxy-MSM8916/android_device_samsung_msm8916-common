@@ -5,6 +5,7 @@ PRODUCT_PACKAGES += \
 	init.qcom.ril.sh \
 	init.qcom.post_boot.sh \
 	init.qcom.early_boot.sh \
+        init.qcom.power.rc \
 	init.link_ril_db.sh \
 	init.qcom.usb.rc \
 	init.qcom.usb.sh \
