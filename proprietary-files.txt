@@ -207,6 +207,13 @@ vendor/lib/libril-qcril-hook-oem.so
 lib/libsecnativefeature.so
 lib/libseckeyprov.so
 
+# SecureUI
+vendor/lib/libsecureui.so
+vendor/lib/libsecureui_svcsock.so
+vendor/lib/libSecureUILib.so
+vendor/lib/libsecureuisvc_jni.so
+vendor/lib/libStDrvInt.so
+
 # Security
 bin/irsc_util
 lib/libgdmcprov.so
