@@ -62,7 +62,7 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     chown root audio /sys/kernel/boot_adsp/boot
     setprop qcom.audio.init complete
-    exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
+    start qcom-early-boot
 
 on boot
     start rmt_storage
@@ -780,6 +780,12 @@ service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw diag net_admin wifi
+
+service qcom-early-boot /system/bin/sh /init.qcom.early_boot.sh
+    class main
+    user root
+    disabled
+    oneshot
 
 service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     class late_start
