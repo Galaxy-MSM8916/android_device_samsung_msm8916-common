@@ -13,7 +13,7 @@ PRODUCT_COPY_FILES += \
     $(CONFIG_PATH)/msm8916_32/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf
 
 # Mixer paths
-ifneq ($(USE_QCOM_MIXER_PATHS), false)
+ifeq ($(USE_QCOM_MIXER_PATHS), false)
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 endif
