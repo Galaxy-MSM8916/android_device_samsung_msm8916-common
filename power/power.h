@@ -54,7 +54,7 @@ static power_profile profiles[PROFILE_MAX] = {
         .above_hispeed_delay = 20000,
         .target_loads = 80,
         .target_loads_off = 90,
-        .scaling_max_freq = 1363200,
+        .scaling_max_freq = 1209600,
         .scaling_min_freq = 800000,
         .scaling_min_freq_off = 200000,
     },
