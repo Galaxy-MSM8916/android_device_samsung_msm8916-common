@@ -35,7 +35,6 @@ static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 static int boostpulse_fd = -1;
 
 static int current_power_profile = PROFILE_BALANCED;
-static int requested_power_profile = PROFILE_BALANCED;
 
 static int sysfs_write_str(char *path, char *s)
 {
@@ -97,8 +96,6 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
         ALOGD("%s: no power profile selected yet", __func__);
         return;
     }
-
-    if (on) {
         sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
                         profiles[current_power_profile].hispeed_freq);
         sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
@@ -107,52 +104,7 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
                         profiles[current_power_profile].target_loads);
         sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
                         profiles[current_power_profile].scaling_min_freq);
-    } else {
-        sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
-                        profiles[current_power_profile].hispeed_freq_off);
-        sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
-                        profiles[current_power_profile].go_hispeed_load_off);
-        sysfs_write_int(INTERACTIVE_PATH "target_loads",
-                        profiles[current_power_profile].target_loads_off);
-        sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
-                        profiles[current_power_profile].scaling_min_freq_off);
     }
-}
-
-static void set_power_profile(int profile)
-{
-    if (!is_profile_valid(profile)) {
-        ALOGE("%s: unknown profile: %d", __func__, profile);
-        return;
-    }
-
-    if (profile == current_power_profile)
-        return;
-
-    ALOGD("%s: setting profile %d", __func__, profile);
-
-    sysfs_write_int(INTERACTIVE_PATH "boost",
-                    profiles[profile].boost);
-    sysfs_write_int(INTERACTIVE_PATH "boostpulse_duration",
-                    profiles[profile].boostpulse_duration);
-    sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
-                    profiles[profile].go_hispeed_load);
-    sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
-                    profiles[profile].hispeed_freq);
-    sysfs_write_int(INTERACTIVE_PATH "min_sample_time",
-                    profiles[profile].min_sample_time);
-    sysfs_write_int(INTERACTIVE_PATH "timer_rate",
-                    profiles[profile].timer_rate);
-    sysfs_write_int(INTERACTIVE_PATH "above_hispeed_delay",
-                    profiles[profile].above_hispeed_delay);
-    sysfs_write_int(INTERACTIVE_PATH "target_loads",
-                    profiles[profile].target_loads);
-    sysfs_write_int(CPUFREQ_PATH "scaling_max_freq",
-                    profiles[profile].scaling_max_freq);
-    sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
-                    profiles[profile].scaling_min_freq);
-
-    current_power_profile = profile;
 }
 
 static void power_hint(__attribute__((unused)) struct power_module *module,
@@ -185,26 +137,12 @@ static void power_hint(__attribute__((unused)) struct power_module *module,
             }
         }
         break;
-    case POWER_HINT_SET_PROFILE:
-        pthread_mutex_lock(&lock);
-        set_power_profile(*(int32_t *)data);
-        pthread_mutex_unlock(&lock);
-        break;
     case POWER_HINT_LOW_POWER:
         /* This hint is handled by the framework */
         break;
     default:
         break;
     }
-}
-
-static int get_feature(__attribute__((unused)) struct power_module *module,
-                       feature_t feature)
-{
-    if (feature == POWER_FEATURE_SUPPORTED_PROFILES) {
-        return PROFILE_MAX;
-    }
-    return -1;
 }
 
 static int power_open(const hw_module_t* module, const char* name,
@@ -231,7 +169,6 @@ static int power_open(const hw_module_t* module, const char* name,
     dev->init = power_init;
     dev->powerHint = power_hint; // This is handled by framework
     dev->setInteractive = power_set_interactive;
-    dev->getFeature = get_feature;
 
     *device = (hw_device_t*)dev;
 
@@ -257,6 +194,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
 
     .init = power_init,
     .setInteractive = power_set_interactive,
-    .powerHint = power_hint,
-    .getFeature = get_feature
+    .powerHint = power_hint
 };
