@@ -16,7 +16,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio voice recording
 PRODUCT_PROPERTY_OVERRIDES += \
-	vendor.voice.path.for.pcm.voip=true
+	vendor.voice.path.for.pcm.voip=false
 
 # ZRAM
 PRODUCT_PROPERTY_OVERRIDES += \
