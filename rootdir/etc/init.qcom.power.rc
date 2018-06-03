@@ -22,9 +22,9 @@ on init
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "25000 1209600:50000"
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 998400
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1094400
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "1 200000:50 400000:55 533330:60 800000:65 998400:70 1094400:75 1209600:80"
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "1 200000:20 400000:30 533330:40 800000:50 998400:60 1094400:70 1209600:80"
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 50000
     write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 50000
 
@@ -44,7 +44,7 @@ on init
     write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 68
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 30
-    write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
+    write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 50
     write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 0
     write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 4
 
