@@ -19,18 +19,16 @@ vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth
-vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|a8dacd06bdf59053b86771e341dfdba5a20bb2e8
-vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so|663ebefb4188cdf17023fdc4b0e08e6c522e6d67
-vendor/lib/libbtnv.so
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|dfe077d09d2c89e80429d68c70e6bb80286afb1e
+vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so|c31edee39b8c25fe0fba7efd36267ffded5785c6
+vendor/lib/libbtnv.so|9b6845a4206e1423b9d476fd6e290930ec6d0d4a
 
 # Camera
-bin/mm-qcamera-daemon
-cameradata/datapattern_420sp.yuv
-cameradata/datapattern_front_420sp.yuv
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/cpp_firmware_v1_4_0.fw
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/pp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw
 lib/libexifa.so
 lib/libjpega.so
 lib/libmmcamera_interface.so
@@ -42,8 +40,9 @@ vendor/lib/libjpegehw.so
 # Camera - wf-crackling-7.1-TOS093F-a29b96e3d6
 vendor/lib/libmmcamera_faceproc.so|8e6a95d0dd0d282f96cc905c11c1a738
 
-# aptX (BQ Aquaris M5)
-lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
+# aptX
+vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
+vendor/lib/libaptXHD_encoder.so|b65cd3b72ae3e6a57901fd5b5383bfa1a88c5737
 
 # DRM
 bin/qcom-system-daemon
@@ -64,16 +63,16 @@ vendor/lib/mediadrm/libprmediadrmdecrypt.so
 vendor/lib/mediadrm/libprmediadrmplugin.so
 
 # FM
-bin/fmconfig
-bin/fm_qsoc_patches
+bin/fmconfig:vendor/bin/fmconfig
+bin/fm_qsoc_patches:vendor/bin/fm_qsoc_patches
 -lib/vendor.qti.hardware.fm@1.0.so
 vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
 vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
 
 # GPS - From Crackling
-bin/loc_launcher
--lib/libloc_api_v02.so|03860b5a4e72edd96c9acce3886b6d23
--lib/libloc_ds_api.so|31c3c73f4e449eded83f32eabc561c29
+bin/loc_launcher:vendor/bin/loc_launcher
+-lib/libloc_api_v02.so:vendor/lib/libloc_api_v02.so|03860b5a4e72edd96c9acce3886b6d23
+-lib/libloc_ds_api.so:vendor/lib/libloc_ds_api.so|31c3c73f4e449eded83f32eabc561c29
 vendor/lib/hw/flp.default.so|48b1901aac6ce882c415dcbbffc36432
 vendor/lib/libflp.so|8ecc18a88b768e65ade0c2f900aa3699
 vendor/lib/libgeofence.so|862cfcd014939ba68c2418488c00a724
@@ -112,13 +111,13 @@ vendor/lib/libsc-a3xx.so|42193ceddf52b1c6e5914d8c20c9f4ab
 vendor/lib/libscale.so|811e35d84497eeafd66952fba530c8b8
 
 # Graphics Firmware
-etc/firmware/a300_pfp.fw
-etc/firmware/a300_pm4.fw
-etc/firmware/a420_pfp.fw
-etc/firmware/a420_pm4.fw
-etc/firmware/ice40.bin
-etc/firmware/leia_pfp_470.fw
-etc/firmware/leia_pm4_470.fw
+etc/firmware/a300_pfp.fw:vendor/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw:vendor/firmware/a300_pm4.fw
+etc/firmware/a420_pfp.fw:vendor/firmware/a420_pfp.fw
+etc/firmware/a420_pm4.fw:vendor/firmware/a420_pm4.fw
+etc/firmware/ice40.bin:vendor/firmwareice40.bin/ice40.bin
+etc/firmware/leia_pfp_470.fw:vendor/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw:vendor/firmware/leia_pm4_470.fw
 
 # Media
 etc/somxreg.conf
@@ -153,19 +152,18 @@ vendor/media/LMspeed_508.emd
 vendor/media/PFFprec_600.emd
 
 # Miscellaneous
-bin/ssr_diag
-bin/ssr_setup
-bin/wdsdaemon
-bin/subsystem_ramdump
+bin/ssr_diag:vendor/bin/ssr_diag
+bin/ssr_setup:vendor/bin/ssr_setup
+bin/wdsdaemon:vendor/bin/wdsdaemon
+bin/subsystem_ramdump:vendor/bin/subsystem_ramdump
 lib/libedmnativehelper.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libscve_mv.so
 vendor/lib/libscve.so
 
 # Perf
-vendor/bin/perfd:bin/perfd
-vendor/lib/libqti-at.so
-vendor/lib/libqti-perfd-client.so
+vendor/bin/perfd|2217e6ed2d454a0451b0fe4422b5d16966fc7254
+vendor/lib/libqti-perfd-client.so|8d58a01e2e3ae3009c4df422809894fa1da1043b
 
 # Post-processing
 vendor/lib/libmm-als.so
@@ -173,16 +171,16 @@ vendor/lib/libmm-abl.so
 vendor/lib/libdisp-aba.so
 
 # Radio
-bin/diag_mdlog
-bin/diag_uart_log
-bin/netmgrd
-bin/ftm_ptt
-bin/ptt_socket_app
-bin/port-bridge
-bin/qmuxd|bf195df4052cabe212748eac451dc01f924a1f87
-bin/radish
-bin/rmt_storage
-bin/wlandutservice
+bin/diag_mdlog:vendor/bin/diag_mdlog
+bin/diag_uart_log:vendor/bin/diag_uart_log
+bin/netmgrd:vendor/bin/netmgrd
+bin/ftm_ptt:vendor/bin/ftm_ptt
+bin/ptt_socket_app:vendor/bin/ptt_socket_app
+bin/port-bridge:vendor/bin/port-bridge
+bin/qmuxd:vendor/bin/qmuxd|bf195df4052cabe212748eac451dc01f924a1f87
+bin/radish:vendor/bin/radish
+bin/rmt_storage:vendor/bin/rmt_storage
+bin/wlandutservice:vendor/bin/wlandutservice
 etc/plmn_delta.bin
 etc/plmn_se13.bin
 etc/srm.bin
@@ -215,13 +213,13 @@ lib/libgdmcprov.so
 vendor/lib/libstlport.so|76fbc529632aae39370a7f28a1d839cd
 
 # Thermal
-vendor/bin/thermal-engine|9bde5406f64822537391281acdc14c4ee629f44a
-vendor/lib/libthermalclient.so|866fdb1ecba843fdf7e9d9a5dd088c6e8d47a8de
-vendor/lib/libthermalioctl.so|0373f044885dc1c8c231651476e4e5a58b990b21
+vendor/bin/thermal-engine|01f1732dc939b87c681479e6beb3f0ed345fe01b
+vendor/lib/libthermalclient.so|ba8e9cddd3872471d7c4fb2d9fd4bddb476e3096
+vendor/lib/libthermalioctl.so|9427025c43c3aa9e2eaa55495930b0d1f30b78b1
 
 # Time services
--app/TimeService/TimeService.apk
-bin/time_daemon
+-app/TimeService/TimeService.apk:vendor/app/TimeService/TimeService.apk
+bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 
