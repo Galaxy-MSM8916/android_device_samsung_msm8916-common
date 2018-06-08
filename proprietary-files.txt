@@ -19,9 +19,9 @@ vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth
-vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|a8dacd06bdf59053b86771e341dfdba5a20bb2e8
-vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so|663ebefb4188cdf17023fdc4b0e08e6c522e6d67
-vendor/lib/libbtnv.so
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|dfe077d09d2c89e80429d68c70e6bb80286afb1e
+vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so|c31edee39b8c25fe0fba7efd36267ffded5785c6
+vendor/lib/libbtnv.so|9b6845a4206e1423b9d476fd6e290930ec6d0d4a
 
 # Camera
 bin/mm-qcamera-daemon
@@ -42,8 +42,9 @@ vendor/lib/libjpegehw.so
 # Camera - wf-crackling-7.1-TOS093F-a29b96e3d6
 vendor/lib/libmmcamera_faceproc.so|8e6a95d0dd0d282f96cc905c11c1a738
 
-# aptX (BQ Aquaris M5)
-lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
+# aptX
+vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
+vendor/lib/libaptXHD_encoder.so|b65cd3b72ae3e6a57901fd5b5383bfa1a88c5737
 
 # DRM
 bin/qcom-system-daemon
@@ -163,9 +164,8 @@ vendor/lib/libscve_mv.so
 vendor/lib/libscve.so
 
 # Perf
-vendor/bin/perfd:bin/perfd
-vendor/lib/libqti-at.so
-vendor/lib/libqti-perfd-client.so
+vendor/bin/perfd|2217e6ed2d454a0451b0fe4422b5d16966fc7254
+vendor/lib/libqti-perfd-client.so|8d58a01e2e3ae3009c4df422809894fa1da1043b
 
 # Post-processing
 vendor/lib/libmm-als.so
@@ -215,9 +215,9 @@ lib/libgdmcprov.so
 vendor/lib/libstlport.so|76fbc529632aae39370a7f28a1d839cd
 
 # Thermal
-vendor/bin/thermal-engine|9bde5406f64822537391281acdc14c4ee629f44a
-vendor/lib/libthermalclient.so|866fdb1ecba843fdf7e9d9a5dd088c6e8d47a8de
-vendor/lib/libthermalioctl.so|0373f044885dc1c8c231651476e4e5a58b990b21
+vendor/bin/thermal-engine|01f1732dc939b87c681479e6beb3f0ed345fe01b
+vendor/lib/libthermalclient.so|ba8e9cddd3872471d7c4fb2d9fd4bddb476e3096
+vendor/lib/libthermalioctl.so|9427025c43c3aa9e2eaa55495930b0d1f30b78b1
 
 # Time services
 -app/TimeService/TimeService.apk
