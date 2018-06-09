@@ -502,7 +502,7 @@ PRODUCT_PACKAGES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2017-09-01
+    ro.lineage.build.vendor_security_patch=2017-09-01
 
 # Vibrator
 PRODUCT_PACKAGES += \
