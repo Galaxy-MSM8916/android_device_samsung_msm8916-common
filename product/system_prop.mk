@@ -135,6 +135,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	lineage.updater.uri=https://ota15.msm8916.com/api
 
+# Vendor security patch level
+	ro.vendor.build.security_patch=2017-09-01
+
 # Video encoding
 PRODUCT_PROPERTY_OVERRIDES += \
 	vidc.enc.narrow.searchrange=1
