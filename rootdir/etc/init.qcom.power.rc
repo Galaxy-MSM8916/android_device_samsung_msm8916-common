@@ -20,11 +20,11 @@ on init
     write /sys/module/msm_thermal/core_control/enabled 1
 
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "25000 1209600:50000"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 65
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1094400
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1152000
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "1 200000:20 400000:30 533330:40 800000:50 998400:60 1094400:70 1209600:80"
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "1 200000:10 400000:15 533330:20 800000:30 998400:40 1094400:50 1152000:80 1209600:90"
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 50000
     write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 50000
 
