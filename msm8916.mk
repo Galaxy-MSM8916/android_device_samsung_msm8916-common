@@ -26,6 +26,7 @@ LOCAL_PATH := device/samsung/msm8916-common
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 # Include package config fragments
 include $(LOCAL_PATH)/product/*.mk
