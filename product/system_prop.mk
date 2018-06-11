@@ -137,6 +137,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.timed.enable=true
 
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.vendor.build.security_patch=2017-09-01
+
 # Video encoding
 PRODUCT_PROPERTY_OVERRIDES += \
 	vidc.enc.narrow.searchrange=1
