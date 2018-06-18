@@ -19,3 +19,11 @@ PRODUCT_PACKAGES += \
 # LiveDisplay native
 PRODUCT_PACKAGES += \
 	vendor.lineage.livedisplay@1.0-service-sdm
+
+ifeq ($(filter j7ltespr j7ltechn,$(TARGET_DEVICE)),)
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.opengles.version=196608
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.opengles.version=196610
+endif

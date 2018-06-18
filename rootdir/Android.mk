@@ -30,16 +30,6 @@ LOCAL_SRC_FILES    := etc/init.link_ril_db.sh
 include $(BUILD_PREBUILT)
 
 ######################
-### init.qcom.early_boot.sh
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.qcom.early_boot.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/$(LOCAL_MODULE)
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-######################
 ### init.qcom.usb.rc
 include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.usb.rc
