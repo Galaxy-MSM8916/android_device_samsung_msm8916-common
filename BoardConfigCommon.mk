@@ -21,6 +21,8 @@ TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
+BUILD_BROKEN_DUP_RULES := true
+
 # Architecture/platform
 BOARD_VENDOR := samsung
 FORCE_32_BIT := true
