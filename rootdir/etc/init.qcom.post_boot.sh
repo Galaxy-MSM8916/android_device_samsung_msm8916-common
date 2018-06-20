@@ -511,7 +511,7 @@ case "$target" in
            ;;
         esac
         #start perfd after setprop
-        start perfd # start perfd on 8916, 8939 and 8929
+        #start perfd # start perfd on 8916, 8939 and 8929
     ;;
 esac
 
