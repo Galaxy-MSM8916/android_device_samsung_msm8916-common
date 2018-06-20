@@ -162,11 +162,6 @@ vendor/lib/libfastcvopt.so
 vendor/lib/libscve_mv.so
 vendor/lib/libscve.so
 
-# Perf
-vendor/bin/perfd:bin/perfd
-vendor/lib/libqti-at.so
-vendor/lib/libqti-perfd-client.so
-
 # Post-processing
 vendor/lib/libmm-als.so
 vendor/lib/libmm-abl.so
