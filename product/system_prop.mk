@@ -100,6 +100,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.data.large_tcp_window_size=true \
 	sys.disable_ext_animation=1
 
+# OEM Unlock
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.oem_unlock_supported=0
+
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.extension_library=libqti-perfd-client.so
