@@ -33,6 +33,7 @@ etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
+lib/libboringssl-compat.so|db31d15f3a665713648c6b35f9bb0136
 lib/libexifa.so
 lib/libjpega.so
 lib/libmmcamera_interface.so
