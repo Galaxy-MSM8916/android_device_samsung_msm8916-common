@@ -12,6 +12,10 @@ CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
 
+# Mixer paths
+PRODUCT_COPY_FILES += \
+    $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+
 #XML Audio configuration files
 PRODUCT_COPY_FILES += \
     $(TOPDIR)$(CONFIG_PATH)/msm8916_32/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
