@@ -14,8 +14,10 @@ PRODUCT_COPY_FILES += \
     $(CONFIG_PATH)/msm8916_32/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 # Mixer paths
+ifneq ($(USE_CUSTOM_MIXER_PATHS), true)
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+endif
 
 # Platform info config
 PRODUCT_COPY_FILES += \
