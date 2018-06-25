@@ -13,8 +13,10 @@ PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
 
 # Mixer paths
+ifneq ($(USE_QCOM_MIXER_PATHS), false)
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+endif
 
 #XML Audio configuration files
 PRODUCT_COPY_FILES += \
