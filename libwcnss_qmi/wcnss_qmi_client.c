@@ -23,7 +23,7 @@
 
 #define MAC_INFO_FILE "/efs/wifi/.mac.info"
 
-#include <cutils/log.h>
+#include <log/log.h>
 #include <stdio.h>
 
 int wcnss_init_qmi(void)

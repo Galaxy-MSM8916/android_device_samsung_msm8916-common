@@ -19,7 +19,7 @@
 //#define LOG_NDEBUG 0
 
 #include <errno.h>
-#include <cutils/log.h>
+#include <log/log.h>
 
 #include <hardware/hardware.h>
 #include <hardware/sensors.h>
