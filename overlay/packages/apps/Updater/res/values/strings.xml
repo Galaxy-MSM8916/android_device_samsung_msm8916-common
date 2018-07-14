@@ -16,6 +16,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-	<string name="conf_update_server_url_def" translatable="false">https://ota15.msm8916.com/api</string>
+	<string name="updater_server_url" translatable="false">https://ota15.msm8916.com/api/v1/{device}/{type}/{incr}</string>
 
 </resources>
