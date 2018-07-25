@@ -18,10 +18,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.voice.path.for.pcm.voip=false
 
-# ZRAM
-PRODUCT_PROPERTY_OVERRIDES += \
-        ro.config.zram=true
-
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.hfp.client=1 \
