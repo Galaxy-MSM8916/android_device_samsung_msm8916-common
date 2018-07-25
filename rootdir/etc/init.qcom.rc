@@ -579,13 +579,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
-    writepid /dev/cpuset/camera-daemon/tasks
 
 service qseecomd /system/bin/qseecomd
    class core
    user root
    group root
-   writepid /dev/cpuset/system-background/tasks
 
 service thermal-engine /vendor/bin/thermal-engine
    class main
@@ -594,7 +592,6 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    group root
-   writepid /dev/cpuset/system-background/tasks
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
@@ -604,7 +601,6 @@ service time_daemon /system/bin/time_daemon
    class late_start
    user root
    group root
-   writepid /dev/cpuset/system-background/tasks
 
 service qcomsysd /system/bin/qcom-system-daemon
     class main
@@ -691,7 +687,6 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     group system wakelock
-    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:wc_transport.start_hci=true
@@ -718,13 +713,11 @@ service qmuxd /system/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag
-    writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /system/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
-    writepid /dev/cpuset/system-background/tasks
 
 service sensors /system/bin/sensors.qcom
     class late_start
