@@ -3,6 +3,7 @@ PRODUCT_PACKAGES += \
 	fstab.qcom \
 	init.carrier.rc \
 	init.qcom.ril.sh \
+	init.qcom.early_boot.sh \
 	init.link_ril_db.sh \
 	init.qcom.usb.rc \
 	init.qcom.usb.sh \
