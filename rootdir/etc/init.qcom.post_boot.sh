@@ -227,7 +227,8 @@ case "$target" in
                 echo 100 > /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms
 
                 # enable thermal core_control now
-                echo 1 > /sys/module/msm_thermal/core_control/enabled
+                #echo 1 > /sys/module/msm_thermal/core_control/enabled
+                echo 0 > /sys/module/msm_thermal/core_control/enabled
 
                 echo "25000 1152000:50000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
                 echo 65 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
