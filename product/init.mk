@@ -4,6 +4,7 @@ PRODUCT_PACKAGES += \
 	init.carrier.rc \
 	init.qcom.ril.sh \
 	init.qcom.early_boot.sh \
+	init.qcom.post_boot.sh \
 	init.link_ril_db.sh \
 	init.qcom.usb.rc \
 	init.qcom.usb.sh \
@@ -12,11 +13,3 @@ PRODUCT_PACKAGES += \
 	init.recovery.qcom.rc \
 	twrp.fstab \
 	ueventd.qcom.rc
-
-ifeq ($(filter j7ltespr j7ltechn,$(TARGET_DEVICE)),)
-PRODUCT_PACKAGES += \
-	init.qcom.power.rc
-else
-PRODUCT_PACKAGES += \
-	init.qcom.post_boot.sh
-endif
