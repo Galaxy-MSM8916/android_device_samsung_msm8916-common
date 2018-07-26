@@ -198,6 +198,13 @@ case "$target" in
                 echo 1 > /sys/devices/system/cpu/cpu0/online
                 echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+                echo 2 > /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+                echo 4 > /sys/devices/system/cpu/cpu0/core_ctl/max_cpus
+                echo 68 > /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres
+                echo 40 > /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres
+                echo 100 > /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms
+
                 # enable thermal core_control now
                 echo 1 > /sys/module/msm_thermal/core_control/enabled
 
