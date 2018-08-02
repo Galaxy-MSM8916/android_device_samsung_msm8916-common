@@ -27,6 +27,7 @@ LOCAL_MODULE       := init.link_ril_db.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/init.link_ril_db.sh
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 ######################
@@ -106,7 +107,7 @@ LOCAL_MODULE       := init.qcom.post_boot.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/$(LOCAL_MODULE)
-LOCAL_MODULE_PATH  := $(TARGET_OUT)/etc
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 ######################
