@@ -92,7 +92,7 @@ else
     fi
 
     # Zram disk - 512MB size
-    zram_enable=`getprop ro.config.zram`
+    zram_enable=`getprop ro.config.zram.enabled`
     if [ "$zram_enable" == "true" ]; then
         echo 536870912 > /sys/block/zram0/disksize
         mkswap /dev/block/zram0
