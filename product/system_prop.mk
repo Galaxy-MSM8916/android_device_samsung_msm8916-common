@@ -21,6 +21,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.voice.record.conc.disabled=true \
 	vendor.voice.voip.conc.disabled=true
 
+# ZRAM - Size in MB
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.config.zram.size=128
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
 	bluetooth.hfp.client=1 \
