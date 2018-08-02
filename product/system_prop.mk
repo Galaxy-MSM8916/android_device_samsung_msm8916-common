@@ -18,9 +18,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	vendor.voice.path.for.pcm.voip=false
 
-# ZRAM
+# ZRAM - Size in MB
 PRODUCT_PROPERTY_OVERRIDES += \
-        ro.config.zram.enabled=false
+	ro.config.zram.enabled=false \
+	ro.config.zram.size=256
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
