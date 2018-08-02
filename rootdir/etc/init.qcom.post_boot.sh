@@ -91,10 +91,31 @@ else
         echo 53059 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
     fi
 
-    # Zram disk - 512MB size
+    # Check if zram is enabled
     zram_enable=`getprop ro.config.zram.enabled`
     if [ "$zram_enable" == "true" ]; then
-        echo 536870912 > /sys/block/zram0/disksize
+        # Zram disk - default is 256MB size
+        zram_size=`getprop ro.config.zram.size`
+
+        # minimum in MB
+        minimum_size=256
+
+        # calculate maximum to 75% of actual memory (in B)
+        maximum_disk_size=$(expr $((${MemTotal}*1024)) \* 75 \/ 100)
+
+        if [ "$zram_size" -lt "$minimum_size" ]; then
+            zram_size="$minimum_size"
+        fi
+
+        # calculate zram disk size
+        zram_disk_size=$((1024*1024*${zram_size}))
+
+        # validate disk size
+        if [ "$zram_disk_size" -gt "$maximum_disk_size" ]; then
+            zram_disk_size="$maximum_disk_size"
+        fi
+
+        echo $zram_disk_size > /sys/block/zram0/disksize
         mkswap /dev/block/zram0
         swapon /dev/block/zram0 -p 32758
     fi
