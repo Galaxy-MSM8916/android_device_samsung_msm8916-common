@@ -20,7 +20,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # ZRAM
 PRODUCT_PROPERTY_OVERRIDES += \
-        ro.config.zram.enabled=false
+        ro.config.zram.enabled=false \
+        ro.config.zram.size=536870912
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
