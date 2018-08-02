@@ -766,20 +766,20 @@ on property:sys.boot_completed=1
 on property:persist.radio.multisim.config=dsds
     stop ril-daemon
     start ril-daemon
-    start ril-daemon1
+    start ril-daemon2
 
 on property:persist.radio.multisim.config=dsda
     stop ril-daemon
     start ril-daemon
-    start ril-daemon1
+    start ril-daemon2
 
 on property:ro.multisim.simslotcount=2
     stop ril-daemon
     start ril-daemon
-    start ril-daemon1
+    start ril-daemon2
 
 # RIL for multi rild
-service ril-daemon1 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
+service ril-daemon2 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
     user radio
     disabled
