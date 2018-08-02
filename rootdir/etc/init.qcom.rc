@@ -761,18 +761,22 @@ on property:sys.boot_completed=1
     write /sys/class/touch_screen/enabled true
     write /sys/class/touch_screen/control auto
 
-service ril-daemon2 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
+on property:persist.radio.multisim.config=dsds
+    start ril-daemon1
+
+on property:persist.radio.multisim.config=dsda
+    start ril-daemon1
+
+on property:ro.multisim.simslotcount=2
+    start ril-daemon1
+
+# RIL for multi rild
+service ril-daemon1 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
     user radio
     disabled
-    group radio cache inet misc audio log readproc wakelock
+    group radio cache inet misc audio log system drmrpc sdcard_r sdcard_rw shell wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
-service rild2-wrapper /vendor/bin/sh /init.qcom.ril.sh
-    class late_start
-    user root
-    group root
-    oneshot
 
 service ssr_diag /system/bin/ssr_diag
     class late_start
