@@ -21,6 +21,7 @@ TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_HAS_DOWNLOAD_MODE := true
 TW_HAS_MTP := true
+TW_INCLUDE_CRYPTO := true
 TW_INPUT_BLACKLIST := "accelerometer\x0ahbtp_vm"
 TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_MTP_DEVICE := /dev/mtp_usb
