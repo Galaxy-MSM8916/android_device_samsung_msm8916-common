@@ -21,7 +21,7 @@ endif
 # Platform info config
 ifneq ($(USE_CUSTOM_AUDIO_PLATFORM_INFO), true)
 PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
+    $(PLATFORM_PATH)/configs/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml
 endif
 
 #XML Audio configuration files
