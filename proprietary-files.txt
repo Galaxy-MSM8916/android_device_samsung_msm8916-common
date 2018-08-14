@@ -42,8 +42,8 @@ vendor/lib/libjpegehw.so
 # Camera - wf-crackling-7.1-TOS093F-a29b96e3d6
 vendor/lib/libmmcamera_faceproc.so|8e6a95d0dd0d282f96cc905c11c1a738
 
-# aptX (BQ Aquaris M5)
-lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
+# aptX (Moto griffin - NCLS25.86-11-4-6-5)
+vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
 
 # DRM
 bin/qcom-system-daemon
