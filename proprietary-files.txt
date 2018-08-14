@@ -25,15 +25,13 @@ vendor/lib/libbtnv.so
 
 # Camera
 bin/mm-qcamera-daemon
-cameradata/datapattern_420sp.yuv
-cameradata/datapattern_front_420sp.yuv
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
 lib/libboringssl-compat.so|db31d15f3a665713648c6b35f9bb0136
-lib/libexifa.so
-lib/libjpega.so
+vendor/lib/libexifa.so
+vendor/lib/libjpega.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so|2d8f479b1df6a98ee9130386c189fee51744c9b4
 lib/libqomx_core.so
@@ -44,15 +42,12 @@ vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera_faceproc.so|8e6a95d0dd0d282f96cc905c11c1a738
 
 # DRM
-bin/qcom-system-daemon
-lib/libdrmdecrypt.so
 lib/libhdcp2.so
 vendor/lib/libmmQSM.so
 vendor/lib/libmmrtpdecoder.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/liboemcrypto.so
-vendor/lib/drm/libdrmprplugin.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libprdrmdecrypt.so
@@ -120,7 +115,6 @@ etc/firmware/leia_pm4_470.fw
 
 # Media
 etc/somxreg.conf
-lib/libplayready_v2.5.so
 lib/libsomx263dsw.so
 lib/libsomx264dsw.so
 lib/libsomxaacd.so
@@ -134,10 +128,9 @@ lib/libsomxmp3d.so
 lib/libsomxmp4vdsw.so
 lib/libsomxnaace.so
 lib/libsomxvp8d.so
-vendor/lib/libhwdaphal.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libFlacSwDec.so
-vendor/lib/libmm-abl-oem.so
+vendor/lib/libmm-als.so
 vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmmparser.so
@@ -153,17 +146,11 @@ vendor/media/PFFprec_600.emd
 # Miscellaneous
 bin/ssr_diag
 bin/ssr_setup
-bin/wdsdaemon
 bin/subsystem_ramdump
 lib/libedmnativehelper.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libscve_mv.so
 vendor/lib/libscve.so
-
-# Post-processing
-vendor/lib/libmm-als.so
-vendor/lib/libmm-abl.so
-vendor/lib/libdisp-aba.so
 
 # Radio
 bin/diag_mdlog
@@ -180,7 +167,7 @@ etc/plmn_delta.bin
 etc/plmn_se13.bin
 etc/srm.bin
 lib/libatparser.so
-lib/libcordon.so
+vendor/lib/libcordon.so
 lib/libfactoryutil.so
 lib/libomission_avoidance.so
 vendor/lib/libconfigdb.so
@@ -192,13 +179,11 @@ vendor/lib/libSubSystemShutdown.so
 vendor/lib/libxml.so
 
 # RIL
-lib/libaudio-ril.so
 lib/libsecril-client.so
 vendor/lib/libril-qcril-hook-oem.so
 
 # Samsung libs
 lib/libsecnativefeature.so
-lib/libseckeyprov.so
 
 # Security
 bin/irsc_util
