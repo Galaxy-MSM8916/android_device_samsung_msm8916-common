@@ -25,14 +25,12 @@ vendor/lib/libbtnv.so
 
 # Camera
 bin/mm-qcamera-daemon
-cameradata/datapattern_420sp.yuv
-cameradata/datapattern_front_420sp.yuv
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
-lib/libexifa.so
-lib/libjpega.so
+vendor/lib/libexifa.so
+vendor/lib/libjpega.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libqomx_core.so
@@ -43,15 +41,12 @@ vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera_faceproc.so|8e6a95d0dd0d282f96cc905c11c1a738
 
 # DRM
-bin/qcom-system-daemon
-lib/libdrmdecrypt.so
 lib/libhdcp2.so
 vendor/lib/libmmQSM.so
 vendor/lib/libmmrtpdecoder.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/liboemcrypto.so
-vendor/lib/drm/libdrmprplugin.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libprdrmdecrypt.so
@@ -135,12 +130,12 @@ lib/libsomxmp3d.so
 lib/libsomxmp4vdsw.so
 lib/libsomxnaace.so
 lib/libsomxvp8d.so
-vendor/lib/libhwdaphal.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libFlacSwDec.so
 -vendor/lib/libHevcSwDecoder.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-abl-oem.so
+vendor/lib/libmm-als.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-hdcpmgr.so
@@ -157,7 +152,6 @@ vendor/media/PFFprec_600.emd
 # Miscellaneous
 bin/ssr_diag
 bin/ssr_setup
-bin/wdsdaemon
 bin/subsystem_ramdump
 lib/libedmnativehelper.so
 vendor/lib/libfastcvopt.so
@@ -168,11 +162,6 @@ vendor/lib/libscve.so
 vendor/bin/perfd:bin/perfd
 vendor/lib/libqti-at.so
 vendor/lib/libqti-perfd-client.so
-
-# Post-processing
-vendor/lib/libmm-als.so
-vendor/lib/libmm-abl.so
-vendor/lib/libdisp-aba.so
 
 # Radio
 bin/diag_mdlog
@@ -189,7 +178,7 @@ etc/plmn_delta.bin
 etc/plmn_se13.bin
 etc/srm.bin
 lib/libatparser.so
-lib/libcordon.so
+vendor/lib/libcordon.so
 lib/libfactoryutil.so
 lib/libomission_avoidance.so
 vendor/lib/libconfigdb.so
@@ -201,13 +190,11 @@ vendor/lib/libSubSystemShutdown.so
 vendor/lib/libxml.so
 
 # RIL
-lib/libaudio-ril.so
 lib/libsecril-client.so
 vendor/lib/libril-qcril-hook-oem.so
 
 # Samsung libs
 lib/libsecnativefeature.so
-lib/libseckeyprov.so
 
 # Security
 bin/irsc_util
