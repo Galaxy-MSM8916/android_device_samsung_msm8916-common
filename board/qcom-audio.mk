@@ -20,8 +20,10 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Platform info config
+ifneq ($(USE_CUSTOM_AUDIO_PLATFORM_INFO), true)
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
+endif
 
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
