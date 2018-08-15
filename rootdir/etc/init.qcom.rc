@@ -768,7 +768,7 @@ service ril-daemon2 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
     user radio
     disabled
-    group radio cache inet misc audio log readproc wakelock
+    group radio cache inet misc audio log system drmrpc sdcard_r sdcard_rw shell wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service ssr_diag /system/bin/ssr_diag
