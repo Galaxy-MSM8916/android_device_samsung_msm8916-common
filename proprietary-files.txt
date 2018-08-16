@@ -153,6 +153,10 @@ vendor/lib/libfastcvopt.so
 vendor/lib/libscve_mv.so
 vendor/lib/libscve.so
 
+# Perf
+vendor/bin/perfd
+vendor/lib/libqti-perfd-client.so
+
 # Radio
 bin/diag_mdlog
 bin/diag_uart_log
