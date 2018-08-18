@@ -159,7 +159,7 @@ vendor/lib/libscve_mv.so
 vendor/lib/libscve.so
 
 # Perf
-vendor/bin/perfd:bin/perfd
+vendor/bin/perfd
 vendor/lib/libqti-at.so
 vendor/lib/libqti-perfd-client.so
 
