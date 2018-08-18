@@ -217,7 +217,7 @@ lib/libgdmcprov.so
 vendor/lib/libstlport.so|76fbc529632aae39370a7f28a1d839cd
 
 # Thermal
-vendor/bin/thermal-engine:bin/thermal-engine
+vendor/bin/thermal-engine
 vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
