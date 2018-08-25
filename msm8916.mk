@@ -97,11 +97,11 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hfp.client=1 \
-    qcom.bluetooth.soc=smd \
     ro.bluetooth.dun=true \
     ro.bluetooth.hfp.ver=1.7 \
     ro.bluetooth.sap=true \
-    ro.qualcomm.bt.hci_transport=smd
+    ro.qualcomm.bt.hci_transport=smd \
+    vendor.qcom.bluetooth.soc=pronto
 
 # BoringSSL Hacks
 PRODUCT_PACKAGES += \
