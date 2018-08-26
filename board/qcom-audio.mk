@@ -20,12 +20,6 @@ PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 endif
 
-# Platform info config
-ifneq ($(USE_CUSTOM_AUDIO_PLATFORM_INFO), true)
-PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/configs/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
-endif
-
 #XML Audio configuration files
 PRODUCT_COPY_FILES += \
     $(TOPDIR)$(CONFIG_PATH)/msm8916_32/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
