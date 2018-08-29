@@ -164,10 +164,10 @@ vendor/lib/libfastcvopt.so
 vendor/lib/libscve_mv.so
 vendor/lib/libscve.so
 
-# Perf
-vendor/bin/perfd
-vendor/lib/libqti-at.so
-vendor/lib/libqti-perfd-client.so
+# Perf - wf-crackling-7.1-TOS093F-a29b96e3d6wf-crackling-7.1-TOS093F-a29b96e3d6
+vendor/bin/perfd|4c801d9a43434123998013c2e257a05934bbcfd9
+vendor/lib/libqti-at.so|a833e27ba0193a0909539d3e4b26c96b99b44257
+vendor/lib/libqti-perfd-client.so|c7f541d316b81dd9a5c05f9203a4c9d3cc551071
 
 # Post-processing
 vendor/lib/libmm-als.so
