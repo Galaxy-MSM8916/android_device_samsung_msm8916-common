@@ -25,7 +25,7 @@ vendor/lib/libaptXHD_encoder.so|b65cd3b72ae3e6a57901fd5b5383bfa1a88c5737
 # Bluetooth
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so|dfe077d09d2c89e80429d68c70e6bb80286afb1e
 vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so|c31edee39b8c25fe0fba7efd36267ffded5785c6
-vendor/lib/libbtnv.so
+vendor/lib/libbtnv.so|9b6845a4206e1423b9d476fd6e290930ec6d0d4a
 
 # Camera
 bin/mm-qcamera-daemon
