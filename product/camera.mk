@@ -9,6 +9,6 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
 	android.hardware.camera.provider@2.4-impl-legacy \
-        camera.device@1.0-impl \
+	camera.device@1.0-impl-legacy \
 	libmm-qcamera \
 	camera.msm8916
