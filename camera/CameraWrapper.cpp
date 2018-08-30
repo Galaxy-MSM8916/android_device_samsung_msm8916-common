@@ -147,9 +147,8 @@ static char *camera_fixup_getparams(int id, const char *settings)
     return ret;
 }
 
-static char *camera_fixup_setparams(struct camera_device *device, const char *settings)
+static char *camera_fixup_setparams(int id, const char *settings)
 {
-    int id = CAMERA_ID(device);
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
@@ -174,6 +173,12 @@ static char *camera_fixup_setparams(struct camera_device *device, const char *se
 #endif
 
     return ret;
+}
+
+static char *camera_fixup_setparams(struct camera_device *device, const char *settings)
+{
+    int id = CAMERA_ID(device);
+    return camera_fixup_setparams(id, settings);
 }
 
 /*******************************************************************
