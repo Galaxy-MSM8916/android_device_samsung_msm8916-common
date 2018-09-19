@@ -229,12 +229,12 @@ case "$target" in
                 # enable thermal core_control now
                 echo 1 > /sys/module/msm_thermal/core_control/enabled
 
-                echo "25000 1152000:50000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-                echo 65 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-                echo 30000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+                echo "25000 1152000:100000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+                echo 90 > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+                echo 20000 > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
                 echo 1152000 > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
                 echo 0 > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
-                echo "1 200000:10 400000:15 533330:20 800000:30 998400:40 1094400:50 1152000:80 1209600:90" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
+                echo "1 200000:15 400000:25 533330:40 800000:60 998400:70 1094400:80" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
                 echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
                 echo 50000 > /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis
 
