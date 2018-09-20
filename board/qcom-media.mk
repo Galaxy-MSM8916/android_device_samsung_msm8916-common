@@ -1,3 +1,0 @@
-# Media
-TARGET_QCOM_MEDIA_VARIANT           := caf
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
