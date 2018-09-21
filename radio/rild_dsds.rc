@@ -1,0 +1,13 @@
+# Copyright (C) 2015 The Android Open Source Project
+# Copyright (C) 2017-2018 The LineageOS Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+# for multi rild
+service ril-daemon2 /vendor/bin/hw/rild -l /vendor/lib/libsec-ril-dsds.so -c 2
+    class main
+    user radio
+    group radio cache inet misc audio log readproc wakelock
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
