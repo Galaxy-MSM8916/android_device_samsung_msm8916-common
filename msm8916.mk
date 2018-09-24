@@ -158,7 +158,7 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libtinyxml2 \
     memtrack.msm8916 \
-    vendor.lineage.livedisplay@1.0-service-sdm
+    vendor.lineage.livedisplay@1.0-service-legacymm
 
 # DRM
 PRODUCT_PACKAGES += \
