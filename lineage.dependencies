@@ -12,6 +12,10 @@
     "target_path": "device/qcom/common"
   },
   {
+    "repository": "android_device_qcom_sepolicy-legacy",
+    "target_path": "device/qcom/sepolicy-legacy"
+  },
+  {
     "repository": "android_device_samsung_qcom-common",
     "target_path": "device/samsung/qcom-common"
   },
