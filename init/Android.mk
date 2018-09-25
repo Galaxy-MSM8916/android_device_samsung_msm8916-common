@@ -9,6 +9,7 @@ LOCAL_C_INCLUDES := \
 	external/selinux/libselinux/include
 
 LOCAL_CFLAGS := -Wall -DANDROID_TARGET=\"$(TARGET_BOARD_PLATFORM)\"
+LOCAL_CPP_STD := experimental
 LOCAL_SRC_FILES := init_msm8916.cpp
 ifneq ($(TARGET_LIBINIT_MSM8916_DEFINES_FILE),)
   LOCAL_SRC_FILES += ../../../../$(TARGET_LIBINIT_MSM8916_DEFINES_FILE)
