@@ -574,3 +574,7 @@ PRODUCT_PACKAGES += \
 # ZRAM - Size in MB
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.zram.size=128
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH) \
