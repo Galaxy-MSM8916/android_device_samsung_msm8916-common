@@ -144,7 +144,7 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # Healthd
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.lineage
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.default
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8916
