@@ -61,6 +61,7 @@ on early-boot
 
 on boot
     start rmt_storage
+    start qcom-c_main-sh
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -647,7 +648,7 @@ on property:bluetooth.isEnabled=true
 service qcom-c_main-sh /system/bin/sh /init.class_main.sh
     class main
     user root
-    oneshot
+    disabled
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
