@@ -19,7 +19,16 @@
 set -e
 
 BOARD_COMMON=msm8916-common
-DEVICES_ALL="a5ltechn a5ltectc gprimelte gprimeltespr gprimeltexx gtelwifiue gtesqltespr j53gxx j5lte j5ltechn j5nlte j7ltespr j7ltechn o7prolte on7ltechn j5xnlte j5xlte"
+DEVICES_A5="a5ltechn a5ltectc"
+DEVICES_GPRIME="gprimelte gprimeltespr gprimeltexx"
+DEVICES_GTE="gtelwifiue gtesqltespr"
+DEVICES_J5="j53gxx j5lte j5ltechn j5nlte"
+DEVICES_J5X="j5xnlte j5xlte"
+DEVICES_J7="j7ltespr j7ltechn"
+DEVICES_O7="o7prolte on7ltechn"
+
+DEVICES_ALL="$DEVICES_A5 $DEVICES_GPRIME $DEVICES_GTE $DEVICES_J5 $DEVICES_J5X $DEVICES_J7 $DEVICES_O7"
+
 VENDOR=samsung
 
 INITIAL_COPYRIGHT_YEAR=2017
