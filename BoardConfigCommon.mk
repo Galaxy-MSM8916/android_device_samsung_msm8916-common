@@ -39,8 +39,8 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # ART
-WITH_DEXPREOPT := false
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+# WITH_DEXPREOPT := false
+# WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
 
 # Audio
 AUDIO_CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
