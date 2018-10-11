@@ -287,3 +287,6 @@ if [ "$boot_reason" = "3" ] || [ "$reboot_reason" = "true" ]; then
 else
     setprop ro.alarm_boot false
 fi
+
+#Fix BT Address
+setprop persist.service.bdroid.bdaddr `cat /efs/bluetooth/bt_addr`
