@@ -101,7 +101,6 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
-	hardware/lineage/lineagehw \
 	hardware/samsung/lineagehw \
 	$(LOCAL_PATH)/lineagehw
 
