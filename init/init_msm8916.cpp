@@ -26,6 +26,8 @@
    OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#include <android-base/file.h>
+#include <android-base/strings.h>
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -35,6 +37,10 @@
 #include <init_msm8916.h>
 
 using android::base::GetProperty;
+using android::base::ReadFileToString;
+using android::base::Trim;
+
+#define SERIAL_NUMBER_FILE "/efs/FactoryApp/serial_no"
 
 __attribute__ ((weak))
 void init_target_properties()
@@ -150,6 +156,7 @@ void set_target_properties(const char *device, const char *model)
 {
 	property_override_dual("ro.product.device", "ro.product.vendor.model", device);
 	property_override_dual("ro.product.model", "ro.product.vendor.device", model);
+
 	android::init::property_set("ro.ril.telephony.mqanelements", "6");
 
 	/* check and/or set fingerprint */
@@ -164,6 +171,14 @@ void set_target_properties(const char *device, const char *model)
 		/* set the dual sim props */
 		if (sim_count == 2)
 			set_dsds_properties();
+	}
+
+	char const *serial_number_file = SERIAL_NUMBER_FILE;
+	std::string serial_number;
+
+	if (ReadFileToString(serial_number_file, &serial_number)) {
+        	serial_number = Trim(serial_number);
+        	property_override("ro.serialno", serial_number.c_str());
 	}
 }
 
