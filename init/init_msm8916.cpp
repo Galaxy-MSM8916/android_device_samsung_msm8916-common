@@ -160,8 +160,8 @@ void set_target_properties(const char *device, const char *model)
 	char const *bt_address_file = BTADDRESS_NUMBER_FILE;
 	std::string bt_address;
 
-	property_override_dual("ro.product.device", "ro.vendor.product.model", device);
-	property_override_dual("ro.product.model", "ro.vendor.product.device", model);
+	property_override_dual("ro.product.device", "ro.product.vendor.device", device);
+	property_override_dual("ro.product.model", "ro.product.vendor.model", model);
 	android::init::property_set("ro.ril.telephony.mqanelements", "6");
 
 	/* check and/or set fingerprint */
