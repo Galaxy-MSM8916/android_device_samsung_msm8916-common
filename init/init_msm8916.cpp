@@ -41,6 +41,7 @@ using android::base::ReadFileToString;
 using android::base::Trim;
 
 #define SERIAL_NUMBER_FILE "/efs/FactoryApp/serial_no"
+#define BTADDRESS_NUMBER_FILE "/efs/bluetooth/bt_addr"
 
 __attribute__ ((weak))
 void init_target_properties()
@@ -180,6 +181,11 @@ void set_target_properties(const char *device, const char *model)
 	if (ReadFileToString(serial_number_file, &serial_number)) {
         	serial_number = Trim(serial_number);
         	property_override("ro.serialno", serial_number.c_str());
+	}
+
+	if (ReadFileToString(bt_address_file, &bt_address)) {
+        	bt_address = Trim(bt_address);
+        	property_override("persist.service.bdroid.bdadd", bt_address.c_str());
 	}
 }
 
