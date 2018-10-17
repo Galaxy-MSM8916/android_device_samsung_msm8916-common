@@ -100,6 +100,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.dun=true \
     ro.bluetooth.hfp.ver=1.7 \
     ro.bluetooth.sap=true \
+    ro.bt.bdaddr_path=/efs/bluetooth/bt_addr \
     ro.qualcomm.bt.hci_transport=smd \
     vendor.qcom.bluetooth.soc=pronto
 
