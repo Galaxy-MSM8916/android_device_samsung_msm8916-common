@@ -74,7 +74,6 @@ QCOM_BT_USE_BTNV := true
 BLUETOOTH_HCI_USE_MCT := true
 
 # Bootanimation
-TARGET_BOOTANIMATION_HALF_RES := true
 
 # Bootloader
 BOARD_PROVIDES_BOOTLOADER_MESSAGE := false
