@@ -16,7 +16,7 @@
 LOCAL_PATH := device/samsung/msm8916-common
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(TARGET_SPECIFIC_HEADER_PATH) $(LOCAL_PATH)/include
 
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
