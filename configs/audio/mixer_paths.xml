@@ -565,10 +565,12 @@
 
     <path name="voice-rec-mic">
         <path name="handset-mic" />
+        <ctl name="ADC1 Volume" value="8" />
+        <ctl name="DEC1 Volume" value="112" />
     </path>
 
     <path name="camcorder-mic">
-        <path name="handset-mic" />
+        <path name="voice-rec-mic" />
     </path>
 
     <path name="bt-sco-headset">
