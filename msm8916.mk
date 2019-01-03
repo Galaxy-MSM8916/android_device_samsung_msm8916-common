@@ -172,10 +172,7 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FM2 \
-    FMRecord \
-    libqcomfm_jni \
-    qcom.fmradio
+    FMRadio
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \
