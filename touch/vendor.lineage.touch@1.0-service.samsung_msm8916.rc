@@ -1,0 +1,4 @@
+service vendor.touch-hal-1-0-samsung_msm8916 /vendor/bin/hw/vendor.lineage.touch@1.0-service.samsung_msm8916
+    class hal
+    user system
+    group system
