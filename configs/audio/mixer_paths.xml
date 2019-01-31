@@ -49,18 +49,18 @@
     <ctl name="TTY Mode" value="Off" />
     <ctl name="HPHL Volume" value="9" />
     <ctl name="HPHR Volume" value="9" />
-    <ctl name="RX1 Digital Volume" value="84" />
-    <ctl name="RX2 Digital Volume" value="84" />
-    <ctl name="RX3 Digital Volume" value="84" />
-    <ctl name="IIR1 INP1 Volume" value="84" />
-    <ctl name="IIR1 INP2 Volume" value="84" />
-    <ctl name="IIR1 INP3 Volume" value="84" />
-    <ctl name="IIR1 INP4 Volume" value="84" />
+    <ctl name="RX1 Digital Volume" value="85" />
+    <ctl name="RX2 Digital Volume" value="85" />
+    <ctl name="RX3 Digital Volume" value="85" />
+    <ctl name="IIR1 INP1 Volume" value="87" />
+    <ctl name="IIR1 INP2 Volume" value="87" />
+    <ctl name="IIR1 INP3 Volume" value="87" />
+    <ctl name="IIR1 INP4 Volume" value="87" />
     <ctl name="ADC1 Volume" value="6" />
     <ctl name="ADC2 Volume" value="6" />
     <ctl name="ADC3 Volume" value="6" />
-    <ctl name="DEC1 Volume" value="84" />
-    <ctl name="DEC2 Volume" value="84" />
+    <ctl name="DEC1 Volume" value="87" />
+    <ctl name="DEC2 Volume" value="87" />
     <ctl name="DEC2 MUX" value="ZERO" />
     <ctl name="DEC1 MUX" value="ZERO" />
     <ctl name="ADC2 MUX" value="ZERO" />
@@ -475,7 +475,7 @@
     <path name="handset">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
-        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX1 Digital Volume" value="90" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
         <ctl name="EAR_S" value="Switch" />
     </path>
@@ -483,7 +483,7 @@
     <path name="handset-mic">
         <path name="adc1" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
-        <ctl name="DEC1 Volume" value="98" />
+        <ctl name="DEC1 Volume" value="90" />
     </path>
 
     <path name="headphones">
@@ -567,7 +567,7 @@
     <path name="voice-rec-mic">
         <path name="handset-mic" />
         <ctl name="ADC1 Volume" value="8" />
-        <ctl name="DEC1 Volume" value="104" />
+        <ctl name="DEC1 Volume" value="100" />
     </path>
 
     <path name="camcorder-mic">
