@@ -122,7 +122,8 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl-legacy \
     libcamera_shim \
     libmm-qcamera \
-    camera.msm8916
+    camera.msm8916 \
+    Snap
 
 # Connectivity Engine
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -172,6 +173,7 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
+    qcom.fmradio \
     FMRadio
 
 # FM
