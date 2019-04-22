@@ -50,11 +50,10 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     chown root audio /sys/kernel/boot_adsp/boot
     setprop qcom.audio.init complete
-    exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
+    exec u:r:qti_init_shell:s0 -- /system/vendor/bin/init.qcom.early_boot.sh
 
 on boot
     start rmt_storage
-    start qcom-c_main-sh
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -174,6 +173,7 @@ on boot
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
     # Set the console loglevel to < KERN_INFO
+    # >
     # Set the default message loglevel to KERN_INFO
     write /proc/sys/kernel/printk "6 6 1 7"
 
@@ -554,12 +554,12 @@ on post-fs-data
     start link_ril_db
 
 #start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /system/vendor/bin/qseecomd
    class core
    user root
    group root
@@ -569,7 +569,7 @@ service perfd /system/bin/perfd
    user root
    disabled
 
-service thermal-engine /vendor/bin/thermal-engine
+service thermal-engine /system/vendor/bin/thermal-engine
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -577,21 +577,21 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-recv-passive-client stream 0666 system system
    group root
 
-service time_daemon /system/bin/time_daemon
+service time_daemon /system/vendor/bin/time_daemon
    class late_start
    user root
    group root
 
-service qcomsysd /system/bin/qcom-system-daemon
+service qcomsysd /system/vendor/bin/qcom-system-daemon
     class main
     user root
     group root diag
 
-service ssr_setup /system/bin/ssr_setup
+service ssr_setup /system/vendor/bin/ssr_setup
     oneshot
     disabled
 
-service ss_ramdump /system/bin/subsystem_ramdump
+service ss_ramdump /system/vendor/bin/subsystem_ramdump
     class main
     user system
     group system
@@ -638,10 +638,10 @@ on property:persist.debug.trace=1
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
-service qcom-c_main-sh /system/bin/sh /init.class_main.sh
+service qcom-c_main-sh /system/vendor/bin/init.class_main.sh
     class main
     user root
-    disabled
+    oneshot
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
@@ -658,12 +658,12 @@ on property:vendor.hw.fm.init=1
 on property:vendor.hw.fm.init=0
     write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
 
-service irsc_util /system/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /system/vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
@@ -682,12 +682,12 @@ service start_hci_filter /system/bin/wcnss_filter
     disabled
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /system/vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /system/vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
@@ -708,7 +708,7 @@ on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
 # WPA
-service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
     -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 \
     -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
@@ -722,7 +722,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service link_ril_db /system/bin/sh /init.link_ril_db.sh
+service link_ril_db /system/vendor/bin/init.link_ril_db.sh
     class main
     user root
     oneshot
@@ -734,24 +734,24 @@ service wlandutservice /system/bin/wlandutservice
     disabled
     oneshot
 
-service loc_launcher /system/bin/loc_launcher
+service loc_launcher /system/vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw diag net_admin wifi
 
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+service fm_dl /system/vendor/bin/init.qcom.fm.sh
     class late_start
     user system
     group system
     disabled
     oneshot
 
-service qcom-sh /system/bin/sh /init.qcom.sh
+service qcom-sh /system/vendor/bin/init.qcom.sh
     class late_start
     user root
     oneshot
 
-service qcom-post-boot /system/bin/sh /init.qcom.post_boot.sh
+service qcom-post-boot /system/vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
     disabled
@@ -770,14 +770,14 @@ on property:sys.boot_completed=1
     write /sys/class/touch_screen/control auto
 
 # RIL for multi rild
-service ril-daemon2 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
+service ril-daemon2 /system/vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
     user radio
     disabled
     group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
+service usb_uicc_enable /system/vendor/bin/init.qcom.uicc.sh
     class late_start
     user root
     disabled

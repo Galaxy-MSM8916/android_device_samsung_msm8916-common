@@ -1,0 +1,4 @@
+#============= surfaceflinger ==============
+allow surfaceflinger persist_data_file:dir search;
+allow surfaceflinger vfat:dir search;
+

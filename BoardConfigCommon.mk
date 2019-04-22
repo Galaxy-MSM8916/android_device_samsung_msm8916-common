@@ -165,8 +165,7 @@ BOARD_KERNEL_CMDLINE += \
 	user_debug=23 \
 	msm_rtb.filter=0x3F \
 	ehci-hcd.park=3 \
-	androidboot.bootdevice=7824900.sdhci \
-	androidboot.selinux=permissive
+	androidboot.bootdevice=7824900.sdhci
 
 
 BOARD_CUSTOM_BOOTIMG := true
@@ -215,7 +214,7 @@ BOARD_FLASH_BLOCK_SIZE              := 131072
 # Legacy BLOB Support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/bin/mediaserver=22 \
-    /system/bin/mm-qcamera-daemon=22 \
+    /system/vendor/bin/mm-qcamera-daemon=22 \
     /system/vendor/bin/hw/rild=27
 
 # Power
@@ -275,8 +274,8 @@ endif
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 
-#BOARD_SEPOLICY_DIRS += \
-#    $(BOARD_CONFIG_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += \
+    $(BOARD_CONFIG_PATH)/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \

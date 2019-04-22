@@ -1,0 +1,3 @@
+#============= webview_zygote ==============
+allow webview_zygote zygote:unix_dgram_socket write;
+

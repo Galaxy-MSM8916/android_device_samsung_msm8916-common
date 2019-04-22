@@ -1,0 +1,5 @@
+#============= mediaserver ==============
+allow mediaserver cameraproxy_service:service_manager find;
+allow mediaserver cameraserver_service:service_manager add;
+allow mediaserver hal_camera_hwservice:hwservice_manager find;
+

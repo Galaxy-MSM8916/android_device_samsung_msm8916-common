@@ -1,0 +1,8 @@
+#============= rild ==============
+allow rild default_prop:property_service set;
+allow rild proc_net:file write;
+allow rild proc_qtaguid_stat:file { getattr open read };
+allow rild radio_data_file:lnk_file getattr;
+allow rild unlabeled:dir search;
+allow rild unlabeled:file { getattr open read };
+

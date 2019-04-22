@@ -1,0 +1,2 @@
+#============= zygote ==============
+allow zygote proc_cmdline:file { getattr open read };

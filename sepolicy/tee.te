@@ -1,0 +1,4 @@
+#============= tee ==============
+allow tee vfat:dir search;
+allow tee vfat:file { getattr open read };
+

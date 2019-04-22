@@ -1,0 +1,6 @@
+#============= system_server ==============
+allow system_server adb_data_file:dir { getattr open read search };
+allow system_server { adb_data_file sdcardfs vfat }:file r_file_perms;
+allow system_server efs_file:dir search;
+allow system_server thermal_service:service_manager find;
+
