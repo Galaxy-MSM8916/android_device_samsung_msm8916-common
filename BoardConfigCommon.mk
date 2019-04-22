@@ -210,7 +210,7 @@ BOARD_FLASH_BLOCK_SIZE              := 131072
 # Legacy BLOB Support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/bin/mediaserver=22 \
-    /system/bin/mm-qcamera-daemon=22 \
+    /system/vendor/bin/mm-qcamera-daemon=22 \
     /system/vendor/bin/hw/rild=27
 
 # Power
