@@ -22,6 +22,7 @@ LOCAL_MODULE := sensors.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := sensorswrapper.c
+LOCAL_VENDOR_MODULE := true
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils libhardware
 LOCAL_MODULE_TAGS := optional
