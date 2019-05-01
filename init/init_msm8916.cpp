@@ -33,14 +33,14 @@
 #include <sys/_system_properties.h>
 
 #define SIMSLOT_FILE "/proc/simslot_count"
+#define SERIAL_NUMBER_FILE "/efs/FactoryApp/serial_no"
+#define BT_ADDR_FILE "/efs/bluetooth/bt_addr"
 
 #include <init_msm8916.h>
 
 using android::base::GetProperty;
 using android::base::ReadFileToString;
 using android::base::Trim;
-
-#define SERIAL_NUMBER_FILE "/efs/FactoryApp/serial_no"
 
 __attribute__ ((weak))
 void init_target_properties()
@@ -176,10 +176,19 @@ void set_target_properties(const char *device, const char *model)
 	char const *serial_number_file = SERIAL_NUMBER_FILE;
 	std::string serial_number;
 
+	char const *bt_addr_file = BT_ADDR_FILE;
+	std::string bt_address;
+
 	if (ReadFileToString(serial_number_file, &serial_number)) {
-        	serial_number = Trim(serial_number);
-        	property_override("ro.serialno", serial_number.c_str());
+		serial_number = Trim(serial_number);
+		property_override("ro.serialno", serial_number.c_str());
 	}
+
+	if (ReadFileToString(bt_addr_file, &bt_address)) {
+		bt_address = Trim(bt_address);
+		property_override("persist.service.bdroid.bdaddr", bt_address.c_str());
+	}
+
 }
 
 void vendor_load_properties(void)

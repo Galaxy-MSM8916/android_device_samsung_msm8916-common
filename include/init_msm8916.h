@@ -37,6 +37,8 @@
 #include <unistd.h>
 
 #include <android-base/properties.h>
+#include <android-base/file.h>
+#include <android-base/strings.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
