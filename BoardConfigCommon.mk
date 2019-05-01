@@ -94,24 +94,22 @@ BOARD_CHARGER_ENABLE_SUSPEND    := true
 BOARD_CHARGER_SHOW_PERCENTAGE   := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
-# CMHW
-#BOARD_USES_CYANOGEN_HARDWARE := true
-JAVA_SOURCE_OVERLAYS += \
-	org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java \
-	org.lineageos.hardware|$(LOCAL_PATH)/lineagehw|**/*.java
+# LineageHW
+BOARD_HARDWARE_CLASS += hardware/samsung/lineagehw
+BOARD_HARDWARE_CLASS += device/samsung/msm8916-common/lineagehw
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+#TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-MAX_VIRTUAL_DISPLAY_DIMENSION := 2048
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
-TARGET_HAVE_NEW_GRALLOC := true
-TARGET_USES_GRALLOC1 := true
-TARGET_USES_NEW_ION_API := true
+
+# Display
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+USE_OPENGL_RENDERER := true
 
 # Encryption
 TARGET_LEGACY_HW_DISK_ENCRYPTION := true
@@ -202,13 +200,15 @@ BOARD_FLASH_BLOCK_SIZE              := 131072
 # Legacy BLOB Support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/bin/mediaserver=22 \
-    /system/bin/mm-qcamera-daemon=22 \
-    /system/vendor/bin/hw/rild=27
+    /vendor/bin/mm-qcamera-daemon=22 \
+    /vendor/bin/hw/rild=27
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 CM_POWERHAL_EXTENSION := qcom
 WITH_QC_PERF := true
+
+#WITH_SU:= true
 
 # Protobuf
 PROTOBUF_SUPPORTED := true
@@ -251,13 +251,13 @@ TW_NO_USB_STORAGE := true
 TW_TARGET_USES_QCOM_BSP := false
 TW_THEME := portrait_hdpi
 
+ifneq ($(wildcard bootable/recovery-twrp),)
+	RECOVERY_VARIANT := twrp
+endif
+
 ifeq ($(RECOVERY_VARIANT),twrp)
 	BOARD_GLOBAL_CFLAGS += -DTW_USE_MINUI_CUSTOM_FONTS
 endif
-
-#ifneq ($(wildcard bootable/recovery-twrp),)
-#	RECOVERY_VARIANT := twrp
-#endif
 
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
@@ -267,12 +267,12 @@ include device/qcom/sepolicy-legacy/sepolicy.mk
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/lib/libmmjpeg_interface.so|libboringssl-compat.so \
-    /system/lib/libsec-ril.so|libshim_secril.so \
-    /system/lib/libsec-ril-dsds.so|libshim_secril.so \
-    /system/lib/hw/camera.vendor.msm8916.so|libcamera_shim.so \
-    /system/vendor/lib/libizat_core.so|libshim_gps.so \
-    /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so
+    /vendor/lib/libmmjpeg_interface.so|libboringssl-compat.so \
+    /vendor/lib/libsec-ril.so|libshim_secril.so \
+    /vendor/lib/libsec-ril-dsds.so|libshim_secril.so \
+    /vendor/lib/hw/camera.vendor.msm8916.so|libcamera_shim.so \
+    /vendor/lib/libizat_core.so|libshim_gps.so \
+    /vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so
 
 # Snapdragon LLVM
 TARGET_USE_SDCLANG := true
