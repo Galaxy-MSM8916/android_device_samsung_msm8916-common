@@ -129,6 +129,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.sap=true \
     ro.bt.bdaddr_path=/efs/bluetooth/bt_addr \
     ro.qualcomm.bt.hci_transport=smd \
+    vendor.bluetooth.soc=pronto \
     vendor.qcom.bluetooth.soc=pronto
 
 # BoringSSL Hacks
