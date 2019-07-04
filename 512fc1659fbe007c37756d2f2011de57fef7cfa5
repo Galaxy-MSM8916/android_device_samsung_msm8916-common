@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48a06f6c_687fd8d3",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-04T17:10:27Z",
+      "side": 1,
+      "message": "Can these changes be moved to another commit since they aren\u0027t related to bt?",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 20
+      },
+      "revId": "512fc1659fbe007c37756d2f2011de57fef7cfa5",
+      "serverId": "5091bff9-ead9-4606-8fa0-a30165edc640",
+      "unresolved": false
+    }
+  ]
+}
