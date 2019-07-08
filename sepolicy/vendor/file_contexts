@@ -1,3 +1,6 @@
 # rootfs
 /firmware-modem                                         u:object_r:firmware_file:s0
 /tombstones                                             u:object_r:rootfs:s0
+
+# HIDLs
+/(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service\.software u:object_r:hal_gatekeeper_default_exec:s0
