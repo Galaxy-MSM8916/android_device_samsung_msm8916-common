@@ -53,6 +53,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1 \
     debug.camcorder.disablemeta=true
 
+# Charger
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.charger.enable_suspend=true
+
 # Chipname
 ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8929)
 PRODUCT_PROPERTY_OVERRIDES += \
