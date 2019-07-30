@@ -807,10 +807,12 @@ service wcnss-service /system/bin/wcnss_service
     group system wifi radio
     oneshot
 
-service charger /charger
+service charger /system/bin/charger
     class charger
-    group log
+    user system
+    group system graphics input
     seclabel u:r:charger:s0
+     critical
 
 on class_start:late_start
     trigger enable-low-power
