@@ -91,6 +91,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.audio@2.0-impl \
+    android.hardware.bluetooth.a2dp@1.0-impl \
     libbt-vendor
 
 # Bluetooth
@@ -152,14 +154,16 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.mapper@2.0-service \
     android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
     gralloc.msm8916 \
     hwcomposer.msm8916 \
     libgenlock \
     libtinyxml \
     libtinyxml2 \
     memtrack.msm8916 \
-    vendor.lineage.livedisplay@1.0-service-legacymm
+    vendor.lineage.livedisplay@2.0-service.samsung-qcom
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -206,6 +210,7 @@ PRODUCT_COPY_FILES += \
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
+    android.hardware.gnss@1.0-service \
     com.android.location.provider \
     com.android.location.provider.xml \
     gps.msm8916 \
@@ -221,6 +226,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Headers
 PRODUCT_VENDOR_KERNEL_HEADERS := \
     hardware/qcom/msm8916/kernel-headers
+
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-impl \
+    android.hardware.health@2.0-service
 
 # HIDL
 DEVICE_MANIFEST_FILE := \
@@ -244,7 +254,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service.samsung \
     lights.msm8916
 
 # Media configurations
@@ -272,6 +282,7 @@ PRODUCT_PACKAGES += \
 
 # Media - OpenMAX
 PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-service \
     libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -433,6 +444,11 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     sensors.msm8916
 
+# Thermal engine
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-service \
+    android.hardware.thermal@2.0-service
+
 # Time services
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
@@ -447,7 +463,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
 
 # Video encoding
 PRODUCT_PROPERTY_OVERRIDES += \
