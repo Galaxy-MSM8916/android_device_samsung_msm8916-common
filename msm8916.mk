@@ -86,6 +86,9 @@ PRODUCT_PACKAGES += \
     libbase_shim \
     libbt-vendor
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
+
 # BoringSSL Hacks
 PRODUCT_PACKAGES += \
     libboringssl-compat
