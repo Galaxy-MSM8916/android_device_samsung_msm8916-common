@@ -22,6 +22,18 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
+LOCAL_SHARED_LIBRARIES := libbase
+LOCAL_C_INCLUDES := system/core/base/include
+LOCAL_SRC_FILES := logging.cpp
+LOCAL_MODULE := libbase_shim
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)
+
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
 LOCAL_SRC_FILES := camera_shim.c
 LOCAL_MODULE := libcamera_shim
 LOCAL_MODULE_TAGS := optional
