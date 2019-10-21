@@ -32,6 +32,10 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Assistant
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opa.eligible_device=true
+    
+# APNs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -57,7 +61,6 @@ PRODUCT_PACKAGES += \
     libtinycompress
 
 # Audio configuration file
-AUDIO_CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
 PRODUCT_COPY_FILES += \
     $(AUDIO_CONFIG_PATH)/msm8916_32/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
     $(AUDIO_CONFIG_PATH)/msm8916_32/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
@@ -106,6 +109,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # BoringSSL Hacks
 PRODUCT_PACKAGES += \
     libboringssl-compat
+    
+# Boot Animation
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/bootanimation.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
 
 # Camera
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -157,8 +164,7 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libtinyxml \
     libtinyxml2 \
-    memtrack.msm8916 \
-    vendor.lineage.livedisplay@1.0-service-legacymm
+    memtrack.msm8916
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -215,10 +221,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.agps_provider=1 \
     ro.pip.gated=0
 
-# Headers
-PRODUCT_VENDOR_KERNEL_HEADERS := \
-    hardware/qcom/msm8916/kernel-headers
-
 # HIDL
 DEVICE_MANIFEST_FILE := \
     $(LOCAL_PATH)/manifest.xml
@@ -240,13 +242,8 @@ PRODUCT_PACKAGES += \
     lights.msm8916
 
 # Media configurations
-ifeq ($(filter j7ltespr j7ltechn,$(TARGET_DEVICE)),)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
-else
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media/media_codecs_8929.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml
-endif
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
@@ -312,6 +309,22 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.storage_preload=1 \
     ro.data.large_tcp_window_size=true \
     sys.disable_ext_animation=1
+    
+# Misc
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    dalvik.vm.debug.alloc=0 \
+    ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
+    ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.error.receiver.system.apps=com.google.android.gms \
+    ro.setupwizard.enterprise_mode=1 \
+    ro.com.android.dataroaming=false \
+    ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
+    ro.com.android.dateformat=MM-dd-yyyy \
+    persist.sys.disable_rescue=true \
+    ro.setupwizard.rotation_locked=true \
+    ro.com.google.clientidbase=android-samsung \
+    ro.adb.secure=0 \
+    net.tethering.noprovisioning=true
 
 # OEM Unlock
 PRODUCT_PROPERTY_OVERRIDES += \

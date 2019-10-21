@@ -39,7 +39,6 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Audio
-#AUDIO_CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_GENERIC_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
@@ -47,13 +46,10 @@ USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Mixer paths
-ifneq ($(USE_CUSTOM_MIXER_PATHS), true)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
-endif
 
 #XML Audio configuration files
-ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(AUDIO_CONFIG_PATH)/msm8916_32/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
@@ -62,7 +58,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
-endif
 
 # Binder API version
 TARGET_USES_64_BIT_BINDER := true
@@ -94,12 +89,6 @@ BOARD_CHARGER_ENABLE_SUSPEND    := true
 BOARD_CHARGER_SHOW_PERCENTAGE   := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
-# CMHW
-#BOARD_USES_CYANOGEN_HARDWARE := true
-JAVA_SOURCE_OVERLAYS += \
-	org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java \
-	org.lineageos.hardware|$(LOCAL_PATH)/lineagehw|**/*.java
-
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
@@ -118,14 +107,6 @@ TARGET_LEGACY_HW_DISK_ENCRYPTION := true
 TARGET_HW_KEYMASTER_V03 := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
-ifeq ($(RECOVERY_VARIANT),twrp)
-	TARGET_HW_DISK_ENCRYPTION := false
-	TARGET_SWV8_DISK_ENCRYPTION := false
-else
-	TARGET_HW_DISK_ENCRYPTION := true
-	TARGET_SWV8_DISK_ENCRYPTION := true
-endif
-
 # Filesystems
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE   := ext4
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -141,9 +122,6 @@ AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
-
-# Healthd
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.lineage
 
 # Kernel
 BOARD_KERNEL_CMDLINE += \
@@ -216,47 +194,10 @@ USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
 TARGET_USES_NEW_ION_API := true
 
 # Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm8916-common/recovery/recovery_keys.c
-BOARD_HAS_NO_MISC_PARTITION	:= true
-BOARD_HAS_NO_SELECT_BUTTON	:= true
-BOARD_RECOVERY_SWIPE 		:= true
-BOARD_SUPPRESS_EMMC_WIPE	:= true
-BOARD_SUPPRESS_SECURE_ERASE	:= true
-BOARD_USE_CUSTOM_RECOVERY_FONT	:= \"roboto_23x41.h\"
-BOARD_USES_MMCUTILS	:= true
-RECOVERY_GRAPHICS_USE_LINELENGTH	:= true
-RECOVERY_SDCARD_ON_DATA	:= true
-TARGET_RECOVERY_DENSITY	:= hdpi
-TARGET_RECOVERY_FSTAB	:= device/samsung/msm8916-common/recovery/recovery.fstab
-TARGET_RECOVERY_PIXEL_FORMAT	:= "RGB_565"
-TARGET_RECOVERY_QCOM_RTC_FIX	:= true
-
-# Recovery - TWRP
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_HAS_DOWNLOAD_MODE := true
-TW_HAS_MTP := true
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_NTFS_3G := true
-TW_INPUT_BLACKLIST := "accelerometer\x0ahbtp_vm"
-TW_INTERNAL_STORAGE_PATH := "/data/media/0"
-TW_MAX_BRIGHTNESS := 255
-TW_MTP_DEVICE := /dev/mtp_usb
-TW_NEW_ION_HEAP := true
-TW_NO_REBOOT_BOOTLOADER := true
-TW_NO_USB_STORAGE := true
-TW_TARGET_USES_QCOM_BSP := false
-TW_THEME := portrait_hdpi
-
-ifeq ($(RECOVERY_VARIANT),twrp)
-	BOARD_GLOBAL_CFLAGS += -DTW_USE_MINUI_CUSTOM_FONTS
-endif
-
-#ifneq ($(wildcard bootable/recovery-twrp),)
-#	RECOVERY_VARIANT := twrp
-#endif
+TARGET_RECOVERY_FSTAB	:= $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
+#include device/qcom/sepolicy-legacy/sepolicy.mk
 
 #BOARD_SEPOLICY_DIRS += \
 #    $(LOCAL_PATH)/sepolicy
