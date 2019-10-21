@@ -191,6 +191,9 @@ WITH_QC_PERF := true
 # Protobuf
 PROTOBUF_SUPPORTED := true
 
+# Q Stuffs
+BUILD_BROKEN_DUP_RULES := true
+
 # Qualcomm support
 TARGET_USES_QCOM_BSP := true
 HAVE_SYNAPTICS_I2C_RMI4_FW_UPGRADE   := true
