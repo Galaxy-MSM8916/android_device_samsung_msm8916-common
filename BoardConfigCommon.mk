@@ -38,6 +38,9 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
+# APEX
+TARGET_FLATTEN_APEX := true
+
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_GENERIC_AUDIO := true
