@@ -503,6 +503,10 @@ on post-fs-data
     mkdir /data/audio/ 0770 media audio
 
     setprop vold.post_fs_data_done 1
+    
+    # Avoid USB crash
+    setprop persist.adb.nonblocking_ffs 0
+    setprop ro.adb.nonblocking_ffs 0
 
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
