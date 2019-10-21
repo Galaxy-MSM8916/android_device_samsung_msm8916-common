@@ -134,6 +134,9 @@ PRODUCT_PACKAGES += \
     libcamera_shim \
     libmm-qcamera \
     camera.msm8916
+    
+# Charger images
+PRODUCT_PACKAGES += charger_res_images
 
 # Connectivity Engine
 PRODUCT_PROPERTY_OVERRIDES += \
