@@ -174,6 +174,10 @@ PRODUCT_PACKAGES += \
     libtinyxml2 \
     memtrack.msm8916
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl
