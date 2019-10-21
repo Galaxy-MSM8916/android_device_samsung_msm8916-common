@@ -211,9 +211,9 @@ TARGET_RECOVERY_FSTAB	:= $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # SELinux
 #include device/qcom/sepolicy-legacy/sepolicy.mk
-
 #BOARD_SEPOLICY_DIRS += \
 #    $(LOCAL_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy_tmp
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
