@@ -209,7 +209,6 @@ on boot
     chown radio system /sys/class/power_supply/battery/siop_level
     chown radio system /sys/class/power_supply/battery/test_charge_current
 
-
 # Vibrator
     chmod 0644 /sys/class/timed_output/vibrator/pwm_value
     chown system system /sys/class/timed_output/vibrator/pwm_value
@@ -381,7 +380,6 @@ on fs
 
     chown system radio /efs
     chmod 0771 /efs
-    rm -rf /efs/dmverity
     restorecon -R /efs
 
 # fm_radio
