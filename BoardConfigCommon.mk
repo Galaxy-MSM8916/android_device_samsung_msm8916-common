@@ -123,6 +123,10 @@ AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
+# Manifest
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
+
 # Kernel
 BOARD_KERNEL_CMDLINE += \
 	console=null \

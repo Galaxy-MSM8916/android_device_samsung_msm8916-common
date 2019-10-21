@@ -220,10 +220,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.loc.nlp_name=com.qualcomm.location \
     ro.gps.agps_provider=1 \
     ro.pip.gated=0
-
-# HIDL
-DEVICE_MANIFEST_FILE := \
-    $(LOCAL_PATH)/manifest.xml
+    
+# HIDL vendor support
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0
 
 # Keylayout
 PRODUCT_COPY_FILES += \

@@ -368,7 +368,7 @@ on property:ro.config.ksm=true
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
 
-#enable zram
+# Enable ZRAM
 on property:ro.config.zram.enabled=true
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 100
@@ -807,7 +807,7 @@ service ssr_diag /system/bin/ssr_diag
     group system
     disabled
 
-service wcnss-service /system/bin/wcnss_service
+service wcnss-service /vendor/bin/wcnss_service
     class main
     user system
     group system wifi radio
