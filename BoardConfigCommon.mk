@@ -39,7 +39,7 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Audio
-AUDIO_CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
+#AUDIO_CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_GENERIC_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
@@ -144,10 +144,6 @@ USE_DEVICE_SPECIFIC_GPS := true
 
 # Healthd
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.lineage
-
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_msm8916
-TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8916
 
 # Kernel
 BOARD_KERNEL_CMDLINE += \
