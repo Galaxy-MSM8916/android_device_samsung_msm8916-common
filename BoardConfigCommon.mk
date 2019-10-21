@@ -196,6 +196,7 @@ PROTOBUF_SUPPORTED := true
 
 # Q Stuffs
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_PHONY_TARGETS := true
 
 # Qualcomm support
 TARGET_USES_QCOM_BSP := true
