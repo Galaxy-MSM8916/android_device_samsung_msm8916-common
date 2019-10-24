@@ -19,7 +19,7 @@ LOCAL_PATH := device/samsung/msm8916-common
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Inherit from common
--include device/samsung/qcom-common/BoardConfigCommon.mk
+#-include device/samsung/qcom-common/BoardConfigCommon.mk
 
 # Architecture/platform
 BOARD_VENDOR := samsung
@@ -201,7 +201,7 @@ USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
 TARGET_USES_NEW_ION_API := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB	:= $(LOCAL_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB	:= $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
 #include device/qcom/sepolicy-legacy/sepolicy.mk
@@ -219,7 +219,7 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so
 
 # Snapdragon LLVM
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
@@ -244,4 +244,3 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WLAN_CHIPSET := pronto
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
-
