@@ -221,6 +221,9 @@ TARGET_LD_SHIM_LIBS := \
 # Snapdragon LLVM
 #TARGET_USE_SDCLANG := true
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
