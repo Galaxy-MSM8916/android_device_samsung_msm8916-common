@@ -290,6 +290,8 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.ccodec=0 \
+    debug.stagefright.omx_default_rank=0 \
+    debug.stagefright.omx_default_rank.sw-audio=1 \
     persist.media.treble_omx=false \
     media.aac_51_output_enabled=true \
     media.stagefright.enable-aac=true \
