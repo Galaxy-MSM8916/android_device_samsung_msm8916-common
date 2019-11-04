@@ -86,7 +86,6 @@ TARGET_USES_ION := true
 
 # Encryption
 TARGET_LEGACY_HW_DISK_ENCRYPTION := true
-TARGET_HW_KEYMASTER_V03 := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Filesystems
