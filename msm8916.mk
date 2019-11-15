@@ -320,11 +320,9 @@ include device/samsung/msm8916-common/system_prop.mk
 
 # Radio
 PRODUCT_PACKAGES += \
-    librmnetctl \
     libshim_secril \
     libxml2 \
     macloader \
-    rmnetcli
 
 # Ramdisk
 PRODUCT_PACKAGES += \
