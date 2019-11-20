@@ -58,20 +58,9 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 BLUETOOTH_HCI_USE_MCT := true
 
-# Bootanimation
-TARGET_BOOTANIMATION_HALF_RES := true
-
 # Bootloader
 BOARD_PROVIDES_BOOTLOADER_MESSAGE := false
 TARGET_BOOTLOADER_BOARD_NAME := MSM8916
-
-# Camera
-BOARD_GLOBAL_CFLAGS += -DMETADATA_CAMERA_SOURCE
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
-TARGET_NEEDS_LEGACY_CAMERA_HAL1_DYN_NATIVE_HANDLE := true
-TARGET_PROVIDES_CAMERA_HAL := true
-TARGET_USE_VENDOR_CAMERA_EXT := true
-TARGET_USES_QTI_CAMERA_DEVICE := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND    := true
@@ -166,11 +155,6 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/bin/mm-qcamera-daemon=22 \
     /system/vendor/bin/hw/rild=27
 
-# Power
-TARGET_POWERHAL_VARIANT := qcom
-CM_POWERHAL_EXTENSION := qcom
-WITH_QC_PERF := true
-
 # Protobuf
 PROTOBUF_SUPPORTED := true
 
@@ -183,24 +167,6 @@ TARGET_USES_QCOM_BSP := true
 HAVE_SYNAPTICS_I2C_RMI4_FW_UPGRADE   := true
 USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY := true
 TARGET_USES_NEW_ION_API := true
-
-# Recovery
-TARGET_RECOVERY_FSTAB	:= $(LOCAL_PATH)/rootdir/etc/fstab.qcom
-
-# SELinux
-#include device/qcom/sepolicy-legacy/sepolicy.mk
-#BOARD_SEPOLICY_DIRS += \
-#    $(LOCAL_PATH)/sepolicy
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy_tmp
-
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /system/lib/libmmjpeg_interface.so|libboringssl-compat.so \
-    /system/lib/libsec-ril.so|libshim_secril.so \
-    /system/lib/libsec-ril-dsds.so|libshim_secril.so \
-    /system/lib/hw/camera.vendor.msm8916.so|libcamera_shim.so \
-    /system/vendor/lib/libizat_core.so|libshim_gps.so \
-    /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so
 
 # Snapdragon LLVM
 #TARGET_USE_SDCLANG := true
