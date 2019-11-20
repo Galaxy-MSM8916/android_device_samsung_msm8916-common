@@ -120,23 +120,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/bootanimation.zip:$(TARGET_COPY_OUT_SYSTEM)/media/bootanimation.zip
 
-# Camera
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera.disable_treble=true \
-    camera2.portability.force_api=1 \
-    debug.camcorder.disablemeta=true
-
-# Camera
-PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-legacy \
-    camera.device@1.0-impl-legacy \
-    libcamera_shim \
-    libmm-qcamera \
-    camera.msm8916
-
 # Charger images
 PRODUCT_PACKAGES += charger_res_images
 
