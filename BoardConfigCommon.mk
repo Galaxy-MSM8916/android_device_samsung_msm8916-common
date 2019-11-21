@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/samsung/msm8916-common
+BOARD_CONFIG_PATH := device/samsung/msm8916-common
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH := $(TARGET_SPECIFIC_HEADER_PATH) $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(TARGET_SPECIFIC_HEADER_PATH) $(BOARD_CONFIG_PATH)/include
 
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
@@ -56,13 +56,13 @@ USE_XML_AUDIO_POLICY_CONF := 1
 # Mixer paths
 ifneq ($(USE_CUSTOM_MIXER_PATHS), true)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+    $(BOARD_CONFIG_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 endif
 
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+    $(BOARD_CONFIG_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(AUDIO_CONFIG_PATH)/msm8916_32/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
@@ -104,7 +104,7 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 #BOARD_USES_CYANOGEN_HARDWARE := true
 JAVA_SOURCE_OVERLAYS += \
 	org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java \
-	org.lineageos.hardware|$(LOCAL_PATH)/lineagehw|**/*.java
+	org.lineageos.hardware|$(BOARD_CONFIG_PATH)/lineagehw|**/*.java
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -201,7 +201,7 @@ TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 BOARD_NFC_HAL_SUFFIX := msm8916
 
 # HIDL
-DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
+DEVICE_MATRIX_FILE := $(BOARD_CONFIG_PATH)/compatibility_matrix.xml
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE      := 13631488
@@ -273,7 +273,7 @@ endif
 include device/qcom/sepolicy-legacy/sepolicy.mk
 
 #BOARD_SEPOLICY_DIRS += \
-#    $(LOCAL_PATH)/sepolicy
+#    $(BOARD_CONFIG_PATH)/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
