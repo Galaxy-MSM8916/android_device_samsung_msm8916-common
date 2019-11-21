@@ -389,7 +389,7 @@ on fs
 
     chown system radio /efs
     chmod 0771 /efs
-    rm -rf /efs/dmverity
+    rm "-rf /efs/dmverity"
     restorecon -R /efs
 
 # fm_radio
