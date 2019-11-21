@@ -1,0 +1,23 @@
+cc_library_static {
+    name: "libinit_msm8916",
+
+    recovery_available: true,
+
+    include_dirs: [
+        "system/core/init",
+        "system/core/include/android",
+        "external/selinux/libselinux/include",
+        "device/samsung/msm8916-common/include/"
+    ],
+
+    cflags: [
+        "-Wall",
+    ],
+
+    srcs: [
+        "init_msm8916.cpp",
+    ],
+
+    static_libs: ["libbase"],
+
+}

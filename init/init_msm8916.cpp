@@ -42,11 +42,6 @@ using android::base::Trim;
 
 #define SERIAL_NUMBER_FILE "/efs/FactoryApp/serial_no"
 
-__attribute__ ((weak))
-void init_target_properties()
-{
-}
-
 void property_override(char const prop[], char const value[])
 {
     prop_info *pi;
@@ -186,4 +181,75 @@ void vendor_load_properties(void)
 {
 	/* set the device properties */
 	init_target_properties();
+}
+
+void init_target_properties(void)
+{
+	char *device = NULL;
+	char *model = NULL;
+
+	/* get the bootloader string */
+	std::string bootloader = android::base::GetProperty("ro.bootloader", "");
+
+	if (bootloader.find("J500FN") == 0) {
+		device = (char *)"j5nltexx";
+		model = (char *)"SM-J500FN";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J500F") == 0) {
+		device = (char *)"j5ltexx";
+		model = (char *)"SM-J500F";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J500H") == 0) {
+		device = (char *)"j53gxx";
+		model = (char *)"SM-J500H";
+		set_gsm_properties();
+	}
+	else if (bootloader.find("J500M") == 0) {
+		device = (char *)"j5lteub";
+		model = (char *)"SM-J500M";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J500Y") == 0) {
+		device = (char *)"j5ylte";
+		model = (char *)"SM-J500Y";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J500G") == 0) {
+		device = (char *)"j5ltedx";
+		model = (char *)"SM-J500G";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J5008") == 0) {
+		device = (char *)"j5ltechn";
+		model = (char *)"SM-J5008";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J510FN") == 0) {
+        device = (char *)"j5xnlte";
+        model = (char *)"SM-J510FN";
+        set_lte_properties();
+	}
+	else if (bootloader.find("J510F") == 0) {
+		device = (char *)"j5xlte";
+		model = (char *)"SM-J510F";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J510MN") == 0) {
+		device = (char *)"j5xnlte";
+		model = (char *)"SM-J510F";
+		set_lte_properties();
+	}
+	else if (bootloader.find("J510GN") == 0) {
+		device = (char *)"j5xnlte";
+		model = (char *)"SM-J510F";
+		set_lte_properties();
+	}
+	else {
+		return;
+	}
+
+	/* set the properties */
+	set_target_properties(device, model);
 }
