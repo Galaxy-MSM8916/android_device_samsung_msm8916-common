@@ -180,6 +180,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.fm.transmitter=false
 
+# For config.fs
+PRODUCT_PACKAGES += \
+    fs_config_files
+
 # FS
 PRODUCT_PACKAGES += \
     fsck.f2fs \
