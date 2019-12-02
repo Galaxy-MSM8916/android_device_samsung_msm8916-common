@@ -463,9 +463,10 @@ PRODUCT_PACKAGES += \
     sensors.msm8916
 
 # Thermal engine
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-service \
-    android.hardware.thermal@2.0-service
+#PRODUCT_PACKAGES += \
+#    android.hardware.thermal@1.0-service \
+#    android.hardware.thermal@2.0-service
+#
 
 # Time services
 PRODUCT_PROPERTY_OVERRIDES += \
