@@ -65,7 +65,7 @@ PRODUCT_PACKAGES += \
     libtinycompress
 
 # Audio configuration file
-AUDIO_CONFIG_PATH := hardware/qcom/audio-caf/msm8916/configs
+AUDIO_CONFIG_PATH := hardware/qcom-caf/msm8916/audio/configs
 PRODUCT_COPY_FILES += \
     $(AUDIO_CONFIG_PATH)/msm8916_32/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
     $(AUDIO_CONFIG_PATH)/msm8916_32/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
