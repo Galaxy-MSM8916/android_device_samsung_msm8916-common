@@ -1,6 +1,6 @@
 #============= init ==============
 allow init { firmware_file pstorefs }:dir mounton;
-allow init { proc sysfs sysfs_boot_adsp sysfs_fm sysfs_graphics sysfs_kgsl sysfs_usb_uicc sysfs_wlan_fwpath }:file { open setattr write };
+allow init { proc sysfs sysfs_boot_adsp sysfs_fm sysfs_graphics sysfs_kgsl sysfs_wlan_fwpath }:file { open setattr write };
 allow init sysfs_sensors:lnk_file read;
 
 allow init block_device:blk_file write;
