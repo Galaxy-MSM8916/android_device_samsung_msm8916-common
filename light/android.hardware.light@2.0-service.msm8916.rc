@@ -1,0 +1,17 @@
+on init
+    # Change the ownership of the notification LED interface
+    chown system system /sys/class/leds/rgb/control
+    chmod 0664 /sys/class/leds/rgb/control
+
+    # Change the ownership of the charging LED interface
+    chown system system /sys/class/leds/charging/brightness
+    chmod 0664 /sys/class/leds/charging/brightness
+    chown system system /sys/class/leds/charging/trigger
+    chmod 0664 /sys/class/leds/charging/trigger
+
+service light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.msm8916
+    interface android.hardware.light@2.0::ILight default
+    class hal
+    user system
+    group system
+    shutdown critical
