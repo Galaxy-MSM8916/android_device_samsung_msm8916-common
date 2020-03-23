@@ -1,0 +1,9 @@
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+ 
+     <!-- Threshold in milli watts below which a charger is rated as "slow" -->
+    <integer name="config_chargingSlowlyThreshold">1305</integer>
+
+    <!-- Threshold in milli watts from which a charger is rated as "fast" -->
+    <integer name="config_chargingFastThreshold">3045</integer>
+
+ </resources>

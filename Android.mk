@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(BOARD_VENDOR),samsung)
-ifeq ($(TARGET_BOARD_PLATFORM),msm8916)
+ifneq ($(filter j5lte j5ltechn j5nlte j5nltexx j53gxx j5xnlte j5xlte, $(TARGET_DEVICE)),)
+
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
@@ -270,5 +270,4 @@ $(shell mkdir -p $(TARGET_OUT_VENDOR)/etc/wifi; \
 
 include $(CLEAR_VARS)
 
-endif
 endif

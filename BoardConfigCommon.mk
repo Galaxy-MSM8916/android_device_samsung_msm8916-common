@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BOARD_CONFIG_PATH := device/samsung/msm8916-common
+COMMON_PATH := device/samsung/msm8916-common
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH := $(TARGET_SPECIFIC_HEADER_PATH) $(BOARD_CONFIG_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(TARGET_SPECIFIC_HEADER_PATH) $(COMMON_PATH)/include
 
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
@@ -61,6 +61,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 BLUETOOTH_HCI_USE_MCT := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth
 
 # Bootanimation
 
@@ -84,7 +85,7 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 #BOARD_USES_CYANOGEN_HARDWARE := true
 JAVA_SOURCE_OVERLAYS += \
 	org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java \
-	org.lineageos.hardware|$(BOARD_CONFIG_PATH)/lineagehw|**/*.java
+	org.lineageos.hardware|$(COMMON_PATH)/lineagehw|**/*.java
 
 # Display
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
@@ -113,7 +114,7 @@ else
 endif
 
 # Filesystems
-TARGET_FS_CONFIG_GEN := $(BOARD_CONFIG_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE   := ext4
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_SYSTEMIMAGE_PARTITION_TYPE    := ext4
@@ -136,6 +137,7 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.default
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8916
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8916
+TARGET_LIBINIT_MSM8916_DEFINES_FILE := $(COMMON_PATH)/init/init_j5.cpp
 
 # Kernel
 BOARD_KERNEL_CMDLINE += \
@@ -182,7 +184,7 @@ TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 BOARD_NFC_HAL_SUFFIX := msm8916
 
 # HIDL
-DEVICE_MATRIX_FILE := $(BOARD_CONFIG_PATH)/compatibility_matrix.xml
+DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE      := 13631488
@@ -199,6 +201,9 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/mm-qcamera-daemon=22 \
     /system/vendor/bin/hw/rild=27
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := false
+
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 CM_POWERHAL_EXTENSION := qcom
@@ -206,6 +211,10 @@ WITH_QC_PERF := true
 
 # Radio
 TARGET_USES_OLD_MNC_FORMAT := true
+
+# RIL
+BOARD_MODEM_TYPE := xmm7260
+BOARD_PROVIDES_LIBRIL := true
 
 # Protobuf
 PROTOBUF_SUPPORTED := true
@@ -251,15 +260,11 @@ ifeq ($(RECOVERY_VARIANT),twrp)
 	BOARD_GLOBAL_CFLAGS += -DTW_USE_MINUI_CUSTOM_FONTS
 endif
 
-#ifneq ($(wildcard bootable/recovery-twrp),)
-#	RECOVERY_VARIANT := twrp
-#endif
-
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-    $(BOARD_CONFIG_PATH)/sepolicy
+    $(COMMON_PATH)/sepolicy
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
@@ -295,4 +300,5 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WLAN_CHIPSET := pronto
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
+BOARD_HAVE_SAMSUNG_WIFI := true
 
