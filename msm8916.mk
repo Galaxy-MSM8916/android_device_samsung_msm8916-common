@@ -529,7 +529,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service.legacy \
+    android.hardware.wifi@1.0-service \
     android.hardware.wifi.offload@1.0-service \
     hostapd \
     hostapd_cli \
