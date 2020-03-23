@@ -31,27 +31,17 @@ namespace V2_0 {
 namespace implementation {
 
 struct Light : public ILight {
-    Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight,
-          std::ofstream&& charging_led, std::ofstream&& blinking_led);
+    Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight);
 
     // Methods from ::android::hardware::light::V2_0::ILight follow.
     Return<Status> setLight(Type type, const LightState& state) override;
     Return<void> getSupportedTypes(getSupportedTypes_cb _hidl_cb) override;
 
   private:
-    void setAttentionLight(const LightState& state);
-    void setBatteryLight(const LightState& state);
     void setLcdBacklight(const LightState& state);
-    void setNotificationLight(const LightState& state);
     void setSpeakerLightLocked();
 
     std::pair<std::ofstream, uint32_t> mLcdBacklight;
-    std::ofstream mChargingLed;
-    std::ofstream mBlinkingLed;
-
-    LightState mAttentionState;
-    LightState mBatteryState;
-    LightState mNotificationState;
 
     std::unordered_map<Type, std::function<void(const LightState&)>> mLights;
     std::mutex mLock;
