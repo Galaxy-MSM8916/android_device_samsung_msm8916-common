@@ -23,12 +23,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, vendor/samsung/msm8916-common/msm8916-common-vendor.mk)
 
 # Inherit from vendor
-ifneq ($(filter j5lte j5ltechn j5nlte j5nltexx j53gxx, $(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),j5lte j5ltechn j5nlte j5nltexx j53gxx))
 $(call inherit-product, vendor/samsung/j5-common/j5-common-vendor.mk)
-endif
-
-ifneq ($(filter j5xnlte j5xlte, $(TARGET_DEVICE)),)
+else
+ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),j5xnlte j5xlte))
 $(call inherit-product, vendor/samsung/j5x-common/j5x-common-vendor.mk)
+endif
 endif
 
 # Screen density
