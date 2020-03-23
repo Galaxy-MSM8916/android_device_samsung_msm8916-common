@@ -31,9 +31,6 @@ static uint32_t rgbToBrightness(const LightState& state) {
             (29 * (color & 0xff))) >> 8;
 }
 
-static bool isLit(const LightState& state) {
-    return (state.color & 0x00ffffff);
-}
 }  // anonymous namespace
 
 namespace android {
@@ -42,22 +39,10 @@ namespace light {
 namespace V2_0 {
 namespace implementation {
 
-Light::Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight,
-             std::ofstream&& charging_led, std::ofstream&& blinking_led)
-    : mLcdBacklight(std::move(lcd_backlight)),
-      mChargingLed(std::move(charging_led)),
-      mBlinkingLed(std::move(blinking_led)) {
+Light::Light(std::pair<std::ofstream, uint32_t>&& lcd_backlight)
+    : mLcdBacklight(std::move(lcd_backlight)){
     auto backlightFn(std::bind(&Light::setLcdBacklight, this, std::placeholders::_1));
-    auto batteryFn(std::bind(&Light::setBatteryLight, this, std::placeholders::_1));
     mLights.emplace(std::make_pair(Type::BACKLIGHT, backlightFn));
-    mLights.emplace(std::make_pair(Type::BATTERY, batteryFn));
-
-    if (mBlinkingLed) {
-        auto attnFn(std::bind(&Light::setAttentionLight, this, std::placeholders::_1));
-        auto notifFn(std::bind(&Light::setNotificationLight, this, std::placeholders::_1));
-        mLights.emplace(std::make_pair(Type::ATTENTION, attnFn));
-        mLights.emplace(std::make_pair(Type::NOTIFICATIONS, notifFn));
-    }
 }
 
 // Methods from ::android::hardware::light::V2_0::ILight follow.
@@ -99,57 +84,6 @@ void Light::setLcdBacklight(const LightState& state) {
     }
 
     mLcdBacklight.first << brightness << std::endl;
-}
-
-void Light::setBatteryLight(const LightState& state) {
-    std::lock_guard<std::mutex> lock(mLock);
-    mBatteryState = state;
-    setSpeakerLightLocked();
-}
-
-void Light::setAttentionLight(const LightState& state) {
-    std::lock_guard<std::mutex> lock(mLock);
-    mAttentionState = state;
-    setSpeakerLightLocked();
-}
-
-void Light::setNotificationLight(const LightState& state) {
-    std::lock_guard<std::mutex> lock(mLock);
-    mNotificationState = state;
-    setSpeakerLightLocked();
-}
-
-void Light::setSpeakerLightLocked() {
-    if (mBlinkingLed) {
-        if (isLit(mNotificationState)) {
-            int onMs, offMs;
-
-            switch (mNotificationState.flashMode)
-            {
-            case Flash::TIMED:
-                onMs = mNotificationState.flashOnMs;
-                offMs = mNotificationState.flashOffMs;
-                break;
-            default:
-                onMs = 1;
-                offMs = 0;
-                break;
-            }
-
-            mBlinkingLed << "FFFFFF " << onMs << " " << offMs << " 0 0" << std::endl;
-        } else if (isLit(mBatteryState) || isLit(mAttentionState)) {
-            mBlinkingLed << "FFFFFF 1 0 0 0" << std::endl;
-        } else {
-            mBlinkingLed << "000000 0 0 0 0" << std::endl;
-        }
-    } else {
-        if (isLit(mBatteryState)) {
-            mChargingLed << DEFAULT_MAX_BRIGHTNESS << std::endl;
-        } else {
-            // Lights off
-            mChargingLed << 0 << std::endl;
-        }
-    }
 }
 
 }  // namespace implementation
