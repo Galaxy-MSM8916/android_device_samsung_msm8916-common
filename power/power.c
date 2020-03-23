@@ -188,58 +188,11 @@ void power_set_interactive(int on)
     }
 }
 
-static void set_power_profile(int profile)
-{
-    const char *interactive_path = get_interactive_path();
-    const power_profile *profiles = get_profiles();
-
-    if (!is_profile_valid(profile)) {
-        ALOGE("%s: unknown profile: %d", __func__, profile);
-        return;
-    }
-
-    if (profile == current_power_profile)
-        return;
-
-    // break out early if governor is not interactive
-    if (!check_governor()) return;
-
-    ALOGD("%s: setting profile %d", __func__, profile);
-
-    sysfs_write_int(interactive_path, "boost",
-                    profiles[profile].boost);
-    sysfs_write_int(interactive_path, "boostpulse_duration",
-                    profiles[profile].boostpulse_duration);
-    sysfs_write_int(interactive_path, "go_hispeed_load",
-                    profiles[profile].go_hispeed_load);
-    sysfs_write_int(interactive_path, "hispeed_freq",
-                    profiles[profile].hispeed_freq);
-    sysfs_write_int(interactive_path, "min_sample_time",
-                    profiles[profile].min_sample_time);
-    sysfs_write_int(interactive_path, "timer_rate",
-                    profiles[profile].timer_rate);
-    sysfs_write_int(interactive_path, "above_hispeed_delay",
-                    profiles[profile].above_hispeed_delay);
-    sysfs_write_int(interactive_path, "target_loads",
-                    profiles[profile].target_loads);
-    sysfs_write_int(CPUFREQ_PATH, "scaling_max_freq",
-                    profiles[profile].scaling_max_freq);
-    sysfs_write_int(CPUFREQ_PATH, "scaling_min_freq",
-                    profiles[profile].scaling_min_freq);
-
-    current_power_profile = profile;
-}
-
-void power_hint(power_hint_t hint, void* data)
+void power_hint(power_hint_t hint)
 {
     const power_profile *profiles = get_profiles();
     char buf[80];
     int len;
-
-    if (hint == POWER_HINT_SET_PROFILE) {
-        set_power_profile(*(int32_t *)data);
-        return;
-    }
 
     // Skip other hints in powersave mode
     if (current_power_profile == PROFILE_POWER_SAVE)
