@@ -126,6 +126,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
 
+# Imported flags from qcom-common
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.hw=1 \
+    debug.mdpcomp.logs=0 \
+    persist.hwc.mdpcomp.enable=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.call_ring.multiple=0
+
 # Radio
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.radio.apm_sim_not_pwdn=1 \
