@@ -1,0 +1,3 @@
+allow misc_writer proc_dt_firmware_android:dir { read open write search };
+allow misc_writer block_device:blk_file { getattr setattr open read write };
+allow misc_writer proc_dt_firmware_android:file { read write open };

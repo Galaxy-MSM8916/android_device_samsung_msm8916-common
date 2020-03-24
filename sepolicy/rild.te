@@ -5,4 +5,5 @@ allow rild proc_qtaguid_stat:file { getattr open read };
 allow rild radio_data_file:lnk_file getattr;
 allow rild unlabeled:dir search;
 allow rild unlabeled:file { getattr open read };
-
+allow rild device:chr_file { read write open ioctl };
+allow rild storage_file:dir { search read write open };

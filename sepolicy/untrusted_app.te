@@ -1,0 +1,1 @@
+allow untrusted_app proc_qtaguid_stat:file { read write open };

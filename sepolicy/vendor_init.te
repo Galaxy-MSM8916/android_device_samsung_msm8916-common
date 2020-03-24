@@ -1,0 +1,6 @@
+allow vendor_init system_data_file:file { read write open setattr };
+allow vendor_init radio_data_file:file { write read open setattr };
+allow vendor_init vfat:dir { read open search write };
+allow vendor_init proc:file { read open write };
+allow vendor_init unlabeled:dir { read write setattr getattr search };
+

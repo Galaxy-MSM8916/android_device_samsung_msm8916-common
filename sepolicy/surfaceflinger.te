@@ -1,4 +1,4 @@
 #============= surfaceflinger ==============
 allow surfaceflinger persist_data_file:dir search;
 allow surfaceflinger vfat:dir search;
-
+allow surfaceflinger hal_graphics_allocator_hwservice:hwservice_manager { add };

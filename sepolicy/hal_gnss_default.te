@@ -1,0 +1,2 @@
+allow hal_gnss_default ssr_device:chr_file { read write open ioctl };
+allow hal_gnss_default system_file:file { lock };

@@ -9,4 +9,5 @@ allow qti_init_shell radio_data_file:lnk_file { create getattr read setattr };
 allow qti_init_shell sysfs:file write;
 allow qti_init_shell toolbox_exec:file { execute execute_no_trans getattr open read };
 allow qti_init_shell vfat:dir search;
+allow qti_init_shell sysfs_android_usb:file { read write };
 

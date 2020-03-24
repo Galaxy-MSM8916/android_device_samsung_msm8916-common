@@ -1,0 +1,2 @@
+allow vold hal_bootctl_hwservice:hwservice_manager find;
+allow vold efs_file:dir { read write open search };
