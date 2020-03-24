@@ -393,8 +393,6 @@ PRODUCT_PACKAGES += \
 
 # Include vendor
 $(call inherit-product, vendor/samsung/msm8916-common/msm8916-common-vendor.mk)
-# Inherit from qcom common
-$(call inherit-product-if-exists, device/samsung/qcom-common/qcom-common.mk)
 
 # Inherit from J5 2015 or J5 2016 vendor
 ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),j5lte j5ltechn j5nlte j5nltexx j53gxx))
