@@ -360,11 +360,6 @@ on property:ro.config.ksm=true
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
 
-#enable zram
-on property:ro.config.zram.enabled=true
-    write /proc/sys/vm/page-cluster 0
-    write /proc/sys/vm/swappiness 100
-
 # Allow usb charging to be disabled peristently
 on property:persist.usb.chgdisabled=1
     write /sys/class/power_supply/battery/charging_enabled 0
