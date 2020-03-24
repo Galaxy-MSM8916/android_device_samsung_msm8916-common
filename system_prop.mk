@@ -25,6 +25,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.voice.record.conc.disabled=true \
     vendor.voice.voip.conc.disabled=true
 
+# Assistant
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opa.eligible_device=true
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hfp.client=1 \

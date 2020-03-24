@@ -9,6 +9,9 @@ TARGET_BOOT_ANIMATION_RES := 720
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/revengeos/config/common.mk)
 
+# Include full languages
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
