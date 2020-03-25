@@ -39,7 +39,6 @@ struct Light : public ILight {
 
   private:
     void setLcdBacklight(const LightState& state);
-    void setSpeakerLightLocked();
 
     std::pair<std::ofstream, uint32_t> mLcdBacklight;
 
