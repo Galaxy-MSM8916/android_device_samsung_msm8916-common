@@ -192,10 +192,6 @@ PRODUCT_PACKAGES += \
     libshim_gps \
     liblocadapterbase_shim
 
-# Headers
-PRODUCT_VENDOR_KERNEL_HEADERS := \
-    hardware/qcom/msm8916/kernel-headers
-
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
