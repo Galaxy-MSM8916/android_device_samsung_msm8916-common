@@ -172,6 +172,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=false \
     ro.use_data_netmgrd=false
 
+# Dex
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    TrebuchetQuickStep \
+    Settings \
+    SystemUI
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
