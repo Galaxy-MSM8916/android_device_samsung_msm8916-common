@@ -262,36 +262,6 @@ PRODUCT_PACKAGES += \
     libkeyutils \
     tcpdump
 
-# NFC - only for j5nlte and j5xnlte
-ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),j5nlte j5xnlte))
-PRODUCT_PACKAGES += \
-	android.hardware.nfc@1.1 \
-	android.hardware.nfc@1.1-service \
-    vendor.nxp.nxpnfc@1.0 \
-    vendor.nxp.hardware.nfc@1.0-service
-
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    com.gsma.services.nfc \
-    com.nxp.nfc.nq \
-    nfc_nci.nqx.default \
-    nqnfcee_access.xml \
-    NfcNci \
-    Tag
-
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
-	$(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/etc/nfc/libnfc-nxp.conf
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml
-
-DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest-nfc.xml
-endif
-
 # Parts
 PRODUCT_PACKAGES += \
     SamsungParts
@@ -423,12 +393,3 @@ PRODUCT_PACKAGES += \
 
 # Include vendor
 $(call inherit-product, vendor/samsung/msm8916-common/msm8916-common-vendor.mk)
-
-# Inherit from J5 2015 or J5 2016 vendor
-ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),j5lte j5ltechn j5nlte j5nltexx j53gxx))
-$(call inherit-product, vendor/samsung/j5-common/j5-common-vendor.mk)
-else
-ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),j5xnlte j5xlte))
-$(call inherit-product, vendor/samsung/j5x-common/j5x-common-vendor.mk)
-endif
-endif
