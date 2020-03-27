@@ -262,6 +262,15 @@ PRODUCT_PACKAGES += \
     libkeyutils \
     tcpdump
 
+# NFC - only for j5nlte and j5xnlte
+ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),j5nlte j5xnlte))
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+	$(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/etc/nfc/libnfc-nxp.conf
+
+endif
+
 # Parts
 PRODUCT_PACKAGES += \
     SamsungParts
