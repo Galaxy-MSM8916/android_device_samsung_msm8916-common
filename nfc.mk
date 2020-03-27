@@ -1,7 +1,7 @@
 # NFC - only for j5nlte and j5xnlte
 PRODUCT_PACKAGES += \
-	android.hardware.nfc@1.1 \
-	android.hardware.nfc@1.1-service \
+    android.hardware.nfc@1.1 \
+    android.hardware.nfc@1.1-service \
     vendor.nxp.nxpnfc@1.0 \
     vendor.nxp.hardware.nfc@1.0-service
 
@@ -15,8 +15,8 @@ PRODUCT_PACKAGES += \
     Tag
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
-	$(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp_RF.conf:$(TARGET_COPY_OUT_VENDOR)/etc/nfc/libnfc-nxp.conf
 
 PRODUCT_COPY_FILES += \
