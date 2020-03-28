@@ -392,6 +392,7 @@ PRODUCT_PACKAGES += \
 # Misc.
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.mdpcomp.logs=0 \
+    debug.sf.latch_unsignaled=1 \
     dev.pm.dyn_samplingrate=1 \
     persist.hwc.enable_vds=1 \
     persist.hwc.mdpcomp.enable=true \
