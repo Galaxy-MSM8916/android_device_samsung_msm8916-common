@@ -308,7 +308,7 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service.msm8916
 
 # Proprieties
--include device/samsung/msm8916-common/system_prop.mk
+include device/samsung/msm8916-common/system_prop.mk
 
 # Radio
 PRODUCT_PACKAGES += \
