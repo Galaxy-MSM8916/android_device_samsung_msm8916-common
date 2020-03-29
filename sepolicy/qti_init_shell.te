@@ -1,6 +1,7 @@
 #============= qti_init_shell ==============
 allow qti_init_shell bluetooth_efs_file:dir search;
 allow qti_init_shell bluetooth_efs_file:file { open read };
+allow qti_init_shell { bluetooth_prop ctl_start_prop default_prop system_prop }:property_service set;
 allow qti_init_shell efs_file:dir search;
 allow qti_init_shell file_contexts_file:file { getattr open read };
 allow qti_init_shell persist_data_file:dir search;
