@@ -45,6 +45,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.vendor.shutdown.waittime=500 \
     ro.build.shutdown_timeout=0
 
+# CABL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.cabl=2
+
 # Camera
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
@@ -148,6 +152,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.sib16_support=1
+
+# RAM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.low_ram=false
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
