@@ -1,1 +1,7 @@
 allow untrusted_app proc_qtaguid_stat:file { read write open };
+allow untrusted_app proc_qtaguid_stat:file { read write open };
+allow untrusted_app app_data_file:file { read write open execute };
+allow untrusted_app net_dns_prop:file { read write open };
+allow untrusted_app proc_vmstat:file { read write open };
+allow untrusted_app proc_zoneinfo:file { read write open };
+allow untrusted_app proc:file { read write open };
