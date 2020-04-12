@@ -1,7 +1,8 @@
 cc_binary {
-    name: "android.hardware.power@1.0-service.msm8916",
+    name: "android.hardware.power@1.1-service.msm8916",
+    defaults: ["hidl_defaults"],
     relative_install_path: "hw",
-    init_rc: ["android.hardware.power@1.0-service.msm8916.rc"],
+    init_rc: ["android.hardware.power@1.1-service.msm8916.rc"],
     srcs: [
         "service.cpp",
         "Power.cpp",
@@ -14,13 +15,16 @@ cc_binary {
     ],
 
     shared_libs: [
+        "libhidlbase",
         "liblog",
-        "libdl",
         "libutils",
         "libhardware",
-        "libhidlbase",
-        "libhidltransport",
-        "android.hardware.power@1.0",
+        "android.hardware.power@1.1",
     ],
-    proprietary: true,
+    arch: {
+        arm: {
+            cflags: ["-DARCH_ARM_32"],
+        },
+    },
+    vendor: true,
 }

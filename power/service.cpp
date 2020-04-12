@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.power@1.0-service.msm8916"
+#define LOG_TAG "android.hardware.power@1.1-service.msm8916"
 
 #include <android/log.h>
 #include <hidl/HidlTransportSupport.h>
 #include <hardware/power.h>
+#ifdef ARCH_ARM_32
+#include <hwbinder/ProcessState.h>
+#endif
 #include "Power.h"
 
 using android::sp;
@@ -30,14 +33,17 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
-using android::hardware::power::V1_0::IPower;
-using android::hardware::power::V1_0::implementation::Power;
+using android::hardware::power::V1_1::IPower;
+using android::hardware::power::V1_1::implementation::Power;
 
 int main() {
+#ifdef ARCH_ARM_32
+    android::hardware::ProcessState::initWithMmapSize((size_t)16384);
+#endif
     status_t status;
     android::sp<IPower> service = nullptr;
 
-    ALOGI("Power HAL Service 1.0 for Serrano is starting.");
+    ALOGI("Power HAL Service 1.1 is starting.");
 
     service = new Power();
     if (service == nullptr) {
@@ -54,7 +60,7 @@ int main() {
         goto shutdown;
     }
 
-    ALOGI("Power Service is ready");
+    ALOGI("Power HAL Ready.");
     joinRpcThreadpool();
     //Should not pass this line
 

@@ -23,36 +23,21 @@
 #include <fcntl.h>
 #include <string.h>
 #include <stdlib.h>
-#include <sys/stat.h>
 
 #include <log/log.h>
 
 #include "power.h"
-#include "power_msm8916.h"
-#include "power_msm8939.h"
 
-#define CPU_PRESENCE_PATH "/sys/devices/system/cpu/present"
 #define CPUFREQ_PATH "/sys/devices/system/cpu/cpu0/cpufreq/"
-
-const char *INTERACTIVE_PATH_8916 = "/sys/devices/system/cpu/cpufreq/interactive/";
-const char *INTERACTIVE_PATH_8939 = "/sys/devices/system/cpu/cpu0/cpufreq/interactive/";
-
-enum CPUType
-{
-    CPU_UNKNOWN,
-    CPU_MSM8916,
-    CPU_MSM8939
-};
-
-static enum CPUType cpu_type = CPU_UNKNOWN;
+#define INTERACTIVE_PATH "/sys/devices/system/cpu/cpufreq/interactive/"
 
 static int boostpulse_fd = -1;
 
 static int current_power_profile = -1;
 
-static int sysfs_write_str(const char *path, const char *s)
+static int sysfs_write_str(char *path, char *s)
 {
-    char buf[128];
+    char buf[80];
     int len;
     int ret = 0;
     int fd;
@@ -76,59 +61,11 @@ static int sysfs_write_str(const char *path, const char *s)
     return ret;
 }
 
-static int sysfs_write_int(const char *prefix, const char *suffix, int value)
+static int sysfs_write_int(char *path, int value)
 {
-    char path[128];
-    char buf[16];
-    snprintf(path, sizeof(path), "%s%s", prefix, suffix);
-    snprintf(buf, sizeof(buf), "%d", value);
+    char buf[80];
+    snprintf(buf, 80, "%d", value);
     return sysfs_write_str(path, buf);
-}
-
-static bool is_msm8939(void)
-{
-    if (cpu_type == CPU_UNKNOWN) {
-        char cpus_present[16];
-        FILE *present = fopen(CPU_PRESENCE_PATH, "rb");
-        if (present == NULL) // should never happen
-            return false;
-        fgets(cpus_present, sizeof(cpus_present), present);
-        fclose(present);
-        if (strcmp(cpus_present, "0-7\n") == 0) {
-            ALOGD("Detected MSM8939");
-            cpu_type = CPU_MSM8939;
-        } else {
-            ALOGD("Detected MSM8916");
-            cpu_type = CPU_MSM8916;
-        }
-    }
-    return cpu_type == CPU_MSM8939;
-}
-
-static const char *get_interactive_path(void)
-{
-    if (is_msm8939())
-        return INTERACTIVE_PATH_8939;
-    else
-        return INTERACTIVE_PATH_8916;
-}
-
-static const power_profile *get_profiles(void)
-{
-    if (is_msm8939())
-        return profiles_8939;
-    else
-        return profiles_8916;
-}
-
-static bool check_governor(void)
-{
-    const char *interactive_path = get_interactive_path();
-    struct stat s;
-    int err = stat(interactive_path, &s);
-    if (err != 0) return false;
-    if (S_ISDIR(s.st_mode)) return true;
-    return false;
 }
 
 static int is_profile_valid(int profile)
@@ -144,55 +81,82 @@ void power_init(void)
 static int boostpulse_open()
 {
     if (boostpulse_fd < 0) {
-        const char *interactive_path = get_interactive_path();
-        char bp_path[128];
-        strcpy(bp_path, interactive_path);
-        strcat(bp_path, "boostpulse");
-        boostpulse_fd = open(bp_path, O_WRONLY);
+        boostpulse_fd = open(INTERACTIVE_PATH "boostpulse", O_WRONLY);
     }
 
     return boostpulse_fd;
 }
 
-void power_set_interactive(int on)
+static void set_power_profile(int profile)
 {
-    const char *interactive_path = get_interactive_path();
-    const power_profile *profiles = get_profiles();
-
-    if (!is_profile_valid(current_power_profile)) {
-        ALOGD("%s: no power profile selected yet", __func__);
+    if (!is_profile_valid(profile)) {
+        ALOGE("%s: unknown profile: %d", __func__, profile);
         return;
     }
 
-    // break out early if governor is not interactive
-    if (!check_governor()) return;
+    if (profile == current_power_profile)
+        return;
+
+    ALOGD("%s: setting profile %d", __func__, profile);
+
+    sysfs_write_int(INTERACTIVE_PATH "boost",
+                    profiles[profile].boost);
+    sysfs_write_int(INTERACTIVE_PATH "boostpulse_duration",
+                    profiles[profile].boostpulse_duration);
+    sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
+                    profiles[profile].go_hispeed_load);
+    sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
+                    profiles[profile].hispeed_freq);
+    sysfs_write_int(INTERACTIVE_PATH "io_is_busy",
+                    profiles[profile].io_is_busy);
+    sysfs_write_int(INTERACTIVE_PATH "min_sample_time",
+                    profiles[profile].min_sample_time);
+    sysfs_write_int(INTERACTIVE_PATH "sampling_down_factor",
+                    profiles[profile].sampling_down_factor);
+    sysfs_write_str(INTERACTIVE_PATH "target_loads",
+                    profiles[profile].target_loads);
+    sysfs_write_int(CPUFREQ_PATH "scaling_max_freq",
+                    profiles[profile].scaling_max_freq);
+    sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
+                    profiles[profile].scaling_min_freq);
+
+    current_power_profile = profile;
+}
+
+void power_set_interactive(int on) 
+{
+    if (!is_profile_valid(current_power_profile)) {
+        ALOGD("%s: no power profile selected yet, setting it to balanced", __func__);
+        set_power_profile(PROFILE_BALANCED);
+    }
 
     if (on) {
-        sysfs_write_int(interactive_path, "hispeed_freq",
+        sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
                         profiles[current_power_profile].hispeed_freq);
-        sysfs_write_int(interactive_path, "go_hispeed_load",
+        sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
                         profiles[current_power_profile].go_hispeed_load);
-        sysfs_write_int(interactive_path, "target_loads",
+        sysfs_write_str(INTERACTIVE_PATH "target_loads",
                         profiles[current_power_profile].target_loads);
-        sysfs_write_int(CPUFREQ_PATH, "scaling_min_freq",
+        sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
                         profiles[current_power_profile].scaling_min_freq);
     } else {
-        sysfs_write_int(interactive_path, "hispeed_freq",
+        sysfs_write_int(INTERACTIVE_PATH "hispeed_freq",
                         profiles[current_power_profile].hispeed_freq_off);
-        sysfs_write_int(interactive_path, "go_hispeed_load",
+        sysfs_write_int(INTERACTIVE_PATH "go_hispeed_load",
                         profiles[current_power_profile].go_hispeed_load_off);
-        sysfs_write_int(interactive_path, "target_loads",
+        sysfs_write_str(INTERACTIVE_PATH "target_loads",
                         profiles[current_power_profile].target_loads_off);
-        sysfs_write_int(CPUFREQ_PATH, "scaling_min_freq",
+        sysfs_write_int(CPUFREQ_PATH "scaling_min_freq",
                         profiles[current_power_profile].scaling_min_freq_off);
     }
 }
 
-void power_hint(power_hint_t hint)
+void power_hint(power_hint_t hint, void* data)
 {
-    const power_profile *profiles = get_profiles();
-    char buf[80];
-    int len;
+    if (hint == POWER_HINT_SET_PROFILE) {
+        set_power_profile(*(int32_t *)data);
+        return;
+    }
 
     // Skip other hints in powersave mode
     if (current_power_profile == PROFILE_POWER_SAVE)
@@ -201,19 +165,17 @@ void power_hint(power_hint_t hint)
     switch (hint) {
     case POWER_HINT_INTERACTION:
         if (!is_profile_valid(current_power_profile)) {
-            ALOGD("%s: no power profile selected yet", __func__);
-            return;
+            ALOGD("%s: no power profile selected yet, setting it to balanced", __func__);
+            set_power_profile(PROFILE_BALANCED);
         }
 
         if (!profiles[current_power_profile].boostpulse_duration)
             return;
 
         if (boostpulse_open() >= 0) {
-            snprintf(buf, sizeof(buf), "%d", 1);
-            len = write(boostpulse_fd, &buf, sizeof(buf));
+            int len = write(boostpulse_fd, "1", 2);
             if (len < 0) {
-                strerror_r(errno, buf, sizeof(buf));
-                ALOGE("Error writing to boostpulse: %s\n", buf);
+                ALOGE("Error writing to boostpulse: %s\n", strerror(errno));
 
                 close(boostpulse_fd);
                 boostpulse_fd = -1;

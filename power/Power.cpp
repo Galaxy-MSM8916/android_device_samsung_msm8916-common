@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.power@1.0-service.msm8916"
+#define LOG_TAG "android.hardware.power@1.1-service.msm8916"
 
 #include <android/log.h>
 #include <utils/Log.h>
@@ -23,13 +23,14 @@
 namespace android {
 namespace hardware {
 namespace power {
-namespace V1_0 {
+namespace V1_1 {
 namespace implementation {
 
 using ::android::hardware::power::V1_0::Feature;
 using ::android::hardware::power::V1_0::PowerHint;
 using ::android::hardware::power::V1_0::PowerStatePlatformSleepState;
 using ::android::hardware::power::V1_0::Status;
+using ::android::hardware::power::V1_1::PowerStateSubsystem;
 using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
@@ -60,8 +61,20 @@ Return<void> Power::getPlatformLowPowerStats(getPlatformLowPowerStats_cb _hidl_c
     return Void();
 }
 
+Return<void> Power::getSubsystemLowPowerStats(getSubsystemLowPowerStats_cb _hidl_cb) {
+    hidl_vec<PowerStateSubsystem> subsystems;
+    subsystems.resize(0);
+    _hidl_cb(subsystems, Status::SUCCESS);
+    return Void();
+}
+
+Return<void> Power::powerHintAsync(PowerHint hint, int32_t data) {
+    // just call the normal power hint in this oneway function
+    return powerHint(hint, data);
+}
+
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V1_1
 }  // namespace power
 }  // namespace hardware
 }  // namespace android
