@@ -70,11 +70,10 @@ int read_integer(const char* filename)
 	int retval;
 	FILE * file;
 
-	/* open the file */
 	if (!(file = fopen(filename, "r"))) {
 		return -1;
 	}
-	/* read the value from the file */
+
 	fscanf(file, "%d", &retval);
 	fclose(file);
 
@@ -83,12 +82,12 @@ int read_integer(const char* filename)
 
 void set_cdma_properties(const char *operator_alpha, const char *operator_numeric, const char * network)
 {
-	/* Dynamic CDMA Properties */
+	// Dynamic CDMA Properties
 	android::init::property_set("ro.cdma.home.operator.alpha", operator_alpha);
 	android::init::property_set("ro.cdma.home.operator.numeric", operator_numeric);
 	android::init::property_set("ro.telephony.default_network", network);
 
-	/* Static CDMA Properties */
+	// Static CDMA Properties
 	android::init::property_set("ril.subscription.types", "NV,RUIM");
 	android::init::property_set("ro.telephony.default_cdma_sub", "0");
 	android::init::property_set("ro.telephony.get_imsi_from_sim", "true");
@@ -124,29 +123,6 @@ void set_wifi_properties()
 	android::init::property_set("ro.radio.noril", "1");
 }
 
-void set_fingerprint()
-{
-	std::string fingerprint = GetProperty("ro.build.fingerprint", "");
-
-	if ((strlen(fingerprint.c_str()) > 1) && (strlen(fingerprint.c_str()) <= PROP_VALUE_MAX))
-		return;
-
-	char new_fingerprint[PROP_VALUE_MAX+1];
-
-	std::string build_id = GetProperty("ro.build.id","");
-	std::string build_tags = GetProperty("ro.build.tags","");
-	std::string build_type = GetProperty("ro.build.type","");
-	std::string device = GetProperty("ro.product.device","");
-	std::string incremental_version = GetProperty("ro.build.version.incremental","");
-	std::string release_version = GetProperty("ro.build.version.release","");
-
-	snprintf(new_fingerprint, PROP_VALUE_MAX, "samsung/%s/%s:%s/%s/%s:%s/%s",
-		device.c_str(), device.c_str(), release_version.c_str(), build_id.c_str(),
-		incremental_version.c_str(), build_type.c_str(), build_tags.c_str());
-
-	property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", new_fingerprint);
-}
-
 void set_target_properties(const char *device, const char *model)
 {
 	property_override_dual("ro.product.device", "ro.product.vendor.device", device);
@@ -154,16 +130,15 @@ void set_target_properties(const char *device, const char *model)
 
 	android::init::property_set("ro.ril.telephony.mqanelements", "6");
 
-	/* check and/or set fingerprint */
-	set_fingerprint();
+	// Fingerprint
+	property_override("ro.build.description", "j5nltexx-user 10 MMB29M J500FXXU1BSK2 release-keys");
+	property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/coral/coral:10/QQ1B.200105.004/6031802:user/release-keys");
 
-	/* check for multi-sim devices */
-
-	/* check if the simslot count file exists */
+	// Check if the simslot count file exists
 	if (access(SIMSLOT_FILE, F_OK) == 0) {
 		int sim_count = read_integer(SIMSLOT_FILE);
 
-		/* set the dual sim props */
+		// If it does and there are 2 SIM card slots, set dual SIM props
 		if (sim_count == 2)
 			set_dsds_properties();
 	}
@@ -179,7 +154,7 @@ void set_target_properties(const char *device, const char *model)
 
 void vendor_load_properties(void)
 {
-	/* set the device properties */
+	// Set the device properties
 	init_target_properties();
 }
 
@@ -188,7 +163,7 @@ void init_target_properties(void)
 	char *device = NULL;
 	char *model = NULL;
 
-	/* get the bootloader string */
+	// Get the bootloader string
 	std::string bootloader = android::base::GetProperty("ro.bootloader", "");
 
 	if (bootloader.find("J500FN") == 0) {
@@ -250,6 +225,6 @@ void init_target_properties(void)
 		return;
 	}
 
-	/* set the properties */
+	// Set the properties
 	set_target_properties(device, model);
 }
