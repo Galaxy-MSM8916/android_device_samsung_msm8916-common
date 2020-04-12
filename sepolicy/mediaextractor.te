@@ -1,3 +1,0 @@
-#============= mediaextractor ==============
-allow mediaextractor vfat:file { getattr read };
-

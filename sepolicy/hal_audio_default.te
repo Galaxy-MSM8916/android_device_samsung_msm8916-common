@@ -1,0 +1,4 @@
+#============= hal_audio_default ==============
+allow hal_audio_default audio_data_file:dir search;
+allow hal_audio_default sysfs:dir { open read };
+

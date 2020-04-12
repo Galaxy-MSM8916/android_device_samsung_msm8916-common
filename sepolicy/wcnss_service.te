@@ -1,7 +1,0 @@
-#============= wcnss_service ==============
-allow wcnss_service efs_file:dir search;
-allow wcnss_service persist_data_file:dir search;
-allow wcnss_service persist_data_file:file { open read setattr write };
-allow wcnss_service unlabeled:dir search;
-allow wcnss_service unlabeled:file { getattr open read setattr };
-

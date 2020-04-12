@@ -1,2 +1,6 @@
-allow time_daemon device:chr_file { read write open ioctl };
+#============= time_daemon ==============
+allow time_daemon alarm_device:chr_file { ioctl open read write };
+allow time_daemon self:capability { setgid setuid };
+allow time_daemon time_data_file:dir { add_name search write };
+allow time_daemon time_data_file:file { create open read write };
 

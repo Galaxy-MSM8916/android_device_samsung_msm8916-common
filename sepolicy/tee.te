@@ -1,4 +1,9 @@
+userdebug_or_eng(`
+permissive tee;
+')
+
 #============= tee ==============
+allow tee block_device:blk_file { getattr ioctl open read write };
 allow tee vfat:dir search;
 allow tee vfat:file { getattr open read };
 

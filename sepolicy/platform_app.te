@@ -1,0 +1,4 @@
+#============= platform_app ==============
+allow platform_app bluetooth_data_file:dir getattr;
+allow platform_app sysfs:file { getattr open read };
+

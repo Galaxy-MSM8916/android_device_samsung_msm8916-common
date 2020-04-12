@@ -1,0 +1,5 @@
+#============= toolbox ==============
+allow toolbox cache_file:file { getattr ioctl write };
+allow toolbox kernel:system syslog_read;
+allow toolbox kmsg_device:chr_file { open read };
+

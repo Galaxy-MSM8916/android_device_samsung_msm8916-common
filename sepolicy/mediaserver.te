@@ -1,6 +1,14 @@
 #============= mediaserver ==============
 allow mediaserver cameraproxy_service:service_manager find;
 allow mediaserver cameraserver_service:service_manager add;
+allow mediaserver default_prop:property_service set;
+allow mediaserver fwk_camera_hwservice:hwservice_manager add;
 allow mediaserver hal_camera_hwservice:hwservice_manager find;
-allow mediaserver sensor_privacy_service:service_manager find;
 allow mediaserver hal_lineage_camera_motor_hwservice:hwservice_manager find;
+allow mediaserver hidl_base_hwservice:hwservice_manager add;
+allow mediaserver mm-qcamerad:unix_dgram_socket sendto;
+allow mediaserver sensor_privacy_service:service_manager find;
+allow mediaserver socket_device:sock_file write;
+allow mediaserver sysfs:file { open read };
+allow mediaserver thermal-engine:unix_stream_socket connectto;
+

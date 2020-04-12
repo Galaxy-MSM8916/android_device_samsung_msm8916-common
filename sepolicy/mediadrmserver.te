@@ -1,0 +1,3 @@
+#============= mediadrmserver ==============
+allow mediadrmserver init:binder { call transfer };
+

@@ -1,0 +1,33 @@
+#============= hal_memtrack_default ==============
+allow hal_memtrack_default {
+    hal_configstore_default
+    hal_keymaster_default
+    hal_keymaster_qti
+    hal_light_default
+    hal_power_default
+    hal_radio_config_default
+    hal_usb_default
+    hal_vibrator_default
+    hwservicemanager
+    init
+    servicemanager
+    vndservicemanager
+}:dir search;
+
+allow hal_memtrack_default {
+    hal_configstore_default
+    hal_keymaster_default
+    hal_keymaster_qti
+    hal_light_default
+    hal_power_default
+    hal_radio_config_default
+    hal_usb_default
+    hal_vibrator_default
+    hwservicemanager
+    init
+    servicemanager
+    vndservicemanager
+}:file { getattr open read };
+
+
+

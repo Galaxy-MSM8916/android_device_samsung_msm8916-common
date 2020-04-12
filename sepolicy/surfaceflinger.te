@@ -1,4 +1,8 @@
 #============= surfaceflinger ==============
+allow surfaceflinger default_android_service:service_manager { add find };
+allow surfaceflinger hal_graphics_allocator_hwservice:hwservice_manager add;
 allow surfaceflinger persist_data_file:dir search;
+allow surfaceflinger persist_display_file:dir search;
+allow surfaceflinger sysfs:file { getattr open read };
 allow surfaceflinger vfat:dir search;
 allow surfaceflinger hal_graphics_allocator_hwservice:hwservice_manager { add };

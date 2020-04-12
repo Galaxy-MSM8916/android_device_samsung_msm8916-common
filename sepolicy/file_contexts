@@ -1,15 +1,27 @@
+###################################
 # System files
-/(vendor|system/vendor)/bin/init\.link_ril_db\.sh              u:object_r:qti_init_shell_exec:s0
+#
+/(vendor|system/vendor)/bin/init\.link_ril_db\.sh u:object_r:qti_init_shell_exec:s0
 
+##################################
 # Crypto
-/system/lib/libcryptfs_hw\.so                  u:object_r:same_process_hal_file:s0
-/firmware(/.*)?                 u:object_r:firmware_file:s0
-/firmware-modem(/.*)?           u:object_r:firmware_file:s0
-/tombstones(/.*)?               u:object_r:rootfs:s0
+#
+/system/lib/libcryptfs_hw\.so u:object_r:same_process_hal_file:s0
+/firmware(/.*)? u:object_r:firmware_file:s0
+/firmware-modem(/.*)? u:object_r:firmware_file:s0
+/tombstones(/.*)? u:object_r:rootfs:s0
 
-# DRM
-/vendor/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey u:object_r:hal_drm_clearkey_exec:s0
-/vendor/bin/hw/android\.hardware\.drm@1\.1-service\.widevine u:object_r:hal_drm_widevine_exec:s0
+/sys/devices/[a-f0-9]+\.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk u:object_r:sysfs_kgsl_gpuclk:s0
+/dev/stune(/.*)? u:object_r:cgroup:s0
+/dev/alarm u:object_r:alarm_device:s0
 
 # Service HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.authsecret@1\.0-service u:object_r:hal_authsecret_default_exec:s0
+
+# Lights
+/sys/class/leds(/.*)?                                                   u:object_r:sysfs_leds:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.msm8916    u:object_r:hal_light_default_exec:s0
+
+# Power
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service\.msm8916   u:object_r:hal_power_default_exec:s0
+

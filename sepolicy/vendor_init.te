@@ -1,6 +1,13 @@
-allow vendor_init system_data_file:file { read write open setattr };
-allow vendor_init radio_data_file:file { write read open setattr };
-allow vendor_init vfat:dir { read open search write };
-allow vendor_init proc:file { read open write };
-allow vendor_init unlabeled:dir { read write setattr getattr search };
+#============= vendor_init ==============
+allow vendor_init audio_data_file:dir { create setattr };
+allow vendor_init bluetooth_data_file:dir { setattr };
+allow vendor_init camera_data_file:dir { create setattr };
+allow vendor_init dhcp_data_file:dir { setattr };
+allow vendor_init nfc_data_file:dir { search setattr };
+allow vendor_init rootfs:dir { create setattr };
+allow vendor_init system_data_file:dir { add_name create setattr write };
+allow vendor_init system_data_file:file { create open setattr write };
+allow vendor_init time_data_file:dir { create setattr };
+allow vendor_init tombstone_data_file:dir { add_name search setattr write };
+allow vendor_init vfat:dir search;
 

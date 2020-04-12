@@ -1,2 +1,3 @@
-allow bootanim system_data_file:dir { read write open };
+#============= bootanim ==============
+allow bootanim sysfs:file { getattr open read };
 

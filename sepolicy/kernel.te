@@ -1,4 +1,6 @@
 #============= kernel ==============
 allow kernel self:capability dac_override;
+allow kernel sysfs:file { open read };
+allow kernel untrusted_app:fd use;
 allow kernel vfat:dir search;
 

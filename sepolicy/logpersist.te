@@ -1,0 +1,5 @@
+#============= logpersist ==============
+allow logpersist cache_file:dir { add_name open read search write };
+allow logpersist cache_file:file { append create getattr open };
+allow logpersist self:capability dac_override;
+

@@ -1,0 +1,11 @@
+#============= system_app ==============
+allow system_app apex_service:service_manager find;
+allow system_app apexd:binder call;
+allow system_app proc_pagetypeinfo:file { getattr open read };
+allow system_app sysfs_vibrator:dir search;
+allow system_app sysfs_zram:dir search;
+allow system_app sysfs_zram:file { getattr open read };
+allow system_app system_suspend_control_service:service_manager find;
+allow system_app time_daemon:unix_stream_socket connectto;
+allow system_app wificond:binder call;
+
