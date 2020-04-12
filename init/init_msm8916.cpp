@@ -130,10 +130,6 @@ void set_target_properties(const char *device, const char *model)
 
 	android::init::property_set("ro.ril.telephony.mqanelements", "6");
 
-	// Fingerprint
-	property_override("ro.build.description", "j5nltexx-user 10 MMB29M J500FXXU1BSK2 release-keys");
-	property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/coral/coral:10/QQ1B.200105.004/6031802:user/release-keys");
-
 	// Check if the simslot count file exists
 	if (access(SIMSLOT_FILE, F_OK) == 0) {
 		int sim_count = read_integer(SIMSLOT_FILE);
