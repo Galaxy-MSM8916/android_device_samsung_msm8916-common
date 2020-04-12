@@ -48,7 +48,6 @@ VENDOR_SECURITY_PATCH := 2017-09-01
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x3F ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += androidboot.bootdevice=7824900.sdhci
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 BOARD_DTBTOOL_ARGS := -2
