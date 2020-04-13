@@ -75,34 +75,7 @@
 
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
-    <bool name="config_automatic_brightness_available">true</bool>
-
-    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
-         The N entries of this array define N  1 zones as follows:
-         Zone 0:        0 <= LUX < array[0]
-         Zone 1:        array[0] <= LUX < array[1]
-         ...
-         Zone N:        array[N - 1] <= LUX < array[N]
-         Zone N + 1     array[N] <= LUX < infinity
-         Must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLevels">
-        <item>15</item>
-        <item>150</item>
-        <item>1000</item>
-        <item>5000</item>
-    </integer-array>
-
-    <!-- Array of output values for LCD backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>20</item>
-        <item>80</item>
-        <item>130</item>
-        <item>190</item>
-        <item>255</item>
-    </integer-array>
+    <bool name="config_automatic_brightness_available">false</bool>
 
     <string-array name="config_mobile_tcp_buffers">
         <item>default:4096,87380,110208,4096,16384,110208</item>
@@ -116,17 +89,6 @@
         <item>gprs:4092,30000,30000,4096,8760,11680</item>
         <item>evdo:4094,87380,262144,4096,16384,262144</item>
     </string-array>
-    <!-- Array of output values for button backlight corresponding to the LUX values
-         in the config_autoBrightnessLevels array.  This array should have size one greater
-         than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>1</item>
-        <item>1</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-    </integer-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
