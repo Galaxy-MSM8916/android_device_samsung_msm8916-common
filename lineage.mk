@@ -22,7 +22,7 @@ TARGET_SCREEN_HEIGHT := 1280
 TARGET_BOOT_ANIMATION_RES := 720
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/revengeos/config/common.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Include full languages
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
