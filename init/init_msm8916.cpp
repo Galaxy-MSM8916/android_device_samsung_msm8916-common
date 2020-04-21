@@ -219,6 +219,11 @@ void init_target_properties(void)
 		model = (char *)"SM-J510F";
 		set_lte_properties();
 	}
+	else if (bootloader.find("J510H") == 0) {
+		device = (char *)"j5x3gxx";
+		model = (char *)"SM-J510H";
+		set_gsm_properties();
+	}
 	// A3
 	else if (bootloader.find("A300FU") == 0) {
 		device = (char *)"a3ultexx";
