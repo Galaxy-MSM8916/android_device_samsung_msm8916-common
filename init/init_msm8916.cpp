@@ -272,84 +272,54 @@ void init_target_properties(void)
 	}
 	// Grand Prime LTE
 	else if (bootloader.find("G530HXX") == 0) {
-		build_id = (char *)"LRX22G";
 		device = (char *)"fortuna3g";
 		model = (char *)"SM-G530H";
-		name = (char *)"fortuna3gxx";
-		network_type=GSM_DEVICE;
-		version_release = (char *)"5.0.2";
+		set_gsm_properties();
 	}
 	else if (bootloader.find("G530HXC") == 0) {
-		build_id = (char *)"LRX22G";
 		device = (char *)"fortunave3g";
 		model = (char *)"SM-G530H";
-		name = (char *)"fortunave3gxx";
-		network_type=GSM_DEVICE;
-		version_release = (char *)"5.0.2";
+		set_gsm_properties();
 	}
 	else if (bootloader.find("G530FZ") == 0) {
-		build_id = (char *)"LRX22G";
 		device = (char *)"grandprimelte";
 		model = (char *)"SM-G530FZ";
-		name = (char *)"grandprimeltexx";
-		network_type=LTE_DEVICE;
-		version_release = (char *)"5.0.2";
+		set_lte_properties();
 	}
 	else if (bootloader.find("G530MUU") == 0) {
-		build_id = (char *)"KTU84P";
 		device = (char *)"fortunaltezt";
 		model = (char *)"SM-G530MU";
-		name = (char *)"fortunalteuh";
-		network_type=LTE_DEVICE;
-		version_release = (char *)"4.4.4";
+		set_lte_properties();
 	}
 	else if (bootloader.find("G530MU") == 0) {
-		build_id = (char *)"LRX22G";
 		device = (char *)"fortunalte";
 		model = (char *)"SM-G530M";
-		name = (char *)"fortunalteub";
-		network_type=LTE_DEVICE;
-		version_release = (char *)"5.0.2";
+		set_lte_properties();
 	}
 	else if (bootloader.find("G530P") == 0) {
-		build_id = (char *)"LMY47X";
 		device = (char *)"gprimeltespr";
 		model = (char *)"SM-G530P";
-		network_type=CDMA_DEVICE;
-		operator_alpha= (char *)"Chameleon";
-		operator_numeric= (char *)"310000";
-		version_release = (char *)"5.1.1";
+		set_cdma_properties("Chameleon", "310000", "10");
 	}
 	else if (bootloader.find("G530T1") == 0) {
-		build_id = (char *)"LMY47X";
 		device = (char *)"gprimeltemtr";
 		model = (char *)"SM-G530T1";
-		network_type=LTE_DEVICE;
-		version_release = (char *)"5.1.1";
+		set_lte_properties();
 	}
 	else if (bootloader.find("G530T") == 0) {
-		build_id = (char *)"LMY47X";
 		device = (char *)"gprimeltetmo";
 		model = (char *)"SM-G530T";
-		network_type=LTE_DEVICE;
-		version_release = (char *)"5.1.1";
+		set_lte_properties();
 	}
 	else if (bootloader.find("G530W") == 0) {
-		build_id = (char *)"LMY47X";
 		device = (char *)"gprimeltecan";
 		model = (char *)"SM-G530W";
-		name = (char *)"gprimeltevl";
-		network_type=LTE_DEVICE;
-		version_release = (char *)"5.1.1";
+		set_lte_properties();
 	}
 	else if (bootloader.find("S920L") == 0) {
-		build_id = (char *)"LRX22G";
 		device = (char *)"gprimeltetfnvzw";
 		model = (char *)"SM-S920L";
-		network_type=CDMA_DEVICE;
-		operator_alpha= (char *)"TracFone";
-		operator_numeric= (char *)"310000";
-		version_release = (char *)"5.0.2";
+		set_cdma_properties("TracFone", "310000", "10");
 	}
 	// S4 mini VE 2015
 	else if (bootloader.find("I9195I") == 0) {
