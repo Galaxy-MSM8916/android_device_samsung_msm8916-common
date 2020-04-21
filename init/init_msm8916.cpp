@@ -162,6 +162,7 @@ void init_target_properties(void)
 	// Get the bootloader string
 	std::string bootloader = android::base::GetProperty("ro.bootloader", "");
 
+	// J5 2015
 	if (bootloader.find("J500FN") == 0) {
 		device = (char *)"j5nltexx";
 		model = (char *)"SM-J500FN";
@@ -197,6 +198,7 @@ void init_target_properties(void)
 		model = (char *)"SM-J5008";
 		set_lte_properties();
 	}
+	// J5 2016
 	else if (bootloader.find("J510FN") == 0) {
         device = (char *)"j5xnlte";
         model = (char *)"SM-J510FN";
@@ -217,6 +219,203 @@ void init_target_properties(void)
 		model = (char *)"SM-J510F";
 		set_lte_properties();
 	}
+	// A3
+	else if (bootloader.find("A300FU") == 0) {
+		device = (char *)"a3ultexx";
+		model = (char *)"SM-A300FU";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A300YZ") == 0) {
+		device = (char *)"a3ltezt";
+		model = (char *)"SM-A300YZ";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A3000") == 0) {
+		device = (char *)"a3ltechn";
+		model = (char *)"SM-A3000";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A3009") == 0) {
+		device = (char *)"a3ltectc";
+		model = (char *)"SM-A3009";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A300F") == 0) {
+		device = (char *)"a3ltexx";
+		model = (char *)"SM-A300F";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A300H") == 0) {
+		device = (char *)"a33g";
+		model = (char *)"SM-A300H";
+		set_gsm_properties();
+	}
+	else if (bootloader.find("A300M") == 0) {
+		device = (char *)"a3lteub";
+		model = (char *)"SM-A300M";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A300G") == 0) {
+		device = (char *)"a3ltezso";
+		model = (char *)"SM-A300G";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A300Y") == 0) {
+		device = (char *)"a3ultedv";
+		model = (char *)"SM-A300Y";
+		set_lte_properties();
+	}
+	// Grand Prime LTE
+	else if (bootloader.find("G530HXX") == 0) {
+		build_id = (char *)"LRX22G";
+		device = (char *)"fortuna3g";
+		model = (char *)"SM-G530H";
+		name = (char *)"fortuna3gxx";
+		network_type=GSM_DEVICE;
+		version_release = (char *)"5.0.2";
+	}
+	else if (bootloader.find("G530HXC") == 0) {
+		build_id = (char *)"LRX22G";
+		device = (char *)"fortunave3g";
+		model = (char *)"SM-G530H";
+		name = (char *)"fortunave3gxx";
+		network_type=GSM_DEVICE;
+		version_release = (char *)"5.0.2";
+	}
+	else if (bootloader.find("G530FZ") == 0) {
+		build_id = (char *)"LRX22G";
+		device = (char *)"grandprimelte";
+		model = (char *)"SM-G530FZ";
+		name = (char *)"grandprimeltexx";
+		network_type=LTE_DEVICE;
+		version_release = (char *)"5.0.2";
+	}
+	else if (bootloader.find("G530MUU") == 0) {
+		build_id = (char *)"KTU84P";
+		device = (char *)"fortunaltezt";
+		model = (char *)"SM-G530MU";
+		name = (char *)"fortunalteuh";
+		network_type=LTE_DEVICE;
+		version_release = (char *)"4.4.4";
+	}
+	else if (bootloader.find("G530MU") == 0) {
+		build_id = (char *)"LRX22G";
+		device = (char *)"fortunalte";
+		model = (char *)"SM-G530M";
+		name = (char *)"fortunalteub";
+		network_type=LTE_DEVICE;
+		version_release = (char *)"5.0.2";
+	}
+	else if (bootloader.find("G530P") == 0) {
+		build_id = (char *)"LMY47X";
+		device = (char *)"gprimeltespr";
+		model = (char *)"SM-G530P";
+		network_type=CDMA_DEVICE;
+		operator_alpha= (char *)"Chameleon";
+		operator_numeric= (char *)"310000";
+		version_release = (char *)"5.1.1";
+	}
+	else if (bootloader.find("G530T1") == 0) {
+		build_id = (char *)"LMY47X";
+		device = (char *)"gprimeltemtr";
+		model = (char *)"SM-G530T1";
+		network_type=LTE_DEVICE;
+		version_release = (char *)"5.1.1";
+	}
+	else if (bootloader.find("G530T") == 0) {
+		build_id = (char *)"LMY47X";
+		device = (char *)"gprimeltetmo";
+		model = (char *)"SM-G530T";
+		network_type=LTE_DEVICE;
+		version_release = (char *)"5.1.1";
+	}
+	else if (bootloader.find("G530W") == 0) {
+		build_id = (char *)"LMY47X";
+		device = (char *)"gprimeltecan";
+		model = (char *)"SM-G530W";
+		name = (char *)"gprimeltevl";
+		network_type=LTE_DEVICE;
+		version_release = (char *)"5.1.1";
+	}
+	else if (bootloader.find("S920L") == 0) {
+		build_id = (char *)"LRX22G";
+		device = (char *)"gprimeltetfnvzw";
+		model = (char *)"SM-S920L";
+		network_type=CDMA_DEVICE;
+		operator_alpha= (char *)"TracFone";
+		operator_numeric= (char *)"310000";
+		version_release = (char *)"5.0.2";
+	}
+	// S4 mini VE 2015
+	else if (bootloader.find("I9195I") == 0) {
+		device = (char *)"serranovelte";
+		model = (char *)"SM-I9195I";
+		set_lte_properties();
+	}
+	else if (bootloader.find("I9192I") == 0) {
+		device = (char *)"serranove3g";
+		model = (char *)"SM-I9192I";
+		set_gsm_properties();
+	}
+	// On 7
+	else if (bootloader.find("G600FY") == 0) {
+		device = (char *)"o7prolte";
+		model = (char *)"SM-G600FY";
+		set_lte_properties();
+	}
+	else if (bootloader.find("G6000") == 0) {
+		device = (char *)"on7ltechn";
+		model = (char *)"SM-G6000";
+		set_lte_properties();
+	}
+	// Galaxy J7
+	else if (bootloader.find("J700P") == 0) {
+		device = (char *)"j7ltespr";
+		model = (char *)"SM-J700P";
+		set_cdma_properties("Chameleon", "310000", "10");
+	}
+	else if (bootloader.find("J7008") == 0) {
+		device = (char *)"j7ltechn";
+		model = (char *)"SM-J7008";
+		set_lte_properties();
+	}
+	// A5
+	else if (bootloader.find("A5000") == 0) {
+		device = (char *)"a5ltechn";
+		model = (char *)"SM-A5000";
+		set_lte_properties();
+	}
+	else if (bootloader.find("A5009") == 0) {
+		device = (char *)"a5ltectc";
+		model = (char *)"SM-A5009";
+		set_lte_properties();
+	}
+	// Tab A/E
+	else if (bootloader.find("T377P") == 0) {
+		device = (char *)"gtesqltespr";
+		model = (char *)"SM-T377P";
+		set_cdma_properties("Chameleon", "310000", "10");
+	}
+	else if (bootloader.find("T560NUU") == 0) {
+		device = (char *)"gtelwifiue";
+		model = (char *)"SM-T560NU";
+		set_wifi_properties();
+	}
+	else if (bootloader.find("T550") == 0) {
+		device = (char *)"gt510wifi";
+		model = (char *)"SM-T550";
+		set_wifi_properties();
+	}
+	else if (bootloader.find("T350") == 0) {
+		device = (char *)"gt58wifi";
+		model = (char *)"SM-T350";
+		set_wifi_properties();
+	}
+	else if (bootloader.find("T357T") == 0) {
+		device = (char *)"gt58ltetmo";
+		model = (char *)"SM-T357T";
+		set_gsm_properties();
+	}	
 	else {
 		return;
 	}
