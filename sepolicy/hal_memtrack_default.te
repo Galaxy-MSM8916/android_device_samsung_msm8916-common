@@ -28,6 +28,6 @@ allow hal_memtrack_default {
     servicemanager
     vndservicemanager
 }:file { getattr open read };
-
+allow hal_memtrack_default system_app:file { read };
 
 
