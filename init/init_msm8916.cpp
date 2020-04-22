@@ -172,36 +172,43 @@ void init_target_properties(void)
 	if (bootloader.find("J500FN") == 0) {
 		device = (char *)"j5nltexx";
 		model = (char *)"SM-J500FN";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J500F") == 0) {
 		device = (char *)"j5ltexx";
 		model = (char *)"SM-J500F";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J500H") == 0) {
 		device = (char *)"j53gxx";
 		model = (char *)"SM-J500H";
+    set_screen_dpi("320");
 		set_gsm_properties();
 	}
 	else if (bootloader.find("J500M") == 0) {
 		device = (char *)"j5lteub";
 		model = (char *)"SM-J500M";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J500Y") == 0) {
 		device = (char *)"j5ylte";
 		model = (char *)"SM-J500Y";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J500G") == 0) {
 		device = (char *)"j5ltedx";
 		model = (char *)"SM-J500G";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J5008") == 0) {
 		device = (char *)"j5ltechn";
 		model = (char *)"SM-J5008";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	// J5 2016
@@ -289,84 +296,100 @@ void init_target_properties(void)
 	else if (bootloader.find("G530HXX") == 0) {
 		device = (char *)"fortuna3g";
 		model = (char *)"SM-G530H";
+    set_screen_dpi("240");
 		set_gsm_properties();
 	}
 	else if (bootloader.find("G530HXC") == 0) {
 		device = (char *)"fortunave3g";
 		model = (char *)"SM-G530H";
+    set_screen_dpi("240");
 		set_gsm_properties();
 	}
 	else if (bootloader.find("G530FZ") == 0) {
 		device = (char *)"grandprimelte";
 		model = (char *)"SM-G530FZ";
+    set_screen_dpi("240");
 		set_lte_properties();
 	}
 	else if (bootloader.find("G530MUU") == 0) {
 		device = (char *)"fortunaltezt";
 		model = (char *)"SM-G530MU";
+    set_screen_dpi("240");
 		set_lte_properties();
 	}
 	else if (bootloader.find("G530MU") == 0) {
 		device = (char *)"fortunalte";
 		model = (char *)"SM-G530M";
+    set_screen_dpi("240");
 		set_lte_properties();
 	}
 	else if (bootloader.find("G530P") == 0) {
 		device = (char *)"gprimeltespr";
 		model = (char *)"SM-G530P";
+    set_screen_dpi("240");
 		set_cdma_properties("Chameleon", "310000", "10");
 	}
 	else if (bootloader.find("G530T1") == 0) {
 		device = (char *)"gprimeltemtr";
 		model = (char *)"SM-G530T1";
+    set_screen_dpi("240");
 		set_lte_properties();
 	}
 	else if (bootloader.find("G530T") == 0) {
 		device = (char *)"gprimeltetmo";
 		model = (char *)"SM-G530T";
+    set_screen_dpi("240");
 		set_lte_properties();
 	}
 	else if (bootloader.find("G530W") == 0) {
 		device = (char *)"gprimeltecan";
 		model = (char *)"SM-G530W";
+    set_screen_dpi("240");
 		set_lte_properties();
 	}
 	else if (bootloader.find("S920L") == 0) {
 		device = (char *)"gprimeltetfnvzw";
 		model = (char *)"SM-S920L";
+    set_screen_dpi("240");
 		set_cdma_properties("TracFone", "310000", "10");
 	}
 	// S4 mini VE 2015
 	else if (bootloader.find("I9195I") == 0) {
 		device = (char *)"serranovelte";
 		model = (char *)"SM-I9195I";
+    set_screen_dpi("240");
 		set_lte_properties();
 	}
 	else if (bootloader.find("I9192I") == 0) {
 		device = (char *)"serranove3g";
 		model = (char *)"SM-I9192I";
+    set_screen_dpi("240");
 		set_gsm_properties();
 	}
 	// On 7
 	else if (bootloader.find("G600FY") == 0) {
 		device = (char *)"o7prolte";
 		model = (char *)"SM-G600FY";
+    set_screen_dpi("320"); 
 		set_lte_properties();
 	}
 	else if (bootloader.find("G6000") == 0) {
 		device = (char *)"on7ltechn";
 		model = (char *)"SM-G6000";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	// Galaxy J7
 	else if (bootloader.find("J700P") == 0) {
 		device = (char *)"j7ltespr";
 		model = (char *)"SM-J700P";
+    set_screen_dpi("320");
 		set_cdma_properties("Chameleon", "310000", "10");
 	}
 	else if (bootloader.find("J7008") == 0) {
 		device = (char *)"j7ltechn";
 		model = (char *)"SM-J7008";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	// A5
@@ -384,26 +407,31 @@ void init_target_properties(void)
 	else if (bootloader.find("T377P") == 0) {
 		device = (char *)"gtesqltespr";
 		model = (char *)"SM-T377P";
+    set_screen_dpi("160");
 		set_cdma_properties("Chameleon", "310000", "10");
 	}
 	else if (bootloader.find("T560NUU") == 0) {
 		device = (char *)"gtelwifiue";
 		model = (char *)"SM-T560NU";
+    set_screen_dpi("160");
 		set_wifi_properties();
 	}
 	else if (bootloader.find("T550") == 0) {
 		device = (char *)"gt510wifi";
 		model = (char *)"SM-T550";
+    set_screen_dpi("160");
 		set_wifi_properties();
 	}
 	else if (bootloader.find("T350") == 0) {
 		device = (char *)"gt58wifi";
 		model = (char *)"SM-T350";
+    set_screen_dpi("160");
 		set_wifi_properties();
 	}
 	else if (bootloader.find("T357T") == 0) {
 		device = (char *)"gt58ltetmo";
 		model = (char *)"SM-T357T";
+    set_screen_dpi("160");
 		set_gsm_properties();
 	}	
 	else {
