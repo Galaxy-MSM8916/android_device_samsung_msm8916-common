@@ -215,26 +215,31 @@ void init_target_properties(void)
 	else if (bootloader.find("J510FN") == 0) {
         device = (char *)"j5xnlte";
         model = (char *)"SM-J510FN";
+        set_screen_dpi("320");
         set_lte_properties();
 	}
 	else if (bootloader.find("J510F") == 0) {
 		device = (char *)"j5xlte";
 		model = (char *)"SM-J510F";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J510MN") == 0) {
 		device = (char *)"j5xnlte";
 		model = (char *)"SM-J510F";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J510GN") == 0) {
 		device = (char *)"j5xnlte";
 		model = (char *)"SM-J510F";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("J510H") == 0) {
 		device = (char *)"j5x3gxx";
 		model = (char *)"SM-J510H";
+    set_screen_dpi("320");
 		set_gsm_properties();
 	}
 	// A3
@@ -396,11 +401,13 @@ void init_target_properties(void)
 	else if (bootloader.find("A5000") == 0) {
 		device = (char *)"a5ltechn";
 		model = (char *)"SM-A5000";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	else if (bootloader.find("A5009") == 0) {
 		device = (char *)"a5ltectc";
 		model = (char *)"SM-A5009";
+    set_screen_dpi("320");
 		set_lte_properties();
 	}
 	// Tab A/E
