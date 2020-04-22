@@ -181,10 +181,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.config.spcm_db_launcher=true \
     sys.config.spcm_preload_enable=true
 
-# Screen
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=320
-
 # Time services
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
