@@ -80,6 +80,12 @@ int read_integer(const char* filename)
 	return retval;
 }
 
+void set_screen_dpi(const char *dpi_value)
+{
+	// Dynamic DPI Properties
+	android::init::property_set("ro.sf.lcd_density", dpi_value);
+}
+
 void set_cdma_properties(const char *operator_alpha, const char *operator_numeric, const char * network)
 {
 	// Dynamic CDMA Properties
@@ -229,46 +235,55 @@ void init_target_properties(void)
 		device = (char *)"a3ultexx";
 		model = (char *)"SM-A300FU";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A300YZ") == 0) {
 		device = (char *)"a3ltezt";
 		model = (char *)"SM-A300YZ";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A3000") == 0) {
 		device = (char *)"a3ltechn";
 		model = (char *)"SM-A3000";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A3009") == 0) {
 		device = (char *)"a3ltectc";
 		model = (char *)"SM-A3009";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A300F") == 0) {
 		device = (char *)"a3ltexx";
 		model = (char *)"SM-A300F";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A300H") == 0) {
 		device = (char *)"a33g";
 		model = (char *)"SM-A300H";
 		set_gsm_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A300M") == 0) {
 		device = (char *)"a3lteub";
 		model = (char *)"SM-A300M";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A300G") == 0) {
 		device = (char *)"a3ltezso";
 		model = (char *)"SM-A300G";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	else if (bootloader.find("A300Y") == 0) {
 		device = (char *)"a3ultedv";
 		model = (char *)"SM-A300Y";
 		set_lte_properties();
+		set_screen_dpi("400");
 	}
 	// Grand Prime LTE
 	else if (bootloader.find("G530HXX") == 0) {
