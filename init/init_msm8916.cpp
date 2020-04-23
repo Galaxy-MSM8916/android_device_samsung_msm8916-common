@@ -371,6 +371,31 @@ void init_target_properties(void)
     set_screen_dpi("240");
 		set_gsm_properties();
 	}
+  // E5 
+	else if (bootloader.find("E500F") == 0) {
+		device = (char *)"e5lte";
+		model = (char *)"SM-E500F";
+    set_screen_dpi("320");
+		set_lte_properties();
+    
+ 	else if (bootloader.find("E500H") == 0) {
+		device = (char *)"e53g";
+		model = (char *)"SM-E500H";
+    set_screen_dpi("320");
+		set_gsm_properties();
+  }
+  // E7
+ 	else if (bootloader.find("E700F") == 0) {
+		device = (char *)"e7lte";
+		model = (char *)"SM-E700F";
+    set_screen_dpi("320");
+		set_lte_properties();
+   
+ 	else if (bootloader.find("E700H") == 0) {
+		device = (char *)"e73g";
+		model = (char *)"SM-E700H";
+    set_screen_dpi("320");
+		set_lte_properties();   
 	// On 7
 	else if (bootloader.find("G600FY") == 0) {
 		device = (char *)"o7prolte";
