@@ -1,0 +1,2 @@
+# rootfs
+/firmware-modem                                         u:object_r:firmware_file:s0
