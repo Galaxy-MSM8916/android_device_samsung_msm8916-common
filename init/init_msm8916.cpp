@@ -423,6 +423,24 @@ void init_target_properties(void)
 		set_lte_properties();
 	}
 	// A5
+	else if (bootloader.find("A500FU") == 0) {
+		device = (char *)"a5ultexx";
+		model = (char *)"SM-A500FU";
+    set_screen_dpi("320");
+		set_lte_properties();
+	}
+	else if (bootloader.find("A500F") == 0) {
+		device = (char *)"a5lte";
+		model = (char *)"SM-A500F";
+    set_screen_dpi("320");
+		set_lte_properties();
+	}
+	else if (bootloader.find("A500H") == 0) {
+		device = (char *)"a53g";
+		model = (char *)"SM-A500H";
+    set_screen_dpi("320");
+		set_gsm_properties();
+	}
 	else if (bootloader.find("A5000") == 0) {
 		device = (char *)"a5ltechn";
 		model = (char *)"SM-A5000";
