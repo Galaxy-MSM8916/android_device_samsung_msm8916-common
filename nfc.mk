@@ -15,7 +15,7 @@
 
 COMMON_PATH := device/samsung/msm8916-common
 
-# NFC - only for j5nlte and j5xnlte
+# NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.1 \
     android.hardware.nfc@1.1-service \
