@@ -491,6 +491,26 @@ void init_target_properties(void)
 		set_screen_dpi("160");
 		set_gsm_properties();
 	}
+	// J3 2015
+	else if (bootloader.find("J3109") == 0) {
+		device = (char *)"j3ltectc";
+		model = (char *)"SM-J3109";
+		set_screen_dpi("320");
+		set_lte_properties();
+	}
+	// J3 2016 Pro
+	else if (bootloader.find("J3110") == 0) {
+		device = (char *)"j3xproltechn";
+		model = (char *)"SM-J3110";
+		set_screen_dpi("320");
+		set_lte_properties();
+	}
+	else if (bootloader.find("J3119") == 0) {
+		device = (char *)"j3xproltectc";
+		model = (char *)"SM-J3119";
+		set_screen_dpi("320");
+		set_lte_properties();
+	}
 	else {
 		return;
 	}
