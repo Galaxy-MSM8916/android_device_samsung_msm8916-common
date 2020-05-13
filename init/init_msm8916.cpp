@@ -420,13 +420,13 @@ void init_target_properties(void)
 	else if (bootloader.find("J700P") == 0) {
 		device = (char *)"j7ltespr";
 		model = (char *)"SM-J700P";
-		set_screen_dpi("267");
+		set_screen_dpi("295");
 		set_cdma_properties("Chameleon", "310000", "10");
 	}
 	else if (bootloader.find("J7008") == 0) {
 		device = (char *)"j7ltechn";
 		model = (char *)"SM-J7008";
-		set_screen_dpi("320");
+		set_screen_dpi("295");
 		set_lte_properties();
 	}
 	// A5
