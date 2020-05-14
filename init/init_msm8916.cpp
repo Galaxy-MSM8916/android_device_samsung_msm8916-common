@@ -210,6 +210,7 @@ void init_target_properties(void)
 		model = (char *)"SM-J5008";
 		set_screen_dpi("320");
 		set_lte_properties();
+		set_dsds_properties();
 	}
 	// J5 2016
 	else if (bootloader.find("J510FN") == 0) {
@@ -229,6 +230,7 @@ void init_target_properties(void)
 		model = (char *)"SM-J5108";
 		set_screen_dpi("320");
 		set_lte_properties();
+		set_dsds_properties();
 	}
 	else if (bootloader.find("J510MN") == 0) {
 		device = (char *)"j5xnlte";
@@ -428,6 +430,7 @@ void init_target_properties(void)
 		model = (char *)"SM-J7008";
 		set_screen_dpi("295");
 		set_lte_properties();
+		set_dsds_properties();
 	}
 	// A5
 	else if (bootloader.find("A500FU") == 0) {
@@ -497,6 +500,7 @@ void init_target_properties(void)
 		model = (char *)"SM-J3109";
 		set_screen_dpi("320");
 		set_lte_properties();
+		set_dsds_properties();
 	}
 	// J3 2016 Pro
 	else if (bootloader.find("J3110") == 0) {
@@ -504,12 +508,14 @@ void init_target_properties(void)
 		model = (char *)"SM-J3110";
 		set_screen_dpi("320");
 		set_lte_properties();
+		set_dsds_properties();
 	}
 	else if (bootloader.find("J3119") == 0) {
 		device = (char *)"j3xproltectc";
 		model = (char *)"SM-J3119";
 		set_screen_dpi("320");
 		set_lte_properties();
+		set_dsds_properties();
 	}
 	else {
 		return;
