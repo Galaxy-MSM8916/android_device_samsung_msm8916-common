@@ -158,7 +158,7 @@ PRODUCT_PACKAGES += \
 
 # Doze
 PRODUCT_PACKAGES += \
-    SamsungMSM8916Doze
+    SamsungDoze
 
 # DRM
 PRODUCT_PACKAGES += \
