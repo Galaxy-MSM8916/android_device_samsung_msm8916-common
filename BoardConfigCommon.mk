@@ -19,9 +19,6 @@ BOARD_VENDOR := samsung
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
-# Includes
-TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
-
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_PHONY_TARGETS := true
 
@@ -43,28 +40,6 @@ TARGET_NO_BOOTLOADER := true
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2017-09-01
-
-# Kernel
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23
-BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x3F ehci-hcd.park=3
-BOARD_KERNEL_CMDLINE += androidboot.bootdevice=7824900.sdhci
-BOARD_CUSTOM_BOOTIMG := true
-BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
-BOARD_DTBTOOL_ARGS := -2
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_IMAGE_NAME := zImage
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET := 0x02000000
-LZMA_RAMDISK_TARGETS := recovery
-TARGET_KERNEL_SOURCE := kernel/samsung/msm8916
-
-# Kernel - Toolchain
-ifneq ($(wildcard $(shell pwd)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-7.2/bin),)
-    KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-7.2/bin
-    KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
-endif
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -146,9 +121,34 @@ AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 # GPS
 TARGET_NO_RPC := true
 
+# Includes
+TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
+
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8916
 TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8916
+
+# Kernel
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=23
+BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x3F ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += androidboot.bootdevice=7824900.sdhci
+BOARD_CUSTOM_BOOTIMG := true
+BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
+BOARD_DTBTOOL_ARGS := -2
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_IMAGE_NAME := zImage
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
+BOARD_RAMDISK_OFFSET := 0x02000000
+LZMA_RAMDISK_TARGETS := recovery
+TARGET_KERNEL_SOURCE := kernel/samsung/msm8916
+
+# Kernel - Toolchain
+ifneq ($(wildcard $(shell pwd)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-7.2/bin),)
+    KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-7.2/bin
+    KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+endif
 
 # Malloc implementation
 MALLOC_SVELTE := true
