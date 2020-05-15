@@ -86,7 +86,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl
 
 PRODUCT_PACKAGES += \
-    libbase_shim \
     libbt-vendor
 
 # BoringSSL Hacks
@@ -99,9 +98,10 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl
 
 PRODUCT_PACKAGES += \
-    libcamera_shim \
-    libmm-qcamera \
     camera.msm8916 \
+    libmm-qcamera
+
+PRODUCT_PACKAGES += \
     Snap
 
 # Connectivity Engine support
@@ -203,9 +203,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.location.provider \
     com.android.location.provider.xml \
-    gps.msm8916 \
-    libshim_gps \
-    liblocadapterbase_shim
+    gps.msm8916
 
 # Health HAL
 PRODUCT_PACKAGES += \
@@ -317,7 +315,6 @@ include device/samsung/msm8916-common/vendor_prop.mk
 
 # Radio
 PRODUCT_PACKAGES += \
-    libshim_secril \
     libxml2 \
     macloader \
 
@@ -349,6 +346,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
+# Shims
+PRODUCT_PACKAGES += \
+    libbase_shim \
+    libcamera_shim \
+    liblocadapterbase_shim \
+    libshim_gps \
+    libshim_secril
+
 # RIL
 PRODUCT_PACKAGES += \
     libril \
@@ -361,7 +366,9 @@ PRODUCT_COPY_FILES += \
 
 # Sensor HAL
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-impl
+
+PRODUCT_PACKAGES += \
     sensors.msm8916
 
 # USB HAL
