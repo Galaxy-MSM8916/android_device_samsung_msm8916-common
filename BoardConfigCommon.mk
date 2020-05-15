@@ -16,9 +16,6 @@
 COMMON_PATH := device/samsung/msm8916-common
 BOARD_VENDOR := samsung
 
-# Inherit from common
--include device/samsung/qcom-common/BoardConfigCommon.mk
-
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_PHONY_TARGETS := true
 
