@@ -331,6 +331,11 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
+ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8929)
+PRODUCT_PACKAGES += \
+    init.target.rc
+endif
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 

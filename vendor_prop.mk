@@ -59,6 +59,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1 \
     debug.camcorder.disablemeta=true
 
+# Chipset
+ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8929)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.chipname=MSM8929
+endif
+
 # Connectivity Engine
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.cne.dpm=0 \
