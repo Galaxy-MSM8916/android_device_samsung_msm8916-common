@@ -14,7 +14,6 @@
 # limitations under the License.
 
 COMMON_PATH := device/samsung/msm8916-common
-BOARD_VENDOR := samsung
 
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_PHONY_TARGETS := true
