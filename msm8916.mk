@@ -316,7 +316,7 @@ PRODUCT_COPY_FILES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service.msm8916
+    android.hardware.power@1.2-service-qti
 
 # Proprieties
 include device/samsung/msm8916-common/vendor_prop.mk
