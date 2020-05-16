@@ -235,6 +235,7 @@
         <interface>
             <name>IThermal</name>
         </interface>
+    </hal>
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
         <transport>hwbinder</transport>
