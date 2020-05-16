@@ -155,10 +155,6 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.default
 # HIDL
 DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
 
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_msm8916
-TARGET_RECOVERY_DEVICE_MODULES := libinit_msm8916
-
 # Kernel
 BOARD_KERNEL_CMDLINE += \
 	console=null \
