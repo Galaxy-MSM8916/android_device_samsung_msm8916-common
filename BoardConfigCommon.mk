@@ -149,9 +149,6 @@ AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 # GPS
 TARGET_NO_RPC := true
 
-# Healthd
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.lineage
-
 # HIDL
 DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
 
