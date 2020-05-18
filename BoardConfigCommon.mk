@@ -150,6 +150,7 @@ AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 TARGET_NO_RPC := true
 
 # HIDL
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
 
 # Kernel
