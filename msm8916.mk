@@ -146,6 +146,15 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     camera.msm8916
 
+# Chipname
+ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8929)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.chipname=MSM8929
+else ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8939)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.chipname=MSM8939
+endif
+
 # Connectivity Engine
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.cne.dpm=0 \
