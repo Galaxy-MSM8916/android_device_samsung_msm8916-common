@@ -48,7 +48,7 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     chown root audio /sys/kernel/boot_adsp/boot
     setprop qcom.audio.init complete
-    exec u:r:qti_init_shell:s0 -- /system/vendor/bin/init.qcom.early_boot.sh
+    start qcom-early-boot
 
 on boot
     start rmt_storage
@@ -748,6 +748,13 @@ service qcom-sh /system/vendor/bin/init.qcom.sh
     class late_start
     user root
     oneshot
+
+service qcom-early-boot /system/vendor/bin/init.qcom.early_boot.sh
+    class core
+    user root
+    disabled
+    oneshot
+    seclabel u:r:qti_init_shell:s0
 
 service qcom-post-boot /system/vendor/bin/init.qcom.post_boot.sh
     class late_start
