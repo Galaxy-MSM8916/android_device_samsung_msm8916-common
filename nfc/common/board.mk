@@ -1,0 +1,10 @@
+LOCAL_PATH := $(call my-dir)
+
+# NFC
+BOARD_NFC_HAL_SUFFIX := msm8916
+
+# HIDL
+DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest.xml
+
+# SELinux
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy

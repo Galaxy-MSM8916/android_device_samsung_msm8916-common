@@ -1,0 +1,8 @@
+userdebug_or_eng(`
+permissive hal_nfc_default;
+')
+
+#============= hal_nfc_default ==============
+allow hal_nfc_default default_android_hwservice:hwservice_manager { add find };
+allow hal_nfc_default device:chr_file { ioctl open read write };
+
