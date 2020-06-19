@@ -41,4 +41,7 @@
     <!-- Whether the display blanks itself when transitioning from a doze to a non-doze state -->
     <bool name="config_displayBlanksAfterDoze">false</bool>
 
+    <!-- Remote server that can provide NTP responses. -->
+    <string translatable="false" name="config_ntpServer">pool.ntp.org</string>
+
 </resources>
