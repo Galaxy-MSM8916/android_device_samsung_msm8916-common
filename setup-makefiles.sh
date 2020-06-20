@@ -24,13 +24,16 @@ DEVICES_A3="a3lte a33g a3ulte"
 DEVICES_A5="a5ltechn a5ltectc"
 DEVICES_GPRIME="fortuna3g fortunave3g fortunalteub gprimelte gprimeltexx gprimeltespr gprimeltetfnvzw gprimeltezt gprimeltectc"
 DEVICES_GTE="gtelwifiue gtesqltespr gt510wifi"
+DEVICES_J3="j3ltectc j3ltespr"
+DEVICES_J3XPRO="j3xprolte"
 DEVICES_J5="j53gxx j5lte j5ltechn j5nlte"
-DEVICES_J5X="j5xnlte j5xlte"
+DEVICES_J5X="j5xnlte j5xlte j5xltecmcc"
 DEVICES_J7="j7ltespr j7ltechn"
 DEVICES_O7="o7prolte on7ltechn"
 DEVICES_SERRANO="serranovelte serranove3g"
 
-DEVICES_ALL="$DEVICES_A3 $DEVICES_A5 $DEVICES_GPRIME $DEVICES_GTE $DEVICES_J5 $DEVICES_J5X $DEVICES_J7 $DEVICES_O7 $DEVICES_SERRANO"
+DEVICES_ALL="$DEVICES_A3 $DEVICES_A5 $DEVICES_GPRIME $DEVICES_GTE $DEVICES_J3 $DEVICES_J3XPRO \
+	$DEVICES_J5 $DEVICES_J5X $DEVICES_J7 $DEVICES_O7 $DEVICES_SERRANO"
 
 VENDOR=samsung
 
