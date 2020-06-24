@@ -25,6 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import /system/vendor/etc/init/hw/init.target.rc
 import /system/vendor/etc/init/hw/init.qcom.usb.rc
 
 on init
