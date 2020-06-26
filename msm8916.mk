@@ -562,3 +562,7 @@ PRODUCT_PACKAGES += \
 # ZRAM - Size in MB
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.zram.size=128
+    
+# Google Play Store
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196608
