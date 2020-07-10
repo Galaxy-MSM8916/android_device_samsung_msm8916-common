@@ -440,7 +440,6 @@ PRODUCT_PACKAGES += \
     init.carrier.rc \
     init.class_main.sh \
     init.link_ril_db.sh \
-    init.qcom.early_boot.sh \
     init.qcom.fm.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \
