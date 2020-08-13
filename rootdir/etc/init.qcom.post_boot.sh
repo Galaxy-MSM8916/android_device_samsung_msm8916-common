@@ -365,7 +365,7 @@ case "$target" in
                 echo 1 > /sys/devices/system/cpu/cpu7/online
 
                 # Enable low power modes
-                echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
+#                echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
                 # HMP scheduler (big.Little cluster related) settings
                 echo 75 > /proc/sys/kernel/sched_upmigrate
