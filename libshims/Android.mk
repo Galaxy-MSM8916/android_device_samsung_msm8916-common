@@ -13,7 +13,9 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 LOCAL_SHARED_LIBRARIES := liblog libcutils libbinder libutils
 LOCAL_SRC_FILES := \
-    secril_shim.cpp
+    secril_shim.cpp \
+    strdup16to8.cpp \
+    strdup8to16.cpp
 
 LOCAL_MODULE := libshim_secril
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
