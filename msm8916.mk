@@ -256,6 +256,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
+ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8929)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196610 \
+    media.msm8929hw=1
+else ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8939)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196610 \
+    media.msm8939hw=1
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196608
+endif
+
 # GPS Configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/flp.conf \
