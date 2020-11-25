@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# SoC Variant
+ifeq ($(filter msm8916 msm8929 msm8939,$(TARGET_BOARD_PLATFORM_VARIANT)),)
+TARGET_BOARD_PLATFORM_VARIANT := msm8916
+endif
+
 # Inherit from common
 $(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
 
@@ -461,6 +466,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.uicc.sh \
+    init.qcom.power.rc \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \

@@ -27,6 +27,7 @@
 
 import /system/vendor/etc/init/hw/init.target.rc
 import /system/vendor/etc/init/hw/init.qcom.usb.rc
+import /system/vendor/etc/init/hw/init.qcom.power.rc
 
 on init
 
