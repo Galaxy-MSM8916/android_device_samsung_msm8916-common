@@ -458,7 +458,6 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.link_ril_db.sh \
     init.qcom.fm.sh \
-    init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.uicc.sh \
