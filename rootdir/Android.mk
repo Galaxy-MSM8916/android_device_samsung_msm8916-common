@@ -119,13 +119,3 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/$(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
-
-######################
-### twrp.fstab
-include $(CLEAR_VARS)
-LOCAL_MODULE       := twrp.fstab
-LOCAL_MODULE_TAGS  := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := ../recovery/$(LOCAL_MODULE)
-LOCAL_MODULE_PATH  := $(TARGET_RECOVERY_ROOT_OUT)/system/etc
-include $(BUILD_PREBUILT)
