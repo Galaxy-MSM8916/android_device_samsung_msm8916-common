@@ -199,7 +199,7 @@ TARGET_RECOVERY_FSTAB	:= $(COMMON_PATH)/recovery/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT	:= "RGB_565"
 
 # SELinux
-# include device/qcom/sepolicy-legacy/sepolicy.mk
+include device/qcom/sepolicy-legacy/sepolicy.mk
 
 SELINUX_IGNORE_NEVERALLOWS := true
 #BOARD_SEPOLICY_DIRS += \
