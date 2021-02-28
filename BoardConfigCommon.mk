@@ -33,7 +33,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a53
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
