@@ -1,2 +1,3 @@
 # rootfs
 /firmware-modem                                         u:object_r:firmware_file:s0
+/tombstones                                             u:object_r:rootfs:s0
