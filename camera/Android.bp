@@ -29,6 +29,7 @@ cc_library_shared {
         "liblog",
         "libutils",
         // additional libs for original camera HAL
+        "libboringssl-compat",
         "libhardware",
         "libcutils",
         "libdl",
