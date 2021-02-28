@@ -630,9 +630,6 @@ on property:persist.debug.trace=1
     write /sys/bus/coresight/devices/coresight-etm3/enable 1
     write /sys/module/coresight_event/parameters/event_abort_enable 1
 
-    # Mark wifi driver as unloaded - "ok" indicates loaded
-    setprop wlan.driver.status not_ok
-
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
@@ -798,7 +795,7 @@ service charger /system/bin/charger
     seclabel u:r:charger:s0
     critical
 
-on class_start:late_start
+on late_start
     trigger enable-low-power
 
 on property:init.svc.recovery=running
