@@ -198,7 +198,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/lib/libmmjpeg_interface.so|libboringssl-compat.so \
+    /vendor/lib/libmmjpeg_interface.so|libboringssl-compat.so \
     /system/lib/libsec-ril.so|libshim_secril.so \
     /system/lib/libsec-ril-dsds.so|libshim_secril.so \
     /system/lib/hw/camera.vendor.msm8916.so|libcamera_shim.so \
