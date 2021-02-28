@@ -15,9 +15,6 @@
 
 COMMON_PATH := device/samsung/msm8916-common
 
-# Includes
-TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
-
 # Inherit from common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
