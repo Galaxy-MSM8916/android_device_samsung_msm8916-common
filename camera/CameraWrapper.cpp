@@ -57,7 +57,7 @@ static struct hw_module_methods_t camera_module_methods = {
     .open = camera_device_open,
 };
 
-camera_module_t HAL_MODULE_INFO_SYM = {
+extern "C" camera_module_t HAL_MODULE_INFO_SYM __attribute__ ((visibility("default"))) = {
     .common = {
          .tag = HARDWARE_MODULE_TAG,
          .version_major = 1,
