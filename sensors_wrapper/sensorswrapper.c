@@ -139,7 +139,7 @@ struct hw_module_methods_t sensors_module_methods = {
 	.open = sensors_module_open
 };
 
-struct sensors_module_t HAL_MODULE_INFO_SYM = {
+struct sensors_module_t HAL_MODULE_INFO_SYM __attribute__ ((visibility("default"))) = {
 	.common = {
 		.tag = HARDWARE_MODULE_TAG,
 		.version_major = 1,
