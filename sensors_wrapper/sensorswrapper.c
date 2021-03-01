@@ -20,6 +20,8 @@
 
 #include <errno.h>
 #include <log/log.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include <hardware/hardware.h>
 #include <hardware/sensors.h>
@@ -71,7 +73,7 @@ WRAP_HAL(batch, int, (struct sensors_poll_device_1 *dev, int handle, int flags, 
 
 static int sensors_module_open(const struct hw_module_t* module, const char* id, struct hw_device_t** device) {
 	int ret=0;
-	struct sensors_poll_device_1 *dev;
+	struct sensors_poll_device_1 *dev = NULL;
 
 	ALOGI("Initializing wrapper for Samsung Sensor-HAL");
 	if (samsung_hw_dev) {
@@ -134,18 +136,18 @@ static int sensors_module_open(const struct hw_module_t* module, const char* id,
 }
 
 struct hw_module_methods_t sensors_module_methods = {
-	open: sensors_module_open
+	.open = sensors_module_open
 };
 
 struct sensors_module_t HAL_MODULE_INFO_SYM = {
-	common: {
-		tag: HARDWARE_MODULE_TAG,
-		version_major: 1,
-		version_minor: 0,
-		id: SENSORS_HARDWARE_MODULE_ID,
-		name : "Samsung Sensors HAL Wrapper",
-		author : "Martin Bouchet (tincho5588@gmail.com)",
-		methods: &sensors_module_methods,
+	.common = {
+		.tag = HARDWARE_MODULE_TAG,
+		.version_major = 1,
+		.version_minor = 0,
+		.id = SENSORS_HARDWARE_MODULE_ID,
+		.name = "Samsung Sensors HAL Wrapper",
+		.author = "Martin Bouchet (tincho5588@gmail.com)",
+		.methods = &sensors_module_methods,
 	},
-	get_sensors_list: sensors_list_get
+	.get_sensors_list = sensors_list_get
 };
