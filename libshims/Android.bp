@@ -14,13 +14,6 @@
 // limitations under the License.
 
 cc_library_shared {
-    name: "libbase_shim",
-    srcs: ["base/logging.cpp"],
-    shared_libs: ["libbase"],
-    vendor: true,
-}
-
-cc_library_shared {
     name: "libcamera_shim",
     srcs: ["camera/camera_shim.c"],
     vendor: true,

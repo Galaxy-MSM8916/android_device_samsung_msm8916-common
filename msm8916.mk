@@ -283,6 +283,7 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.sh \
+    init.qcom.bt.sh \
     init.qcom.uicc.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
