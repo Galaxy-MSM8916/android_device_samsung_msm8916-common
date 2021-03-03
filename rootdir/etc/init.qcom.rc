@@ -25,8 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import /system/vendor/etc/init/hw/init.target.rc
-import /system/vendor/etc/init/hw/init.qcom.usb.rc
+import /vendor/etc/init/hw/init.target.rc
+import /vendor/etc/init/hw/init.qcom.usb.rc
 
 on init
 
@@ -376,7 +376,7 @@ on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all /system/vendor/etc/fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
 
     chown system radio /efs
     chmod 0771 /efs
@@ -552,12 +552,12 @@ on post-fs-data
     start vendor.link_ril_db
 
 #start camera server as daemon
-service vendor.qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+service vendor.qcamerasvr /vendor/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
 
-service vendor.qseecomd /system/vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
@@ -567,7 +567,7 @@ service perfd /system/bin/perfd
    user root
    disabled
 
-service vendor.thermal-engine /system/vendor/bin/thermal-engine
+service vendor.thermal-engine /vendor/bin/thermal-engine
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -575,21 +575,21 @@ service vendor.thermal-engine /system/vendor/bin/thermal-engine
    socket thermal-recv-passive-client stream 0666 system system
    group root
 
-service vendor.time_daemon /system/vendor/bin/time_daemon
+service vendor.time_daemon /vendor/bin/time_daemon
    class late_start
    user root
    group root
 
-service vendor.qcomsysd /system/vendor/bin/qcom-system-daemon
+service vendor.qcomsysd /vendor/bin/qcom-system-daemon
     class main
     user root
     group root diag
 
-service vendor.ssr_setup /system/vendor/bin/ssr_setup
+service vendor.ssr_setup /vendor/bin/ssr_setup
     oneshot
     disabled
 
-service vendor.ss_ramdump /system/vendor/bin/subsystem_ramdump
+service vendor.ss_ramdump /vendor/bin/subsystem_ramdump
     class main
     user system
     group system
@@ -633,7 +633,7 @@ on property:persist.debug.trace=1
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
-service vendor.qcom-c_main-sh /system/vendor/bin/init.class_main.sh
+service vendor.qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
     oneshot
@@ -653,12 +653,12 @@ on property:hw.fm.init=1
 on property:hw.fm.init=0
     write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
 
-service vendor.irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
+service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service vendor.rmt_storage /system/vendor/bin/rmt_storage
+service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
@@ -677,12 +677,12 @@ service start_hci_filter /system/bin/wcnss_filter
     disabled
 
 # QMUX must be in multiple groups to support external process connections
-service vendor.qmuxd /system/vendor/bin/qmuxd
+service vendor.qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag
 
-service vendor.netmgrd /system/vendor/bin/netmgrd
+service vendor.netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
@@ -702,7 +702,7 @@ on property:ro.use_data_netmgrd=false
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service vendor.link_ril_db /system/vendor/bin/init.link_ril_db.sh
+service vendor.link_ril_db /vendor/bin/init.link_ril_db.sh
     class main
     user root
     oneshot
@@ -714,24 +714,24 @@ service wlandutservice /system/bin/wlandutservice
     disabled
     oneshot
 
-service vendor.loc_launcher /system/vendor/bin/loc_launcher
+service vendor.loc_launcher /vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw diag net_admin wifi
 
-service vendor.fm /system/vendor/bin/init.qcom.fm.sh
+service vendor.fm /vendor/bin/init.qcom.fm.sh
     class late_start
     user system
     group system
     disabled
     oneshot
 
-service vendor.qcom-sh /system/vendor/bin/init.qcom.sh
+service vendor.qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     oneshot
 
-service vendor.qcom-post-boot /system/vendor/bin/init.qcom.post_boot.sh
+service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
     disabled
@@ -750,14 +750,14 @@ on property:sys.boot_completed=1
     write /sys/class/touch_screen/control auto
 
 # RIL for multi rild
-service vendor.ril-daemon2 /system/vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
+service vendor.ril-daemon2 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
     class main
     user radio
     disabled
     group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service vendor.usb_uicc_enable /system/vendor/bin/init.qcom.uicc.sh
+service vendor.usb_uicc_enable /vendor/bin/init.qcom.uicc.sh
     class late_start
     user root
     disabled
