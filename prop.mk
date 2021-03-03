@@ -38,6 +38,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path=/efs/bluetooth/bt_addr \
     ro.qualcomm.bt.hci_transport=smd \
     vendor.bluetooth.soc=pronto \
+    vendor.bluetooth.status=on \
     vendor.qcom.bluetooth.soc=pronto
 
 # Boot
