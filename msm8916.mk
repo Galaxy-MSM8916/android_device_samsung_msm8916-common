@@ -274,19 +274,21 @@ PRODUCT_PACKAGES += \
     libxml2 \
     macloader
 
-# Ramdisk
+# Rootdir
 PRODUCT_PACKAGES += \
-    fstab.qcom \
     init.class_main.sh \
     init.link_ril_db.sh \
+    init.qcom.bt.sh \
     init.qcom.fm.sh \
     init.qcom.post_boot.sh \
-    init.qcom.rc \
     init.qcom.sh \
-    init.qcom.bt.sh \
     init.qcom.uicc.sh \
-    init.qcom.usb.rc \
     init.qcom.usb.sh \
+
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.rc \
+    init.qcom.usb.rc \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
