@@ -750,7 +750,7 @@ on property:sys.boot_completed=1
     write /sys/class/touch_screen/control auto
 
 # RIL for multi rild
-service vendor.ril-daemon2 /vendor/bin/hw/rild -l /system/lib/libsec-ril-dsds.so -c 2
+service vendor.ril-daemon2 /vendor/bin/hw/rild -l /vendor/lib/libsec-ril-dsds.so -c 2
     class main
     user radio
     disabled
