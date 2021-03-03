@@ -707,7 +707,7 @@ service vendor.link_ril_db /vendor/bin/init.link_ril_db.sh
     user root
     oneshot
 
-service wlandutservice /system/bin/wlandutservice
+service vendor.wlandutservice /vendor/bin/wlandutservice
     class main
     user system
     group wifi net_raw net_admin system inet
@@ -775,7 +775,7 @@ on property:sys.usb_uicc.enabled=1
 on property:sys.usb_uicc.enabled=0
     start vendor.usb_uicc_enable
 
-service ssr_diag /system/bin/ssr_diag
+service vendor.ssr_diag /vendor/bin/ssr_diag
     class late_start
     user system
     group system
