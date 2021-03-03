@@ -47,7 +47,7 @@ on post-fs
     setprop persist.adb.nonblocking_ffs 0
     setprop ro.adb.nonblocking_ffs 0
 
-service qcom-usb-sh /system/vendor/bin/init.qcom.usb.sh
+service qcom-usb-sh /vendor/bin/init.qcom.usb.sh
     class main
     user root
     oneshot
